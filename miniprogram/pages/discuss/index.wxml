@@ -13,9 +13,12 @@ bind:close="onClose"
 position="bottom" 
 closeable
 round
-custom-style="height: 60%;">
+custom-style="height: 80%;">
   <view class="fix">
    全部筛选
   </view>
-  <filter searchList="{{searchList}}"   bind:clickchange='onChange' bind:clickdoCancel='doCancel'   bind:clickdoReset='reset'  bind:clickdoSubmit='doSubmit' > </filter>
+  <view class="filter">
+    <filter searchList="{{searchList}}"   bind:clickchange='onChange' bind:clickdoCancel='doCancel'   bind:clickdoReset='reset'  bind:clickdoSubmit='doSubmit' > </filter>
+  </view>
+  
 </van-popup>

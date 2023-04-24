@@ -1,0 +1,4 @@
+<!--pages/uplode/index.wxml-->
+<view class="picbox">
+<van-uploader file-list="{{ fileList }}" />
+</view>

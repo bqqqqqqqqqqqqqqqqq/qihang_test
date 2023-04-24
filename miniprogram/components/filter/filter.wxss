@@ -39,7 +39,7 @@
 
 .search-bottom {
   position: fixed;
-  bottom: 0;
+  bottom: 80px;
   left: 0;
   height: 50px;
   line-height: 50px;

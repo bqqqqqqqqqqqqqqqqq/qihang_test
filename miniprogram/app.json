@@ -3,12 +3,14 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/login/logins",
+    "pages/login/login",
     "custom-tab-bar/index",
     "pages/discuss/index",
     "pages/user/index",
     "pages/user-parents/index",
     "pages/user-teacher/index",
-    "pages/question/index"
+    "pages/question/index",
+    "pages/uplode/index"
   ],
 
     

@@ -1,0 +1,4 @@
+/* pages/uplode/index.wxss */
+.picbox{
+  margin: 30rpx;
+}
