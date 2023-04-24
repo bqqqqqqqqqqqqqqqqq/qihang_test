@@ -1,0 +1,21 @@
+<van-nav-bar title="论坛"  right-text="筛选" bind:click-right="showPopup" >
+</van-nav-bar>
+<view class="quesbox" wx:for="{{list}}" wx:key="pid">
+  <view class="quesion">
+    <view class="q_pic"   style="background-image: url({{item.cover_img}});">
+    </view>
+    <van-button class="q_tag" round type="info" size="small">{{item.tag}}</van-button>
+  </view>
+</view>
+<!-- 弹出层 -->
+<van-popup show="{{ show }}" 
+bind:close="onClose" 
+position="bottom" 
+closeable
+round
+custom-style="height: 60%;">
+  <view class="fix">
+   全部筛选
+  </view>
+  <filter searchList="{{searchList}}"   bind:clickchange='onChange' bind:clickdoCancel='doCancel'   bind:clickdoReset='reset'  bind:clickdoSubmit='doSubmit' > </filter>
+</van-popup>

@@ -1,0 +1,21 @@
+<!--pages/user-teacher/index.wxml-->
+<view class="top-box">
+  <view class="avatar">
+    <image src="{{src}}" style="width:140rpx ;height: 140rpx;border-radius: 100%;" alt=""/>
+  </view>
+  <view class="right">
+    <view class="info">
+      <text class="name">{{name}}</text>
+      <text class="uid">{{uid}}</text>
+    </view>
+    <van-button class="gotologin" type="primary" round plain size="mini">去认证</van-button>
+  </view>
+</view>
+<van-cell-group>
+  <van-cell title="我的学生" icon="friends-o" is-link link-type="navigateTo" url="" size="large"/>
+  <van-cell title="我的班级" icon="location-o" is-link link-type="navigateTo" url="" size="large"/>
+  <van-cell title="我的回答" icon="sign" is-link link-type="navigateTo" url="" size="large"/>
+  <van-cell title="对我的提问" icon="chat-o" is-link link-type="navigateTo" url="" size="large"/>
+  <van-cell title="资料设置" icon="records" is-link link-type="navigateTo" url="" size="large"/>
+  <van-cell title="帮助中心" icon="flag-o"  is-link link-type="navigateTo" url="" size="large"/>
+</van-cell-group>

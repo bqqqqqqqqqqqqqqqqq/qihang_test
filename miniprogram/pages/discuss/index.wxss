@@ -21,9 +21,12 @@
   margin-right : 10px;
   margin-left : 10px;
 }
-.van-submit-bar{
-  margin-bottom: 50px;
-}
-.van-submit-bar__button{
-  margin: 0 auto;
+.fix{
+  position: fixed;
+  background-color:#ffff;
+  height: 30px;
+  width: 100%;
+  z-index: 100;
+  text-align:center;
+  border-radius: 75px
 }

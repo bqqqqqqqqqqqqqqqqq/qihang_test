@@ -1,0 +1,35 @@
+<!--pages/question/index.wxml-->
+<view class="text">
+  <text>题目</text>
+</view>
+<view class="quesbox">
+  <view class="quesion">
+    <view class="container">
+      <!--轮播图-->
+      <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for-items="{{lunboData}}" wx:key="id">
+          <swiper-item bindtap="preview">
+            <image src="{{item.imgurl}}" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>
+<view class="text">
+  <text>答案</text>
+</view>
+<view class="quesbox">
+  <view class="quesion">
+    <view class="container">
+      <!--轮播图-->
+      <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for-items="{{lunboData}}" wx:key="id">
+          <swiper-item bindtap="preview">
+            <image src="{{item.imgurl}}" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>

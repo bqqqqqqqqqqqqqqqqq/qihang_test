@@ -1,0 +1,7 @@
+<template name="quesionCard">
+  <view class="quesion-card">
+    <view class="quesion">
+    <view class="q_pic"  style="background-image: url({{cover_img}});">
+    </view>
+  </view>
+</template>

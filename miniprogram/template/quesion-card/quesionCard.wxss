@@ -1,6 +1,7 @@
-.quesbox{
+.quesion-card{
   height: 350rpx;
   margin-top: 35rpx;
+  background-color: teal;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,22 +9,14 @@
 .quesion{
     height: 90%;
     width: 90%;
-    border-radius: 15px 15px 15px 15px;
-    box-shadow: 0px 0px 4px #000000;
+    border: solid 1px red;
 }
 .q_pic{
   height: 75%;
   margin-bottom: 5px;
   border-radius: 15px 15px 0 0;
-  box-shadow: 0px 0px 4px #000000;
 }
 .q_tag{
   margin-right : 10px;
   margin-left : 10px;
-}
-.van-submit-bar{
-  margin-bottom: 50px;
-}
-.van-submit-bar__button{
-  margin: 0 auto;
 }

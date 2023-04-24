@@ -1,0 +1,32 @@
+/* pages/user-teacher/index.wxss */
+.top-box{
+  display: flex;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  width: 750rpx;
+  height: 150rpx;
+  background-color:white;
+}
+.right{
+  display: flex;
+  align-items:center;
+  width: 100%;
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 375rpx;
+}
+.avatar{
+  margin-right: 20rpx;
+}
+.name {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+.uid {
+  font-size: 24rpx;
+  color: #999;
+}
