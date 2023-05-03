@@ -1,0 +1,18 @@
+<!--pages/kcChild/index.wxml-->
+<van-divider
+  contentPosition="center"
+  customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;"
+>
+  xxx的课程
+</van-divider>
+<van-steps
+  steps="{{ steps }}"
+  active="{{ active }}"
+  direction="vertical"
+  active-icon="success"
+  active-color="#ee0a24"
+/>
+<van-submit-bar
+  button-text="申请退款"
+  bind:submit="onSubmit"
+/>

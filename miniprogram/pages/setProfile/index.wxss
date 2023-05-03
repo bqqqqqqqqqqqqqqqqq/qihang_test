@@ -1,0 +1,17 @@
+page{
+  font-size: 32rpx;
+}
+.section{
+  padding: 40rpx;
+  border-bottom: 1px solid gray;
+}
+.section:last-child{
+  border: none;
+}
+.section-title{
+  width: 20%;
+  float: left;
+}
+label{
+  padding: 0 20rpx;
+}

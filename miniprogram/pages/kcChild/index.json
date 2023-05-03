@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-steps": "@vant/weapp/steps/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index"
+  }
+}

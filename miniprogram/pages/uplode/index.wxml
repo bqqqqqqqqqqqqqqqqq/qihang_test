@@ -2,3 +2,7 @@
 <view class="picbox">
 <van-uploader file-list="{{ fileList }}" />
 </view>
+
+<view class="filter">
+    <filter searchList="{{searchList}}"   bind:clickchange='onChange' bind:clickdoCancel='doCancel'   bind:clickdoReset='reset'  bind:clickdoSubmit='doSubmit' > </filter>
+</view>

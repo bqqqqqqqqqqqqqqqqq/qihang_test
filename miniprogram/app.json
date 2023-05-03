@@ -10,7 +10,12 @@
     "pages/user-parents/index",
     "pages/user-teacher/index",
     "pages/question/index",
-    "pages/uplode/index"
+    "pages/uplode/index",
+    "pages/setProfile/index",
+    "pages/kc/index",
+    "pages/buykc/index",
+    "pages/order/index",
+    "pages/kcChild/index"
   ],
 
     

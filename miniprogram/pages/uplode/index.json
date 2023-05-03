@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "van-uploader": "@vant/weapp/uploader/index",
-    "van-button": "@vant/weapp/button/index"
+    "van-button": "@vant/weapp/button/index",
+    "filter": "../../components/filter/filter"
   }
 }

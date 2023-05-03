@@ -23,6 +23,9 @@ Page({
     this.setData({ show: false });
   },
   gotoUplode(){
-    console.log("tt")
+    // console.log("tt")
+    wx.navigateTo({
+      url:'/pages/uplode/index'
+    })
   }
 });

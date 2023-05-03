@@ -1,0 +1,34 @@
+<van-divider />
+<van-cell-group >
+  <van-field
+    value="{{ value }}"
+    placeholder="请输入"
+    label="填写学生姓名"
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+</van-cell-group>
+<van-divider />
+<van-card
+  num="1"
+  price="2.00"
+  desc="描述信息"
+  title="商品标题"
+  thumb="{{ imageURL }}"
+/>
+<van-divider />
+<!-- <van-picker columns="{{ columns }}" title="标题" show-toolbar bind:change="onChange" /> -->
+
+  <van-tree-select
+    items="{{ items }}"
+    main-active-index="{{ mainActiveIndex }}"
+    active-id="{{ activeId }}"
+    bind:click-nav="onClickNav"
+    bind:click-item="onClickItem"
+  />
+
+<van-submit-bar
+  price="{{ 3050 }}"
+  button-text="提交订单"
+  bind:submit="onSubmit"
+/>

@@ -1,0 +1,11 @@
+<!--pages/buykc/index.wxml-->
+<view class="kcbox" wx:for="{{list}}" wx:key="kid">
+      <view class="kc">
+        <view class="kc_pic"   style="background-image: url({{item.cover_img}});">
+        </view>
+        <view class="text">{{item.t_name}}老师的{{item.type}}课</view>
+        <!-- <view class="text" style="color: red;">￥{{item.price}}</view> -->
+        <text class="text" style="color: red;">￥{{item.price}}</text>
+        <van-button round size="mini" type="danger" bind:click="gotobuy">立即购买</van-button>
+      </view>
+    </view>
