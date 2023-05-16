@@ -16,7 +16,9 @@
     "pages/buykc/index",
     "pages/order/index",
     "pages/kcChild/index",
-    "pages/allstu/index"
+    "pages/allstu/index",
+    "pages/mystu/index",
+    "pages/setClass/index"
   ],
 
     

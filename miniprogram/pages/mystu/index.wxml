@@ -1,0 +1,33 @@
+<!--pages/mystu/index.wxml-->
+<van-nav-bar
+  title="标题"
+  left-text="返回"
+  right-text="管理" 
+  left-arrow
+  bind:click-left="onClickLeft"
+  bind:click-right="manage"
+/>
+<van-cell-group>
+  <van-cell title="查看学生" value="" size="large" label=" " 
+  bindtap="gotoallstu"
+  is-link />
+</van-cell-group>
+<van-cell-group title="班级">
+  <van-swipe-cell class="vsc" right-width="{{ 65 }}" async-close bind:close="onClose">
+    <van-cell-group>
+      <van-cell size="large" title="{{item.bname}}" is-link wx:for="{{bList}}" wx:key="bid" bindtap="gotoSetClass" data-bname="{{item.bname}}"/>
+    </van-cell-group>
+    <view slot="right">删除</view>
+  </van-swipe-cell>
+</van-cell-group>
+<van-dialog id="van-dialog" />
+<van-button icon="plus" type="primary" block bind:click="click">添加班级</van-button>
+
+<view class="vnb" >
+  <van-notice-bar
+  color="#1989fa"
+  background="#ecf9ff"
+  left-icon="info-o"
+  text="{{notice}}"
+/>
+</view>
