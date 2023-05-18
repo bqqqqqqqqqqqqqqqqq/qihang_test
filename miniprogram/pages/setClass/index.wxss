@@ -1,1 +1,7 @@
 /* pages/setClass/index.wxss */
+.van-popup{
+  padding-top: 15px;
+}
+.text{
+  text-align: center;
+}
