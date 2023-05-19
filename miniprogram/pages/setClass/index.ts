@@ -5,10 +5,7 @@ interface MyObject {
   sid: number;
   sname: string;
 };
-interface Detail {
-  index?: number;
-  id?: number;
-};
+
 Page({
   data: {
     fieldDisabled:false,
@@ -16,7 +13,7 @@ Page({
     show: false,
     mainActiveIndex: 0,
     activeId: [],
-    max: Infinity,
+    max: 100,
     items:[
       {
         // 导航名称
@@ -66,6 +63,24 @@ Page({
         sid:790,
         sname:"李丽"
       }
+    ],
+    unadd:[//存储未添加
+      {
+        sid: 77,
+        sname: 'uu',
+      },
+      {
+        sid: 55,
+        sname: 'tt',
+      },
+      {
+        sid: 1,
+        sname: '温州',
+      },
+      {
+        sid: 2,
+        sname: '杭州',
+      },
     ]
     
 
@@ -102,27 +117,34 @@ Page({
     this.setData({ show: false });
   },
   //selector
-  onClickNav({ detail = {} }: { detail: Detail }) {
+  onClickNav({ detail = {} }) {
     this.setData({
       mainActiveIndex: detail.index || 0,
     });
   },
-  onClickItem({ detail = {} }: { detail: Detail }) {
+  onClickItem({ detail = {} }) {
     const { activeId }: { activeId: number[] } = this.data;
-    const index = activeId.indexOf(detail.id!);
+    const index = activeId.indexOf(detail.id);
     if (index > -1) {
       activeId.splice(index, 1);
     } else {
-      activeId.push(detail.id!);
+      activeId.push(detail.id);
     }
-
-    this.setData({ activeId });
+    
+    this.setData({ activeId  });
     console.log(activeId)
   },
   finish(){
     this.onClose();
     let myArr:MyObject[]= this.data.added;
-
+    let myIndex:number[] = this.data.activeId;
+    let arrToFilter = this.data.unadd;
+    let result = arrToFilter.filter(item =>myIndex.includes(item.sid));
+    const newarray = myArr.concat(result);
+    console.log(newarray)
+    this.setData({
+      added : newarray
+    });
     Toast('完成添加！')
   },
   resetSelector(){
@@ -142,59 +164,11 @@ Page({
     Toast('删除成功！')
     
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+ 
   onLoad(options) {
     console.log(options.bname);//输出传参
+    
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
+ 
 })

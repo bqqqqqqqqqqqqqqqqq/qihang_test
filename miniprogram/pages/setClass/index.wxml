@@ -39,13 +39,7 @@
 
   <van-toast id="van-toast" />
 <!-- 弹出层 -->
-  <van-popup
-  show="{{ show }}"
-  round
-  position="bottom"
-  custom-style="height: 20%"
-  bind:close="onClose"
-/>
+
 
 <van-popup round position="bottom"  custom-style="height: 50%" show="{{ show }}" bind:close="onClose" closeable>
   <view class="text">请选择</view>
@@ -57,9 +51,9 @@
   max="{{ max }}"
   bind:click-nav="onClickNav"
   bind:click-item="onClickItem"
-/>
-<van-goods-action>
-  <van-goods-action-button color="#be99ff" text="重置" type="warning" />
-  <van-goods-action-button color="#7232dd" text="完成" bind:click="finish" />
-</van-goods-action>
+  />
+  <van-goods-action>
+    <van-goods-action-button color="#be99ff" text="重置" type="warning" />
+    <van-goods-action-button color="#7232dd" text="完成" bind:click="finish" />
+  </van-goods-action>
 </van-popup>
