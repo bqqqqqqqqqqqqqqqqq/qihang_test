@@ -8,6 +8,8 @@ interface MyObject {
 
 Page({
   data: {
+    value:'',
+    err:'',
     fieldDisabled:false,
     btn:"确认",
     show: false,
@@ -103,6 +105,9 @@ Page({
   },
   fieldChange(event:any){
     console.log(event.detail);
+    this.setData({
+      err:'请确认' 
+    })
   },
   //添加按钮
   addstu(){
@@ -130,7 +135,6 @@ Page({
     } else {
       activeId.push(detail.id);
     }
-    
     this.setData({ activeId  });
     console.log(activeId)
   },
@@ -148,7 +152,10 @@ Page({
     Toast('完成添加！')
   },
   resetSelector(){
-
+    
+    this.setData({
+      activeId:[]
+    });
   },
   deleteStu(e:any){
     e = parseInt(e.currentTarget.dataset.sid);
@@ -166,8 +173,15 @@ Page({
   },
  
   onLoad(options) {
-    console.log(options.bname);//输出传参
-    
+    // console.log(options.bname);//输出传参
+    let v = options.bname;
+    if(v===undefined){
+      v='';
+      this.setData({
+        err:'输入并确认' 
+      })
+    }
+    this.setData({value:v})
   },
 
  
