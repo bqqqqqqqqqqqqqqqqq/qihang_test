@@ -23,7 +23,7 @@
   },
   "include": [
     "./**/*.ts"
-  ],
+, "miniprogram/custom-tab-bar/index.ts", "miniprogram/pages/discuss/index.js"  ],
   "exclude": [
     "node_modules"
   ]

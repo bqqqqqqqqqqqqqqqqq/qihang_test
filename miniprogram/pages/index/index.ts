@@ -12,8 +12,8 @@ Page({
         cover_img:'../../static/images/a1.jpg',
         tag:'NO1'
       }
-    ]
-  },
+    ],
+
 
   showPopup() {
     this.setData({ show: true });
@@ -27,5 +27,6 @@ Page({
     wx.navigateTo({
       url:'/pages/uplode/index'
     })
-  }
-});
+  },
+}});
+
