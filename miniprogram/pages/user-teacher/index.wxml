@@ -13,7 +13,7 @@
 </view>
 <van-cell-group>
   <van-cell title="我的学生" icon="friends-o" is-link link-type="navigateTo" url="../mystu/index" size="large"/>
-  <van-cell title="我的班级" icon="location-o" is-link link-type="navigateTo" url="" size="large"/>
+  <van-cell title="班级签到" icon="location-o" is-link link-type="navigateTo" url="../clockIn/index" size="large"/>
   <van-cell title="我的回答" icon="sign" is-link link-type="navigateTo" url="" size="large"/>
   <van-cell title="对我的提问" icon="chat-o" is-link link-type="navigateTo" url="" size="large"/>
   <van-cell title="资料设置" icon="records" is-link link-type="navigateTo" url="" size="large"/>

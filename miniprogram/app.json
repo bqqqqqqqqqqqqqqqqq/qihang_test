@@ -17,7 +17,8 @@
     "pages/kcChild/index",
     "pages/allstu/index",
     "pages/mystu/index",
-    "pages/setClass/index"
+    "pages/setClass/index",
+    "pages/clockIn/index"
   ],
 
     
