@@ -1,0 +1,24 @@
+<!--pages/seeHistory/index.wxml-->
+<van-nav-bar
+  title="查看记录"
+  left-text="返回"
+  right-text="补签"
+  left-arrow
+  bind:click-left="onClickLeft"
+  bind:click-right="onClickRight"
+/>
+<van-notice-bar
+  left-icon="volume-o"
+  text="左滑可以补签。"
+/>
+<van-swipe-cell class="vsc" right-width="{{ item.done===false ? 65 : 0 }}" left-width="{{0}}" wx:for="{{cList}}" wx:key="no" disabled="{{item.disabled}}">
+  <van-cell-group>
+    <van-cell value="{{item.date}}" size="large">
+    <view slot="title">
+      <view class="van-cell-text">第{{item.no}}节</view>
+      <van-tag color="red" plain wx:if="{{item.done===true}}">完成</van-tag>
+    </view>
+    </van-cell>
+  </van-cell-group>
+  <view slot="right" wx:if="{{item.done===false}}" data-bu="{{item.no}}" bindtap="buq">补签</view>
+</van-swipe-cell>

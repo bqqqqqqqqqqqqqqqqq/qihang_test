@@ -14,7 +14,21 @@ Page({
     ],
     smallClass:['ijd','ksj'],
   },
-
+    //跳转
+    go(url:string,params?:string){
+      let gourl = '';
+      if (params) {
+        gourl = '/pages/'+url+'/index?' + params ;
+      }else{
+        gourl = '/pages/'+url+'/index';
+      }
+      wx.navigateTo({
+        url:gourl
+    });
+  },
+  goHistory(){
+    this.go("seeHistory")
+  },
   /**
    * 生命周期函数--监听页面加载
    */

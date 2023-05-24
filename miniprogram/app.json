@@ -18,7 +18,9 @@
     "pages/allstu/index",
     "pages/mystu/index",
     "pages/setClass/index",
-    "pages/clockIn/index"
+    "pages/clockIn/index",
+    "pages/seeHistory/index"
+    
   ],
 
     

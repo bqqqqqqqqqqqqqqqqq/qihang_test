@@ -1,18 +1,7 @@
 <!--pages/clockIn/index.wxml-->
 <van-tabs swipeable>
   <van-tab title="一对一">
-    <van-cell-group>
-        <van-cell
-        wx:for="{{oneList}}"
-        wx:key="index"
-      is-link
-      title="{{item.sname}}（{{item.sub}}）"
-      label="已上{{item.rate}}节"
-      value="内容"
-      size="large"
-      link-type="navigateTo"
-      url="/pages/dashboard/index"
-    />
+  <van-cell-group>
   <van-cell 
     wx:for="{{oneList}}"
     wx:key="index"
@@ -22,7 +11,7 @@
     <view slot="title">
     <view class="van-cell-text">{{item.sname}}（{{item.sub}}）</view>
     <van-button type="primary" size="mini">签到</van-button>
-    <van-button type="primary" size="mini">查看记录</van-button>
+    <van-button type="primary" size="mini" bindtap="goHistory">查看记录</van-button>
   </view>
 </van-cell>
   </van-cell-group>

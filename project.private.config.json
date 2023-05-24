@@ -5,7 +5,7 @@
     "compileHotReLoad": true,
     "autoAudits": false
   },
-  "libVersion": "2.25.4",
+  "libVersion": "2.30.4",
   "condition": {
     "miniprogram": {
       "list": [
@@ -60,7 +60,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/allstu/index",
+          "pathName": "pages/seeHistory/index",
           "query": "",
           "launchMode": "default",
           "scene": null

@@ -1,0 +1,14 @@
+/* pages/seeHistory/index.wxss */
+.van-swipe-cell__right{
+  background-color: rgb(16, 194, 105);
+  height: inherit;
+  width: 65px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.van-tag{
+  margin-left: 45px;
+  transform:rotate( 325deg )
+}
