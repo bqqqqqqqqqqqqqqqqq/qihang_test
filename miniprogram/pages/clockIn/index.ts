@@ -12,7 +12,16 @@ Page({
         rate:"4/8"
       }
     ],
-    smallClass:['ijd','ksj'],
+    smallClass:[
+      {
+        bid:123,
+        bname:"数学"
+      },
+      {
+        bid:124,
+        bname:"论语"
+      },
+    ],
   },
     //跳转
     go(url:string,params?:string){
@@ -28,6 +37,11 @@ Page({
   },
   goHistory(){
     this.go("seeHistory")
+  },
+  goHistory2(e:any){
+    let p = e.currentTarget.dataset.bid;
+    console.log(p);
+    this.go("seeHistory",p);
   },
   /**
    * 生命周期函数--监听页面加载
