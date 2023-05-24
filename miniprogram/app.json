@@ -39,25 +39,33 @@
        
     }],
     "tabBar": {
-      "custom": true,
-      "color": "#999",
-      "backgroundColor": "#ffffff",
-      "selectedColor": "#608cf3",
-      "borderStyle": "black",
-      "list": [{
-        "text": "首页",
-        "pagePath": "pages/index/index" 
-      },
-      {
-        "text": "论坛",
-        "pagePath": "pages/discuss/index"
-      },
-      {
-        "text":"我的",
-        "pagePath":"pages/user/index"   
-      }],
-    "position": "bottom"
-  },
+      "color": "#ff0000",
+      "selectedColor": "#ffff00",  
+      "backgroundColor": "#1697eb",  
+      "borderStyle": "black",  
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "1号",            
+          "iconPath": "static/images/default.jpg",  
+          "selectedIconPath": "static/images/default.jpg" 
+        },
+        {
+          "pagePath": "pages/discuss/index",
+          "text": "2号",
+          "iconPath": "static/images/default.jpg",
+          "selectedIconPath": "static/images/default.jpg"
+        },
+        {
+          "pagePath": "pages/user/index",
+          "text": "3号",
+          "iconPath": "static/images/default.jpg",
+          "selectedIconPath": "static/images/default.jpg"
+        }
+      ],
+      "position": "bottom",  
+      "custom": false  
+    },
     
   "window": {
     "backgroundTextStyle": "light",

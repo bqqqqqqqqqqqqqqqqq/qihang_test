@@ -14,7 +14,6 @@ Page({
       }
     ],
 
-
   showPopup() {
     this.setData({ show: true });
   },
