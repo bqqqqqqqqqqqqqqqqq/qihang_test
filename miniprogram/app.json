@@ -58,7 +58,7 @@
         },
         {
           "pagePath": "pages/user/index",
-          "text": "3号",
+          "text": "3号", 
           "iconPath": "static/images/default.jpg",
           "selectedIconPath": "static/images/default.jpg"
         }
