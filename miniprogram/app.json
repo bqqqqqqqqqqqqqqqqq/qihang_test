@@ -19,8 +19,8 @@
     "pages/mystu/index",
     "pages/setClass/index",
     "pages/clockIn/index",
-    "pages/seeHistory/index"
-    
+    "pages/seeHistory/index",
+    "pages/cloSmall/index"
   ],
 
     
@@ -39,28 +39,28 @@
        
     }],
     "tabBar": {
-      "color": "#ff0000",
-      "selectedColor": "#ffff00",  
-      "backgroundColor": "#1697eb",  
+      "color": "#000",
+      "selectedColor": "#4FAF70",  
+      "backgroundColor": "#FFFFFF",  
       "borderStyle": "black",  
       "list": [
         {
           "pagePath": "pages/index/index",
-          "text": "1号",            
-          "iconPath": "static/images/default.jpg",  
-          "selectedIconPath": "static/images/default.jpg" 
+          "text": "主页",            
+          "iconPath": "static/images/home.png",  
+          "selectedIconPath": "static/images/home.png" 
         },
         {
           "pagePath": "pages/discuss/index",
-          "text": "2号",
-          "iconPath": "static/images/default.jpg",
-          "selectedIconPath": "static/images/default.jpg"
+          "text": "论坛",
+          "iconPath": "static/images/mes.png",
+          "selectedIconPath": "static/images/mes.png"
         },
         {
           "pagePath": "pages/user/index",
-          "text": "3号", 
-          "iconPath": "static/images/default.jpg",
-          "selectedIconPath": "static/images/default.jpg"
+          "text": "我的", 
+          "iconPath": "static/images/user.png",
+          "selectedIconPath": "static/images/user.png"
         }
       ],
       "position": "bottom",  
@@ -69,7 +69,7 @@
     
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#219CFF",
+    "navigationBarBackgroundColor": "#4FAF70",
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle": "black"
   },

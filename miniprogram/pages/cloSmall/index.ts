@@ -1,4 +1,4 @@
-// pages/clockIn/index.ts
+// pages/cloSmall/index.ts
 Page({
 
   /**
@@ -19,46 +19,30 @@ Page({
         todayDone:true,
       }
     ],
-    smallClass:[
-      {
-        bid:123,
-        bname:"数学"
-      },
-      {
-        bid:124,
-        bname:"论语"
-      },
-    ],
   },
-    //跳转
-    go(url:string,params?:string){
-      let gourl = '';
-      if (params) {
-        gourl = '/pages/'+url+'/index?' + params ;
-      }else{
-        gourl = '/pages/'+url+'/index';
-      }
-      wx.navigateTo({
-        url:gourl
-    });
-  },
-  goHistory(){
-    this.go("seeHistory")
-  },
-  gocloSmall(e:any){
-    let p = e.currentTarget.dataset.bid;
-    console.log(p);
-    this.go("cloSmall",p);
-  },
-  //签到、撤销
-  clickBtn(e:any){
-    let i = e.currentTarget.dataset.oneitem;
-    console.log(i);
-    i.todayDone===true?i.todayDone=false:i.todayDone=true;
-    console.log(i);
-    
-    
-  },
+  //跳转
+  go(url:string,params?:string){
+    let gourl = '';
+    if (params) {
+      gourl = '/pages/'+url+'/index?' + params ;
+    }else{
+      gourl = '/pages/'+url+'/index';
+    }
+    wx.navigateTo({
+      url:gourl
+  });
+},
+goHistory(){
+  this.go("seeHistory")
+},
+
+//签到、撤销
+clickBtn(e:any){
+  let i = e.currentTarget.dataset.oneitem;
+  console.log(i);
+  i.todayDone===true?i.todayDone=false:i.todayDone=true;
+  console.log(i);
+},
   /**
    * 生命周期函数--监听页面加载
    */
