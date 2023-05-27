@@ -1,0 +1,5 @@
+/* pages/cloSmall/index.wxss */
+.van-button{
+  float: right;
+  margin: 5px 10px;
+}

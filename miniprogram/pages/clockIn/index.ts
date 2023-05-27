@@ -9,7 +9,14 @@ Page({
       {
         sname:"dfg",
         sub:"english",
-        rate:"4/8"
+        rate:"4/8",
+        todayDone:true,
+      },
+      {
+        sname:"shjk",
+        sub:"english",
+        rate:"4/8",
+        todayDone:true,
       }
     ],
     smallClass:[
@@ -38,10 +45,19 @@ Page({
   goHistory(){
     this.go("seeHistory")
   },
-  goHistory2(e:any){
+  gocloSmall(e:any){
     let p = e.currentTarget.dataset.bid;
     console.log(p);
-    this.go("seeHistory",p);
+    this.go("cloSmall",p);
+  },
+  //签到、撤销
+  clickBtn(e:any){
+    let i = e.currentTarget.dataset.oneitem;
+    console.log(i);
+    i.todayDone===true?i.todayDone=false:i.todayDone=true;
+    console.log(i);
+    
+    
   },
   /**
    * 生命周期函数--监听页面加载

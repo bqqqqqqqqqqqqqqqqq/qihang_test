@@ -1,37 +1,30 @@
-// pages/kc/index.ts
+// pages/cloSmall/index.ts
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    s_name:'李刚',
-    list:[
+    oneList:[
       {
-        kid: 1,
-        cover_img:'../../static/images/a1.jpg',
-        t_name:'dj',
-        type: '数学',
-        rate:'8/10'
+        sname:"dfg",
+        sub:"english",
+        rate:"4/8",
+        todayDone:true,
       },
       {
-        kid: 2,
-        cover_img:'../../static/images/a1.jpg',
-        type: '数学',
-        rate:'8/10'
-      },
-      {
-        kid: 3,
-        cover_img:'../../static/images/a1.jpg',
-        rate:'8/10'
+        sname:"shjk",
+        sub:"english",
+        rate:"4/8",
+        todayDone:true,
       }
-    ]
+    ],
   },
   //跳转
   go(url:string,params?:string){
     let gourl = '';
     if (params) {
-      gourl = '/pages/'+url+'/index?' + params;
+      gourl = '/pages/'+url+'/index?' + params ;
     }else{
       gourl = '/pages/'+url+'/index';
     }
@@ -39,8 +32,16 @@ Page({
       url:gourl
   });
 },
-gokcChild(){
-  this.go('kcChild');
+goHistory(){
+  this.go("seeHistory")
+},
+
+//签到、撤销
+clickBtn(e:any){
+  let i = e.currentTarget.dataset.oneitem;
+  console.log(i);
+  i.todayDone===true?i.todayDone=false:i.todayDone=true;
+  console.log(i);
 },
   /**
    * 生命周期函数--监听页面加载

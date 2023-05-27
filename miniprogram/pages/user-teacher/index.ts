@@ -9,6 +9,22 @@ Page({
     uid:'uid',
     name:'Name'
   },
+  go(url:string,params?:string){
+    let gourl = '';
+    if (params) {
+      gourl = '/pages/'+url+'/index?' + params ;
+    }else{
+      gourl = '/pages/'+url+'/index';
+    }
+    wx.switchTab({
+      url:gourl
+  });
+},
+goAns(){
+  wx.switchTab({
+   url: '/pages/index/index'
+  })
+},
 
   /**
    * 生命周期函数--监听页面加载
