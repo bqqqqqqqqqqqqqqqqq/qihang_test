@@ -14,3 +14,5 @@
   <van-cell title="资料设置" icon="records" is-link link-type="navigateTo" url="" size="large"/>
   <van-cell title="帮助中心" icon="flag-o" is-link link-type="navigateTo" url="" size="large"/>
 </van-cell-group>
+
+<van-button bind:click="ping">这1是2一个测试按钮</van-button>
