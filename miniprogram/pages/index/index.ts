@@ -21,11 +21,12 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
-  gotoUplode(){
-    // console.log("tt")
-    wx.navigateTo({
-      url:'/pages/uplode/index'
-    })
-  },
-}});
-
+  
+},
+gotoUplode(){
+  console.log("tt")
+  wx.navigateTo({
+    url:'/pages/uplode/index'
+  })
+}
+});

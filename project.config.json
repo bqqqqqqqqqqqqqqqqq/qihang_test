@@ -24,7 +24,9 @@
       "outputPath": ""
     },
     "condition": false,
-    "ignoreUploadUnusedFiles": true
+    "ignoreUploadUnusedFiles": true,
+    "es6": false,
+    "enhance": false
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},

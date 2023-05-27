@@ -5,7 +5,7 @@
     "compileHotReLoad": true,
     "autoAudits": false
   },
-  "libVersion": "2.25.3",
+  "libVersion": "2.25.2",
   "condition": {
     "miniprogram": {
       "list": [

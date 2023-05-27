@@ -22,7 +22,7 @@
   margin-left : 10px;
 }
 .van-submit-bar{
-  margin-bottom: 50px;
+  margin-bottom: 0px;
 }
 .van-submit-bar__button{
   margin: 0 auto;
