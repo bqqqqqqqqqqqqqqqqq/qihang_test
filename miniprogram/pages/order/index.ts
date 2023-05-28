@@ -1,73 +1,65 @@
 // pages/order/index.ts
-Page({
+import Dialog from '@vant/weapp/dialog/dialog';
+const options = [
+  {
+    text: '高老师',
+    value: '330000',
+    children: [{ text: '杭州市', value: '330100' ,children:[{ text: '市', value: '330110'}]}],
+  },
+  {
+    text: '江苏省',
+    value: '320000',
+    children: [{ text: '南京市', value: '320100' }],
+  },
+];
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
-    mainActiveIndex: 0,
-    activeId: null,
     imageURL:"https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg",
-    items:[
-      {
-        // 导航名称
-        text: '选择教师',
-        // 导航名称右上角徽标，1.5.0 版本开始支持
-        badge: '',
-        // 是否在导航名称右上角显示小红点，1.5.0 版本开始支持
-        dot: false,
-        // 禁用选项
-        disabled: false,
-        // 该导航下所有的可选项
-        children: [
-          {
-            // 名称
-            text: '温州',
-            // id，作为匹配选中状态的标识
-            id: 1,
-            // 禁用选项
-            disabled: false,
-          },
-          {
-            text: '杭州',
-            id: 2,
-          },
-        ],
-      },
-      {
-        text:'选择年级',
-        children:[
-          {
-            text: '杭',
-            id: 4,
-          },
-        ]
-      },
-      {
-        text:'选择项目',
-        children:[
-          {
-            text: '州',
-            id: 5,
-          },
-        ]
-      }
-    ]
+    price:0,
+    total:999999999,
+    value:'',
+    show: false,
+    show2:false,
+    options,
+    fieldValue: '',
+    cascaderValue: '',
     
     
+  },
+  //输入框
+  onChange(e:any){
+    let v = e.detail
+    this.setData({
+      value: v,
+    });
+  },
+  onClick() {
+    this.setData({
+      show: true,
+    });
+  },
+  onClose() {
+    this.setData({
+      show: false,
+    });
+  },
+  onFinish(e:any) {
+    const { selectedOptions, value } = e.detail;
+    const fieldValue = selectedOptions
+        .map((option:any) => option.text || option.name)
+        .join('/');
+    this.setData({
+      fieldValue,
+      cascaderValue: value,
+    })
+  },
+  onClose2() {
+    this.setData({
+      show2: false,
+    });
   },
   
-  onClickNav({ detail = {} }) {
-    this.setData({
-      mainActiveIndex: detail.index || 0,
-    }); 
-  },
-  onClickItem({ detail = {} }) {
-    const activeId = this.data.activeId === detail.id ? null : detail.id;
-
-    this.setData({ activeId });
-    console.log(activeId);
-  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -95,7 +87,14 @@ Page({
   onHide() {
 
   },
-
+  onSubmit(){
+    let oid = this.data.cascaderValue;
+    console.log(oid);
+    this.setData({
+      show2: true,
+    });
+    
+  },
   /**
    * 生命周期函数--监听页面卸载
    */

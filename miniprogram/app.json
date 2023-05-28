@@ -24,20 +24,6 @@
   ],
 
     
-    "list": [{
-      "text": "首页",
-      "pagePath": "pages/index/index" 
-       
-    },
-    {
-      "text": "论坛",
-      "pagePath": "pages/discuss/index"
-    },
-    {
-      "text":"我的",
-      "pagePath":"pages/user/index" 
-       
-    }],
     "tabBar": {
       "color": "#000",
       "selectedColor": "#489F80",  

@@ -3,7 +3,8 @@
   "projectname": "qihang_test",
   "setting": {
     "compileHotReLoad": true,
-    "autoAudits": false
+    "autoAudits": false,
+    "urlCheck": false
   },
   "libVersion": "2.25.2",
   "condition": {

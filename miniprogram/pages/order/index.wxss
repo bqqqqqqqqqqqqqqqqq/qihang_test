@@ -1,1 +1,4 @@
 /* pages/order/index.wxss */
+.btn{
+  padding: 50px 20px;
+}

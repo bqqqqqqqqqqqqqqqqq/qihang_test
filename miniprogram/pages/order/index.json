@@ -5,6 +5,11 @@
     "van-picker": "@vant/weapp/picker/index",
     "van-tree-select": "@vant/weapp/tree-select/index",
     "van-divider": "@vant/weapp/divider/index",
-    "van-card": "@vant/weapp/card/index"
+    "van-card": "@vant/weapp/card/index",
+    "van-cascader": "@vant/weapp/cascader/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
   }
 }
