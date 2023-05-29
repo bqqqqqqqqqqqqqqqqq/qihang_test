@@ -65,6 +65,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/uplode/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

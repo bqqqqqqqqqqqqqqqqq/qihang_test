@@ -8,12 +8,18 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1200,
-    img:[
-      '../../static/images/a1.jpg',
-      '../../static/images/a2.jpg',
+    Qimg:[
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/20230503232503.png',
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/Screenshot_20230425_104728.jpg',
       '../../static/images/a3.jpg',
       '../../static/images/a4.jpg',
-    ]
+    ],
+    Aimg:[
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/Screenshot_2023_0425_104616.png',
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/docusaurus-social-card.jpg',
+      '../../static/images/a3.jpg',
+      '../../static/images/a4.jpg',
+    ],
   },
 
   /**
@@ -22,37 +28,66 @@ Page({
   onLoad() {
     var that = this; 
     var data = {
-      "datas": [
+      "datas1": [
+        {
+          "id": 1,
+          "imgurl": "../../static/images/a4.jpg"
+        },
+        {
+          "id": 2,
+          "imgurl": "../../static/images/a4.jpg"
+        },
+        {
+          "id": 3,
+          "imgurl": "../../static/images/a4.jpg"
+        },
+        {
+          "id": 4,
+          "imgurl": "../../static/images/a4.jpg"
+        }
+      ],
+      "datas2": [
         {
           "id": 1,
           "imgurl": "../../static/images/a1.jpg"
         },
         {
           "id": 2,
-          "imgurl": "../../static/images/a2.jpg"
+          "imgurl": "../../static/images/a1.jpg"
         },
         {
           "id": 3,
-          "imgurl": "../../static/images/a3.jpg"
+          "imgurl": "../../static/images/a1.jpg"
         },
         {
           "id": 4,
-          "imgurl": "../../static/images/a4.jpg"
+          "imgurl": "../../static/images/a1.jpg"
         }
       ]
     }; 
     that.setData({
-      lunboData: data.datas
+      lunboData1: data.datas1,
+      lunboData2: data.datas2
     });
     
   },
   
-preview(e:any) {
+preview1(e:any) {
   console.log(e);
-  let item = e.currentTarget.dataset.item
+  let item = e.currentTarget.dataset.item;
+  console.log(item,11)
   wx.previewImage({
     current: item, // 当前显示图片的http链接
-    urls: this.data.img // 需要预览的图片http链接列表
+    urls: this.data.Qimg // 需要预览的图片http链接列表
+  })
+},
+preview2(e:any) {
+  console.log(e);
+  let item = e.currentTarget.dataset.item;
+  console.log(item,11)
+  wx.previewImage({
+    current: item, // 当前显示图片的http链接
+    urls: this.data.Aimg // 需要预览的图片http链接列表
   })
 },
 

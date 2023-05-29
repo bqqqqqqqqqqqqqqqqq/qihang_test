@@ -22,8 +22,6 @@
     "pages/seeHistory/index",
     "pages/cloSmall/index"
   ],
-
-    
     "tabBar": {
       "color": "#000",
       "selectedColor": "#489F80",  
