@@ -1,5 +1,5 @@
 
-    <view class="kcbox" wx:for="{{list}}" wx:key="kid" bindtap="gokcChild">
+    <view class="kcbox" wx:for="{{list}}" wx:key="kid" bindtap="gokcChild" data-kid="{{item.kid}}">
       <view class="kc">
         <view class="kc_pic"   style="background-image: url({{item.cover_img}});">
         </view>
