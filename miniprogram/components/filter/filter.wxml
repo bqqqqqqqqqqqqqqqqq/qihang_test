@@ -5,7 +5,7 @@
       <view class="search-title">{{p.screenKey}}</view>
       <view class="search-items">
         <view bindtap="onChange" wx:for="{{p.screenValue}}" wx:key="unique"  wx:for-item="g" data-parent-index="{{ pIndex }}" data-index="{{ index }}"
-          data-item="{{ p }}" class="item {{ g.checked ? 'active' : '' }}" wx:key=""  >
+          data-item="{{ p }}" class="item {{ g.checked ? 'active' : '' }}"   >
           {{g.value}}
         </view>
       </view>

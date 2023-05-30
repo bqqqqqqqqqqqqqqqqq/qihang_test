@@ -3,7 +3,7 @@
 .container {
   padding: 0 0 15px 15px;
   background: #fff;
-  min-height: 100vh;
+  min-height: 130vh;
 }
 
 .search-title {
@@ -16,6 +16,7 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  color: #323233;
 }
 
 .search-items .item {
@@ -33,13 +34,13 @@
 }
 
 .search-items .item.active {
-  background: #ff5000;
+  background: #489F80;
   color: #fff;
 }
 
 .search-bottom {
   position: fixed;
-  bottom: 80px;
+  bottom: 0px;
   left: 0;
   height: 50px;
   line-height: 50px;
@@ -58,7 +59,7 @@
 }
 
 .search-bottom .confirm {
-  background: #FF5000;
+  background: #489F80;
   color: #fff;
   flex: 1;
 }
