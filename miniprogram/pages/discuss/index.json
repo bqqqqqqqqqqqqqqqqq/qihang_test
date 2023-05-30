@@ -4,7 +4,8 @@
     "van-nav-bar": "@vant/weapp/nav-bar/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-button": "@vant/weapp/button/index",
-    "filter": "../../components/filter/filter"
+    "filter": "../../components/filter/filter",
+    "van-tag": "@vant/weapp/tag/index"
   }
  
 }

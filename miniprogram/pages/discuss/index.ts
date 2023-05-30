@@ -16,12 +16,12 @@ Page({
       {
         pid: 1,
         cover_img:'../../static/images/a1.jpg',
-        tag:'NO1'
+        tag:['11','22']
       },
       {
         pid: 2,
         cover_img:'../../static/images/a1.jpg',
-        tag:'NO1'
+        tag:['11','22','33','44','55']
       }
     ],
     searchList: [
