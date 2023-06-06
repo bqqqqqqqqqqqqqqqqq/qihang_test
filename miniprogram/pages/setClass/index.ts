@@ -4,6 +4,7 @@ import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 interface MyObject {
   sid: number;
   sname: string;
+  grade: string;
 };
 
 Page({
@@ -13,75 +14,38 @@ Page({
     fieldDisabled:false,
     btn:"确认",
     show: false,
-    mainActiveIndex: 0,
-    activeId: [],
-    max: 100,
-    items:[
-      {
-        // 导航名称
-        text: '初一',
-        // 禁用选项
-        disabled: false,
-        children: [
-          {
-            // 名称
-            text: '温州',
-            // id，作为匹配选中状态的标识
-            id: 1,
-            // 禁用选项
-            disabled: true,
-          },
-          {
-            text: '杭州',
-            id: 2,
-          },
-        ],
-      },
-      {
-        text: '初三',
-        disabled: false,
-        children: [
-          {
-            // 名称
-            text: 'tt',
-            // id，作为匹配选中状态的标识
-            id: 55,
-            // 禁用选项
-            disabled: false,
-          },
-          {
-            text: 'uu',
-            id: 77,
-          },
-        ],
-      }
-    ],
     added:[
       {
         sid:7890,
-        sname:"丽丽"
+        sname:"丽丽",
+        grade: "一"
       },
       {
         sid:790,
-        sname:"李丽"
+        sname:"李丽",
+        grade: "一"
       }
     ],
     unadd:[//存储未添加
       {
         sid: 77,
         sname: 'uu',
+        grade:"二"
       },
       {
         sid: 55,
         sname: 'tt',
+        grade:"二"
       },
       {
         sid: 1,
         sname: '温州',
+        grade:"二"
       },
       {
         sid: 2,
         sname: '杭州',
+        grade:"二"
       },
     ]
     
@@ -129,65 +93,32 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
-  //selector
-  onClickNav({ detail = {} }) {
-    this.setData({
-      mainActiveIndex: detail.index || 0,
-    });
-  },
-  onClickItem({ detail = {} }) {
-    const { activeId }: { activeId: number[] } = this.data;
-    const index = activeId.indexOf(detail.id);
-    if (index > -1) {
-      activeId.splice(index, 1);
-    } else {
-      activeId.push(detail.id);
-    }
-    this.setData({ activeId  });
-    console.log(activeId)
-  },
-  finish(){
-    this.onClose();
-    let myArr:MyObject[]= this.data.added;
-    let myIndex:number[] = this.data.activeId;
-    let arrToFilter = this.data.unadd;
-    let result = arrToFilter.filter(item =>myIndex.includes(item.sid));
-    const newarray = myArr.concat(result);
-    const newUnadd = arrToFilter.filter(item => !myIndex.includes(item.sid));
-    console.log(newarray)
-    console.log(newUnadd)
-    this.setData({
-      added : newarray,
-      unadd : newUnadd
-    });
-    Toast('完成添加！')
-  },
-  resetSelector(){
-    
-    this.setData({
-      activeId:[]
-    });
-  },
+  //删除
   deleteStu(e:any){
     e = parseInt(e.currentTarget.dataset.sid);
     console.log(e);
     let myAdd:MyObject[]= this.data.added;
     let myUnAdd:MyObject[]= this.data.unadd;
-    
-    // let indexToDelete = myArr.findIndex((element) => element.sid === e);
-    // if (indexToDelete !== -1) {
-    //   myArr.splice(indexToDelete, 1);
-    // };
     this.removeItemById(e,myAdd,myUnAdd);
-    // console.log(myAdd,11)
-    // console.log(myUnAdd,22)
-
     this.setData({
       added : myAdd,
       unadd : myUnAdd
     });//删除并更新added
     Toast('删除成功！')
     
+  },
+  //添加
+  addStu(e:any){
+    e = parseInt(e.currentTarget.dataset.sid);
+    console.log(e);
+    let myAdd:MyObject[]= this.data.added;
+    let myUnAdd:MyObject[]= this.data.unadd;
+    this.removeItemById(e,myUnAdd,myAdd);
+    this.setData({
+      added : myAdd,
+      unadd : myUnAdd
+    });
+    Toast('添加成功！')
   },
  
   onLoad(options) {

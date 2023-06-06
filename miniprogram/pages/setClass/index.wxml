@@ -24,7 +24,7 @@
     disabled
     center
     clearable
-    label="{{item.sname}}"
+    label="{{item.sname}}({{item.grade}})"
     border="true"
     use-button-slot
   >
@@ -44,17 +44,22 @@
 
 <van-popup round position="bottom"  custom-style="height: 50%" show="{{ show }}" bind:close="onClose" closeable>
   <view class="text">请选择</view>
-  <van-tree-select
-  class="selector"
-  items="{{ items }}"
-  main-active-index="{{ mainActiveIndex }}"
-  active-id="{{ activeId }}"
-  max="{{ max }}"
-  bind:click-nav="onClickNav"
-  bind:click-item="onClickItem"
-  />
-  <van-goods-action>
-    <van-goods-action-button bind:click="resetSelector" color="#be99ff" text="重置" type="warning" />
-    <van-goods-action-button color="#7232dd" text="完成" bind:click="finish" />
-  </van-goods-action>
+  <van-cell-group title="未添加">
+  <view class="added-items" wx:for="{{unadd}}" wx:key="index">
+    <van-field
+    readonly
+    center
+    clearable
+    label="{{item.sname}}({{item.grade}})"
+    border="true"
+    use-button-slot
+  >
+    <van-button slot="button" size="small" type="primary" 
+    data-sid="{{item.sid}}"
+    bind:click="addStu">
+      添加
+    </van-button>
+  </van-field>
+  </view>
+</van-cell-group>
 </van-popup>
