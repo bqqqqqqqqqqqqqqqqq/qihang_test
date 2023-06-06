@@ -87,6 +87,14 @@ Page({
     
 
   },
+  //实现“已添加”与“未添加”的元素交换
+  removeItemById(sid: number, source: MyObject[], target: MyObject[]) {
+    const index = source.findIndex(item => item.sid === sid);
+    if (index !== -1) {
+      const item = source.splice(index, 1)[0];
+      target.push(item);
+    }
+  },
   //输入框
   confirm(){
     let fboo = this.data.fieldDisabled;
@@ -145,9 +153,12 @@ Page({
     let arrToFilter = this.data.unadd;
     let result = arrToFilter.filter(item =>myIndex.includes(item.sid));
     const newarray = myArr.concat(result);
+    const newUnadd = arrToFilter.filter(item => !myIndex.includes(item.sid));
     console.log(newarray)
+    console.log(newUnadd)
     this.setData({
-      added : newarray
+      added : newarray,
+      unadd : newUnadd
     });
     Toast('完成添加！')
   },
@@ -160,13 +171,20 @@ Page({
   deleteStu(e:any){
     e = parseInt(e.currentTarget.dataset.sid);
     console.log(e);
-    let myArr:MyObject[]= this.data.added;
-    let indexToDelete = myArr.findIndex((element) => element.sid === e);
-    if (indexToDelete !== -1) {
-      myArr.splice(indexToDelete, 1);
-    };
+    let myAdd:MyObject[]= this.data.added;
+    let myUnAdd:MyObject[]= this.data.unadd;
+    
+    // let indexToDelete = myArr.findIndex((element) => element.sid === e);
+    // if (indexToDelete !== -1) {
+    //   myArr.splice(indexToDelete, 1);
+    // };
+    this.removeItemById(e,myAdd,myUnAdd);
+    // console.log(myAdd,11)
+    // console.log(myUnAdd,22)
+
     this.setData({
-      added : myArr
+      added : myAdd,
+      unadd : myUnAdd
     });//删除并更新added
     Toast('删除成功！')
     
