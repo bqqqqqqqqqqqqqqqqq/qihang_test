@@ -15,10 +15,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     fileList: [
       {
         url: 'https://img.yzcdn.cn/vant/leaf.jpg',
         name: '图片1',
+        isImage: true,
+        deletable: true,  
       },
       // Uploader 根据文件后缀来判断是否为图片文件
       // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
@@ -85,37 +88,40 @@ Page({
     dataArray.splice(index, 1); // 删除指定索引位置的元素
     this.setData({fileList: dataArray}); // 更新页面数据
   },
-  onLoad(options) {
-    this.query = wx.getStorageSync('query') || [];
-    this.getSearchItems();
+
+  onLoad(_options) {
+    // this.query = wx.getStorageSync('query') || [];
+    // this.getSearchItems();
   },
 
-  getSearchItems() {
-    const _this = this;
-    const searchItems = this.data.searchList.map((n) =>
-      Object.assign({}, n, {
-        screenValue: n.screenValue.map((m) =>
-          Object.assign({}, { checked: _this.query.includes(m.value), value: m.value })
-        ),
-      })
-    );
-    this.setData({ searchList: searchItems });
-  },
 
-  onChange(e) {
+  
+  // getSearchItems() {
+  //   const _this = this;
+  //   const searchItems = this.data.searchList.map((n) =>
+  //     Object.assign({}, n, {
+  //       screenValue: n.screenValue.map((m) =>
+  //         Object.assign({}, { checked: this.query.includes(m.value), value: m.value })
+  //       ),
+  //     })
+  //   );
+  //   this.setData({ searchList: searchItems });
+  // },
+
+  onChange(e: { detail: { parentIndex: any; item: any; index: any; }; }) {
     const { parentIndex, item, index } = e.detail;
 
     if (item.screenValue[index].checked) {
       item.screenValue[index].checked = false;
     } else {
       if (item.type != 'checkbox') {
-        item.screenValue.map((n) => (n.checked = false));
+        item.screenValue.map((n: { checked: boolean; }) => (n.checked = false));
       }
       item.screenValue[index].checked = true;
     }
 
     this.setData({ [`searchList[${parentIndex}]`]: item }, () => {
-      let selected = [];
+      let selected: any[] = [];
       this.data.searchList.map((n) => {
         n.screenValue.map((m) => {
           if (m.checked == true) {
@@ -143,16 +149,16 @@ Page({
       })
     })
     console.log(selected)
-    // var pages = getCurrentPages() // 获取页面栈
-    // var prevPage = pages[pages.length - 2] // 前一个页面
-    // // 携带数据，返回登录之前的页面
-    // prevPage.setData({
-    //   query: selected,
-    //   isBack: true
-    // })
-    // wx.navigateBack({
-    //   delta: 1
-    // })
+    var pages = getCurrentPages() // 获取页面栈
+    var prevPage = pages[pages.length - 2] // 前一个页面
+    // 携带数据，返回登录之前的页面
+    prevPage.setData({
+      query: selected,
+      isBack: true
+    })
+    wx.navigateBack({
+      delta: 1
+    })
   },
 
   reset(){

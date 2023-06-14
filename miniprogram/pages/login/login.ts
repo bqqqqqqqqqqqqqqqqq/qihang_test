@@ -1,3 +1,5 @@
+import  userApi  from '../../api/system/userAPI'
+
 // pages/login.ts
 Page({
 
@@ -5,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    phone:null,
+    password:null,
   },
 
   /**
@@ -15,9 +18,25 @@ Page({
 
   },
 
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  login(e:any){
+    console.log(e.detail.value.username)
+    this.getUserinfo(e.detail.value.phone,e.detail.value.password)
+    
+
+  },
+  getUserinfo(phone:string,password:string){
+    userApi.getUserInfo({phone:phone,password:password},{needToken:true}).then((res)=>{
+      console.log(res)
+      if(res.code===200){
+        
+      }
+    })
+  },
   onReady() {
 
   },

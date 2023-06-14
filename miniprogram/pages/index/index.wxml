@@ -5,7 +5,17 @@
     <van-tag wx:for="{{item.tag}}" wx:key="index" wx:for-item="ite" class="q_tag" color="#E7E7E7" text-color="#000" round primary>{{ite}}</van-tag>
   </view>
 </view>
+
+<view class="quesbox" wx:for="{{listAll}}" wx:key="pid">
+  <view class="quesion">
+    <view class="q_pic"   style="background-image: url({{item.cover_img}});"></view>
+    <van-tag wx:for="{{item.tag}}" wx:key="index" wx:for-item="ite" class="q_tag" color="#E7E7E7" text-color="#000" round primary>{{ite}}</van-tag>
+  </view>
+</view>
+
+<van-button bind:click="getAllProblem">这1是2一个测试按钮</van-button>
 <van-submit-bar
   button-text="上传题目"
   bind:submit="gotoUplode"
 />
+

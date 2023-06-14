@@ -6,3 +6,4 @@
     <button class="login-btn" form-type="submit">登录</button>
   </form>
 </view>
+<van-dialog id="van-dialog" bind:confirm="confirm" bind:getuserinfo="getuserinfo"  bind:getphonenumber="getphonenumber"/> 

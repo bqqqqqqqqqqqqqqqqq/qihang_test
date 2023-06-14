@@ -1,22 +1,26 @@
 import { httpRequest } from '../../utils/request'
 const baseUrl = require('../base').allBaseUrl.GDEnvs.host
+
 interface UserInfo{
-  name:string
+  phone:string
   password:string
 }
 interface ReturnUserInfo{
   name:string
+  isAdmin:string
 }
+
 export default class userApi {
   /**
    * @description: 获取用户信息
    * @return {*}
    */
 
-  static getUserInfo = (data: UserInfo) =>
-    httpRequest.post<ReturnUserInfo>(
-      baseUrl + '/mock/getUserInfo',
-      data
+  static getUserInfo = (data: UserInfo,RequestConfig:{needToken:boolean}) =>
+    httpRequest.get<ReturnUserInfo>(
+      baseUrl + '/login',
+      data,
+      RequestConfig
     )
 
   /**
