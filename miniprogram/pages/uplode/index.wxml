@@ -1,6 +1,6 @@
 <!--pages/uplode/index.wxml-->
 <view class="picbox">
-<van-uploader file-list="{{ fileList }}" />
+<van-uploader file-list="{{ fileList }}" deletable="{{ true }}" catch:delete="deleteImg" />
 </view>
 
 <view class="filter">

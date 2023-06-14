@@ -61,6 +61,30 @@ Page({
       },
     ],
   },
+  afterRead(event:any) {
+    let that = this;
+    const { file } = event.detail;
+    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+    wx.uploadFile({
+      url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
+      filePath: file.url,
+      name: 'file',
+      formData: { user: 'test' },
+      success(res) {
+        // 上传完成需要更新 fileList
+        const { fileList = [] } = that.data;
+        fileList.push({ ...file, url: res.data });
+        that.setData({ fileList });
+      },
+    });
+  },
+  deleteImg(event:any){
+    let index= event.detail.index
+    // console.log(index)//输出的就是图片所在fileList的下标
+    var dataArray = this.data.fileList; // 获取数组数据
+    dataArray.splice(index, 1); // 删除指定索引位置的元素
+    this.setData({fileList: dataArray}); // 更新页面数据
+  },
   onLoad(options) {
     this.query = wx.getStorageSync('query') || [];
     this.getSearchItems();
