@@ -1,4 +1,6 @@
 // pages/clockIn/index.ts
+import Dialog from "../../miniprogram_npm/@vant/weapp/dialog/dialog";
+
 Page({
 
   /**
@@ -8,14 +10,18 @@ Page({
     oneList:[
       {
         sname:"dfg",
+        kid:"1",
         sub:"english",
-        rate:"4/8",
-        todayDone:true,
+        done: 4,
+        all: 8,
+        todayDone:false,
       },
       {
         sname:"shjk",
+        kid:"2",
         sub:"english",
-        rate:"4/8",
+        done: 1,
+        all: 8,
         todayDone:true,
       }
     ],
@@ -50,12 +56,48 @@ Page({
     console.log(p);
     this.go("cloSmall",p);
   },
+  //
+  replaceList(oneList:any, newElement:any,id:string) {
+    // 遍历List数组，找到要替换的对象元素索引
+    console.log(newElement);
+    
+    for (let i = 0; i < oneList.length; i++) {
+      if (oneList[i].kid === id) { 
+        // 通过splice()方法将该元素替换为新对象元素
+        oneList.splice(i, 1, newElement);
+        // 若替换成功，返回更新后的oneList数组
+        this.setData({
+          oneList: oneList
+        })
+      }
+    }
+  },
   //签到、撤销
   clickBtn(e:any){
-    let i = e.currentTarget.dataset.oneitem;
-    console.log(i);
-    i.todayDone===true?i.todayDone=false:i.todayDone=true;
-    console.log(i);
+    let o = e.currentTarget.dataset.oneitem;
+    const id = e.currentTarget.dataset.oneitem.kid;
+    const oneList = this.data.oneList;
+    if(o.todayDone){
+      Dialog.confirm({
+        title: '提示',
+        message: '是否撤销最近一次签到',
+      })
+        .then(() => {
+          // on confirm
+          o.todayDone=false;
+          o.done--;
+          console.log(o);
+          this.replaceList(oneList,o,id)
+        })
+        .catch(() => {
+          // on cancel
+        });
+    }else{
+      o.todayDone=true;
+      o.done++;
+      this.replaceList(oneList,o,id)
+    }
+    console.log(11);
     
     
   },
