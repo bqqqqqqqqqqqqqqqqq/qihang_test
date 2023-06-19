@@ -1,5 +1,6 @@
 
 <view class="quesbox" wx:for="{{list}}" wx:key="pid">
+  <text class="time">{{item.time}}</text>
   <view class="quesion">
     <view class="q_pic"   style="background-image: url({{item.cover_img}});"></view>
     <van-tag wx:for="{{item.tag}}" wx:key="index" wx:for-item="ite" class="q_tag" color="#E7E7E7" text-color="#000" round primary>{{ite}}</van-tag>
