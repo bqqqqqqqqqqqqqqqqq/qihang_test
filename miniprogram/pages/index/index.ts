@@ -86,5 +86,25 @@ gotoUplode(){
   wx.navigateTo({
     url:'/pages/uplode/index'
   })
+},
+//下拉刷新
+onPullDownRefresh: function () {
+  this.onRefresh()
+  console.log(124);
+  
+},
+onRefresh:function(){
+  //导航条加载动画
+  wx.showNavigationBarLoading();
+  //重置分页加载页面
+  this.data.Paging.page=2
+  //网络请求数据
+  this.getAllProblem()
+  //超时隐藏
+  setTimeout(function () {
+      wx.hideNavigationBarLoading();
+      //停止下拉刷新
+      wx.stopPullDownRefresh();
+  }, 2000);
 }
 });
