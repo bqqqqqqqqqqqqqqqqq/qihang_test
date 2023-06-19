@@ -67,6 +67,12 @@ Page({
       },
     ],
   },
+  // 上传图片、上传文件校验格式-----好像这个不用写
+  beforeRead(event:any){
+    //before-read 事件可以在上传前进行校验，调用 callback 方法传入 true 表示校验通过，传入 false 表示校验失败。
+    const { file, callback } = event.detail;
+    callback(file.type === 'image');
+  },
   afterRead(event:any) {
     let that = this;
     const { file } = event.detail;
@@ -80,7 +86,7 @@ Page({
 
   deleteImg(event:any){
     let index= event.detail.index
-    // console.log(index)//输出的就是图片所在fileList的下标
+    console.log(index)//输出的就是图片所在fileList的下标
     var dataArray = this.data.fileList; // 获取数组数据
     dataArray.splice(index, 1); // 删除指定索引位置的元素
     this.setData({fileList: dataArray}); // 更新页面数据

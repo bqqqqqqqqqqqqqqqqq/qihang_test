@@ -1,9 +1,17 @@
 <!--pages/uplode/index.wxml-->
 <view class="picbox">
-<van-uploader file-list="{{ fileList }}" deletable="{{ true }}" catch:delete="deleteImg"
- bind:before-read="beforeRead"
-  bind:after-read="afterRead"
-   />
+  <van-uploader 
+  file-list="{{ fileList }}"  
+  deletable="{{ true }}" 
+  bind:after-read="afterRead" 
+  catch:delete="deleteImg" 
+  use-before-read 
+  bind:before-read="beforeRead" 
+  max-count="4"
+  max-size="2000000"
+  sizeType="compressed"
+  upload-text="限制4张图片"
+  />
 </view>
 
 <view class="filter">

@@ -72,6 +72,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/clockIn/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

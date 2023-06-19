@@ -15,13 +15,15 @@ Page({
     list:[
       {
         pid: 1,
-        cover_img:'../../static/images/a1.jpg',
-        tag:['11','22']
+        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/wandiannao_xiao.gif',
+        tag:['11','22'],
+        time: '2023.6.1',
       },
       {
         pid: 2,
-        cover_img:'../../static/images/a1.jpg',
-        tag:['11','22','33','44','55']
+        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/4f4d375e9a9d4f4cff7d26c511609468_e824b899a9014c08c5776e6f0a7b02087af4f4a8.jpg',
+        tag:['11','22','33','44','55'],
+        time: '2023.6.1',
       }
     ],
     searchList: [

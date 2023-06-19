@@ -4,6 +4,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column
+}
+.time{
+  color: #323233;
+  align-self : flex-start;
+  margin-left: 5%;
 }
 .quesion{
     height: 90%;

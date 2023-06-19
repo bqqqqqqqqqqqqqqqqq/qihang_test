@@ -65,7 +65,8 @@ Page({
     if(fboo==false){
       this.setData({
         fieldDisabled:true,
-        btn:"编辑"
+        btn:"编辑",
+        err:''
       });
     }else{
       this.setData({

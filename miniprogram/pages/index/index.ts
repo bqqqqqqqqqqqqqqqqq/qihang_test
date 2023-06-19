@@ -29,8 +29,9 @@ Page({
     list:[
       {
         pid: 1,
-        cover_img:'../../static/images/a1.jpg',
-        tag:['11','22']
+        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/021f828776fa53d3dba775fdcff0426b_902397dda144ad340c66a469d2a20cf430ad8506.jpg',
+        tag:['11','22'],
+        time: '2023.6.1',
       },
       // listAll
     ],
