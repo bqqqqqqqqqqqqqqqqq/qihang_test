@@ -1,15 +1,19 @@
 
-<view class="quesbox" wx:for="{{list}}" wx:key="pid">
+<!-- <view class="quesbox" wx:for="{{list}}" wx:key="pid">
   <view class="quesion">
-    <view class="q_pic"   style="background-image: url({{item.cover_img}});"></view>
+    <!-- <view class="q_pic"   style="background-image: url({{item.cover_img}});"></view> -->
+    <!-- <view class="q_pic"   style="background-image: url(http://127.0.0.1:8888/image/123.png);"></view>
     <van-tag wx:for="{{item.tag}}" wx:key="index" wx:for-item="ite" class="q_tag" color="#E7E7E7" text-color="#000" round primary>{{ite}}</van-tag>
   </view>
-</view>
+</view> --> 
 
-<view class="quesbox" wx:for="{{listAll}}" wx:key="pid">
-  <view class="quesion">
-    <view class="q_pic"   style="background-image: url({{item.cover_img}});"></view>
-    <van-tag wx:for="{{item.tag}}" wx:key="index" wx:for-item="ite" class="q_tag" color="#E7E7E7" text-color="#000" round primary>{{ite}}</van-tag>
+<view  wx:for="{{listAll}}" wx:key="key" wx:for-item="item">
+  <view class="quesbox" wx:for="{{item}}" wx:key="key2" wx:for-item="item2" bindtap="goProblemDetail" data-id="{{item2.id}}" >
+      <view class="quesion">
+        <view class="q_pic"   style="background-image: url({{item2.picture}});"></view>
+        <van-tag  class="q_tag" color="#E7E7E7" text-color="#000" round primary>{{item2.subjects}}</van-tag>
+        <!-- <van-tag class="q_tag" color="#E7E7E7" text-color="#000" round primary>{{item2.subject}}</van-tag> -->
+      </view>
   </view>
 </view>
 

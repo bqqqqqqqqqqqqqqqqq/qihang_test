@@ -1,4 +1,6 @@
 // pages/uplode/index.ts
+const baseUrl = require('../../api/base').allBaseUrl.GDEnvs.host
+
 interface SearchItem {
   type: string;
   screenKey: string;
@@ -8,6 +10,7 @@ interface SearchItem {
 interface ScreenValue {
   checked: boolean;
   value: string;
+  need:boolean;
 }
 Page({
 
@@ -15,7 +18,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
     fileList: [
       {
         url: 'https://img.yzcdn.cn/vant/leaf.jpg',
@@ -40,6 +42,7 @@ Page({
         screenValue: ['化学', '数学', '语文', '英语'].map((m) => ({
           checked: false,
           value: m,
+          need:true
         })),
       },
       {
@@ -67,20 +70,14 @@ Page({
   afterRead(event:any) {
     let that = this;
     const { file } = event.detail;
+
+    const { fileList = [] } = that.data;
+    fileList.push({ ...file });
+    that.setData({ fileList });
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    wx.uploadFile({
-      url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
-      filePath: file.url,
-      name: 'file',
-      formData: { user: 'test' },
-      success(res) {
-        // 上传完成需要更新 fileList
-        const { fileList = [] } = that.data;
-        fileList.push({ ...file, url: res.data });
-        that.setData({ fileList });
-      },
-    });
+   
   },
+
   deleteImg(event:any){
     let index= event.detail.index
     // console.log(index)//输出的就是图片所在fileList的下标
@@ -148,6 +145,18 @@ Page({
         }
       })
     })
+    // wx.uploadFile({
+    //   url: "", //baseUrl+'', 仅为示例，非真实的接口地址
+    //   filePath: file.url,
+    //   name: 'file',
+    //   formData: { user: 'test' },
+    //   success(res: { data: any; }) {
+    //     // 上传完成需要更新 fileList
+    //     const { fileList = [] } = that.data;
+    //     fileList.push({ ...file, url: res.data });
+    //     that.setData({ fileList });
+    //   },
+    // });  
     console.log(selected)
     var pages = getCurrentPages() // 获取页面栈
     var prevPage = pages[pages.length - 2] // 前一个页面

@@ -1,13 +1,23 @@
 import publicAPI from "../../api/system/publicAPI";
 import { requestAnimationFrame } from "../../miniprogram_npm/@vant/weapp/common/utils";
+import { chooseFile } from "../../miniprogram_npm/@vant/weapp/uploader/utils";
 
 interface oneProblem{
   pid:number,
+  title:string,
+  goods:number,
+  // authorID:number,
+  // Author:{
+  //   isAdmination:string,
+  //   name:string,
+  //   Photo:
+  // },
   cover_img:string,
   tag:string[]
+  Picture:string,
 }
 
-var listAll: oneProblem[]=  []
+var listAll: oneProblem[] =  []
 
 Page({
   data: {
@@ -22,19 +32,47 @@ Page({
         cover_img:'../../static/images/a1.jpg',
         tag:['11','22']
       },
-      listAll
+      // listAll
     ],
+    listAll
 },
 
 getAllProblem(){
   publicAPI.getProblemList(this.data.Paging).then((res:any)=>{
     if(res.code===200){
-        console.log(res)
-        console.log(res.data)
+        // console.log(res)
+        // console.log(res.data)
+        const listAll = this.data.listAll
+        listAll.push(res.data)
+        this.setData({
+          listAll:listAll
+        })
+        console.log(listAll);
     }
   })
   },
   
+  goProblemDetail(e:any){
+    // console.log(e);
+    // console.log(e.currentTarget.dataset.id);
+    const id = e.currentTarget.dataset.id;
+    
+    wx.navigateTo({
+      url: '../question/index?id='+id,
+      success(){
+          wx.showToast()
+      },
+      fail(){
+        wx.showToast({
+          icon:"error",
+          title:"失败"
+        })
+        wx.navigateBack
+      }
+    })
+    
+  },
+
 showPopup() {
   this.setData({ show: true });
 },
@@ -43,7 +81,7 @@ onClose() {
   this.setData({ show: false });
 },
 gotoUplode(){
-  console.log("tt")
+  // console.log("tt")
   wx.navigateTo({
     url:'/pages/uplode/index'
   })

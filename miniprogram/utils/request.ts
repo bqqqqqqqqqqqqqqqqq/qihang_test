@@ -102,7 +102,7 @@ class HttpRequest {
 				data: requestConfig.data,
 				header: Object.assign(header, requestConfig?.header),
 				dataType: !requestConfig.dataType ? 'json' : '其他',
-				success: function (res) {
+				success: function (res: { statusCode: number; data: any }) {
 					console.log('发送返回:', res) //res:{cookies, data, header, statusCode}
 					const code = res.statusCode || -404
 					const data = res.data
@@ -114,7 +114,7 @@ class HttpRequest {
 						!requestConfig.noShowMsg && wx.showModal({
 							title: '登录失效',
 							content: '登录失效，请重新登录',
-						}).then(resModa => {
+						}).then((resModa: { confirm: any }) => {
 							if (resModa.confirm) { }
 						})
 						reject({ code, msg: '未登录', data: data })
@@ -124,7 +124,7 @@ class HttpRequest {
 						reject({ code, msg: errMsg, data })
 					}
 				},
-				fail: err => {
+				fail: (err: { errMsg: string }) => {
 					let msg = _this.handerError(err, requestConfig)
 					reject({ msg })
 				}
