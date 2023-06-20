@@ -5,7 +5,9 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-button": "@vant/weapp/button/index",
     "filter": "../../components/filter/filter",
-    "van-tag": "@vant/weapp/tag/index"
-  }
+    "van-tag": "@vant/weapp/tag/index",
+    "van-search": "@vant/weapp/search/index"
+  },
+  "navigationBarTitleText": "论坛"
  
 }
