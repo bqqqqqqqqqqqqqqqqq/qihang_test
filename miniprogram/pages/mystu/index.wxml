@@ -7,11 +7,13 @@
   bind:click-left="onClickLeft"
   bind:click-right="manage"
 />
+
 <van-cell-group>
   <van-cell title="查看学生" value="" size="large" label=" " 
   bindtap="gotoallstu"
   is-link />
 </van-cell-group>
+
 <van-cell-group title="班级">
   <van-swipe-cell class="vsc" wx:for="{{bList}}" wx:key="bid" right-width="{{ 65 }}" async-close bind:close="onClose">
     <van-cell-group>

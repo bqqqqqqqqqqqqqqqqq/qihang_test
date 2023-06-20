@@ -2,6 +2,8 @@ import publicAPI from "../../api/system/publicAPI";
 import { requestAnimationFrame } from "../../miniprogram_npm/@vant/weapp/common/utils";
 import { chooseFile } from "../../miniprogram_npm/@vant/weapp/uploader/utils";
 
+
+
 interface oneProblem{
   pid:number,
   title:string,
@@ -24,7 +26,7 @@ Page({
     show: false,
     Paging:{
       size:10,
-      page:1.
+      page:1
     },
     list:[
       {
@@ -38,21 +40,39 @@ Page({
     listAll
 },
 
-getAllProblem(){
-  publicAPI.getProblemList(this.data.Paging).then((res:any)=>{
+
+  
+getAllProblem(Page: Paging){
+  publicAPI.getProblemList(Page).then((res:any)=>{
+    
     if(res.code===200){
         // console.log(res)
         // console.log(res.data)
         const listAll = this.data.listAll
-        listAll.push(res.data)
+        if (res.data.length != 0)  {
+          listAll.push(res.data)
+        }else{
+          return
+        }
+        let page = this.data.Paging.page
+        page++
         this.setData({
-          listAll:listAll
+          listAll:listAll,
+          Paging:{
+            size:10,
+            page:page
+          }
         })
         console.log(listAll);
+    }else if (res.code==-1){
+      wx.showToast({
+        title:"已无更多数据",
+        icon:"error",
+        // errMsg:"已无更多数据"
+      })  
     }
   })
   },
-  
   goProblemDetail(e:any){
     // console.log(e);
     // console.log(e.currentTarget.dataset.id);
@@ -87,24 +107,47 @@ gotoUplode(){
     url:'/pages/uplode/index'
   })
 },
-//下拉刷新
+//下拉刷新 
 onPullDownRefresh: function () {
   this.onRefresh()
-  console.log(124);
-  
+},
+onReachBottom(){
+  this.getAllProblem(this.data.Paging)
 },
 onRefresh:function(){
   //导航条加载动画
   wx.showNavigationBarLoading();
-  //重置分页加载页面
-  this.data.Paging.page=2
+  //重置分页加载页面 //成功加载再+1
+  // this.data.Paging.page=2
   //网络请求数据
-  this.getAllProblem()
+  const page:Paging = {
+    page:1,
+    size:10
+  }
+  listAll=[]
+  this.setData({
+    listAll:listAll
+  })
+  this.getAllProblem(page)
   //超时隐藏
   setTimeout(function () {
       wx.hideNavigationBarLoading();
       //停止下拉刷新
       wx.stopPullDownRefresh();
   }, 2000);
-}
+},
+
+onLoad(){
+  
+  // this.getAllProblem
+},
+
+onShow(){
+  
+  // this.getAllProblem
+},
+
+onReady(){
+this.getAllProblem(this.data.Paging)
+},
 });

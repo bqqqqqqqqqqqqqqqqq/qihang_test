@@ -21,7 +21,7 @@ export default class publicAPI {
 
 static getProblemList = (page:Paging) =>
    httpRequest.get<oneProblem>(
-      baseUrl + '/AllProblem',
-      page,
+      baseUrl + '/AllProblem'+"/?page="+page.page+"&"+"size="+page.size,
+      page
     )
 }
