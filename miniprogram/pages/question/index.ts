@@ -9,16 +9,16 @@ Page({
     interval: 3000,
     duration: 1200,
     Qimg:[
-      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/20230503232503.png',
-      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/Screenshot_20230425_104728.jpg',
-      '../../static/images/a3.jpg',
-      '../../static/images/a4.jpg',
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/021f828776fa53d3dba775fdcff0426b_902397dda144ad340c66a469d2a20cf430ad8506.jpg',
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/20230416165951.png',
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/f5a9287f989835f8730a667ce2a4695.jpg',
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/021f828776fa53d3dba775fdcff0426b_902397dda144ad340c66a469d2a20cf430ad8506.jpg',
     ],
     Aimg:[
-      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/Screenshot_2023_0425_104616.png',
-      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/docusaurus-social-card.jpg',
-      '../../static/images/a3.jpg',
-      '../../static/images/a4.jpg',
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/021f828776fa53d3dba775fdcff0426b_902397dda144ad340c66a469d2a20cf430ad8506.jpg',
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/20230416165951.png',
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/f5a9287f989835f8730a667ce2a4695.jpg',
+      'https://zhimg.oss-cn-guangzhou.aliyuncs.com/wx/021f828776fa53d3dba775fdcff0426b_902397dda144ad340c66a469d2a20cf430ad8506.jpg',
     ],
   },
 
@@ -26,68 +26,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    var that = this; 
-    var data = {
-      "datas1": [
-        {
-          "id": 1,
-          "imgurl": "../../static/images/a4.jpg"
-        },
-        {
-          "id": 2,
-          "imgurl": "../../static/images/a4.jpg"
-        },
-        {
-          "id": 3,
-          "imgurl": "../../static/images/a4.jpg"
-        },
-        {
-          "id": 4,
-          "imgurl": "../../static/images/a4.jpg"
-        }
-      ],
-      "datas2": [
-        {
-          "id": 1,
-          "imgurl": "../../static/images/a1.jpg"
-        },
-        {
-          "id": 2,
-          "imgurl": "../../static/images/a1.jpg"
-        },
-        {
-          "id": 3,
-          "imgurl": "../../static/images/a1.jpg"
-        },
-        {
-          "id": 4,
-          "imgurl": "../../static/images/a1.jpg"
-        }
-      ]
-    }; 
-    that.setData({
-      lunboData1: data.datas1,
-      lunboData2: data.datas2
-    });
     
   },
   
 preview1(e:any) {
-  console.log(e);
-  let item = e.currentTarget.dataset.item;
-  console.log(item,11)
+  let idx= e.currentTarget.dataset.idx;
+  let pics =this.data.Qimg;
   wx.previewImage({
-    current: item, // 当前显示图片的http链接
-    urls: this.data.Qimg // 需要预览的图片http链接列表
+    current: pics[idx],
+    urls:pics
   })
 },
 preview2(e:any) {
-  console.log(e);
-  let item = e.currentTarget.dataset.item;
-  console.log(item,11)
+  let idx= e.currentTarget.dataset.idx;
+  let pics =this.data.Aimg;
   wx.previewImage({
-    current: item, // 当前显示图片的http链接
-    urls: this.data.Aimg // 需要预览的图片http链接列表
+    current: pics[idx],
+    urls:pics
   })
 },
 
