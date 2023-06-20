@@ -1,7 +1,7 @@
 import publicAPI from "../../api/system/publicAPI";
 import { requestAnimationFrame } from "../../miniprogram_npm/@vant/weapp/common/utils";
 import { chooseFile } from "../../miniprogram_npm/@vant/weapp/uploader/utils";
-
+const dayjs = require('../../utils/day.min.js');
 interface oneProblem{
   pid:number,
   title:string,
@@ -86,6 +86,20 @@ gotoUplode(){
   wx.navigateTo({
     url:'/pages/uplode/index'
   })
+},
+//格式化时间
+formatTime(){
+  let myArr = this.data.listAll;
+  for(let i=0;i<myArr.length;i++){
+  let newDate = dayjs(myArr[i].creat_time).format('YYYY-MM-DD');
+    myArr[i].creat_time = newDate;
+  };
+ this.setData({
+  listAll: myArr
+ })
+
+  
+  
 },
 //下拉刷新
 onPullDownRefresh: function () {
