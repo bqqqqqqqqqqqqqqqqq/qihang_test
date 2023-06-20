@@ -1,13 +1,7 @@
 import publicAPI from "../../api/system/publicAPI";
 import { requestAnimationFrame } from "../../miniprogram_npm/@vant/weapp/common/utils";
 import { chooseFile } from "../../miniprogram_npm/@vant/weapp/uploader/utils";
-<<<<<<< HEAD
 const dayjs = require('../../utils/day.min.js');
-=======
-
-
-
->>>>>>> 21e21f3a4c6bf915a23a8b6fee16469aad39a235
 interface oneProblem{
   pid:number,
   title:string,
@@ -23,7 +17,7 @@ interface oneProblem{
   Picture:string,
 }
 
-var listAll: oneProblem[] =  []
+var listAll: oneProblem[][] =  []
 
 Page({
   data: {
@@ -60,6 +54,9 @@ getAllProblem(Page: Paging){
         }
         let page = this.data.Paging.page
         page++
+        // page-1 [page-1][0-9]  1 10 [0][0-9]
+        
+
         this.setData({
           listAll:listAll,
           Paging:{
@@ -111,14 +108,18 @@ gotoUplode(){
     url:'/pages/uplode/index'
   })
 },
-<<<<<<< HEAD
 //格式化时间
 formatTime(){
   let myArr = this.data.listAll;
-  for(let i=0;i<myArr.length;i++){
-  let newDate = dayjs(myArr[i].creat_time).format('YYYY-MM-DD');
-    myArr[i].creat_time = newDate;
-  };
+  console.log(myArr[0][3].created_at,11);
+  console.log(dayjs(myArr[0][3].created_at).format('YYYY-MM-DD'));
+ 
+  for(var i=0;i<myArr.length;i++){
+    for (var j=0;j<myArr[i].length;j++){
+      let newDate = dayjs(myArr[i][j].created_at).format('YYYY-MM-DD');
+      myArr[i][j].created_at = newDate;
+    }
+  }
  this.setData({
   listAll: myArr
  })
@@ -127,9 +128,6 @@ formatTime(){
   
 },
 //下拉刷新
-=======
-//下拉刷新 
->>>>>>> 21e21f3a4c6bf915a23a8b6fee16469aad39a235
 onPullDownRefresh: function () {
   this.onRefresh()
 },
