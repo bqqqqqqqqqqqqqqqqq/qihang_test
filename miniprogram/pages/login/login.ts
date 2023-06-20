@@ -27,8 +27,22 @@ Page({
     console.log(e.detail.value.username)
     this.getUserinfo(e.detail.value.phone,e.detail.value.password)
     
-
   },
+
+  getPhoneNumber (e: { detail: any }) {
+    this.WXLogin(e.detail.code)
+  },
+
+  WXLogin(code:string,){
+    userApi.UserwxPhoneLogin({code},{needToken:true}).then((res)=>{
+      console.log(res)
+      if(res.code===200){
+        console.log(res);
+        
+      }
+    })
+  },
+
   getUserinfo(phone:string,password:string){
     userApi.getUserInfo({phone:phone,password:password},{needToken:true}).then((res)=>{
       console.log(res)

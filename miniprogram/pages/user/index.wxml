@@ -20,5 +20,5 @@
   <van-cell title="帮助中心" icon="flag-o" is-link link-type="navigateTo" url="" size="large"/>
 </van-cell-group>
 
-<van-button bind:click="getUserinfo">这1是2一个测试按钮</van-button>
+<!-- <van-button bind:click="getUserinfo">这1是2一个测试按钮</van-button> -->
 <button open-type="getPhoneNumber" type="primary" bindgetphonenumber="getPhoneNumber">微信账号一键登录</button>

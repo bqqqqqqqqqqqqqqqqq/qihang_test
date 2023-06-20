@@ -18,16 +18,15 @@ Page({
         data
       )
     },
-  getUserinfo(){
-    userApi.getUserInfo({phone:"1234",password:"12345"},{needToken:true}).then((res)=>{
-      if(res.code===200){
+  // getUserinfo(){
+  //   userApi.getUserInfo({phone:"1234",password:"12345"},{needToken:true}).then((res)=>{
+  //     if(res.code===200){
         
-      }
-    })
-  },
+  //     }
+  //   })
+  // },
   getPhoneNumber (e: { detail: any }) {
-    let detail = e.detail;
-    console.log(detail);
+    console.log(e.detail.code);
   },
   goLogin(){
     wx.navigateTo({
