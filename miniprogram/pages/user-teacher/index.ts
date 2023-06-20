@@ -1,4 +1,5 @@
 // pages/user-teacher/index.ts
+
 Page({
 
   /**
@@ -7,7 +8,8 @@ Page({
   data: {
     src:'../../static/images/default.jpg',
     uid:'uid',
-    name:'Name'
+    name:'Name',
+    isAdmin:0,  //0 为学生，1为家长，2为老师
   },
   go(url:string,params?:string){
     let gourl = '';
