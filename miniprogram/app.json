@@ -20,7 +20,8 @@
     "pages/setClass/index",
     "pages/clockIn/index",
     "pages/seeHistory/index",
-    "pages/cloSmall/index"
+    "pages/cloSmall/index",
+    "pages/uplode-teacher/index"
   ],
     "tabBar": {
       "color": "#000",

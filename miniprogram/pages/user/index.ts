@@ -8,7 +8,8 @@ Page({
   data:{
     src:'../../static/images/default.jpg',
     uid:app.globalData.UserInfo.uid,
-    name:app.globalData.UserInfo.name
+    name:app.globalData.UserInfo.name,
+    type: 2,//1为默认用户，2为家长，3为老师，4为管理员
   },
  
   ping(data:any) {

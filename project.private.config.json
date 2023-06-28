@@ -79,6 +79,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/uplode-teacher/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

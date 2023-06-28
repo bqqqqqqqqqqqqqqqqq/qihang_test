@@ -8,8 +8,8 @@
 }
 .time{
   color: #323233;
-  align-self : flex-start;
-  margin-left: 5%;
+  align-self : flex-end;
+  margin-right: 5%;
 }
 .quesion{
     height: 90%;

@@ -7,9 +7,9 @@
     <view class="container">
       <!--轮播图-->
       <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for-items="{{lunboData1}}" wx:key="id">
-          <swiper-item bindtap="preview1">
-            <image src="{{item.imgurl}}" class="slide-image" />
+        <block wx:for="{{Qimg}}" wx:key="index">
+          <swiper-item >
+            <image src="{{item}}" bindtap="preview1" data-idx="{{index}}" class="slide-image" />
           </swiper-item>
         </block>
       </swiper>
@@ -19,17 +19,9 @@
 <view class="text">
   <text>答案</text>
 </view>
-<view class="quesbox">
+<view class="quesbox" wx:for="{{Aimg}}" wx:key="index">
   <view class="quesion">
-    <view class="container">
-      <!--轮播图-->
-      <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for-items="{{lunboData2}}" wx:key="id">
-          <swiper-item bindtap="preview2">
-            <image src="{{item.imgurl}}" class="slide-image" />
-          </swiper-item>
-        </block>
-      </swiper>
-    </view>
+   <view class="answerItem" data-idx="{{index}}" bindtap="preview2" style="background-image: url({{item}});">
+   </view>
   </view>
 </view>

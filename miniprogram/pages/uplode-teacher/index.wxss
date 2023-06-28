@@ -1,4 +1,3 @@
-/* pages/question/index.wxss */
 .text{
   text-align:center;
   margin-top: 30rpx;
@@ -30,10 +29,11 @@ image{
   /* border-radius: 15px; */
   object-fit:contain
 }
-.answerItem{
-  height: 100%;
-  width: 100%;
-  background-position: 50% 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
+.uploadBox{
+  background-color: #f3f3f3;
+  height: 70vh;
+}
+.btn{
+  margin-top: 30px;
+  padding: 10px;
 }

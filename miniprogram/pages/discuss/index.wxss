@@ -1,3 +1,13 @@
+.so{
+  background-color: #fff;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.van-search__action view{
+  margin: 0px 10px;
+}
 .quesbox{
   height: 350rpx;
   margin-top: 35rpx;
@@ -8,8 +18,8 @@
 }
 .time{
   color: #323233;
-  align-self : flex-start;
-  margin-left: 5%;
+  align-self : flex-end;
+  margin-right: 5%;
 }
 .quesion{
     height: 90%;

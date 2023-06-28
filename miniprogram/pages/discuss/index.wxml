@@ -1,24 +1,21 @@
-<van-nav-bar title="论坛"  right-text="筛选" bind:click-right="showPopup" >
+<van-nav-bar title="论坛"  >
 </van-nav-bar>
+<!-- 搜索 -->
+<view class="so">
+  <van-search 
+  value="{{ value }}" 
+  use-action-slot 
+  placeholder="搜索题目的相关词，如高一"
+  bind:change="onChange"
+  bind:search="onSearch"
+    >
+    <view slot="action" bind:tap="onClick">搜索</view>
+  </van-search>
+</view>
 <view class="quesbox" wx:for="{{list}}" wx:key="pid">
-  <text class="time">{{item.time}}</text>
   <view class="quesion">
     <view class="q_pic"   style="background-image: url({{item.cover_img}});"></view>
     <van-tag wx:for="{{item.tag}}" wx:key="index" wx:for-item="ite" class="q_tag" color="#E7E7E7" text-color="#000" round primary>{{ite}}</van-tag>
   </view>
+  <text class="time">{{item.time}}</text>
 </view>
-<!-- 弹出层 -->
-<van-popup show="{{ show }}" 
-bind:close="onClose" 
-position="bottom" 
-closeable
-round
-custom-style="height: 80%;">
-  <view class="fix">
-   全部筛选
-  </view>
-  <view class="filter">
-    <filter searchList="{{searchList}}"   bind:clickchange='onChange' bind:clickdoCancel='doCancel'   bind:clickdoReset='reset'  bind:clickdoSubmit='doSubmit' > </filter>
-  </view>
-  
-</van-popup>
