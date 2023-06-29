@@ -14,14 +14,13 @@
         <van-tag  class="q_tag" color="#E7E7E7" text-color="#000" round primary>{{item2.subjects}}</van-tag>
         <!-- <van-tag class="q_tag" color="#E7E7E7" text-color="#000" round primary>{{item2.subject}}</van-tag> -->
       </view>
-      <text class="time">{{item2.updated_at}}</text>
+      <text class="time">{{item2.created_at}}</text>
   </view>
 </view>
 
-<van-button bind:click="formatTime">这1是2一个测试按钮</van-button>
-
-<!-- <van-submit-bar
+<van-button bind:click="getAllProblem">这1是2一个测试按钮</van-button>
+<van-submit-bar
   button-text="上传题目"
   bind:submit="gotoUplode"
-/> -->
+/>
 

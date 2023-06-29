@@ -9,12 +9,6 @@ interface ReturnUserInfo{
   name:string
   isAdmin:string
 }
-interface code{
-  code:string
-}
-interface Token{
-  token:string
-}
 
 export default class userApi {
   /**
@@ -28,14 +22,6 @@ export default class userApi {
       data,
       RequestConfig
     )
-
-    static UserwxPhoneLogin = (data: code,RequestConfig:{needToken:boolean}) =>
-    httpRequest.post<Token>(
-      baseUrl + '/WXLogin',
-      data,
-      RequestConfig
-    )
-
 
   /**
    * @description: 
