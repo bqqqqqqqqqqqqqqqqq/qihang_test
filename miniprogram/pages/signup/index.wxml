@@ -1,0 +1,43 @@
+
+<view class="main">
+
+  <view class="container">
+    <view class="hello">
+      <text>Hello!</text>
+    </view>
+    
+    <view class="welcome">欢迎使用德一学习</view>
+    <van-cell-group inset>
+      <van-field
+        label="姓名"
+        maxlength="6"
+        model:value="{{ username }}"
+        placeholder="请输入姓名"
+        bind:change="onChange"
+      />
+      <van-field
+        label="密码"
+        password="{{isPassword}}"
+        icon="{{eye}}"
+        bind:click-icon="onClickEye"
+        model:value="{{ password }}"
+        placeholder="请输入密码"
+        bind:change="onChange"
+        bind:click-input="confirmPsw"
+      />
+      <van-field
+        label=" "
+        password="{{isPassword}}"
+        icon="{{eye}}"
+        bind:click-icon="onClickEye"
+        model:value="{{password2}}"
+        placeholder="再次输入密码"
+        wx:if="{{show}}"
+      />
+    </van-cell-group>
+    <view class="btn">
+      <van-button type="primary" bind:click="clickBtn" round block>注册</van-button>
+    </view>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

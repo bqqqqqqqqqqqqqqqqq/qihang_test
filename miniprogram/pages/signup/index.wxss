@@ -1,0 +1,25 @@
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.container{
+  width: 650rpx;
+  height: 500px;
+  /* background-color: #ccc; */
+}
+.btn{
+  width: 90%;
+  margin: 20px auto;
+}
+.hello text{
+  font-size:30px;
+}
+.hello{
+  text-align: center;
+}
+.welcome{
+  text-align: center;
+  margin-bottom: 10px;
+}

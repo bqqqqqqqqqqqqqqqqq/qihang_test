@@ -21,7 +21,8 @@
     "pages/clockIn/index",
     "pages/seeHistory/index",
     "pages/cloSmall/index",
-    "pages/uplode-teacher/index"
+    "pages/uplode-teacher/index",
+    "pages/signup/index"
   ],
     "tabBar": {
       "color": "#000",
