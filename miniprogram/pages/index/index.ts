@@ -62,7 +62,7 @@ getAllProblem(){
             page:page
           }
         })
-        console.log(listAll);
+       
     }else if (res.code==-1){
       wx.showToast({
         title:"已无更多数据",
@@ -72,10 +72,13 @@ getAllProblem(){
     }
   })
   },
+
+  // 问题详细页面
   goProblemDetail(e:any){
     // console.log(e);
     // console.log(e.currentTarget.dataset.id);
     const id = e.currentTarget.dataset.id;
+    console.log(id);
     
     wx.navigateTo({
       url: '../question/index?id='+id,
@@ -90,7 +93,6 @@ getAllProblem(){
         wx.navigateBack
       }
     })
-    
   },
 
 showPopup() {

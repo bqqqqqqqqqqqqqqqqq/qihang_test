@@ -1,15 +1,24 @@
 import { httpRequest } from '../../utils/request'
 const baseUrl = require('../../api/base').allBaseUrl.GDEnvs.host
+
 import  userApi  from '../../api/system/userAPI'
 
 
-var app = getApp ()
+
+
+var app = getApp()
 Page({
   data:{
     src:'../../static/images/default.jpg',
     uid:app.globalData.UserInfo.uid,
     name:app.globalData.UserInfo.name,
-    type: 2,//1为默认用户，2为家长，3为老师，4为管理员
+    type: app.globalData.UserInfo.isAdmin,  //1为默认用户，2为家长，3为老师，4为管理员
+    token:app.globalData.token
+
+  },
+
+  onLoad:()=>{
+    console.log(app.globalData);
   },
  
   ping(data:any) {
@@ -26,9 +35,9 @@ Page({
   //     }
   //   })
   // },
-  getPhoneNumber (e: { detail: any }) {
-    console.log(e.detail.code);
-  },
+  // getPhoneNumber (e: { detail: any }) {
+  //   console.log(e.detail.code);
+  // },
   goLogin(){
     wx.navigateTo({
       url:"../login/login"

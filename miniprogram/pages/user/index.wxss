@@ -29,3 +29,8 @@
   font-size: 24rpx;
   color: #999;
 }
+.login{
+  margin-top: 20px;
+  margin:10px;
+  Border: radius 20;
+}

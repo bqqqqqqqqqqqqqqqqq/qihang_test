@@ -1,30 +1,35 @@
 // app.ts
 interface UserInfo{
-  phone:string
   name:string
-  uid:string
+  isAdmin:string 
 }
 interface Paging{
     size:number,
     page:number
 }
-
+var token:string
+var app = getApp();
 App({
   globalData: {
     active:null,
-
+    token:token! || "",
     UserInfo:{
-      phone:null,
-      name:"默認用戶",
-      uid:"000000"
+      name:"请先登录",
+      isAdmin:"0",
     },
 
   },
   onLaunch() {
     // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // const logs = wx.getStorageSync('logs') || []
+    
+    
+    token=wx.getStorageSync('token') || ""
+    // this.globalData.setData({
+      
+    // })
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
 
     // 登录
     // wx.login({

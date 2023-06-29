@@ -2,7 +2,7 @@ import { httpRequest } from '../../utils/request'
 const baseUrl = require('../base').allBaseUrl.GDEnvs.host
 
 interface UserInfo{
-  phone:string
+  name:string
   password:string
 }
 interface ReturnUserInfo{
@@ -35,7 +35,12 @@ export default class userApi {
       data,
       RequestConfig
     )
-
+    static UserwxPhoneRegister = (data: UserInfo,RequestConfig:{needToken:boolean}) =>
+    httpRequest.post<Token>(
+      baseUrl + '/WXRegister ',
+      data,
+      RequestConfig
+    )
 
   /**
    * @description: 

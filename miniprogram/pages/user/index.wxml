@@ -1,7 +1,7 @@
 <view class="top-box">
-  <view class="avatar">
+  <!-- <view class="avatar">
     <image src="{{src}}" style="width:140rpx ;height: 140rpx;border-radius: 100%;" alt=""/>
-  </view>
+  </view> -->
   <view class="right">
     <view class="info">
       <text class="name">{{name}}</text>
@@ -16,6 +16,7 @@
   
 </view>
 <van-cell-group>
+<!-- 2 为家长 3为教师 -->
   <van-cell wx:if="{{type==2}}" title="我的课程" icon="orders-o" is-link link-type="navigateTo" url="../kc/index" size="large"/>
   <van-cell wx:if="{{type==2}}" title="购买课程" icon="cart-o" is-link link-type="navigateTo" url="../buykc/index" size="large"/>
   <van-cell wx:if="{{type==3}}" title="我的学生" icon="friends-o" is-link link-type="navigateTo" url="../mystu/index" size="large"/>
@@ -27,4 +28,6 @@
 </van-cell-group>
 
 <!-- <van-button bind:click="getUserinfo">这1是2一个测试按钮</van-button> -->
-<button open-type="getPhoneNumber" type="primary" bindgetphonenumber="getPhoneNumber">微信账号一键登录</button>
+<block wx:if="!{{token}}">
+<button class="login" open-type="getPhoneNumber" type="primary" bindgetphonenumber="getPhoneNumber">微信账号一键登录</button>
+</block>

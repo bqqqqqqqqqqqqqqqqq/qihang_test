@@ -1,5 +1,8 @@
 import  userApi  from '../../api/system/userAPI'
 
+
+
+
 // pages/login.ts
 Page({
 
@@ -38,19 +41,24 @@ Page({
       console.log(res)
       if(res.code===200){
         console.log(res);
-        
+      }else if (res.code===-1){
+        //路由去注册页面
+          wx.navigateTo({
+            url:'../register'
+          })
       }
     })
   },
 
-  getUserinfo(phone:string,password:string){
-    userApi.getUserInfo({phone:phone,password:password},{needToken:true}).then((res)=>{
-      console.log(res)
-      if(res.code===200){
+  // getUserinfo(phone:string,password:string){
+  //   userApi.getUserInfo({password:password},{needToken:true}).then((res)=>{
+  //     console.log(res)
+  //     if(res.code===200){
         
-      }
-    })
-  },
+  //     }
+  //   })
+  // },
+
   onReady() {
 
   },

@@ -42,3 +42,7 @@
   outline: none;
   border: none;
 }
+.PhoneLogin {
+  width: 100%;
+  margin:20px
+}
