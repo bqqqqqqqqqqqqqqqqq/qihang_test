@@ -86,6 +86,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/signUp/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
