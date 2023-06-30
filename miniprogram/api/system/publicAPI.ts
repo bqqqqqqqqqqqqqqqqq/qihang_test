@@ -1,6 +1,12 @@
 import { httpRequest } from '../../utils/request'
 const baseUrl = require('../base').allBaseUrl.GDEnvs.host
 
+interface BaseInfo{
+  name:string,
+  isAdmin:string,
+}
+
+
 interface oneProblem{
   code: any
   pid:number,
@@ -19,9 +25,12 @@ interface ReturnUserInfo{
 
 export default class publicAPI {
 
+
+  
 static getProblemList = (page:Paging) =>
    httpRequest.get<oneProblem>(
       baseUrl + '/AllProblem'+"/?page="+page.page+"&"+"size="+page.size,
       page
     )
+
 }

@@ -4,8 +4,8 @@
   </view> -->
   <view class="right">
     <view class="info">
-      <text class="name">{{name}}</text>
-      <text class="uid">{{uid}}</text>
+      <text class="name">{{UserInfo.name}}</text>
+      <text class="uid">{{UserInfo.uid}}</text>
     </view>
 
     <van-button class="gotologin" type="primary" round plain size="mini">去认证</van-button>

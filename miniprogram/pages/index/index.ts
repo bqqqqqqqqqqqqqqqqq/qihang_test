@@ -38,7 +38,6 @@ getAllProblem(){
  const Page: Paging = this.data.Paging 
   
   publicAPI.getProblemList(Page).then((res:any)=>{
-    
     if(res.code===200){
         // console.log(res)
         // console.log(res.data)
@@ -78,8 +77,6 @@ getAllProblem(){
     // console.log(e);
     // console.log(e.currentTarget.dataset.id);
     const id = e.currentTarget.dataset.id;
-    console.log(id);
-    
     wx.navigateTo({
       url: '../question/index?id='+id,
       success(){
