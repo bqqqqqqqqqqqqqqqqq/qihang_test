@@ -1,4 +1,5 @@
 import  userApi  from '../../api/system/userAPI'
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 
 
 
@@ -12,6 +13,45 @@ Page({
   data: {
     phone:null,
     password:null,
+    isPassword:true,
+    eye:"closed-eye",
+  },
+  onClickEye(){
+    let boo = this.data.isPassword;
+    if(boo){
+      this.setData({
+        isPassword:false,
+        eye: "eye-o"
+      })
+    }else{
+      this.setData({
+        isPassword:true,
+        eye: "closed-eye"
+      })
+    };
+  },
+  clickBtn(){
+    let phone = this.data.phone;
+    let psw = this.data.password;
+    if(phone===null){
+      Dialog.alert({
+        message: '请输入手机号',
+      }).then(() => {
+        // on close
+      });
+      return false;
+    };
+    if(psw === null){
+      Dialog.alert({
+        message: '请输入密码',
+      }).then(() => {
+        // on close
+      });
+      return false;
+    };
+    //通过
+    return true
+    
   },
 
   /**
