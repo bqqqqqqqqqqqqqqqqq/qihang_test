@@ -1,13 +1,24 @@
 import { httpRequest } from '../../utils/request'
 const baseUrl = require('../base').allBaseUrl.GDEnvs.host
 
-interface UserInfo{
+interface BaseInfo{
+  name:string,
+  isAdmin:string,
+}
+
+interface RegUserInfo{
   name:string
   password:string
+  code:string
+}
+interface WXPhoneLogUserInfo{
+  userInfo:BaseInfo,
+  token:string
 }
 interface ReturnUserInfo{
   name:string
   isAdmin:string
+  token:string
 }
 interface code{
   code:string
@@ -29,15 +40,21 @@ export default class userApi {
       RequestConfig
     )
 
+    // static TokenLogin = (page:Paging) =>
+    // httpRequest.post<BaseInfo>(
+    //    baseUrl 
+    //    page
+    //  )
+
     static UserwxPhoneLogin = (data: code,RequestConfig:{needToken:boolean}) =>
-    httpRequest.post<Token>(
+    httpRequest.post<WXPhoneLogUserInfo>(
       baseUrl + '/WXLogin',
       data,
       RequestConfig
     )
-    static UserwxPhoneRegister = (data: UserInfo,RequestConfig:{needToken:boolean}) =>
-    httpRequest.post<Token>(
-      baseUrl + '/WXRegister ',
+    static UserwxPhoneRegister = (data: RegUserInfo,RequestConfig:{needToken:boolean}) =>
+    httpRequest.post(
+      baseUrl + '/WXRegister',
       data,
       RequestConfig
     )

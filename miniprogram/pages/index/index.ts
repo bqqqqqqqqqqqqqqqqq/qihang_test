@@ -36,9 +36,8 @@ Page({
   
 getAllProblem(){
  const Page: Paging = this.data.Paging 
-  
+
   publicAPI.getProblemList(Page).then((res:any)=>{
-    
     if(res.code===200){
         // console.log(res)
         // console.log(res.data)
@@ -52,9 +51,6 @@ getAllProblem(){
         }
         let page = this.data.Paging.page
         page++
-        // page-1 [page-1][0-9]  1 10 [0][0-9]
-       
-
         this.setData({
           listAll:listAll,
           Paging:{
@@ -78,8 +74,6 @@ getAllProblem(){
     // console.log(e);
     // console.log(e.currentTarget.dataset.id);
     const id = e.currentTarget.dataset.id;
-    console.log(id);
-    
     wx.navigateTo({
       url: '../question/index?id='+id,
       success(){

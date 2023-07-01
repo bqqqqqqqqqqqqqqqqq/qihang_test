@@ -2,6 +2,7 @@ import  userApi  from '../../api/system/userAPI'
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 
 
+var app = getApp()
 
 
 // pages/login.ts
@@ -67,8 +68,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   login(e:any){
-    console.log(e.detail.value.username)
-    this.getUserinfo(e.detail.value.phone,e.detail.value.password)
+    // console.log(e.detail.value.username)
+    // this.getUserinfo(e.detail.value.phone,e.detail.value.password)
     
   },
 
@@ -78,14 +79,30 @@ Page({
 
   WXLogin(code:string,){
     userApi.UserwxPhoneLogin({code},{needToken:true}).then((res)=>{
-      console.log(res)
       if(res.code===200){
-        console.log(res);
+        wx.showToast({
+          title:"登录成功",
+          icon:"none"
+        })
+        app.globalData.token = res.data.token
+        app.globalData.UserInfo = res.data.userInfo
+        wx.setStorageSync('UserInfo',res.data.userInfo)
+        wx.setStorageSync('token',res.data.token)
+        setTimeout(()=>{
+          wx.navigateBack({
+          },1000)
+        })
       }else if (res.code===-1){
         //路由去注册页面
+        wx.showToast({
+          title:"未注册请先注册",
+          icon:"none"
+        })
+        setTimeout(() => {
           wx.navigateTo({
-            url:'../register'
+            url:'../signup/index'
           })
+        }, 1000);
       }
     })
   },

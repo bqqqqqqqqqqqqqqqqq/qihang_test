@@ -1,7 +1,9 @@
 // app.ts
 interface UserInfo{
   name:string
-  isAdmin:string 
+  isAdmin:string
+  Picture:string
+  
 }
 interface Paging{
     size:number,
@@ -16,18 +18,19 @@ App({
     UserInfo:{
       name:"请先登录",
       isAdmin:"0",
+      code:""
     },
 
   },
   onLaunch() {
     // 展示本地存储能力
     // const logs = wx.getStorageSync('logs') || []
-    
-    
-    token=wx.getStorageSync('token') || ""
-    // this.globalData.setData({
-      
-    // })
+    this.globalData.token=wx.getStorageSync('token') || ""
+    this.globalData.UserInfo=wx.getStorageSync('UserInfo') || {name:"请先登录",isAdmin:"0",}
+    if (token==""){
+      return
+    }
+
     // logs.unshift(Date.now())
     // wx.setStorageSync('logs', logs)
 
