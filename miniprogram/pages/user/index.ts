@@ -83,10 +83,15 @@ Page({
     wx.navigateTo({
       url:"../login/login"
     })
-  }
-
-
-
+  },
+  
+  loginOut(){
+    wx.removeStorageSync('token')
+    wx.removeStorageSync('UserInfo')
+    this.setData({
+      token: ''
+    })
+}
 
 
 
