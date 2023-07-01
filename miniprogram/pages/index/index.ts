@@ -13,9 +13,9 @@ interface oneProblem{
   //   name:string,
   //   Photo:
   // },
-  cover_img:string,
+  cover_img:string[],
   tag:string[]
-  Picture:string,
+  picture:string,
   created_at:TimeData,
   updated_at:TimeData,
 }
@@ -36,7 +36,6 @@ Page({
   
 getAllProblem(){
  const Page: Paging = this.data.Paging 
-
   publicAPI.getProblemList(Page).then((res:any)=>{
     if(res.code===200){
         // console.log(res)
@@ -45,6 +44,7 @@ getAllProblem(){
         if (res.data.length != 0)  {
           const list:oneProblem[] = res.data
           this.formatTime(list)
+          this.coverimg(list)
           listAll.push(list)
         }else{
           return
@@ -71,8 +71,6 @@ getAllProblem(){
 
   // 问题详细页面
   goProblemDetail(e:any){
-    // console.log(e);
-    // console.log(e.currentTarget.dataset.id);
     const id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../question/index?id='+id,
@@ -104,17 +102,17 @@ gotoUplode(){
 },
 //格式化时间
 formatTime(arr:oneProblem[] ){
-  //  for (var i=0;i<arr.length;i++){
-  //   for(var j = 0;j<arr[i].length;j++){
-  //     // console.log(dayjs(arr[i][j].updated_at).format('YYYY-MM-DD HH:mm')); 
-  //     arr[i][j].updated_at = dayjs(arr[i][j].updated_at).format('YYYY-MM-DD HH:mm')
-  //     console.log(arr[i][j].updated_at);
-  //   }
-  // }
   for (var i=0;i<arr.length;i++){
-      // console.log(dayjs(arr[i][j].updated_at).format('YYYY-MM-DD HH:mm')); 
       arr[i].updated_at = dayjs(arr[i].updated_at).format('YYYY-MM-DD HH:mm')
-      // console.log(arr[i].updated_at);
+    }
+  },
+  //取第一个为封面
+  coverimg(arr:oneProblem[]){
+    if (arr.length == 0){
+      return
+    }
+    for (var i=0;i<arr.length;i++){
+      arr[i].picture=arr[i].picture.split(';')[0]
     }
   },
 

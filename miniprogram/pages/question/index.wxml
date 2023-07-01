@@ -7,9 +7,9 @@
     <view class="container">
       <!--轮播图-->
       <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for="{{Qimg}}" wx:key="index">
-          <swiper-item >
-            <image src="{{item}}" bindtap="preview1" data-idx="{{index}}" class="slide-image" />
+        <block wx:for="{{AllQimg}}"  wx:for-item="item" wx:key="index" wx:if="{{AllQimg}}">
+            <swiper-item>
+              <image src="{{item}}" bindtap="preview1" data-idx="{{index}}" class="slide-image" />
           </swiper-item>
         </block>
       </swiper>
@@ -19,7 +19,7 @@
 <view class="text">
   <text>答案</text>
 </view>
-<view class="quesbox" wx:for="{{Aimg}}" wx:key="index">
+<view class="quesbox" wx:for="{{AllAimg}}" wx:key="index">
   <view class="quesion">
    <view class="answerItem" data-idx="{{index}}" bindtap="preview2" style="background-image: url({{item}});">
    </view>

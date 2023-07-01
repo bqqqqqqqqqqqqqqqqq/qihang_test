@@ -14,6 +14,11 @@ interface oneProblem{
   tag:string[]
 }
 
+interface answer{
+  question_picture:string
+  answer_picture:string
+}
+
 // interface UserInfo{
 //   phone:string
 //   password:string
@@ -24,13 +29,15 @@ interface ReturnUserInfo{
 }
 
 export default class publicAPI {
-
-
-  
 static getProblemList = (page:Paging) =>
    httpRequest.get<oneProblem>(
       baseUrl + '/AllProblem'+"/?page="+page.page+"&"+"size="+page.size,
       page
+    );
+    static getAnswerDetail = (problemid:string) =>
+   httpRequest.get<answer>(
+      baseUrl + '/Answer'+'/?id='+problemid,
     )
+
 
 }

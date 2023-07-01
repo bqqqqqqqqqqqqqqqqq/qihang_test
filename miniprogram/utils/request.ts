@@ -139,7 +139,7 @@ class HttpRequest {
 	 * @param {RequestConfig} OtherConfig request其他配置
 	 * @return {*}
 	 */
-	public get<T>(url: string, data: Object, OtherConfig?: RequestConfig) {
+	public get<T>(url: string, data?: Object, OtherConfig?: RequestConfig) {
 		return this.request<T>({ method: HttpMethod.GET, url, data, ...OtherConfig })
 	}
 
