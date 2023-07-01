@@ -5,11 +5,15 @@
   <view class="right">
     <view class="info">
       <text class="name">{{name}}</text>
-      <text class="uid">{{uid}}</text>
+      <text class="type" wx:if="{{type==1}}">学生</text>
+      <text class="type" wx:if="{{type==2}}">家长</text>
+      <text class="type" wx:if="{{type==3}}">老师</text>
+      <text class="type" wx:if="{{type==4}}">管理员</text>
     </view>
 
-    <van-button class="gotologin" type="primary" round plain size="mini">去认证</van-button>
-    <van-button class="gotologin" type="primary" round plain size="mini" bind:click="goLogin">去登录</van-button>
+    
+    <van-button wx:if="{{type==0}}" class="gotologin" type="primary" round plain size="mini" bind:click="goLogin">去登录</van-button>
+    <van-button wx:if="{{type!=0}}" class="gotologin" type="primary" round plain size="mini" bind:click="">退出登录</van-button>
     
 
   </view>
@@ -23,11 +27,11 @@
   <van-cell wx:if="{{type==3}}" title="班级签到" icon="location-o" is-link link-type="navigateTo" url="../clockIn/index" size="large"/>
   <van-cell wx:if="{{type==3}}" title="我的回答" icon="sign" is-link bindtap="goAns" size="large"/>
   <van-cell wx:if="{{type==3}}" title="待我回答" icon="chat-o" is-link link-type="navigateTo" url="" size="large"/>
-  <van-cell title="资料设置" icon="records" is-link link-type="navigateTo" url="" size="large"/>
+  <van-cell wx:if="{{type!=0}}" title="资料设置" icon="records" is-link link-type="navigateTo" url="" size="large"/>
   <van-cell title="帮助中心" icon="flag-o" is-link link-type="navigateTo" url="" size="large"/>
 </van-cell-group>
 
 <!-- <van-button bind:click="getUserinfo">这1是2一个测试按钮</van-button> -->
 <block wx:if="!{{token}}">
-<button class="login" open-type="getPhoneNumber" type="primary" bindgetphonenumber="getPhoneNumber">微信账号一键登录</button>
+<button class="login" open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber">微信账号一键登录</button>
 </block>

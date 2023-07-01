@@ -12,13 +12,6 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/user-parents/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
           "pathName": "pages/question/index",
           "query": "",
           "launchMode": "default",
@@ -26,7 +19,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/user-teacher/index",
+          "pathName": "pages/user/index",
           "query": "",
           "launchMode": "default",
           "scene": null

@@ -4,6 +4,7 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-button": "@vant/weapp/button/index",
     "van-dialog": "@vant/weapp/dialog/index"
-  }
+  },
+  "navigationBarTitleText": "我的"
  
 }

@@ -1,6 +1,6 @@
 .top-box{
   display: flex;
-  padding: 20rpx;
+  /* padding: 20rpx; */
   margin-bottom: 20rpx;
   width: 750rpx;
   height: 150rpx;
@@ -10,27 +10,32 @@
   display: flex;
   align-items:center;
   width: 100%;
+  padding: 0 20px;
+  justify-content: space-between;
 }
 .info{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 375rpx;
+  width: 70%;
 }
 .avatar{
   margin-right: 20rpx;
 }
 .name {
-  font-size: 28rpx;
+  font-size: 48rpx;
   color: #333;
   margin-bottom: 10rpx;
 }
-.uid {
+.type {
   font-size: 24rpx;
   color: #999;
 }
 .login{
   margin-top: 20px;
   margin:10px;
-  Border: radius 20;
+  border-radius: 2px;
+  background-color: #07c160;
+  color: #f8f8f8;
+  
 }
