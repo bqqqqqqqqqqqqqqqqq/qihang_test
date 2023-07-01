@@ -17,19 +17,20 @@ Page({
     // name:app.globalData.UserInfo.name,
     // type: app.globalData.UserInfo.isAdmin,  //1为默认用户，2为家长，3为老师，4为管理员
     UserInfo:app.globalData.UserInfo,
-    // token:app.globalData.token
+    token:app.globalData.token
 
   },
 
   onShow:function(){
     this.setData({
-      UserInfo:app.globalData.UserInfo
+      UserInfo:app.globalData.UserInfo,
+      token:app.globalData.token
     })
   },
 
 
   onLoad:()=>{
-    console.log(app.globalData);
+    // console.log(app.globalData);
   },
  
   ping(data:any) {
@@ -47,8 +48,37 @@ Page({
   //   })
   // },
   getPhoneNumber (e: { detail: any }) {
-    // console.log(e.detail.code);
+    this.WXLogin(e.detail.code)
   },
+
+  WXLogin(code:string,){
+    userApi.UserwxPhoneLogin({code},{needToken:true}).then((res)=>{
+      if(res.code===200){
+        wx.showToast({
+          title:"登录成功",
+          icon:"none"
+        })
+        app.globalData.token = res.data.token
+        app.globalData.UserInfo.code = "1"
+        app.globalData.UserInfo = res.data.userInfo
+        wx.setStorageSync('UserInfo',res.data.userInfo)
+        wx.setStorageSync('token',res.data.token)
+        this.onShow()
+      }else if (res.code===-1){
+        //路由去注册页面
+        wx.showToast({
+          title:"未注册请先注册",
+          icon:"none"
+        })
+        setTimeout(() => {
+          wx.navigateTo({
+            url:'../signup/index'
+          })
+        }, 1000);
+      }
+    })
+  },
+  
   goLogin(){
     wx.navigateTo({
       url:"../login/login"

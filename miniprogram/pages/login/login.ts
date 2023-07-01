@@ -85,17 +85,13 @@ Page({
           icon:"none"
         })
         app.globalData.token = res.data.token
-       
         app.globalData.UserInfo = res.data.userInfo
-        
         wx.setStorageSync('UserInfo',res.data.userInfo)
         wx.setStorageSync('token',res.data.token)
         setTimeout(()=>{
           wx.navigateBack({
-
           },1000)
         })
-  
       }else if (res.code===-1){
         //路由去注册页面
         wx.showToast({
@@ -107,7 +103,6 @@ Page({
             url:'../signup/index'
           })
         }, 1000);
-        
       }
     })
   },

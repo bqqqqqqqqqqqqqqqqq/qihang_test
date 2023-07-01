@@ -18,6 +18,7 @@ App({
     UserInfo:{
       name:"请先登录",
       isAdmin:"0",
+      code:""
     },
 
   },

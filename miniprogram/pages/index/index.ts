@@ -36,7 +36,7 @@ Page({
   
 getAllProblem(){
  const Page: Paging = this.data.Paging 
-  
+
   publicAPI.getProblemList(Page).then((res:any)=>{
     if(res.code===200){
         // console.log(res)
@@ -51,9 +51,6 @@ getAllProblem(){
         }
         let page = this.data.Paging.page
         page++
-        // page-1 [page-1][0-9]  1 10 [0][0-9]
-       
-
         this.setData({
           listAll:listAll,
           Paging:{
