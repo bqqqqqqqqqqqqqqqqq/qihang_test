@@ -1,10 +1,37 @@
 <!--pages/login.wxml-->
+<view class="main">
+
 <view class="container">
-  <form class="login-form" bindsubmit="login">
-    <input class="input-item" type="text" name="username" placeholder="请输入用户名"></input>
-    <input class="input-item" type="password" name="password" placeholder="请输入密码"></input>
-    <button class="login-btn" form-type="submit">登录</button>
-  </form>
-  <button class="PhoneLogin" open-type="getPhoneNumber" type="primary" bindgetphonenumber="getPhoneNumber">微信账号一键登录</button>
+  <view class="hello">
+    <text>德一学习</text>
+  </view>
+  
+  <view class="welcome"></view>
+  <van-cell-group inset>
+    <van-field
+      label="手机"
+      maxlength="6"
+      model:value="{{ phone }}"
+      placeholder="请输入手机号码"
+      bind:change="onChange"
+    />
+    <van-field
+      label="密码"
+      password="{{isPassword}}"
+      icon="{{eye}}"
+      bind:click-icon="onClickEye"
+      model:value="{{ password }}"
+      placeholder="请输入密码"
+      bind:change="onChange"
+      bind:click-input="confirmPsw"
+    />
+  </van-cell-group>
+  <view class="btn">
+    <van-button type="primary" bind:click="clickBtn" block>登录</van-button>
+    <button class="PhoneLogin" open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber">微信账号一键登录</button>
+  </view>
 </view>
+</view>
+
+<van-dialog id="van-dialog" />
 
