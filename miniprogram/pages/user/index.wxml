@@ -19,7 +19,7 @@
   </view>
   
 </view>
-<van-cell-group>
+<van-cell-group wx:if="{{UserInfo.isAdmin!=1}}">
 <!-- 2 为家长 3为教师 -->
   <van-cell wx:if="{{UserInfo.isAdmin==0}}" title="我的课程" icon="orders-o" is-link link-type="navigateTo" url="../kc/index" size="large"/>
   <van-cell wx:if="{{UserInfo.isAdmin==2}}" title="我的课程" icon="orders-o" is-link link-type="navigateTo" url="../kc/index" size="large"/>
@@ -31,6 +31,21 @@
   <van-cell title="资料设置" icon="records" is-link link-type="navigateTo" url="" size="large"/>
   <van-cell title="帮助中心" icon="flag-o" is-link link-type="navigateTo" url="" size="large"/>
 </van-cell-group>
+
+<!-- 管理员 -->
+<block wx:if="{{UserInfo.isAdmin==1}}">
+  <van-cell-group title="管理老师">
+    <van-cell title="查看所有老师" icon="user-o" is-link link-type="navigateTo" url="" size="large"/>
+    <van-cell title="添加老师" icon="add-o" is-link link-type="navigateTo" url="" size="large"/>
+  </van-cell-group>
+  <van-cell-group title="管理学生">
+    <van-cell title="查看所有学生" icon="friends-o" is-link link-type="navigateTo" url="" size="large"/>
+  </van-cell-group>
+  <van-cell-group title="管理班级">
+    <van-cell title="查看所有班级" icon="cluster-o" is-link link-type="navigateTo" url="" size="large"/>
+  </van-cell-group>
+</block>
+
 
 <!-- <van-button bind:click="getUserinfo">这1是2一个测试按钮</van-button> -->
 <block wx:if="{{token.length==0}}">
