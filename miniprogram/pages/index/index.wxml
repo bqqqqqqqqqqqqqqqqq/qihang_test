@@ -18,10 +18,9 @@
   </view>
 </view>
 
-<van-button bind:click="formatTime">这1是2一个测试按钮</van-button>
+<!-- <van-button bind:click="formatTime">这1是2一个测试按钮</van-button> -->
 
-<!-- <van-submit-bar
+<van-submit-bar
   button-text="上传题目"
   bind:submit="gotoUplode"
-/> -->
-
+/>
