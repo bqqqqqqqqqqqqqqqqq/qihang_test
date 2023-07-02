@@ -1,12 +1,13 @@
 import publicAPI from "../../api/system/publicAPI";
 
-// pages/question/index.ts
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isAdmin:app.globalData.UserInfo.isAdmin,
     autoplay: true,
     interval: 3000,
     duration: 1200,
