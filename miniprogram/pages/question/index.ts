@@ -61,7 +61,25 @@ preview2(e:any) {
     urls:pics
   })
 },
+  //跳转
+  go(url:string,params?:string){
+    let gourl = '';
+    if (params) {
+      gourl = '/pages/'+url+'/index?' + params ;
+    }else{
+      gourl = '/pages/'+url+'/index';
+    }
+    wx.navigateTo({
+      url:gourl
+  });
+},
+goUploadeTeacher(){
+  let id = this.options.id;
+  this.go('uplode-teacher','id='+id)
+},
+editAnswer(){
 
+}
 
   
   
