@@ -1,8 +1,4 @@
 /* pages/question/index.wxss */
-.text{
-  text-align:center;
-  margin-top: 30rpx;
-}
 .home-swiper {
   width: 100%;
   height: 315rpx;
@@ -36,4 +32,9 @@ image{
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
+}
+.answerBox{
+  background-color: #ffffff;
+  margin: 0;
+  margin-top:35rpx ;
 }
