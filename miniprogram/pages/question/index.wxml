@@ -1,7 +1,7 @@
 <!--pages/question/index.wxml-->
-<view class="text">
-  <text>题目</text>
-</view>
+<van-nav-bar title="题目"  >
+  <van-icon name="search" slot="right" />
+</van-nav-bar>
 <view class="quesbox">
   <view class="quesion">
     <view class="container">
@@ -16,12 +16,29 @@
     </view>
   </view>
 </view>
-<view class="text">
-  <text>答案</text>
-</view>
-<view class="quesbox" wx:for="{{AllAimg}}" wx:key="index">
-  <view class="quesion">
-   <view class="answerItem" data-idx="{{index}}" bindtap="preview2" style="background-image: url({{item}});">
-   </view>
+
+ 
+
+<view class="answerBox">
+  <van-nav-bar title="答案" border="{{false}}" >
+    <van-button 
+    wx:if="{{isAdmin==3&&AllAimg.length>0}}" 
+    bind:click="editAnswer"
+    slot="right" 
+    round 
+    size="small" 
+    type="default"
+    >修改答案</van-button>
+  </van-nav-bar>
+
+    <van-empty wx:if="{{AllAimg.length<1}}" image="error" description="暂无答案，等待老师上传" >
+      <van-button bind:click="goUploadeTeacher" wx:if="{{isAdmin==3}}" round type="danger" class="bottom-button">我是老师，我来上传</van-button>
+    </van-empty>
+
+  <view class="quesbox" wx:for="{{AllAimg}}" wx:key="index">
+    <view class="quesion">
+    <view class="answerItem" data-idx="{{index}}" bindtap="preview2" style="background-image: url({{item}});">
+    </view>
+    </view>
   </view>
 </view>

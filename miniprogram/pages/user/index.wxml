@@ -5,15 +5,15 @@
   <view class="right">
     <view class="info">
       <text class="name">{{UserInfo.name}}</text>
-      <text class="type" wx:if="{{UserInfo.isAdmin==0}}">学生</text>
+      <text class="type" wx:if="{{UserInfo.isAdmin==0&&token!=''}}">学生</text>
       <text class="type" wx:if="{{UserInfo.isAdmin==2}}">家长</text>
       <text class="type" wx:if="{{UserInfo.isAdmin==3}}">老师</text>
       <text class="type" wx:if="{{UserInfo.isAdmin==1}}">管理员</text>
     </view>
 
     
-    <van-button wx:if="{{!token}}" class="gotologin" type="primary" round plain size="mini" bind:click="goLogin">去登录</van-button>
-    <van-button wx:if="{{token}}" class="gotologin" type="primary" round plain size="mini" bind:click="">退出登录</van-button>
+    <van-button wx:if="{{!token}}" class="gotologin"  round plain size="mini" bind:click="goLogin">去登录</van-button>
+    <van-button wx:if="{{token}}" class="gotologin"  round plain size="mini" bind:click="loginOut">退出登录</van-button>
     
 
   </view>
