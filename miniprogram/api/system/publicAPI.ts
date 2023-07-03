@@ -38,6 +38,10 @@ static getProblemList = (page:Paging) =>
    httpRequest.get<answer>(
       baseUrl + '/Answer'+'/?id='+problemid,
     )
+static getTeacher = () =>
+    httpRequest.get(
+      baseUrl + '/Teacher',
+    )
 
 
 }

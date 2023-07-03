@@ -152,8 +152,18 @@ console.log({ [`searchList[${parentIndex}]`]: item })
         method:'post',
         name: 'file',
         // formData: { user: 'test' },
+        //待测试
+      }).then((res: { code: number; })=>{
+        if (res.code===401){
+            wx.showToast({
+            msg:"请登录后尝试",
+            icon:"none"
+          })
+          return
+        }
       })
    }, 2000, i );
+   
   }
   },
   

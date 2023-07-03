@@ -1,0 +1,4 @@
+/* pages/allTea/index.wxss */
+.top{
+  margin-bottom: 20px;
+}
