@@ -1,0 +1,11 @@
+<!--pages/allTea/index.wxml-->
+
+<view class="top">
+  <van-cell title="老师总数" value="{{total}}" />
+</view>
+<van-index-bar>
+  <view>
+    <van-cell wx:for="{{nameList}}" wx:key="index" title="{{item}}" />
+  </view>
+</van-index-bar>
+
