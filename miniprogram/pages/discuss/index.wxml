@@ -1,5 +1,4 @@
-<van-nav-bar title="论坛"  >
-</van-nav-bar>
+
 <!-- 搜索 -->
 <view class="so">
   <van-search 

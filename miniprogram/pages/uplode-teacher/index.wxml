@@ -6,7 +6,7 @@
     <view class="container">
       <!--轮播图-->
       <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for="{{Qimg}}" wx:key="index">
+        <block wx:for="{{AllQimg}}" wx:key="index">
           <swiper-item >
             <image src="{{item}}" bindtap="preview1" data-idx="{{index}}" class="slide-image" />
           </swiper-item>
@@ -20,8 +20,7 @@
 <view class="text">
   <text>上传答案</text>
 </view>
-<view class="uploadBox">
-  <van-cell-group title=" " border="{{ false }}" >
+<view class="picbox">
   <van-uploader 
   file-list="{{ fileList }}"  
   deletable="{{ true }}" 
@@ -29,25 +28,15 @@
   catch:delete="deleteImg" 
   use-before-read 
   bind:before-read="beforeRead" 
+  bind:oversize="oversize"
   max-count="4"
   max-size="2000000"
-  sizeType="compressed"
   upload-text="限制4张图片"
   />
-  </van-cell-group>
-  <van-cell-group title="请输入知识点范畴" inset>
-  <van-field
-    model:value="{{ value }}"
-    placeholder="如，力学"
-    border="{{ true }}"
-    maxlength="5"
-    show-word-limit	
-    bind:change="onChange"
-  />
-</van-cell-group>
-<view class="btn">
-  <van-button type="primary" size="large" bind:click="clickBtn">上传</van-button>
 </view>
+
+<view class="filter">
+    <filter searchList="{{searchList}}"   bind:clickchange='onChange' bind:clickdoCancel='doCancel'   bind:clickdoReset='reset'  bind:clickdoSubmit='doSubmit' > </filter>
 </view>
 <van-dialog id="van-dialog" />
 <van-toast id="van-toast" />

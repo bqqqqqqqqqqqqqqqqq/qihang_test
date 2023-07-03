@@ -21,7 +21,7 @@ interface oneProblem{
 }
 
 var listAll: oneProblem[][] =  []
-
+var app = getApp()
 Page({
   data: {
     show: false,
@@ -38,13 +38,11 @@ getAllProblem(){
  const Page: Paging = this.data.Paging 
   publicAPI.getProblemList(Page).then((res:any)=>{
     if(res.code===200){
-        // console.log(res)
-        // console.log(res.data)
         const listAll = this.data.listAll
         if (res.data.length != 0)  {
           const list:oneProblem[] = res.data
           this.formatTime(list)
-          this.coverimg(list)
+          // this.coverimg(list)
           listAll.push(list)
         }else{
           return
@@ -58,7 +56,6 @@ getAllProblem(){
             page:page
           }
         })
-       
     }else if (res.code==-1){
       wx.showToast({
         title:"已无更多数据",
@@ -95,7 +92,6 @@ onClose() {
   this.setData({ show: false });
 },
 gotoUplode(){
-  // console.log("tt")
   wx.navigateTo({
     url:'/pages/uplode/index'
   })
@@ -148,16 +144,32 @@ onRefresh:function(){
 },
 
 onLoad(){
-  
   // this.getAllProblem
+  if (app.globalData.token==""){
+    wx.showToast({
+      title:'请先登录',
+      icon:'none'
+    })
+    setTimeout(() => {
+      wx.navigateTo({
+        url:'../login/login'
+      })
+    }, 2000);
+  }
 },
 
 onShow(){
-  
   // this.getAllProblem
+  this.setData({
+    page:{
+      page:1,
+      size:10
+    }
+  })
+  this.getAllProblem()
 },
 
 onReady(){
-this.getAllProblem()
+
 },
 });

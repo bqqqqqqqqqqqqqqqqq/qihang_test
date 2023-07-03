@@ -24,14 +24,27 @@ Page({
   onLoad() {
   //   var id:string = this.options.id
   //  this.getProblemDetail(id) 
+
+  
+  this.setData({
+    isAdmin:app.globalData.UserInfo.isAdmin
+  })
   this.getProblemDetail((this.options.id as any) as string)
   },
   
 getProblemDetail(id:string){
   publicAPI.getAnswerDetail(id).then((res:any)=>{
     if (res.code===200){
-      this.data.AllQimg.push(...((res.data.problem_picture as string).split(";")))
-      this.data.AllAimg.push(...((res.data.answer_picture as string).split(";")))
+      res.picture.answer.forEach((ele: { answer_picture: string | null; }) => {
+        if (ele.answer_picture !=null){
+          this.data.AllAimg.push(ele.answer_picture)
+        }
+      });
+      res.picture.problem.forEach((ele: { problem_picture: string | null; }) => {
+        if (ele.problem_picture !=null){
+          this.data.AllQimg.push(ele.problem_picture)
+        }
+      });
         this.setData({
             AllQimg: this.data.AllQimg,
             AllAimg:this.data.AllAimg
@@ -74,13 +87,20 @@ preview2(e:any) {
   });
 },
 goUploadeTeacher(){
-  let id = this.options.id;
-  this.go('uplode-teacher','id='+id)
+  
+  let id = (this.options.id as any) as string;
+
+  // this.go('uplode-teacher','id='+id)
+  var dataList =JSON.stringify(this.data.AllQimg)
+
+  wx.navigateTo({
+    url:'../uplode-teacher/index'+'?id='+id+'&AllQimg='+dataList,
+  })
 },
 editAnswer(){
-
-}
-
   
+},
+
+
   
 })

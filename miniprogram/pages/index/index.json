@@ -5,5 +5,6 @@
     "van-tag": "@vant/weapp/tag/index"
   },
   "enablePullDownRefresh":true,
-  "backgroundTextStyle": "dark"
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText":"主页"
 }
