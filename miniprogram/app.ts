@@ -2,8 +2,6 @@
 interface UserInfo{
   name:string
   isAdmin:string
-  Picture:string
-  
 }
 interface Paging{
     size:number,
@@ -18,7 +16,6 @@ App({
     UserInfo:{
       name:"请先登录",
       isAdmin:"0",
-      code:""
     },
 
   },

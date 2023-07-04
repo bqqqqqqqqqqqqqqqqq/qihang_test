@@ -18,22 +18,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fileList: [
-      {
-        url: 'https://img.yzcdn.cn/vant/leaf.jpg',
-        name: '图片1',
-        isImage: true,
-        deletable: true,  
-      },
+    fileList:<any> [
+      // {
+      //   url: 'https://img.yzcdn.cn/vant/leaf.jpg',
+      //   name: '图片1',
+      //   isImage: true,
+      //   deletable: true,  
+      // },
       // Uploader 根据文件后缀来判断是否为图片文件
       // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-      {
-        url: 'http://iph.href.lu/60x60?text=default',
-        name: '图片2',
-        isImage: true,
-        deletable: true,
-      },
-      
+
     ],
     searchList: [
       {
@@ -58,9 +52,7 @@ Page({
         screenKey: '请选择教师',
         screenValue: [
           '高启强',
-          '封炉子',
-         
-        ].map((m) => ({
+          '封炉子',].map((m) => ({
           checked: false,
           value: m,
         })),
@@ -86,7 +78,7 @@ Page({
 
   deleteImg(event:any){
     let index= event.detail.index
-    console.log(index)//输出的就是图片所在fileList的下标
+    // console.log(index)//输出的就是图片所在fileList的下标
     var dataArray = this.data.fileList; // 获取数组数据
     dataArray.splice(index, 1); // 删除指定索引位置的元素
     this.setData({fileList: dataArray}); // 更新页面数据
@@ -122,7 +114,7 @@ Page({
       }
       item.screenValue[index].checked = true;
     }
-
+console.log({ [`searchList[${parentIndex}]`]: item })
     this.setData({ [`searchList[${parentIndex}]`]: item }, () => {
       let selected: any[] = [];
       this.data.searchList.map((n) => {
@@ -132,16 +124,16 @@ Page({
           }
         });
       });
-      wx.setStorageSync('query', selected);
+      // wx.setStorageSync('query', selected);
     });
   },
 
   doCancel() {
-    wx.setStorageSync('query', []);
+    // wx.setStorageSync('query', []);
     //关闭弹出层
     wx.navigateBack();
   },
-  doSubmit() {
+  doSubmit(e:any) {
     let selected:any = []
     // 获取所有选中
     this.data.searchList.map(n => {
@@ -151,31 +143,30 @@ Page({
         }
       })
     })
-    // wx.uploadFile({
-    //   url: "", //baseUrl+'', 仅为示例，非真实的接口地址
-    //   filePath: file.url,
-    //   name: 'file',
-    //   formData: { user: 'test' },
-    //   success(res: { data: any; }) {
-    //     // 上传完成需要更新 fileList
-    //     const { fileList = [] } = that.data;
-    //     fileList.push({ ...file, url: res.data });
-    //     that.setData({ fileList });
-    //   },
-    // });  
-    console.log(selected)
-    var pages = getCurrentPages() // 获取页面栈
-    var prevPage = pages[pages.length - 2] // 前一个页面
-    // 携带数据，返回登录之前的页面
-    prevPage.setData({
-      query: selected,
-      isBack: true
-    })
-    wx.navigateBack({
-      delta: 1
-    })
-  },
 
+  for (let i = 0;i<this.data.fileList.length;i++){
+    setTimeout(() =>{
+      wx.uploadFile({
+        url: baseUrl+"/UpPicture", //baseUrl+'', 仅为示例，非真实的接口地址
+        filePath: this.data.fileList[i].url  ,
+        method:'post',
+        name: 'file',
+        // formData: { user: 'test' },
+        //待测试
+      }).then((res: { code: number; })=>{
+        if (res.code===401){
+            wx.showToast({
+            msg:"请登录后尝试",
+            icon:"none"
+          })
+          return
+        }
+      })
+   }, 2000, i );
+   
+  }
+  },
+  
   reset(){
     const searchItem = this.data.searchList
     for (var i = 0; i < searchItem.length; i++) {
@@ -183,10 +174,22 @@ Page({
         searchItem[i].screenValue[j].checked=false
         }
     }
-    wx.setStorageSync('query', []) 
+
+    // wx.setStorageSync('query', []) 
     this.setData({
       searchList: searchItem
     })
   },
+oversize(){
+  wx.showToast({
+    title:"超过大小，请压缩后上传",
+    icon:"none"
+  })
+}, 
+async APITime() {
+  return new Promise(resolve =>setTimeout(() =>resolve, 1000))
+}
+
+
 
 })
