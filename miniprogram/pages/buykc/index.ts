@@ -8,28 +8,40 @@ Page({
     list:[
       {
         kid: 1,
-        cover_img:'../../static/images/a1.jpg',
+        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg',
         t_name:'dj',
         type: '数学',
         price:'8'
       },
       {
         kid: 2,
-        cover_img:'../../static/images/a1.jpg',
+        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg',
         type: '数学',
         price:'8'
       },
       {
         kid: 3,
-        cover_img:'../../static/images/a1.jpg',
+        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg',
         price:'8'
       }
     ]
   },
-  gotobuy(){
-    wx.navigateTo({
-      url: '/pages/order/index'
-    }) 
+    //跳转
+    go(url:string,params?:string){
+      let gourl = '';
+      if (params) {
+        gourl = '/pages/'+url+'/index?' + params;
+      }else{
+        gourl = '/pages/'+url+'/index';
+      }
+      wx.navigateTo({
+        url:gourl
+    });
+  },
+  gotobuy(e:any){
+    let p = e.currentTarget.dataset.kid;
+    this.go('order','kid='+p);
+    
   },
   /**
    * 生命周期函数--监听页面加载

@@ -93,6 +93,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/buykc/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

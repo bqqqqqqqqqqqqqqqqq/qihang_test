@@ -1,11 +1,17 @@
 <!--pages/buykc/index.wxml-->
-<view class="kcbox" wx:for="{{list}}" wx:key="kid">
-      <view class="kc">
-        <view class="kc_pic"   style="background-image: url({{item.cover_img}});">
-        </view>
-        <view class="text">{{item.t_name}}老师的{{item.type}}课</view>
-        <!-- <view class="text" style="color: red;">￥{{item.price}}</view> -->
-        <text class="text" style="color: red;">￥{{item.price}}</text>
-        <van-button round size="mini" type="danger" bind:click="gotobuy">立即购买</van-button>
-      </view>
+
+<view class="card" wx:for="{{list}}" wx:key="kid" >
+  <van-cell-group inset>
+  <van-card
+    desc="{{item.t_name}}老师"
+    title="{{item.type}}课"
+    thumb="{{item.cover_img}}"
+    price="{{item.price}}"
+  >
+    <view slot="footer">
+      <van-button round size="mini" type="danger" bind:click="gotobuy" data-kid="{{item.kid}}">购买</van-button>
+      <!-- <van-button round size="mini">按钮</van-button> -->
     </view>
+  </van-card>
+</van-cell-group>
+</view>
