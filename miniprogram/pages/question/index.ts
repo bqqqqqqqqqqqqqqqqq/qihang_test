@@ -1,4 +1,5 @@
 import publicAPI from "../../api/system/publicAPI";
+import userApi from "../../api/system/userAPI";
 
 var app = getApp()
 Page({
@@ -24,8 +25,6 @@ Page({
   onLoad() {
   //   var id:string = this.options.id
   //  this.getProblemDetail(id) 
-
-  
   this.setData({
     isAdmin:app.globalData.UserInfo.isAdmin
   })
@@ -49,7 +48,7 @@ getProblemDetail(id:string){
             AllQimg: this.data.AllQimg,
             AllAimg:this.data.AllAimg
         })
-        this.onLoad
+    
     } else {
         wx.showToast({
           title:"出现错误，请重试"
@@ -87,20 +86,56 @@ preview2(e:any) {
   });
 },
 goUploadeTeacher(){
-  
   let id = (this.options.id as any) as string;
-
-  // this.go('uplode-teacher','id='+id)
   var dataList =JSON.stringify(this.data.AllQimg)
-
   wx.navigateTo({
-    url:'../uplode-teacher/index'+'?id='+id+'&AllQimg='+dataList,
+    url:'../uplode-teacher/index'+'?id='+id+'&AllQimg='+dataList+'&delete=true',
   })
 },
 editAnswer(){
-  
-},
+  // this.goUploadeTeacher()
+  wx.showToast({
+    title:'请删除后重新上传即可',
+    icon:'none'
 
+  })
+},
+deleteAnswer(){
+  var that = this
+  const id = that.options.id||""
+  if (id ==""){
+    wx.showToast({
+      title:"请重试"
+    })
+    wx.setTimeout(() => {
+      wx.navigateBack()
+    }, 500);
+  }
+ wx.showModal({
+	  title: '提示',
+	  content: '是否删除该答案',
+	  success (res: { confirm: any; cancel: any; code:number;}) {
+      // console.log(app.globalData.token);
+	    if (res.confirm) {
+       userApi.TeacherDeleteAnswer({
+         needToken:true,
+         header:{
+        Authorization: app.globalData.token
+      }
+    },id).then((res)=>{
+      if(res.code==200){
+        console.log(1);
+        that.setData({
+          AllAimg:[]
+        })
+      }
+    })
+	    } else if (res.cancel) {
+	      
+	    }
+	  }
+	})
+},
 
   
 })

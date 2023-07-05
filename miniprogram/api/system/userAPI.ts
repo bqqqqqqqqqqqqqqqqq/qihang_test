@@ -45,7 +45,7 @@ export default class userApi {
     //    baseUrl 
     //    page
     //  )
-
+//  注册登录
     static UserwxPhoneLogin = (data: code,RequestConfig:{needToken:boolean}) =>
     httpRequest.post<WXPhoneLogUserInfo>(
       baseUrl + '/WXLogin',
@@ -56,6 +56,13 @@ export default class userApi {
     httpRequest.post(
       baseUrl + '/WXRegister',
       data,
+      RequestConfig
+    )
+    //  教师操控题目
+    static TeacherDeleteAnswer = (RequestConfig:{needToken:boolean,header:object},data:string) =>
+    httpRequest.post(
+      baseUrl + '/tea/DeleteAnswer'+"?id="+data,
+      {},
       RequestConfig
     )
 

@@ -12,17 +12,8 @@ Page({
     interval: 3000,
     duration: 1200,
     AllQimg:<string[]>[],
-    fileList:<any>[
-
-        // url: 'https://img.yzcdn.cn/vant/leaf.jpg',
-        // name: '图片1',
-        // isImage: true,
-        // deletable: true,  
-
-      // Uploader 根据文件后缀来判断是否为图片文件
-      // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-      
-    ],
+    fileList:<any>[],
+    problemID:"",
   },
   beforeRead(event:any){
     //before-read 事件可以在上传前进行校验，调用 callback 方法传入 true 表示校验通过，传入 false 表示校验失败。
@@ -62,8 +53,8 @@ Page({
       })
       return
     }
+    var that = this
   for (let i = 0;i<this.data.fileList.length;i++){
-    var uploadTime = setTimeout(() =>{
       wx.uploadFile({
         url: baseUrl+"/user/UpAnswer", //baseUrl+'', 仅为示例，非真实的接口地址
         filePath: this.data.fileList[i].url  ,
@@ -78,39 +69,34 @@ Page({
         },
         //待测试
         success(res: any){
-          // console.log(res);
-          // console.log(res.statusCode);
-          if (res.statusCode===401){
-            wx.showToast({
-            title:"登录失效，请重新登录",
-            icon:"none"
-          })
-          wx.removeStorageSync('token')
-          wx.removeStorageSync('UserInfo')
-          clearTimeout(uploadTime)
-          setTimeout(() => {
-            wx.navigateTo({
-              url:'../login/login'
-          })
-          }, 2000);
-          return
-        }else if (res.statusCode===200){
+          wx.showLoading({
+            title:"上传中",
+            mask:"true"
+        })
+       if (res.statusCode===200){
           wx.showToast({
             title:"已成功上传问题",
             icon:"none"
           })
+          wx.hideLoading()
+         var problemID =that.data.problemID
           setTimeout(()=>{
-            wx.navigateBack()
-          },2000)
+            let pages=getCurrentPages();
+            let beforePage=pages[pages.length-2];
+            beforePage.getProblemDetail(problemID)
+            wx.navigateBack({
+              delta: 1,
+         })
+          },500)
         }else {
           wx.showToast({
             title:"网络异常，请稍后重试试",
             icon:"none"
           })
         }
+        wx.hideLoading()
         },
       })
-    }, 2000, i );
   }
 },
 
@@ -143,7 +129,8 @@ Page({
     // console.log(list)
     this.data.AllQimg.push(...list)
     this.setData({
-      AllQimg:this.data.AllQimg
+      AllQimg:this.data.AllQimg,
+      problemID:this.options.id
     })
   },
 

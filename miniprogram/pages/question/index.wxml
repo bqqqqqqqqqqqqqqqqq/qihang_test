@@ -29,6 +29,14 @@
     size="small" 
     type="default"
     >修改答案</van-button>
+    <van-button 
+    wx:if="{{isAdmin==3&&AllAimg.length>0}}" 
+    bind:click="deleteAnswer"
+    slot="right" 
+    round 
+    size="small" 
+    type="default"
+    >删除答案</van-button>
   </van-nav-bar>
 
     <van-empty wx:if="{{AllAimg.length<1}}" image="error" description="暂无答案，等待老师上传" >

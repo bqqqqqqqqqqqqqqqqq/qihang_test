@@ -31,15 +31,12 @@ Page({
     },
     listAll
 },
-
-
-  
 getAllProblem(){
  const Page: Paging = this.data.Paging 
   publicAPI.getProblemList(Page).then((res:any)=>{
     if(res.code===200){
         const listAll = this.data.listAll
-        if (res.data.length != 0)  {
+        if (res.data  != null)  {
           const list:oneProblem[] = res.data
           this.formatTime(list)
           // this.coverimg(list)
@@ -56,7 +53,7 @@ getAllProblem(){
             page:page
           }
         })
-    }else if (res.code==-1){
+    }else if (res.data==null){
       wx.showToast({
         title:"已无更多数据",
         icon:"error",

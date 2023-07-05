@@ -95,9 +95,9 @@
           "scene": null
         },
         {
-          "name": "问题1",
-          "pathName": "pages/question/index",
-          "query": "id=1",
+          "name": "",
+          "pathName": "pages/buykc/index",
+          "query": "",
           "launchMode": "default",
           "scene": null
         }

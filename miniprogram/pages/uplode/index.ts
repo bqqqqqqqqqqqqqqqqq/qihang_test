@@ -175,7 +175,6 @@ Page({
   
       // 提交表单token上传图片
     for (let i = 0;i<this.data.fileList.length;i++){
-      var uploadTime = setTimeout(() =>{
         wx.uploadFile({
           url: baseUrl+"/user/UpPicture", //baseUrl+'', 仅为示例，非真实的接口地址
           filePath: this.data.fileList[i].url,
@@ -193,30 +192,21 @@ Page({
           },
           //待测试
           success(res: any){
-            // console.log(res);
-            // console.log(res.statusCode);
-            if (res.statusCode===401){
-              wx.showToast({
-              title:"登录失效，请重新登录",
-              icon:"none"
-            })
-            wx.removeStorageSync('token')
-            wx.removeStorageSync('UserInfo')
-            clearTimeout(uploadTime)
-            setTimeout(() => {
-              wx.navigateTo({
-                url:'../login/login'
-            })
-            }, 2000);
-            return
-          }else if (res.statusCode===200){
+              wx.showLoading({
+                  title:"上传中",
+                  mask:"true"
+              })
+            if (res.statusCode===200){
             wx.showToast({
               title:"已成功上传问题",
               icon:"none"
             })
+            wx.hideLoading()
             setTimeout(()=>{
-              wx.navigateBack()
-            },2000)
+              wx.redirectTo({
+                url: '../index/index'
+             })
+            },1000)
           }else {
             wx.showToast({
               title:"网络异常，请稍后重试试",
@@ -224,18 +214,7 @@ Page({
             })
           }
           },
-          // fail(res:{code:number}){
-          //   console.log(res)
-          //   if (res.code==401){
-          //   wx.showToast({
-          //   title:"请登录后尝试",
-          //   icon:"none"
-          // })
-          // clearTimeout(uploadTime)
-          // return
-          // }},
         })
-      }, 2000, i );
     }
   },
   

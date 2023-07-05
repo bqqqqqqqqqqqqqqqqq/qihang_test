@@ -95,16 +95,19 @@ class HttpRequest {
 			const contentType = requestConfig.method === 'GET' ? 'application/x-www-form-urlencoded' : 'application/json'
 			const header = {
 				'content-type': contentType
-			}
+      }
+      // header.push(requestConfig?.header)
 			wx.request({
 				method: requestConfig.method,
 				url: `${requestConfig.url}`,
 				data: requestConfig.data,
 				header: Object.assign(header, requestConfig?.header),
 				dataType: !requestConfig.dataType ? 'json' : '其他',
-				success: function (res: { statusCode: number; data: any }) {
-					console.log('发送返回:', res) //res:{cookies, data, header, statusCode}
-					const code = res.statusCode || -404
+				success: function (res: { statusCode: number; data: any;code:number }) {
+          console.log('发送返回:', res) //res:{cookies, data, header, statusCode}
+          // console.log(res.data.code)
+          // console.log(res.statusCode)
+					const code = res.data.code || -404
 					const data = res.data
 					/** 接口请求成功*/
 					if (code == 200) {
@@ -115,7 +118,14 @@ class HttpRequest {
 							title: '登录失效',
 							content: '登录失效，请重新登录',
 						}).then((resModa: { confirm: any }) => {
-							if (resModa.confirm) { }
+              wx.removeStorageSync('token')
+              wx.removeStorageSync('UserInfo')
+							if (resModa.confirm) { 
+                wx.navigateBack()
+                wx.redirectTo({
+                  url:'../pages/login/login'
+                })
+              }
 						})
 						reject({ code, msg: '未登录', data: data })
 					} else {
@@ -150,7 +160,7 @@ class HttpRequest {
 	 * @param {RequestConfig} OtherConfig request其他配置
 	 * @return {*}
 	 */
-	public post<T>(url: string, data: Object, OtherConfig?: RequestConfig) {
+	public post<T>(url: string, data?: Object, OtherConfig?: RequestConfig) {
 		return this.request<T>({ method: HttpMethod.POST, url, data, ...OtherConfig })
 	}
 
