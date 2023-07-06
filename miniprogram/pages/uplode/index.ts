@@ -1,5 +1,5 @@
 // pages/uplode/index.ts
-const baseUrl = require('../../api/base').allBaseUrl.GDEnvs.host
+let baseUrl = require('../../api/base').allBaseUrl.GDEnvs.host
 
 interface SearchItem {
   type: string;
@@ -12,6 +12,7 @@ interface ScreenValue {
   value: string;
   need:boolean;
 }
+var app = getApp();
 Page({
 
   /**
@@ -45,6 +46,7 @@ Page({
         screenValue: ['高一', '高二', '高三','dd','shfiksjlf' ].map((m) => ({
           checked: false,
           value: m,
+          need:true
         })),
       },
       {
@@ -55,6 +57,7 @@ Page({
           '封炉子',].map((m) => ({
           checked: false,
           value: m,
+          need:true
         })),
       },
     ],
@@ -107,14 +110,14 @@ Page({
     const { parentIndex, item, index } = e.detail;
 
     if (item.screenValue[index].checked) {
-      item.screenValue[index].checked = false;
+      item.screenValue[index].checked = true;
     } else {
       if (item.type != 'checkbox') {
         item.screenValue.map((n: { checked: boolean; }) => (n.checked = false));
       }
       item.screenValue[index].checked = true;
     }
-console.log({ [`searchList[${parentIndex}]`]: item })
+// console.log({ [`searchList[${parentIndex}]`]: item })
     this.setData({ [`searchList[${parentIndex}]`]: item }, () => {
       let selected: any[] = [];
       this.data.searchList.map((n) => {
@@ -134,37 +137,85 @@ console.log({ [`searchList[${parentIndex}]`]: item })
     wx.navigateBack();
   },
   doSubmit(e:any) {
-    let selected:any = []
-    // 获取所有选中
-    this.data.searchList.map(n => {
-      n.screenValue.map(m => {
-        if (m.checked == true) {
-          selected.push(m.value)
-        }
+      let selected:any = []
+      // 获取所有选中
+      this.data.searchList.map(n => {
+        n.screenValue.map(m => {
+          if (m.checked == true) {
+            selected.push(m.value)
+          }
+        })
       })
-    })
+      if (this.data.fileList.length===0){
+        wx.showToast({
+          title:"请上传题目",
+          icon:"error"
+        })
+        return
+      }
+      // 判断是否全选
+     let checkedexit = false
+      for (let i = 0;i<this.data.searchList.length;i++){
+        checkedexit = false
+        for (let j = 0;j<this.data.searchList[j].screenValue.length;j++){
+          if (this.data.searchList[i].screenValue[j].checked==true){
+            checkedexit = true
+            break
+          }
+        }
+      }
+      if (checkedexit == false){
+        wx.showToast({
+          title:'请上传选项',
+          icon:'error'
+        })
+        return
+      }
+// console.log(selected)
+  
+      // 提交表单token上传图片
+    for (let i = 0;i<this.data.fileList.length;i++){
+        wx.uploadFile({
+          url: baseUrl+"/user/UpPicture", //baseUrl+'', 仅为示例，非真实的接口地址
+          filePath: this.data.fileList[i].url,
+          method:'post',
+          name: 'file',
+          formData: {
+            // token:app.globalData.token
+            subjects:selected[0],
+            grade:selected[1],
+            teacher:selected[2]
 
-  for (let i = 0;i<this.data.fileList.length;i++){
-    setTimeout(() =>{
-      wx.uploadFile({
-        url: baseUrl+"/UpPicture", //baseUrl+'', 仅为示例，非真实的接口地址
-        filePath: this.data.fileList[i].url  ,
-        method:'post',
-        name: 'file',
-        // formData: { user: 'test' },
-        //待测试
-      }).then((res: { code: number; })=>{
-        if (res.code===401){
+          },
+          header: {
+            Authorization: app.globalData.token
+          },
+          //待测试
+          success(res: any){
+              wx.showLoading({
+                  title:"上传中",
+                  mask:"true"
+              })
+            if (res.statusCode===200){
             wx.showToast({
-            msg:"请登录后尝试",
-            icon:"none"
-          })
-          return
-        }
-      })
-   }, 2000, i );
-   
-  }
+              title:"已成功上传问题",
+              icon:"none"
+            })
+            wx.hideLoading()
+            setTimeout(()=>{
+              wx.redirectTo({
+                url: '../index/index'
+             })
+            },1000)
+          }else {
+            wx.showToast({
+              title:"网络异常，请稍后重试试",
+              icon:"none"
+            })
+          }
+          },
+        })
+    }
   },
   
   reset(){
@@ -186,10 +237,7 @@ oversize(){
     icon:"none"
   })
 }, 
-async APITime() {
-  return new Promise(resolve =>setTimeout(() =>resolve, 1000))
-}
-
-
-
+  async APITime() {
+    return new Promise(resolve =>setTimeout(() =>resolve, 1000))
+  }
 })

@@ -33,7 +33,7 @@
 </van-cell-group>
 
 <!-- 管理员 -->
-<block wx:if="{{UserInfo.isAdmin==1}}">
+<block wx:if="{{UserInfo.isAdmin==4}}">
   <van-cell-group title="管理老师">
     <van-cell title="查看所有老师" icon="user-o" is-link link-type="navigateTo" url="" size="large"/>
     <van-cell title="添加老师" icon="add-o" is-link link-type="navigateTo" url="" size="large"/>

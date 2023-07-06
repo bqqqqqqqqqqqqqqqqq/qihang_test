@@ -10,8 +10,8 @@ const envVersion = accountInfo.miniProgram.envVersion || 'develop'
   */
 const GDEnvs = {
   develop: {
-    host: 'http://10.34.183.67:8888',
-    imgHost: 'http://10.34.183.67:8888'
+    host: 'http://localhost:8888',
+    imgHost: 'http://localhost:8888'
   },
   trial: {
     host: 'http://localhost:8888',
@@ -27,5 +27,5 @@ export class allBaseUrl {
   /**
    * 国地服务器
   */
-  static GDEnvs = GDEnvs[envVersion]
+  static GDEnvs = (GDEnvs as any)[envVersion]
 }

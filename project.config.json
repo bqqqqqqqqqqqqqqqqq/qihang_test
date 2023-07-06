@@ -39,5 +39,7 @@
     "ignore": [],
     "include": []
   },
-  "appid": "wxdad92335c81be5ba"
+  "appid": "wxdad92335c81be5ba",
+  "projectname": "qihang_test",
+  "libVersion": "2.25.2"
 }
