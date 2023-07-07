@@ -89,7 +89,6 @@ Page({
   },
   onSubmit(){
     let oid = this.data.cascaderValue;
-    console.log(oid);
     this.setData({
       show2: true,
     });

@@ -16,7 +16,6 @@ Page({
       username: decodeURIComponent(options.username),
       gender: decodeURIComponent(options.gender)
     });
-    console.log(options.username)
   },
   //保存按钮
   formSubmit:function(e:any){

@@ -68,7 +68,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   login(e:any){
-    // console.log(e.detail.value.username)
     // this.getUserinfo(e.detail.value.phone,e.detail.value.password)
     
   },

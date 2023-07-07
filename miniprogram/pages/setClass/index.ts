@@ -77,7 +77,6 @@ Page({
     }
   },
   fieldChange(event:any){
-    console.log(event.detail);
     this.setData({
       err:'请确认' 
     })
@@ -97,7 +96,6 @@ Page({
   //删除
   deleteStu(e:any){
     e = parseInt(e.currentTarget.dataset.sid);
-    console.log(e);
     let myAdd:MyObject[]= this.data.added;
     let myUnAdd:MyObject[]= this.data.unadd;
     this.removeItemById(e,myAdd,myUnAdd);
@@ -111,7 +109,6 @@ Page({
   //添加
   addStu(e:any){
     e = parseInt(e.currentTarget.dataset.sid);
-    console.log(e);
     let myAdd:MyObject[]= this.data.added;
     let myUnAdd:MyObject[]= this.data.unadd;
     this.removeItemById(e,myUnAdd,myAdd);
@@ -123,7 +120,6 @@ Page({
   },
  
   onLoad(options) {
-    // console.log(options.bname);//输出传参
     let v = options.bname;
     if(v===undefined){
       v='';

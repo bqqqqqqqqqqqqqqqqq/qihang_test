@@ -81,7 +81,6 @@ Page({
 
   deleteImg(event:any){
     let index= event.detail.index
-    // console.log(index)//输出的就是图片所在fileList的下标
     var dataArray = this.data.fileList; // 获取数组数据
     dataArray.splice(index, 1); // 删除指定索引位置的元素
     this.setData({fileList: dataArray}); // 更新页面数据
@@ -117,7 +116,6 @@ Page({
       }
       item.screenValue[index].checked = true;
     }
-// console.log({ [`searchList[${parentIndex}]`]: item })
     this.setData({ [`searchList[${parentIndex}]`]: item }, () => {
       let selected: any[] = [];
       this.data.searchList.map((n) => {
@@ -171,7 +169,6 @@ Page({
         })
         return
       }
-// console.log(selected)
   
       // 提交表单token上传图片
     for (let i = 0;i<this.data.fileList.length;i++){

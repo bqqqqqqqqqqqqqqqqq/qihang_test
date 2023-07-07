@@ -53,14 +53,11 @@ Page({
   },
   gocloSmall(e:any){
     let p = e.currentTarget.dataset.bid;
-    console.log(p);
     this.go("cloSmall",p);
   },
   //
   replaceList(oneList:any, newElement:any,id:string) {
     // 遍历List数组，找到要替换的对象元素索引
-    console.log(newElement);
-    
     for (let i = 0; i < oneList.length; i++) {
       if (oneList[i].kid === id) { 
         // 通过splice()方法将该元素替换为新对象元素
@@ -86,7 +83,6 @@ Page({
           // on confirm
           o.todayDone=false;
           o.done--;
-          console.log(o);
           this.replaceList(oneList,o,id)
         })
         .catch(() => {
@@ -97,8 +93,6 @@ Page({
       o.done++;
       this.replaceList(oneList,o,id)
     }
-    console.log(11);
-    
     
   },
   /**

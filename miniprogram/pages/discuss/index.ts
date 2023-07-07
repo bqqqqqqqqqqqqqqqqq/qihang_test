@@ -41,8 +41,6 @@ getAllProblem(Page: Paging){
   publicAPI.getProblemList(Page).then((res:any)=>{
     
     if(res.code===200){
-        // console.log(res)
-        // console.log(res.data)
         const listAll = this.data.listAll
         if (res.data.length != 0)  {
           listAll.push(res.data)
@@ -61,7 +59,6 @@ getAllProblem(Page: Paging){
             page:page
           }
         })
-        console.log(listAll);
     }else if (res.code==-1){
       wx.showToast({
         title:"已无更多数据",
@@ -72,8 +69,6 @@ getAllProblem(Page: Paging){
   })
   },
   goProblemDetail(e:any){
-    // console.log(e);
-    // console.log(e.currentTarget.dataset.id);
     const id = e.currentTarget.dataset.id;
     
     wx.navigateTo({
@@ -98,10 +93,8 @@ getAllProblem(Page: Paging){
     });
   },
   onSearch() {
-    console.log(this.data.value);
   },
   onClick() {
-    console.log(this.data.value);
   },
 
 })

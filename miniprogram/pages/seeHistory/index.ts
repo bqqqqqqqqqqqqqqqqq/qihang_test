@@ -33,7 +33,6 @@ Page({
   },
   //补签
   buq(e:any){
-    console.log(111,e.currentTarget.dataset.bu);
     let myIndex = e.currentTarget.dataset.bu;
     const arr = this.data.cList;
     const item = arr.find(item => item.no === myIndex);

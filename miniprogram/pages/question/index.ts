@@ -115,7 +115,6 @@ deleteAnswer(){
 	  title: '提示',
 	  content: '是否删除该答案',
 	  success (res: { confirm: any; cancel: any; code:number;}) {
-      // console.log(app.globalData.token);
 	    if (res.confirm) {
        userApi.TeacherDeleteAnswer({
          needToken:true,
@@ -124,7 +123,6 @@ deleteAnswer(){
       }
     },id).then((res)=>{
       if(res.code==200){
-        console.log(1);
         that.setData({
           AllAimg:[]
         })

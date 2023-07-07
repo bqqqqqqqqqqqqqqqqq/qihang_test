@@ -30,11 +30,9 @@ Page({
 
 
   onLoad:()=>{
-    // console.log(app.globalData);
   },
  
   ping(data:any) {
-      console.log(baseUrl+'/ping')
       httpRequest.post<null>(
         baseUrl + '/ping',
         data

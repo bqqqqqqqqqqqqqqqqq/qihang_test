@@ -35,10 +35,8 @@ Page({
     this.go('allstu')
   },
   gotoSetClass(e:any){
-    console.log(e);
     let p = e.currentTarget.dataset.bname;
     p = 'bname='+p;
-    console.log(p);
     this.go('setClass',p)
   },
   onClose(event:any) {

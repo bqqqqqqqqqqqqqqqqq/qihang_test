@@ -39,9 +39,7 @@ goHistory(){
 //签到、撤销
 clickBtn(e:any){
   let i = e.currentTarget.dataset.oneitem;
-  console.log(i);
   i.todayDone===true?i.todayDone=false:i.todayDone=true;
-  console.log(i);
 },
   /**
    * 生命周期函数--监听页面加载
