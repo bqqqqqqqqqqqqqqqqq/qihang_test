@@ -2,12 +2,12 @@
 <view class="card" wx:for="{{list}}" wx:key="kid" data-kid="{{item.kid}}" bindtap="gokcChild">
   <van-cell-group inset>
   <van-card
-    desc="{{item.t_name}}老师"
-    title="{{item.type}}课"
+    desc="{{item.teacherName}}老师"
+    title="{{item.className}}课"
     thumb="{{item.cover_img}}"
   >
     <view slot="footer">
-      <van-button round size="mini">已上{{item.rate}}</van-button>
+      <van-button round size="mini">已上{{item.complete}}/{{item.completeTotal}}</van-button>
       <!-- <van-button round size="mini">按钮</van-button> -->
     </view>
   </van-card>

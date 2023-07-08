@@ -5,6 +5,7 @@ import  userApi  from '../../api/system/userAPI'
 
 
 interface UserInfo{
+  id:number,
   name:string,
   isAdmin:string
 }
@@ -12,13 +13,14 @@ interface UserInfo{
 var app = getApp()
 Page({
   data:{
+    
     // src:'../../static/images/default.jpg',
     // uid:app.globalData.UserInfo.uid,
     // name:app.globalData.UserInfo.name,
     // type: app.globalData.UserInfo.isAdmin,  //1为默认用户，2为家长，3为老师，4为管理员
     UserInfo:app.globalData.UserInfo,
-    token:app.globalData.token
-
+    token:app.globalData.token,
+    id:app.globalData.UserInfo.id
   },
 
   onShow:function(){
@@ -29,15 +31,10 @@ Page({
   },
 
 
+
   onLoad:()=>{
   },
  
-  ping(data:any) {
-      httpRequest.post<null>(
-        baseUrl + '/ping',
-        data
-      )
-    },
   // getUserinfo(){
   //   userApi.getUserInfo({phone:"1234",password:"12345"},{needToken:true}).then((res)=>{
   //     if(res.code===200){
@@ -87,10 +84,19 @@ Page({
     wx.removeStorageSync('token')
     wx.removeStorageSync('UserInfo')
     this.setData({
-      token: ''
+      token: '',
+      UserInfo:{
+        name:"请先登录",
+        isAdmin:"0"
+      },
     })
-}
+},
 
+navigateToKC(){
+  wx.navigateTo({
+      url:'../kc/index/?id'+this.data.UserInfo.isAdmin
+  })
+},
 
 
 
