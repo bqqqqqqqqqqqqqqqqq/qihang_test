@@ -13,3 +13,4 @@
   </van-card>
 </van-cell-group>
 </view>
+<van-empty wx:if="{{list.length<1}}" description="未报名课程" />

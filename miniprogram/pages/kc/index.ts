@@ -6,26 +6,7 @@ Page({
    */
   data: {
     s_name:'李刚',
-    list:[
-      {
-        kid: 1,
-        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg',
-        t_name:'艾建国',
-        type: '数学',
-        rate:'8/10'
-      },
-      {
-        kid: 2,
-        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg',
-        type: '数学',
-        rate:'8/10'
-      },
-      {
-        kid: 3,
-        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg',
-        rate:'8/10'
-      }
-    ]
+    list:[]
   },
   //跳转
   go(url:string,params?:string){
