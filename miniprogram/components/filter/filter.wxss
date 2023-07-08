@@ -3,7 +3,7 @@
 .container {
   padding: 0 0 15px 15px;
   background: #fff;
-  min-height: 130vh;
+  /* min-height: 130vh; */
 }
 
 .search-title {

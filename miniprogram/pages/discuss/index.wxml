@@ -1,16 +1,10 @@
 
-<!-- 搜索 -->
-<view class="so">
-  <van-search 
-  value="{{ value }}" 
-  use-action-slot 
-  placeholder="搜索题目的相关词，如高一"
-  bind:change="onChange"
-  bind:search="onSearch"
-    >
-    <view slot="action" bind:tap="onClick">搜索</view>
-  </van-search>
-</view>
+<!-- 筛选 -->
+<view class="filter">
+    <filter searchList="{{searchList}}"   bind:clickchange='onChange' bind:clickdoCancel='doCancel'   bind:clickdoReset='reset'  bind:clickdoSubmit='doSubmit' > </filter>
+    <van-button type="default" size="large" bind:click="doSubmit">确定</van-button>
+    <van-button type="default" size="large" bind:click="test">设置筛选项</van-button>
+  </view>
 
 <view wx:for="{{listAll}}" wx:key="key" wx:for-item="item">
   <view class="quesbox" wx:for="{{item}}" wx:key="key2" wx:for-item="item2" bindtap="goProblemDetail" data-id="{{item2.id}}" data-url="{{item2.picture}}">
