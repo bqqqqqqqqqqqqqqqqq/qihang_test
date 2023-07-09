@@ -11,9 +11,4 @@
       </view>
     </view>
   </view>
-  <view class="search-bottom">
-    <view class="cancel" bindtap="doCancel">取消</view>
-    <view class="cancel" bindtap="doReset">重置</view>
-    <view class="confirm" bindtap="doSubmit">确认</view>
-  </view>
 </view>
