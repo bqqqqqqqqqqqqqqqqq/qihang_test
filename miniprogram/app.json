@@ -23,7 +23,8 @@
     "pages/cloSmall/index",
     "pages/uplode-teacher/index",
     "pages/signup/index",
-    "pages/allTea/index"
+    "pages/allTea/index",
+    "pages/addTea/index"
   ],
     "tabBar": {
       "color": "#000",
