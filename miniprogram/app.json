@@ -25,7 +25,8 @@
     "pages/signup/index",
     "pages/allTea/index",
     "pages/addTea/index",
-    "pages/questionToMe/index"
+    "pages/questionToMe/index",
+    "pages/removePower/index"
   ],
     "tabBar": {
       "color": "#000",

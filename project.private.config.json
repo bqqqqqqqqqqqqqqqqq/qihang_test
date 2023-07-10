@@ -121,6 +121,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/removePower/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
