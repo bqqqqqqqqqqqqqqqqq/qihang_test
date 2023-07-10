@@ -24,7 +24,8 @@
     "pages/uplode-teacher/index",
     "pages/signup/index",
     "pages/allTea/index",
-    "pages/addTea/index"
+    "pages/addTea/index",
+    "pages/questionToMe/index"
   ],
     "tabBar": {
       "color": "#000",
