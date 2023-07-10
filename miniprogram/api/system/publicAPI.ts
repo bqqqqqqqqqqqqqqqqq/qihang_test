@@ -34,14 +34,16 @@ static getProblemList = (page:Paging) =>
       baseUrl + '/AllProblem'+"/?page="+page.page+"&"+"size="+page.size,
       page
     );
+    static searchProblemList = (page:Paging,grade:string,teacher:string,subject:string) =>
+   httpRequest.get<oneProblem>(
+      baseUrl + '/SearchProblem'+"/?page="+page.page+"&"+"size="+page.size+"&grade="+grade+"&teacher="+teacher+"&subject="+subject,
+    );
     static getAnswerDetail = (problemid:string) =>
    httpRequest.get<answer>(
       baseUrl + '/Answer'+'/?id='+problemid,
     )
 static getTeacher = () =>
-    httpRequest.get(
-      baseUrl + '/Teacher',
+    httpRequest.get<string[]>(
+      baseUrl + '/GetTea',
     )
-
-
 }
