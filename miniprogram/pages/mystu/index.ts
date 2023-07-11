@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    type:'w',
     unadd:'',
     notice:'',
     bList:[
@@ -85,9 +86,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
+  onLoad(options) {
     //通知
     this.ifUnadd()
+    //接受type=admin
+    let t = options.type;
+    this.setData({
+      type: t
+    })
   },
 
   /**

@@ -38,18 +38,19 @@
 <!-- 管理员 -->
 <block wx:if="{{UserInfo.isAdmin==4}}">
   <van-cell-group title="管理老师">
-    <van-cell title="查看所有老师" icon="user-o" is-link link-type="navigateTo" url="" size="large"/>
+    <van-cell title="查看所有老师" icon="user-o" is-link link-type="navigateTo" url="../addTea/index" size="large"/>
     <van-cell title="添加老师" icon="add-o" is-link link-type="navigateTo" url="../addTea/index" size="large"/>
     <van-cell title="删除老师" icon="delete-o" is-link link-type="navigateTo" url="../removePower/index?type=老师" size="large"/>
   </van-cell-group>
   <van-cell-group title="管理学生">
-    <van-cell title="查看所有学生" icon="friends-o" is-link link-type="navigateTo" url="" size="large"/>
+    <van-cell title="查看所有学生" icon="friends-o" is-link link-type="navigateTo" url="../allstu/index" size="large"/>
   </van-cell-group>
   <van-cell-group title="管理班级">
-    <van-cell title="查看所有班级" icon="cluster-o" is-link link-type="navigateTo" url="" size="large"/>
+    <van-cell title="查看所有班级" icon="cluster-o" is-link link-type="navigateTo" url="../mystu/index?type=admin" size="large"/>
   </van-cell-group>
   <van-cell-group title="高级">
     <van-cell title="添加管理员" icon="gem-o" is-link link-type="navigateTo" url="../addTea/index?type=管理员" size="large"/>
+    <van-cell title="移除管理员" icon="delete-o" is-link link-type="navigateTo" url="../removePower/index?type=管理员" size="large"/>
   </van-cell-group>
 </block>
 
