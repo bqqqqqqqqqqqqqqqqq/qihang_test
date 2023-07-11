@@ -25,13 +25,14 @@
   <van-cell wx:if="{{UserInfo.isAdmin==2}}" title="我的课程" icon="orders-o" is-link link-type="navigateTo" url="../kc/index" size="large"/>
   <van-cell wx:if="{{UserInfo.isAdmin==1}}" title="购买课程" icon="cart-o" is-link link-type="navigateTo" url="../buykc/index" size="large"/>
   <van-cell wx:if="{{UserInfo.isAdmin==2}}" title="购买课程" icon="cart-o" is-link link-type="navigateTo" url="../buykc/index" size="large"/>
+  <van-cell wx:if="{{UserInfo.isAdmin==1}}" title="我是家长，绑定我的孩子" icon="aim" is-link link-type="navigateTo" url="../bind/index" size="large"/>
   <van-cell wx:if="{{UserInfo.isAdmin==2}}" title="绑定孩子" icon="aim" is-link link-type="navigateTo" url="../bind/index" size="large"/>
   <van-cell wx:if="{{UserInfo.isAdmin==3}}" title="我的学生" icon="friends-o" is-link link-type="navigateTo" url="../mystu/index" size="large"/>
   <van-cell wx:if="{{UserInfo.isAdmin==3}}" title="班级签到" icon="location-o" is-link link-type="navigateTo" url="../clockIn/index" size="large"/>
-  <van-cell wx:if="{{UserInfo.isAdmin==3}}" title="我的回答" icon="sign" is-link bindtap="goAns" size="large"/> 
-  <van-cell wx:if="{{UserInfo.isAdmin==3}}" title="待我回答" icon="chat-o" is-link link-type="navigateTo" url="" size="large"/>
+  <van-cell wx:if="{{UserInfo.isAdmin==3}}" title="我的回答" icon="sign" is-link link-type="navigateTo" url="../questionToMe/index"  size="large"/> 
+  <van-cell wx:if="{{UserInfo.isAdmin==3}}" title="待我回答" icon="chat-o" is-link link-type="navigateTo" url="../questionToMe/index" size="large"/>
   <van-cell title="资料设置" icon="records" is-link link-type="navigateTo" url="../setProfile/index" size="large"/>
-  <van-cell title="帮助中心" icon="flag-o" is-link link-type="navigateTo" url="" size="large"/>
+  <van-cell title="帮助中心" icon="flag-o" is-link link-type="navigateTo" url="../help/index" size="large"/>
 </van-cell-group>
 
 <!-- 管理员 -->
@@ -46,6 +47,9 @@
   </van-cell-group>
   <van-cell-group title="管理班级">
     <van-cell title="查看所有班级" icon="cluster-o" is-link link-type="navigateTo" url="" size="large"/>
+  </van-cell-group>
+  <van-cell-group title="高级">
+    <van-cell title="添加管理员" icon="gem-o" is-link link-type="navigateTo" url="../addTea/index?type=管理员" size="large"/>
   </van-cell-group>
 </block>
 

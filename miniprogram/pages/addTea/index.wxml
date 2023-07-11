@@ -1,4 +1,4 @@
-<van-cell-group title="请从下列默认用户（学生）中，选择/添加老师"></van-cell-group>
+<van-cell-group title="请从下列默认用户（学生）中，选择/添加{{type}}"></van-cell-group>
 <van-cell-group wx:for="{{userList}}" wx:key="id">
   <van-field
     border="{{ false }}"
@@ -9,7 +9,7 @@
     <van-button slot="button" size="small" type="primary" 
     data-name="{{item.name}}" data-id="{{item.id}}"
     bind:click="click">
-      添加为老师
+      添加
     </van-button>
   </van-field>
 </van-cell-group>
