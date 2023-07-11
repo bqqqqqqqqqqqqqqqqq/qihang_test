@@ -1,17 +1,9 @@
-page{
-  font-size: 32rpx;
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
-.section{
-  padding: 40rpx;
-  border-bottom: 1px solid gray;
-}
-.section:last-child{
-  border: none;
-}
-.section-title{
-  width: 20%;
-  float: left;
-}
-label{
-  padding: 0 20rpx;
+.submit{
+  margin: 10px 10px 100px 10px;
 }
