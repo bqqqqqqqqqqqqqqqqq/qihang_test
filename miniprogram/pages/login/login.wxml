@@ -10,7 +10,8 @@
   <van-cell-group inset>
     <van-field
       label="手机"
-      maxlength="6"
+      maxlength="11"
+      type="number"
       model:value="{{ phone }}"
       placeholder="请输入手机号码"
       bind:change="onChange"
