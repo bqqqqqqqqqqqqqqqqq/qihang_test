@@ -1,30 +1,23 @@
 // pages/buykc/index.ts
+
+import userApi from "../../api/system/userAPI";
+interface kcInfo {
+  cover_img:string
+  teacherName:string
+  className:string
+  complete:string
+  completeTotal:string
+}
+
+var app = getApp()
+var kcInfo:any[]
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[
-      {
-        kid: 1,
-        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg',
-        t_name:'dj',
-        type: '数学',
-        price:'8'
-      },
-      {
-        kid: 2,
-        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg',
-        type: '数学',
-        price:'8'
-      },
-      {
-        kid: 3,
-        cover_img:'https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg',
-        price:'8'
-      }
-    ]
+    list:<any>[],
   },
     //跳转
     go(url:string,params?:string){
@@ -43,59 +36,51 @@ Page({
     this.go('order','kid='+p);
     
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
 
-  },
+  AllKC(){
+    var that = this
+    // const id = that.options.id||""
+    // if (id ==""){
+    //   wx.showToast({
+    //     title:"请重试"
+    //   })
+    //   setTimeout(() => {
+    //     wx.navigateBack()
+    //   }, 500);
+    //   return
+    // }
+     userApi.AllClass({
+           needToken:true,
+           header:{
+          Authorization: app.globalData.token
+        }
+      },"").then((res:any)=>{
+        if(res.code==200&&res.data!=null){
+          console.log(res.data)
+          const list :kcInfo[]=res.data
+          const listAll = this.data.list
+          listAll.push(...list)
+          that.setData({
+            list:listAll
+          })
+      }else if (res.data==null){
+        wx.showToast({
+          title:"已无更多数据",
+          icon:"none"
+        })
+      }else{
+        wx.showToast({
+          title:"已无更多数据",
+          icon:"none"
+        })
+        setTimeout(()=>{
+          wx.navigateBack()
+        },1000)
+        return
+      }
+    })},
+onLoad(){
+  this.AllKC()
+}
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

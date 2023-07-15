@@ -52,7 +52,7 @@ gokcChild(e:any){
       wx.showToast({
         title:"请重试"
       })
-      wx.setTimeout(() => {
+      setTimeout(() => {
         wx.navigateBack()
       }, 500);
       return
@@ -63,7 +63,6 @@ gokcChild(e:any){
           Authorization: app.globalData.token
         }
       },id).then((res:any)=>{
-        
         if(res.code==200){
           console.log(res.data)
           const list :kcInfo[]=res.data
