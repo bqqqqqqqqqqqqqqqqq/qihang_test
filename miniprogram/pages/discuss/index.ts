@@ -72,9 +72,17 @@ Page({
       listAll
     ],
     listAll,
-    searchList
+    searchList,
+    activeNames: ['1']
     
 },
+
+clickTop(event:any){
+  this.setData({
+    activeNames: event.detail,
+  });
+},
+
 //设置筛选项
 
 onChange(e:any) {
@@ -157,7 +165,18 @@ getAllProblem(grade:string,teacher:string,subject:string){
     console.log(grade,teacher,subject);
     
     this.getAllProblem(grade,teacher,subject)
+    this.setData({
+      activeNames: [],
+    });
 
+  },
+  reTry(){
+    this.setData({
+      activeNames: ['1'],
+    });
+  },
+  onPullDownRefresh: function () {
+    //下拉加载更多
   },
   goProblemDetail(e:any){
     const id = e.currentTarget.dataset.id;
