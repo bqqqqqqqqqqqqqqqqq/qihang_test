@@ -76,7 +76,10 @@ gokcChild(e:any){
       }
     })
   },
-
+   //下拉刷新
+   onPullDownRefresh: function () {
+    
+  },
 
 
 

@@ -4,5 +4,7 @@
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-card": "@vant/weapp/card/index"
-  }
+  },
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh":true
 }

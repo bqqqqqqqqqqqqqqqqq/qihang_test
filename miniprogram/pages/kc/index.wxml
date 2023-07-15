@@ -1,4 +1,4 @@
-<view class="card" wx:for="{{list}}" wx:key="kid" data-kid="{{item.kid}}>
+<view class="card" wx:for="{{list}}" wx:key="kid" data-kid="{{item.kid}}" >
   <van-cell-group inset>
   <van-card
     desc="{{item.teacherName}}老师"
