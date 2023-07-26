@@ -1,9 +1,14 @@
 
 <!-- 筛选 -->
-<view class="filter">
-    <filter searchList="{{searchList}}"   bind:clickchange='onChange' bind:clickdoCancel='doCancel'   bind:clickdoReset='reset'  bind:clickdoSubmit='doSubmit' > </filter>
-    <van-button type="default" size="large" bind:click="doSubmit">确定</van-button>
-  </view>
+<van-collapse value="{{activeNames}}" bind:change="clickTop">
+  <van-collapse-item title=""  value="筛选" name="1">
+    <view class="filter" >
+      <filter searchList="{{searchList}}"   bind:clickchange='onChange' bind:clickdoCancel='doCancel'   bind:clickdoReset='reset'  bind:clickdoSubmit='doSubmit' > </filter>
+      <van-button type="default" size="large" bind:click="doSubmit">确定</van-button>
+    </view>
+  </van-collapse-item>
+</van-collapse>
+
 <view wx:for="{{listAll}}" wx:key="key" wx:for-item="item">
   <view class="quesbox" wx:for="{{item}}" wx:key="key2" wx:for-item="item2" bindtap="goProblemDetail" data-id="{{item2.id}}" data-url="{{item2.picture}}">
     <view class="quesion">
@@ -13,3 +18,6 @@
     </view>
   </view>
 </view>
+<van-empty description="获取内容失败" wx:if="{{listAll.length<1}}">
+  <van-button round type="danger" class="bottom-button" bindtap="reTry">重试</van-button>
+</van-empty>

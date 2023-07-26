@@ -6,4 +6,9 @@
 }
 .van-card__title{
   margin-top: 12px;
+  font-size: 18px;
+}
+.van-card__desc{
+  margin-top: 10px;
+  font-size: 14p x;
 }
