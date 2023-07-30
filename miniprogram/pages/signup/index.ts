@@ -158,7 +158,7 @@ Page({
               title:"注册成功",
               icon:"success",
             })
-            wx.setTimeout(() => {
+            setTimeout(() => {
                 wx.navigateTo({
                   url:'../user/index'
                 })
