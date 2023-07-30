@@ -26,13 +26,19 @@ Page({
   onShow:function(){
     this.setData({
       UserInfo:app.globalData.UserInfo,
-      token:app.globalData.token
+      token:app.globalData.token,
+      id:app.globalData.UserInfo.id
     })
   },
 
 
 
-  onLoad:()=>{
+onLoad(){
+this.setData({
+  UserInfo:app.globalData.UserInfo,
+  token:app.globalData.token,
+  id:app.globalData.UserInfo.id
+})
   },
  
   // getUserinfo(){
@@ -48,7 +54,19 @@ Page({
 
   WXLogin(code:string,){
     userApi.UserwxPhoneLogin({code},{needToken:true}).then((res)=>{
-      if(res.code===200){
+      if (res.msg==="未注册"){
+        //路由去注册页面
+        wx.showToast({
+          title:"未注册请先注册",
+          icon:"none"
+        })
+        setTimeout(() => {
+          wx.navigateTo({
+            url:'../signup/index'
+          })
+        }, 500);
+        return
+      }else if(res.code===200){
         wx.showToast({
           title:"登录成功",
           icon:"none"
@@ -59,17 +77,6 @@ Page({
         wx.setStorageSync('UserInfo',res.data.userInfo)
         wx.setStorageSync('token',res.data.token)
         this.onShow()
-      }else if (res.code===-1){
-        //路由去注册页面
-        wx.showToast({
-          title:"未注册请先注册",
-          icon:"none"
-        })
-        setTimeout(() => {
-          wx.navigateTo({
-            url:'../signup/index'
-          })
-        }, 1000);
       }
     })
   },

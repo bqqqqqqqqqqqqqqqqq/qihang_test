@@ -1,50 +1,44 @@
 // pages/setClass/index.ts
-
+import userApi from "../../api/system/userAPI";
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 interface MyObject {
-  sid: number;
-  sname: string;
+  id: number;
+  name: string;
   grade: string;
 };
 
+
+var app = getApp()
 Page({
   data: {
-    value:'',
+    class:{
+      className:<any>"",
+      classID:<any>"",
+    },
     err:'',
     fieldDisabled:false,
     btn:"确认",
     show: false,
-    added:[
-      {
-        sid:7890,
-        sname:"丽丽",
-        grade: "一"
-      },
-      {
-        sid:790,
-        sname:"李丽",
-        grade: "一"
-      }
-    ],
+    added:<any>[],
     unadd:[//存储未添加
       {
-        sid: 77,
-        sname: 'uu',
+        id: 77,
+        name: 'uu',
         grade:"二"
       },
       {
-        sid: 55,
-        sname: 'tt',
+        id: 55,
+        name: 'tt',
         grade:"二"
       },
       {
-        sid: 1,
-        sname: '温州',
+        id: 1,
+        name: '温州',
         grade:"二"
       },
       {
-        sid: 2,
-        sname: '杭州',
+        id: 2,
+        name: '杭州',
         grade:"二"
       },
     ]
@@ -52,8 +46,8 @@ Page({
 
   },
   //实现“已添加”与“未添加”的元素交换
-  removeItemById(sid: number, source: MyObject[], target: MyObject[]) {
-    const index = source.findIndex(item => item.sid === sid);
+  removeItemById(id: number, source: MyObject[], target: MyObject[]) {
+    const index = source.findIndex(item => item.id === id);
     if (index !== -1) {
       const item = source.splice(index, 1)[0];
       target.push(item);
@@ -83,7 +77,27 @@ Page({
   },
   //添加按钮
   addstu(){
+    userApi.GetAllStudent({
+      needToken:true,
+      header:{
+    Authorization: app.globalData.token
+  }
+}).then((res:any)=>{
+  if(res.code==200){
+    const AllStu = this.data.unadd
+    if (res.data!=null){
+      const Stu =res.data
+      AllStu.push(...Stu) 
+      this.setData({
+        unadd:AllStu
+      })
+    }
     this.showPopup();
+  }else{
+
+  }
+})
+
   },
   //弹出层
   showPopup() {
@@ -95,7 +109,7 @@ Page({
   },
   //删除
   deleteStu(e:any){
-    e = parseInt(e.currentTarget.dataset.sid);
+    e = parseInt(e.currentTarget.dataset.id);
     let myAdd:MyObject[]= this.data.added;
     let myUnAdd:MyObject[]= this.data.unadd;
     this.removeItemById(e,myAdd,myUnAdd);
@@ -108,7 +122,8 @@ Page({
   },
   //添加
   addStu(e:any){
-    e = parseInt(e.currentTarget.dataset.sid);
+    e = parseInt(e.currentTarget.dataset.id);
+    
     let myAdd:MyObject[]= this.data.added;
     let myUnAdd:MyObject[]= this.data.unadd;
     this.removeItemById(e,myUnAdd,myAdd);
@@ -120,14 +135,34 @@ Page({
   },
  
   onLoad(options) {
-    let v = options.bname;
-    if(v===undefined){
-      v='';
-      this.setData({
-        err:'输入并确认' 
-      })
-    }
-    this.setData({value:v})
+    let className = options.className;
+    let classID =options.classID;
+    this.setData({
+      class:{
+        className:className,
+        classID:classID,
+      }
+    })
+    userApi.AllClassStudent({
+      needToken:true,
+      header:{
+     Authorization: app.globalData.token
+   }
+ },String(classID)).then((res:any)=>{
+   if(res.code==200&&res.data!=null){
+     const list =res.data
+     const listAll = this.data.added
+     listAll.push(...list)
+     this.setData({
+       added:listAll
+     })
+ }else if (res.data==null){
+   wx.showToast({
+     title:"已无更多数据",
+     icon:"none"
+   })
+ }
+})
   },
 
  

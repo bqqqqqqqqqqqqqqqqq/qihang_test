@@ -5,7 +5,7 @@
 </view>
 <van-index-bar>
   <view>
-    <van-cell wx:for="{{nameList}}" wx:key="index" title="{{item}}" />
+    <van-cell wx:for="{{nameList}}" wx:key="index" title="{{item.name}}" />
   </view>
 </van-index-bar>
 

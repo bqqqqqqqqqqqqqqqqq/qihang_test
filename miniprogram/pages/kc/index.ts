@@ -20,7 +20,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    s_name:'李刚',
     list:<any>[],
   },
   //跳转
@@ -48,6 +47,13 @@ gokcChild(e:any){
   detailKC(){
     var that = this
     const id = that.options.id||""
+    const isAdmin = app.globalData.UserInfo.isAdmin
+    let identify =""
+    if (isAdmin ==1){
+       identify="stu"
+    }else if (isAdmin ==2){
+       identify="par"
+    }
     if (id ==""){
       wx.showToast({
         title:"请重试"
@@ -57,23 +63,46 @@ gokcChild(e:any){
       }, 500);
       return
     }
-     userApi.StuDetailClass({
-           needToken:true,
-           header:{
-          Authorization: app.globalData.token
-        }
-      },id).then((res:any)=>{
-        if(res.code==200){
-          console.log(res.data)
-          const list :kcInfo[]=res.data
-          const listAll = this.data.list
-          listAll.push(...list)
-          that.setData({
-            list:listAll
-          })
-
+    if(identify=="stud"){
+        userApi.StuDetailClass({
+          needToken:true,
+          header:{
+        Authorization: app.globalData.token
       }
-    })
+    },id).then((res:any)=>{
+      if(res.code==200){
+        console.log(res.data)
+        const list :kcInfo[]=res.data
+        const listAll = this.data.list
+        if (list!=null){
+          listAll.push(...list)
+        }
+        that.setData({
+          list:listAll
+        })
+    }
+  })
+    }else if (identify=="par"){
+      userApi.ParStuDetailClass({
+        needToken:true,
+        header:{
+      Authorization: app.globalData.token
+    }
+  },id).then((res:any)=>{
+    if(res.code==200){
+      const list :kcInfo[]=res.data
+      const listAll = this.data.list
+      if (list!=null){
+        listAll.push(...list)
+      }
+
+      that.setData({
+        list:listAll
+      })
+  }
+})
+    }
+
   },
    //下拉刷新
    onPullDownRefresh: function () {

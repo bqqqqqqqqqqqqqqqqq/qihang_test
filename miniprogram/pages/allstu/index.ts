@@ -1,57 +1,62 @@
+import userApi from "../../api/system/userAPI"
+
 // pages/allstu/index.ts
+interface User{
+  sid:string,
+  name:string,
+}
+var AllStu:User[] = []
+var app =getApp()
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    total:999,
-    indexList: ["初一", "初二", 3, 4, 5, 6, 7, 8, 9, 10],
+    total:0,
+    // indexList: ["初一", "初二", 3, 4, 5, 6, 7, 8, 9, 10],
     sList: [
       {
         id: 1,
-        grade: "初一",
-        snames: [
-          {
-            sid:1,
-            name:"李四"
-          },
-          {
-            sid:2,
-            name:"张丽"
-          }
-        ]
+        grade: "学生",
+     
+          AllStu
+        
       },
-      {
-        id: 2,
-        grade: "初二",
-        snames: [
-          {
-            sid:6,
-            name:"饿货"
-          },
-          {
-            sid:7,
-            name:"二货"
-          },
-          {
-            sid:5,
-            name:"二ha"
-          },
-          {
-            sid:5,
-            name:"二b"
-          }
-        ]
-      }
     ],
-    
+    AllStu
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    
+    userApi.GetAllStudent({
+      needToken:true,
+      header:{
+    Authorization: app.globalData.token
+  }
+}).then((res:any)=>{
+  if(res.code==200){
+    const AllStu = this.data.AllStu
+    if (res.data!=null){
+      const Stu:User[] =res.data
+      AllStu.push(...Stu) 
+      this.setData({
+        sList:[
+          {
+            id: 1,
+            grade: "学生",
+              AllStu
+          },
+        ],
+        total:AllStu.length
+      })
+    }
+  }else{
+
+  }
+})
+
   },
 
   /**

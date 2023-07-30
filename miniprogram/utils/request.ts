@@ -66,9 +66,12 @@ class HttpRequest {
 		let msg = '服务找不到'
 		if (statusCode === 502 || statusCode === 503) {   
 			msg = '服务器开小差了~'
-		}
+    }
+    if (statusCode === 20000){
+      msg ='该用户未注册'
+    }
 		!requestConfig.noShowMsg && wx.showToast({
-			title: `${msg}，错误码：${statusCode}`,
+			title: `${msg}`,
 			icon: 'none'
 		})
 		return msg
@@ -107,7 +110,8 @@ class HttpRequest {
           console.log('发送返回:', res) //res:{cookies, data, header, statusCode}
           // console.log(res.data.code)
           // console.log(res.statusCode)
-					const code = res.data.code || -404
+          const code = res.data.code || -404
+
 					const data = res.data
 					/** 接口请求成功*/
 					if (code == 200) {
@@ -128,7 +132,15 @@ class HttpRequest {
               }
 						})
 						reject({ code, msg: '未登录', data: data })
-					} else {
+          }
+          // else if (code === -1) {
+          //   wx.redirectTo({
+          //     url:'/miniprogram/pages/signup/index'
+          //   })
+          //   reject({ code, msg: '未登录', data: data })
+          // }
+          
+           else {
 						//非200及401状态码-数据处理
 						const errMsg = _this.handerErrorStatus(code, requestConfig)
 						reject({ code, msg: errMsg, data })

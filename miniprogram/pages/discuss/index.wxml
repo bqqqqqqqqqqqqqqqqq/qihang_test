@@ -18,6 +18,6 @@
     </view>
   </view>
 </view>
-<van-empty description="获取内容失败" wx:if="{{listAll.length<1}}">
+<van-empty description="无筛选内容" wx:if="{{listAll.length<1&&search==1}}">
   <van-button round type="danger" class="bottom-button" bindtap="reTry">重试</van-button>
 </van-empty>

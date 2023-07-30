@@ -34,25 +34,17 @@ interface kcInfo {
   complete:string
   completeTotal:string
 }
-
+interface BaseInfo{
+  name:string,
+  isAdmin:string,
+}
 export default class userApi {
-  /**
-   * @description: 获取用户信息
-   * @return {*}
-   */
-
   static getUserInfo = (data: UserInfo,RequestConfig:{needToken:boolean}) =>
     httpRequest.get<ReturnUserInfo>(
       baseUrl + '/login',
       data,
       RequestConfig
     )
-
-    // static TokenLogin = (page:Paging) =>
-    // httpRequest.post<BaseInfo>(
-    //    baseUrl 
-    //    page
-    //  )
 //  注册登录
     static UserwxPhoneLogin = (data: code,RequestConfig:{needToken:boolean}) =>
     httpRequest.post<WXPhoneLogUserInfo>(
@@ -66,15 +58,7 @@ export default class userApi {
       data,
       RequestConfig
     )
-    //  教师操控题目
-    static TeacherDeleteAnswer = (RequestConfig:{needToken:boolean,header:object},data:string) =>
-    httpRequest.post(
-      baseUrl + '/tea/DeleteAnswer'+"?id="+data,
-      {},
-      RequestConfig
-    )
-
-    // 学生
+    // 学生-------------------------------------
     // 学生查询课程
     static StuDetailClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>
     httpRequest.get<kcInfo>(
@@ -82,20 +66,68 @@ export default class userApi {
       {},
       RequestConfig
     )
-    // 学生家长查询购买课程
+    // 学生家长查询能购买的课程
     static AllClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>
     httpRequest.get<kcInfo>(
       baseUrl + userUrl+'/AllClass',
       {},
       RequestConfig
     )
-
-  /**
-   * @description: 
-   * @return {*}
-   */
-  // static getVillageList = () =>
-  //   httpRequest.get<VillageList>(
-  //     baseUrl + '/mock/villageList',
-  //   )
+    // 学生--绑定孩子后----成为家长
+    static BindMyKID = (RequestConfig:{needToken:boolean,header:object},childPhone:string, parentsID:string)=>
+    httpRequest.post(
+      baseUrl+ userUrl+'/AddChild?'+'childPhone='+childPhone+'&parentsID='+parentsID,
+      {},
+      RequestConfig
+    )
+    // 家长查询孩子课程 
+    static ParStuDetailClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>httpRequest.get<kcInfo>(
+      baseUrl + userUrl+'/GetChildClass?id='+data,
+      {},
+      RequestConfig
+    )
+     //  教师操控题目
+    static TeacherDeleteAnswer = (RequestConfig:{needToken:boolean,header:object},data:string) =>
+     httpRequest.post(
+      baseUrl + '/tea/DeleteAnswer'+"?id="+data,
+     {},
+       RequestConfig
+    )
+      // @管理员
+      //管理员查看所有学生
+      static GetAllStudent = (RequestConfig:{needToken:boolean,header:object}) =>
+      httpRequest.get(
+       baseUrl + '/tea/GetAllStudent',
+      {},
+        RequestConfig
+     )
+     // 管理员查看所有老师
+     static GetAllTeacher = (RequestConfig:{needToken:boolean,header:object}) =>
+     httpRequest.get(
+      baseUrl + '/tea/GetAllTeacher',
+     {},
+       RequestConfig
+    )
+    // 管理员添加老师
+    static AddTeacher = (RequestConfig:{needToken:boolean,header:object},id:string) =>
+    httpRequest.post(
+     baseUrl + '/tea/AddTeacher?id='+id,
+    {},
+      RequestConfig
+   )
+   // 管理员删除
+   static DeleteTeacher = (RequestConfig:{needToken:boolean,header:object},id:string) =>
+   httpRequest.post(
+    baseUrl + '/tea/DeleteTeacher?id='+id,
+   {},
+     RequestConfig
+  )
+// 管理员查看该班级的所有学生
+     // 管理员查看所有老师
+     static AllClassStudent = (RequestConfig:{needToken:boolean,header:object},data:string) =>
+     httpRequest.get(
+      baseUrl + '/tea/AllClassStudent?classID='+data,
+     {},
+       RequestConfig
+    )
 }
