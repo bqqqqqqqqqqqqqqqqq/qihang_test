@@ -114,6 +114,7 @@ Page({
         wx.setStorageSync('UserInfo',res.data.userInfo)
         wx.setStorageSync('token',res.data.token)
         this.onShow()
+        wx.navigateBack()
       }
     })
   },

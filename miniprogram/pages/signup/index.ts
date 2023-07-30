@@ -163,11 +163,13 @@ Page({
                   url:'../user/index'
                 })
             }, 1000);
-        }else if(res.code===1){
+        }else if(res.code===0){
           wx.showToast({
             title:"已注册",
-            icon:"error"
+            icon:"error",
+            duration:"2000"
           })
+          wx.navigateBack()
         }else if(res.code===-1  ){
           wx.showToast({
             title:"服务器繁忙",
