@@ -12,6 +12,7 @@ const options = [
     children: [{ text: '南京市', value: '320100' }],
   },
 ];
+const stuList = ["哈哈哈"];
 
 Page({
   data: {
@@ -24,7 +25,8 @@ Page({
     options,
     fieldValue: '',
     cascaderValue: '',
-    
+    stuList,
+    show0:false,
     
   },
   //输入框
@@ -34,6 +36,30 @@ Page({
       value: v,
     });
   },
+  getCount(event:any) {
+    this.setData({
+      count: event.detail
+    })
+  },
+  onClose0() {
+    this.setData({
+      show0: false,
+    });
+  },
+  onClick0() {
+    this.setData({
+      show0: true,
+    });
+  },
+  chose(e:any){
+    console.log(e.currentTarget.dataset.name);
+    this.setData({
+      value: e.currentTarget.dataset.name,
+      show0: false
+    })
+    
+  },
+  
   onClick() {
     this.setData({
       show: true,

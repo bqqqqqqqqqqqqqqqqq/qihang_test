@@ -9,15 +9,15 @@
   thumb="{{ imageURL }}"
 />
 <van-divider />
-<!-- <van-picker columns="{{ columns }}" title="标题" show-toolbar bind:change="onChange" /> -->
-<van-cell-group>
-  <van-field
-    value="{{ value }}"
-    label="姓名"
-    placeholder="请输入学生名字"
-    bind:change="onChange"
-  />
-</van-cell-group>
+
+<van-field
+  value="{{ value }}"
+  is-link
+  readonly
+  label="姓名"
+  placeholder="请选择孩子姓名"
+  bind:tap="onClick0"
+/>
 <van-divider />
 <van-field
   value="{{ fieldValue }}"
@@ -27,6 +27,12 @@
   placeholder="请选择规格"
   bind:tap="onClick"
 />
+<van-divider />
+<van-cell title="课程数量（节）">
+  <van-stepper model:value="{{ count }}"  bind:change="getCount"/>
+</van-cell>
+
+
 <van-popup show="{{ show }}" round position="bottom">
   <van-cascader
     wx:if="{{ show }}"
@@ -62,8 +68,33 @@
 </van-divider>
   <van-cell title="姓名" value="{{ value }}" />
   <van-cell title="规格" value="{{fieldValue}}" />
+  <van-cell title="数量" value="{{count}}" />
 </van-cell-group>
 <view class="btn">
   <van-button type="primary" block round>去支付</van-button>
 </view>
+</van-popup>
+
+<van-popup round position="bottom"  custom-style="height: 50%" show="{{ show0 }}" bind:close="onClose0" closeable>
+<view style="margin-top: 40px;">
+  <van-cell-group>
+  <view class="added-items" wx:for="{{stuList}}" wx:key="index">
+    <van-field
+    readonly
+    center
+    clearable
+    label="{{item}}"
+    border="true"
+    use-button-slot
+  >
+    <van-button slot="button" size="small" type="primary" 
+    data-name="{{item}}"
+    bind:click="chose">
+      选择
+    </van-button>
+  </van-field>
+  </view>
+</van-cell-group>
+</view>
+
 </van-popup>
