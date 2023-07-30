@@ -78,7 +78,14 @@ export default class userApi {
     // 学生查询课程
     static StuDetailClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>
     httpRequest.get<kcInfo>(
-      baseUrl + userUrl+'/DetailClass?id='+data,
+      baseUrl + userUrl+'/GetMyClass?id='+data,
+      {},
+      RequestConfig
+    )
+    // 学生家长查询购买课程
+    static AllClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>
+    httpRequest.get<kcInfo>(
+      baseUrl + userUrl+'/AllClass',
       {},
       RequestConfig
     )

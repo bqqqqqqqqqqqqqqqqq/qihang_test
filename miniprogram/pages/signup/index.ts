@@ -21,6 +21,7 @@ Page({
     password:'',
     password2:'',
     show:true
+    
   },
   onClickEye(){
     let boo = this.data.isPassword;

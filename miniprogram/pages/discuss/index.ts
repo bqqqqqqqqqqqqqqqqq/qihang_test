@@ -180,7 +180,6 @@ getAllProblem(grade:string,teacher:string,subject:string){
   },
   goProblemDetail(e:any){
     const id = e.currentTarget.dataset.id;
-    
     wx.navigateTo({
       url: '../question/index?id='+id,
       success(){
