@@ -1,5 +1,10 @@
+import userApi from "../../api/system/userAPI";
 import Dialog from "../../miniprogram_npm/@vant/weapp/dialog/dialog";
-
+interface kcInfo {
+  bid:number
+  bname:string
+}
+var app = getApp()
 Page({
 
   /**
@@ -9,16 +14,7 @@ Page({
     type:'w',
     unadd:'',
     notice:'',
-    bList:[
-      {
-        bid:111,
-        bname:"数学"
-      },
-      {
-        bid:112,
-        bname:"数"
-      }
-    ],
+    bList:<any>[],
   },
   //跳转
   go(url:string,params?:string){
@@ -36,9 +32,12 @@ Page({
     this.go('allstu')
   },
   gotoSetClass(e:any){
-    let p = e.currentTarget.dataset.bname;
-    p = 'bname='+p;
-    this.go('setClass',p)
+    let className = e.currentTarget.dataset.bname;
+    let classID = e.currentTarget.dataset.bid;
+
+    wx.navigateTo({
+      url:"../setClass/index?className="+className+"&classID="+classID
+  });
   },
   onClose(event:any) {
     const { position, instance } = event.detail;
@@ -83,10 +82,44 @@ Page({
   click(){
     this.go('setClass')
   },
+
+  AllKC(){
+    var that = this
+     userApi.AllClass({
+           needToken:true,
+           header:{
+          Authorization: app.globalData.token
+        }
+      },"").then((res:any)=>{
+        if(res.code==200&&res.data!=null){
+          const list :kcInfo[]=res.data
+          const listAll = this.data.bList
+          listAll.push(...list)
+          that.setData({
+            bList:listAll
+          })
+      }else if (res.data==null){
+        wx.showToast({
+          title:"已无更多数据",
+          icon:"none"
+        })
+      }else{
+        wx.showToast({
+          title:"已无更多数据",
+          icon:"none"
+        })
+        setTimeout(()=>{
+          wx.navigateBack()
+        },1000)
+        return
+      }
+    })},
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.AllKC()
     //通知
     this.ifUnadd()
     //接受type=admin

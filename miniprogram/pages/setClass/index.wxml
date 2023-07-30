@@ -2,7 +2,7 @@
 <van-cell-group title="班级名称">
   <van-field
     class="input"
-    value="{{ value }}"
+    value="{{ class.className }}"
     placeholder="请输入班级名"
     border="{{ false }}"
     bind:change="fieldChange"
@@ -21,15 +21,14 @@
 <van-cell-group title="已添加">
   <view class="added-items" wx:for="{{added}}" wx:key="index">
     <van-field
-    disabled
+
     center
     clearable
-    label="{{item.sname}}({{item.grade}})"
-    border="true"
+    label="{{item.name}}({{item.grade}})"
     use-button-slot
   >
     <van-button slot="button" size="small" type="danger" 
-    data-sid="{{item.sid}}"
+    data-id="{{item.id}}"
     bind:click="deleteStu">
       删除
     </van-button>
@@ -50,12 +49,12 @@
     readonly
     center
     clearable
-    label="{{item.sname}}({{item.grade}})"
+    label="{{item.name}}({{item.grade}})"
     border="true"
     use-button-slot
   >
     <van-button slot="button" size="small" type="primary" 
-    data-sid="{{item.sid}}"
+    data-id="{{item.id}}"
     bind:click="addStu">
       添加
     </van-button>

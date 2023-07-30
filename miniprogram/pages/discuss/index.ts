@@ -73,7 +73,8 @@ Page({
     ],
     listAll,
     searchList,
-    activeNames: ['1']
+    activeNames: ['1'],
+    search:0
     
 },
 
@@ -162,17 +163,17 @@ getAllProblem(grade:string,teacher:string,subject:string){
         subject = ele.value
       }
     });
-    console.log(grade,teacher,subject);
-    
     this.getAllProblem(grade,teacher,subject)
     this.setData({
       activeNames: [],
+      search:1,
     });
 
   },
   reTry(){
     this.setData({
       activeNames: ['1'],
+      search:0,
     });
   },
   onPullDownRefresh: function () {
