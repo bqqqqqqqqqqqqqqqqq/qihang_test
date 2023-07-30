@@ -33,12 +33,11 @@ Page({
       })
       wx.removeStorageSync('token')
       wx.removeStorageSync('UserInfo')
-     }if(res.msg=="已绑定过该用户"){
+     }else if(res.msg=="已绑定过该用户"){
       wx.showToast({
         title:"已绑定过该用户",
         icon:"none"
       })
-
      }else{
        wx.showToast({
          title:"绑定失败,请重试",
