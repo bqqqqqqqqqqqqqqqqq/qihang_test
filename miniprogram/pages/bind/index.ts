@@ -10,6 +10,9 @@ Page({
   data: {
     phone: '',
   },
+  goSignAndBind(){
+    
+  },
   //保存按钮
   submit(){
     let phone = this.data.phone;

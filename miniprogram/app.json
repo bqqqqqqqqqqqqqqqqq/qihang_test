@@ -28,7 +28,8 @@
     "pages/questionToMe/index",
     "pages/removePower/index",
     "pages/help/index",
-    "pages/bind/index"
+    "pages/bind/index",
+    "pages/signAndBind/index"
   ],
     "tabBar": {
       "color": "#000",

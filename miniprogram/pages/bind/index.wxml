@@ -17,5 +17,8 @@
     <view class="submit">
       <van-button type="primary" round bind:click="submit" size="large">绑定</van-button>
     </view>
+    <view >
+      <van-button type="primary" round  size="large">帮孩子注册并绑定</van-button>
+    </view>
   </view>
 </view>
