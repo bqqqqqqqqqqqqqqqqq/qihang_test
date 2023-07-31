@@ -21,6 +21,12 @@ Page({
    */
   data: {
     list:<any>[],
+    activeNames: [0,1,2],
+  },
+  onChange(event:any) {
+    this.setData({
+      activeNames: event.detail,
+    });
   },
   //跳转
   go(url:string,params?:string){

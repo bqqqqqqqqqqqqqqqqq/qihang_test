@@ -1,15 +1,19 @@
-<view class="card" wx:for="{{list}}" wx:key="kid" data-kid="{{item.kid}}" >
-  <van-cell-group inset>
-  <van-card
-    desc="{{item.teacherName}}老师"
-    title="{{item.className}}课"
-    thumb="{{item.cover_img}}"
-  >
-    <view slot="footer">
-      <van-button round size="small">已上{{item.complete}}/{{item.completeTotal}}</van-button>
-      <!-- <van-button round size="mini">按钮</van-button> -->
+<van-collapse value="{{activeNames}}" bind:change="onChange">
+  <van-collapse-item title="{{item.studentName}}" name="{{index}}" wx:for="{{list}}" wx:key="index">
+    <view class="card" wx:for="{{item.classes}}" wx:key="index" wx:for-item="classIte">
+      <van-card
+        desc="{{classIte.teacherName}}老师"
+        title="{{classIte.className}}课"
+        thumb="{{classIte.cover_img}}"
+      >
+      <view slot="footer">
+        <van-button round size="small">已上{{classIte.complete}}/{{classIte.completeTotal}}</van-button>
+        <!-- <van-button round size="mini">按钮</van-button> -->
+      </view>
+      </van-card>     
     </view>
-  </van-card>
-</van-cell-group>
-</view>
+
+  </van-collapse-item>
+</van-collapse>
+
 <van-empty wx:if="{{list.length<1}}" description="未报名课程" />
