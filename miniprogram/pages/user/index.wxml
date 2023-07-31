@@ -44,6 +44,7 @@
   </van-cell-group>
   <van-cell-group title="管理学生">
     <van-cell title="查看所有学生" icon="friends-o" is-link link-type="navigateTo" url="../allstu/index" size="large"/>
+    <van-cell title="查看所有订单" icon="friends-o" is-link link-type="navigateTo" url="../checkOrder/index" size="large"/>
   </van-cell-group>
   <van-cell-group title="管理班级">
     <van-cell title="查看所有班级" icon="cluster-o" is-link link-type="navigateTo" url="../mystu/index?type=admin" size="large"/>

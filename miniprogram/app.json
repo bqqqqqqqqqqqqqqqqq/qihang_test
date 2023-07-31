@@ -29,7 +29,8 @@
     "pages/removePower/index",
     "pages/help/index",
     "pages/bind/index",
-    "pages/signAndBind/index"
+    "pages/signAndBind/index",
+    "pages/checkOrder/index"
   ],
     "tabBar": {
       "color": "#000",

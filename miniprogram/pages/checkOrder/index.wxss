@@ -1,0 +1,15 @@
+/* pages/kc/index.wxss */
+.card{
+  margin-top: 20px;
+}
+.van-card{
+  background-color: #ffffff;
+}
+.van-card__title{
+  margin-top: 12px;
+  font-size: 18px;
+}
+.van-card__desc{
+  margin-top: 12px;
+  font-size: 15px;
+}
