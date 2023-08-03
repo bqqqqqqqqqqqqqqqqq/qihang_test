@@ -27,7 +27,6 @@
   <van-cell wx:if="{{UserInfo.isAdmin==1}}" title="我是家长，绑定我的孩子" icon="aim" is-link link-type="navigateTo" url="../bind/index" size="large"/>
   <van-cell wx:if="{{UserInfo.isAdmin==2}}" title="绑定孩子" icon="aim" is-link link-type="navigateTo" url="../bind/index" size="large"/>
 </van-cell-group>
-
 <van-cell-group wx:if="{{UserInfo.isAdmin==5||UserInfo.isAdmin==3}}">
   <van-cell title="我的学生" icon="friends-o" is-link link-type="navigateTo" url="../mystu/index" size="large"/>
   <!-- <van-cell title="班级签到" icon="location-o" is-link link-type="navigateTo" url="../clockIn/index" size="large"/> -->
@@ -43,8 +42,11 @@
     <van-cell title="删除老师" icon="delete-o" is-link link-type="navigateTo" url="../removePower/index?type=老师" size="large"/>
   </van-cell-group>
   <van-cell-group title="管理学生">
+    <van-cell title="添加学生" icon="add-o" is-link link-type="navigateTo" url="../addStudent/index" size="large"/>
     <van-cell title="查看所有学生" icon="friends-o" is-link link-type="navigateTo" url="../allstu/index" size="large"/>
-    <van-cell title="查看所有订单" icon="friends-o" is-link link-type="navigateTo" url="../checkOrder/index" size="large"/>
+    <van-cell title="查看所有订单" icon="friends-o" is-link link-type="navigateTo" url="../checkOrder/index" 
+    size="large"/>
+ 
   </van-cell-group>
   <van-cell-group title="管理班级">
     <van-cell title="查看所有班级" icon="cluster-o" is-link link-type="navigateTo" url="../mystu/index?type=admin" size="large"/>
@@ -54,10 +56,10 @@
     <van-cell title="移除管理员" icon="delete-o" is-link link-type="navigateTo" url="../removePower/index?type=管理员" size="large"/>
   </van-cell-group> -->
 </block>
-<van-cell-group title=" ">
+<!-- <van-cell-group title=""> -->
   <van-cell title="资料设置" icon="records" is-link link-type="navigateTo" url="../setProfile/index" size="large"/>
   <van-cell title="帮助中心" icon="flag-o" is-link link-type="navigateTo" url="../help/index" size="large"/>
-</van-cell-group>
+<!-- </van-cell-group> -->
 
 <!-- <van-button bind:click="getUserinfo">这1是2一个测试按钮</van-button> -->
 <block wx:if="{{token.length==0}}">

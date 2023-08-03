@@ -11,6 +11,9 @@ Page({
     phone: '',
   },
   goSignAndBind(){
+    wx.navigateTo({
+      url:'../signAndBind/index'
+    })
     
   },
   //保存按钮

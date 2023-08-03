@@ -27,7 +27,7 @@
     </view>
   </view>
 </view>
-<van-cell title="展示弹出层" is-link bind:click="showPopup" />
+
 
 <van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 40%;" round>
   <van-picker columns="{{ columns }}" show-toolbar="true" confirm-button-text="确认" cancel-button-text="取消"  bind:cancel="onClose" bind:confirm="onConfirm"/>

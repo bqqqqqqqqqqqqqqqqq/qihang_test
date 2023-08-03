@@ -15,10 +15,12 @@
     </van-cell-group>
     <van-dialog id="van-dialog" />
     <view class="submit">
-      <van-button type="primary" round bind:click="submit" size="large">绑定</van-button>
+      <van-button type="primary" round bind:click="submit" size="large" style="margin-bottom:20px">绑定</van-button>
+      <view style="margin-top:20px">
+      <van-button type="primary" round  size="large" bind:click="goSignAndBind" >帮孩子注册并绑定</van-button>
     </view>
-    <view >
-      <van-button type="primary" round  size="large">帮孩子注册并绑定</van-button>
     </view>
+
   </view>
 </view>
+ 
