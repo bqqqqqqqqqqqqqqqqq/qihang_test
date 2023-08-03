@@ -13,6 +13,7 @@ interface SearchItem {
 interface ScreenValue {
   checked: boolean;
   value: string;
+  need:boolean;
 }
 interface oneProblem{
   updated_at: any;
@@ -31,35 +32,7 @@ interface oneProblem{
 }
 
 var listAll: oneProblem[][] =  []
-var searchList: SearchItem[]=[
-  {
-    type: 'radio',
-    screenKey: '年级',
-    screenValue: ["高一","高二","高三"].map((m) => ({
-      checked: false,
-      value: m,
-      remark:"grade"
-    })),
-  },
-  {
-    type: 'radio',
-    screenKey: '教师',
-    screenValue: [].map((m) => ({
-      checked: false,
-      value: m,
-      remark:"teacher"
-    })),
-  },
-  {
-    type: 'radio',
-    screenKey: '知识点',
-    screenValue: ["语文","数学","英语","物理","历史","化学","生物","地理","思政","其他"].map((m) => ({
-      checked: false,
-      value: m,
-       remark:"subject"
-    })),
-  },
-]
+
 
 Page({
   data: {
@@ -72,7 +45,35 @@ Page({
       listAll
     ],
     listAll,
-    searchList,
+    searchList:[
+      {
+        type: 'radio',
+        screenKey: '年级',
+        screenValue: ["高一","高二","高三"].map((m) => ({
+          checked: false,
+          value: m,
+          remark:"grade"
+        })),
+      },
+      {
+        type: 'radio',
+        screenKey: '教师',
+        screenValue: [].map((m) => ({
+          checked: false,
+          value: m,
+          remark:"teacher"
+        })),
+      },
+      {
+        type: 'radio',
+        screenKey: '知识点',
+        screenValue: ["语文","数学","英语","物理","历史","化学","生物","地理","思政","其他"].map((m) => ({
+          checked: false,
+          value: m,
+           remark:"subject"
+        })),
+      },
+    ],
     activeNames: ['1'],
     search:0
     
@@ -208,7 +209,6 @@ getAllProblem(grade:string,teacher:string,subject:string){
          res.data.forEach((ele: { name: string; }) => {
            tea.push(ele.name)
          });
-       
         if (res.data!=null){
           const searchItem = this.data.searchList;
           searchItem[1].screenValue=tea.map((m) => ({
@@ -220,7 +220,6 @@ getAllProblem(grade:string,teacher:string,subject:string){
             searchList: searchItem
           })
         }
-
       }
     })
   

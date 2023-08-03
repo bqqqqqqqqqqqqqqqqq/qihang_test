@@ -101,7 +101,6 @@ gokcChild(e:any){
       if (list!=null){
         listAll.push(...list)
       }
-
       that.setData({
         list:listAll
       })

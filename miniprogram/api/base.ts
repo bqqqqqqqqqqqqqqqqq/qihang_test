@@ -10,8 +10,8 @@ const envVersion = accountInfo.miniProgram.envVersion || 'develop'
   */
 const GDEnvs = {
   develop: {
-    host: 'http://139.159.241.31:8888',
-    imgHost: 'http://139.159.241.31:8888'
+    host: 'http://localhost:8888',
+    imgHost: 'http://localhost:8888'
   },
   trial: {
     host: 'http://localhost:8888',

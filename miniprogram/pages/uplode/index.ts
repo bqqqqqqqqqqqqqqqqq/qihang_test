@@ -1,3 +1,5 @@
+import publicAPI from "../../api/system/publicAPI";
+
 // pages/uplode/index.ts
 let baseUrl = require('../../api/base').allBaseUrl.GDEnvs.host
 
@@ -19,17 +21,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fileList:<any> [
-      // {
-      //   url: 'https://img.yzcdn.cn/vant/leaf.jpg',
-      //   name: '图片1',
-      //   isImage: true,
-      //   deletable: true,  
-      // },
-      // Uploader 根据文件后缀来判断是否为图片文件
-      // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-
-    ],
+    fileList:<any> [],
     searchList: [
       {
         type: 'radio',
@@ -43,7 +35,7 @@ Page({
       {
         type: 'radio',
         screenKey: '请选择年级',
-        screenValue: ['高一', '高二', '高三','dd','shfiksjlf' ].map((m) => ({
+        screenValue: ['初一','初二','初三','高一', '高二', '高三'].map((m) => ({
           checked: false,
           value: m,
           need:true
@@ -52,9 +44,7 @@ Page({
       {
         type: 'radio',
         screenKey: '请选择教师',
-        screenValue: [
-          '高启强',
-          '封炉子',].map((m) => ({
+        screenValue: [].map((m) => ({
           checked: false,
           value: m,
           need:true
@@ -87,10 +77,29 @@ Page({
   },
 
   onLoad(_options) {
-    // this.query = wx.getStorageSync('query') || [];
-    // this.getSearchItems();
+    publicAPI.getTeacher().then((res:any)=>{
+      if (res.code==200){
+         var tea:string[] = []
+         res.data.forEach((ele: { name: string; }) => {
+           tea.push(ele.name)
+         });
+        if (res.data!=null){
+          const searchItem = this.data.searchList;
+          searchItem[2].screenValue=tea.map((m) => ({
+            checked: false,
+            value: m,
+            need:true,
+            remark:"teacher"
+          }))
+          this.setData({
+            searchList: searchItem
+          })
+        }
+      }
+    })
+  
   },
-
+    
 
   
   // getSearchItems() {

@@ -80,6 +80,16 @@ export default class userApi {
       {},
       RequestConfig
     )
+    // 学生--绑定新用户孩子---成为家长
+    static AddAndRegisterChild = (RequestConfig:{needToken:boolean,header:object},name:string,grade:string,parentsID:string)=>
+    httpRequest.post(
+      baseUrl+ userUrl+'/AddAndRegisterChild?'+'name='+name+'&grade='+grade+'&parentsID='+parentsID,
+      {},
+      RequestConfig
+    )
+
+
+
     // 家长查询孩子课程 
     static ParStuDetailClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>httpRequest.get<kcInfo>(
       baseUrl + userUrl+'/GetChildClass?id='+data,
@@ -101,6 +111,12 @@ export default class userApi {
       {},
         RequestConfig
      )
+     static GetAllVis = (RequestConfig:{needToken:boolean,header:object}) =>
+     httpRequest.get(
+      baseUrl + '/tea/GetAllVis',
+     {},
+       RequestConfig
+    )
      // 管理员查看所有老师
      static GetAllTeacher = (RequestConfig:{needToken:boolean,header:object}) =>
      httpRequest.get(
@@ -115,6 +131,13 @@ export default class userApi {
     {},
       RequestConfig
    )
+   // 管理员添加学生
+   static AddStudent = (RequestConfig:{needToken:boolean,header:object},id:string) =>
+   httpRequest.post(
+    baseUrl + '/tea/AddStudent?id='+id,
+   {},
+     RequestConfig
+  )
    // 管理员删除
    static DeleteTeacher = (RequestConfig:{needToken:boolean,header:object},id:string) =>
    httpRequest.post(

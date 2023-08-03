@@ -7,7 +7,7 @@ Page({
     name: '',
     grade: '',
     show: false,
-    columns:[1,2,4]
+    columns:["初一","初二","初三","高一","高二","高三"]
   },
 
   showPopup() {
@@ -25,6 +25,7 @@ Page({
     })
     this.onClose()
   },
+
   submit():any{
     let name = this.data.name;
     let grade = this.data.grade;
@@ -41,16 +42,18 @@ Page({
       })
       return false;
     };
-
-    userApi.AddNewChild({needToken:true,
+    userApi.AddAndRegisterChild({needToken:true,
       header:{
      Authorization: app.globalData.token
    }},name,grade,parentsID).then((res:any)=>{
      if (res.code == 200){
-    wx.showToast({
-      title:"注册绑定成功,请重新登录",
+    Dialog.alert({
+      message: '注册绑定成功,请重新登录,请勿重复操作',
     })
-    
+    setTimeout(()=>
+    wx.navigateBack({
+      delta:2
+    }),5000)
    }else if(res.msg=="已绑定过该用户"){
     wx.showToast({
       title:"已绑定过该用户",
@@ -63,10 +66,8 @@ Page({
      })
    } 
   }
-
    )
-    wx.navigateBack()
-    
+
   },
   /**
    * 生命周期函数--监听页面加载
