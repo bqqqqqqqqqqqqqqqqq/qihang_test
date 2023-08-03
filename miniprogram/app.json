@@ -31,7 +31,7 @@
     "pages/bind/index",
     "pages/signAndBind/index",
     "pages/checkOrder/index",
-    "pages/addStudent/index"
+    "pages/deleteKc/index"
   ],
     "tabBar": {
       "color": "#000",

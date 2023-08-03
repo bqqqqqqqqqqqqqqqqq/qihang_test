@@ -1,0 +1,18 @@
+<!--pages/buykc/index.wxml-->
+
+<view class="card" wx:for="{{list}}" wx:key="kid" >
+  <van-cell-group inset>
+  <van-card
+    desc="{{item.teacherName}}老师"
+
+    title="{{item.className}}课"
+    thumb="{{item.cover_img}}"
+
+  >
+    <view slot="footer">
+      <van-button round size="mini" type="danger" bind:click="delete" data-kid="{{item.kid}}"> 删除</van-button>
+      <!-- <van-button round size="mini">按钮</van-button> -->
+    </view>
+  </van-card>
+</van-cell-group>
+</view>
