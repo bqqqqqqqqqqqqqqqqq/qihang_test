@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-empty": "@vant/weapp/empty/index"
+  },
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText":"主页"
+}

@@ -1,0 +1,13 @@
+<!--pages/myAns/index.wxml-->
+<view wx:for="{{listAll}}" wx:key="key" wx:for-item="item">
+  <view class="quesbox" wx:for="{{item}}" wx:key="key2" wx:for-item="item2"  data-id="{{item2.id}}" data-url="{{item2.picture}}">
+    <view class="quesion">
+        <view class="q_pic"  bindtap="goProblemDetail" style="background-image: url({{item2.picture}});"></view>
+                <van-tag  class="q_tag" size="large" color="#F8F8F8" text-color="#5D717D" round primary>{{item2.subjects}}</van-tag>
+                <van-tag  class="q_tag" size="large" color="#F8F8F8" text-color="#5D717D" round primary>{{item2.grade}}</van-tag>
+        <van-button class="del" type="danger" size="mini" bindtap="delete">删除</van-button>
+    </view>
+  </view>
+</view>
+
+<van-empty wx:if="{{listAll.length<1}}" description="暂无已回答的问题" />
