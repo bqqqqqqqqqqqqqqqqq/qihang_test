@@ -1,0 +1,31 @@
+<van-cell-group title="添加课程">
+      <van-field
+        model:value="{{ name }}"
+        label="名称"
+        placeholder="请输入课程名称"
+        input-align="left"
+      />
+      <van-field
+        model:value="{{ teacher }}"
+        label="老师"
+        input-align="left"
+        bind:click-input="showPopup"
+      />
+      <van-field
+        model:value="{{ price }}"
+        label="定价"
+        placeholder="请输入价格"
+        input-align="left"
+        use-button-slot
+      >
+      <van-button slot="button" size="small" hairline disabled >
+      元/节
+      </van-button>
+      </van-field>
+    </van-cell-group>
+    <view class="submit">
+      <van-button type="primary" round bind:click="submit" size="large">添加</van-button>
+    </view>
+    <van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 60%;" round>
+  <van-picker columns="{{ columns }}" show-toolbar="true" confirm-button-text="确认" cancel-button-text="取消"  bind:cancel="onClose" bind:confirm="onConfirm"/>
+</van-popup>

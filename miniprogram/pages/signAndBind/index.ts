@@ -38,7 +38,7 @@ Page({
     };
     if(grade === ''){
       Dialog.alert({
-        message: '选择年级',
+        message: '请选择年级',
       })
       return false;
     };
