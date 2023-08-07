@@ -5,7 +5,6 @@
         <view class="q_pic"  bindtap="goProblemDetail" style="background-image: url({{item2.picture}});"></view>
                 <van-tag  class="q_tag" size="large" color="#F8F8F8" text-color="#5D717D" round primary>{{item2.subjects}}</van-tag>
                 <van-tag  class="q_tag" size="large" color="#F8F8F8" text-color="#5D717D" round primary>{{item2.grade}}</van-tag>
-        <van-button class="del" type="danger" size="mini" bindtap="delete">删除</van-button>
     </view>
   </view>
 </view>

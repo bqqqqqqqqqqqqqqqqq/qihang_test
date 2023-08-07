@@ -20,9 +20,6 @@ Page({
   data: {
     listAll
   },
-  delete(){
-
-  },
   goProblemDetail(){
     wx.navigateTo({
       url:'../question/index',
