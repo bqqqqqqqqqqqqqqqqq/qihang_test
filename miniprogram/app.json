@@ -33,7 +33,8 @@
     "pages/checkOrder/index",
     "pages/deleteKc/index",
     "pages/myAns/index",    
-    "pages/addStudent/index"
+    "pages/addStudent/index",
+    "pages/addKc/index"
   ],
     "tabBar": {
       "color": "#000",
