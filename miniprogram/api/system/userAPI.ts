@@ -2,6 +2,15 @@ import { httpRequest } from '../../utils/request'
 const baseUrl = require('../base').allBaseUrl.GDEnvs.host
 const userUrl = '/user'
 const stuUrl = '/stu'
+
+
+interface oneProblem{
+  code: any
+  pid:number,
+  cover_img:string,
+  tag:string[]
+}
+
 interface BaseInfo{
   name:string,
   isAdmin:string,
@@ -58,6 +67,13 @@ export default class userApi {
       data,
       RequestConfig
     )
+  static SetProfile = (RequestConfig:{needToken:boolean,header:object},id:string,name:string,grade:string) =>
+    httpRequest.post(
+      baseUrl + '/SetProfile?id='+id+"&name="+name+"&grade="+grade,
+      {},
+      RequestConfig
+    )
+
     // 学生-------------------------------------
     // 学生查询课程
     static StuDetailClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>
@@ -103,6 +119,20 @@ export default class userApi {
      {},
        RequestConfig
     )
+//  老师查询待回答
+    static WaitMyAnswer = (RequestConfig:{needToken:boolean,header:object}) =>
+   httpRequest.get<oneProblem>(
+      baseUrl + '/tea/WaitMyAnswer',
+      {},
+      RequestConfig
+    );
+    // 老师查询已回答
+    static MyAnswer = (RequestConfig:{needToken:boolean,header:object}) =>
+    httpRequest.get<oneProblem>(
+       baseUrl + '/tea/MyAnswer',
+       {},
+       RequestConfig
+     );
       // @管理员
       //管理员查看所有学生
       static GetAllStudent = (RequestConfig:{needToken:boolean,header:object}) =>
@@ -111,12 +141,7 @@ export default class userApi {
       {},
         RequestConfig
      )
-     static GetAllVis = (RequestConfig:{needToken:boolean,header:object}) =>
-     httpRequest.get(
-      baseUrl + '/tea/GetAllVis',
-     {},
-       RequestConfig
-    )
+
      // 管理员查看所有老师
      static GetAllTeacher = (RequestConfig:{needToken:boolean,header:object}) =>
      httpRequest.get(
@@ -131,6 +156,13 @@ export default class userApi {
     {},
       RequestConfig
    )
+   static GetAllVis = (RequestConfig:{needToken:boolean,header:object}) =>
+   httpRequest.get(
+    baseUrl + '/tea/GetAllVis',
+   {},
+     RequestConfig
+  )
+
    // 管理员添加学生
    static AddStudent = (RequestConfig:{needToken:boolean,header:object},id:string) =>
    httpRequest.post(

@@ -1,3 +1,4 @@
+
 import publicAPI from "../../api/system/publicAPI";
 
 // pages/uplode/index.ts
@@ -13,6 +14,7 @@ interface ScreenValue {
   checked: boolean;
   value: string;
   need:boolean;
+  remake:string;
 }
 var app = getApp();
 Page({
@@ -79,15 +81,16 @@ Page({
   onLoad(_options) {
     publicAPI.getTeacher().then((res:any)=>{
       if (res.code==200){
-         var tea:string[] = []
-         res.data.forEach((ele: { name: string; }) => {
-           tea.push(ele.name)
+         var tea:any = []
+         res.data.forEach((ele:any) => {
+           tea.push(ele)
          });
         if (res.data!=null){
           const searchItem = this.data.searchList;
-          searchItem[2].screenValue=tea.map((m) => ({
+          searchItem[2].screenValue=tea.map((m: { name: string;id:string }) => ({
             checked: false,
-            value: m,
+            value: m.name,
+            teacherID:m.id,
             need:true,
             remark:"teacher"
           }))
@@ -145,14 +148,19 @@ Page({
   },
   doSubmit(e:any) {
       let selected:any = []
+
       // 获取所有选中
       this.data.searchList.map(n => {
-        n.screenValue.map(m => {
-          if (m.checked == true) {
+        n.screenValue.map((m:any) => {
+          if (m.checked == true&&m.remark!="teacher") {
             selected.push(m.value)
+          }
+          if(m.remark=="teacher"&&m.checked==true){
+            selected.push(m.teacherID)
           }
         })
       })
+      console.log(selected)
       if (this.data.fileList.length===0){
         wx.showToast({
           title:"请上传题目",
@@ -190,8 +198,7 @@ Page({
             // token:app.globalData.token
             subjects:selected[0],
             grade:selected[1],
-            teacher:selected[2]
-
+            teacherID:selected[2]
           },
           header: {
             Authorization: app.globalData.token

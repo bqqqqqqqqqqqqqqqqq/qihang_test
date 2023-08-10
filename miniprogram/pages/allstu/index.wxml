@@ -2,7 +2,7 @@
 <van-index-bar index-list="{{ indexList }}" wx:for="{{ sList }}"  wx:key="index">
   <view>
     <van-index-anchor index="{{ item.grade }}">标题1</van-index-anchor>
-    <van-cell title="{{ item.name }}" wx:for="{{ item.AllStu }}" wx:key="index" />
+    <van-cell title="{{ item.name }}---------{{item.grade}}" wx:for="{{ item.AllStu}}" wx:key="index" />
   </view>
 
 </van-index-bar>

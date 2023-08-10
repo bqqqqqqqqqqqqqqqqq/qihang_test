@@ -124,10 +124,15 @@ class HttpRequest {
 						}).then((resModa: { confirm: any }) => {
               wx.removeStorageSync('token')
               wx.removeStorageSync('UserInfo')
+
 							if (resModa.confirm) { 
                 wx.navigateBack()
                 wx.redirectTo({
                   url:'../pages/login/login'
+                })
+              }else{
+                wx.redirectTo({
+                  url:'../pages/user/index'
                 })
               }
 						})

@@ -1,3 +1,11 @@
+
+import publicAPI from "../../api/system/publicAPI"
+import userApi from "../../api/system/userAPI";
+import { TimeData } from "../../miniprogram_npm/@vant/weapp/count-down/utils"
+
+
+const dayjs = require('../../utils/day.min.js');
+const app = getApp()
 interface oneProblem{
   pid:number,
   title:string,
@@ -8,28 +16,87 @@ interface oneProblem{
   //   name:string,
   //   Photo:
   // },
-  cover_img:string,
+  cover_img:string[],
   tag:string[]
-  Picture:string,
+  picture:string,
+  created_at:TimeData,
+  updated_at:TimeData,
 }
 
 var listAll: oneProblem[][] =  []
 Page({
-
   data: {
     listAll
   },
-  goProblemDetail(){
-      wx.navigateTo({
-        url:'../question/index',
-      })
-    },
+  getProblem(){
+     userApi.WaitMyAnswer({
+        needToken:true,
+        header:{
+      Authorization: app.globalData.token
+    }
+  }).then((res:any)=>{
+       if(res.code===200){
+           const listAll = this.data.listAll
+           if (res.data  != null)  {
+             const list:oneProblem[] = res.data
+             this.formatTime(list)
+             // this.coverimg(list)
+             listAll.push(list)
+           }else{
+             return
+           }
+
+           this.setData({
+             listAll:listAll,
+           })
+       }else if (res.data==null){
+         wx.showToast({
+           title:"已无更多数据",
+           icon:"error",
+           // errMsg:"已无更多数据"
+         })  
+       }
+     })
+     },
+   
+     // 问题详细页面
+  goProblemDetail(e:any){
+       const id = e.currentTarget.dataset.id;
+       wx.navigateTo({
+         url: '../question/index?id='+id,
+         success(){
+             wx.showToast()
+         },
+         fail(){
+           wx.showToast({
+             icon:"error",
+             title:"失败"
+           })
+           wx.navigateBack
+         }
+       })
+  },
+   //格式化时间
+formatTime(arr:oneProblem[] ){
+  for (var i=0;i<arr.length;i++){
+      arr[i].updated_at = dayjs(arr[i].updated_at).format('YYYY-MM-DD HH:mm')
+    }
+  },
+  //取第一个为封面
+  coverimg(arr:oneProblem[]){
+    if (arr.length == 0){
+      return
+    }
+    for (var i=0;i<arr.length;i++){
+      arr[i].picture=arr[i].picture.split(';')[0]
+    }
+  },
   
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-
+    this.getProblem()
   },
 
   /**

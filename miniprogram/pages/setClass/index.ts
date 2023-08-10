@@ -20,27 +20,7 @@ Page({
     btn:"确认",
     show: false,
     added:<any>[],
-    unadd:[//存储未添加
-      {
-        id: 77,
-        name: 'uu',
-        grade:"二"
-      },
-      {
-        id: 55,
-        name: 'tt',
-        grade:"二"
-      },
-      {
-        id: 1,
-        name: '温州',
-        grade:"二"
-      },
-      {
-        id: 2,
-        name: '杭州',
-        grade:"二"
-      },
+    unadd:<any>[//存储未添加
     ]
     
 
@@ -123,9 +103,9 @@ Page({
   //添加
   addStu(e:any){
     e = parseInt(e.currentTarget.dataset.id);
-    
     let myAdd:MyObject[]= this.data.added;
     let myUnAdd:MyObject[]= this.data.unadd;
+    
     this.removeItemById(e,myUnAdd,myAdd);
     this.setData({
       added : myAdd,
