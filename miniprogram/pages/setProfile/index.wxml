@@ -7,8 +7,25 @@
         label="姓名"
         placeholder="请输入真实姓名"
         input-align="right"
+        required
       />
+    <view bindtap="showPopup">
+   <van-field
+    label="年级"
+    placeholder="选择年级"
+    model:value="{{gender}}"
+    input-align="right"
+    required
+    readonly
+  />
+    </view>
     </van-cell-group>
+    <van-popup show="{{ show }}" bind:close="onClose"  position="bottom"
+  custom-style="height: 40%">
+    <van-picker title="选择年级" show-toolbar columns="{{ columns }}"  bind:cancel="onClose"
+  bind:confirm="onConfirm"/>
+</van-popup>
+
     <van-dialog id="van-dialog" />
     <view class="submit">
       <van-button type="primary" round bind:click="submit" size="large">保存</van-button>

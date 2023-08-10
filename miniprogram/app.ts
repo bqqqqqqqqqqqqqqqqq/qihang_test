@@ -24,7 +24,6 @@ App({
     // const logs = wx.getStorageSync('logs') || []
     this.globalData.token=wx.getStorageSync('token') || ""
     this.globalData.UserInfo=wx.getStorageSync('UserInfo') || {name:"请先登录",isAdmin:"0",};
-   
     }
 
     // logs.unshift(Date.now())

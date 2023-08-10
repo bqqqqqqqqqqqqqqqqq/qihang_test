@@ -40,7 +40,7 @@
   </van-nav-bar>
 
     <van-empty wx:if="{{AllAimg.length<1}}" image="error" description="暂无答案，等待老师上传" >
-      <van-button bind:click="goUploadeTeacher" wx:if="{{isAdmin==3}}" round type="danger" class="bottom-button">我是老师，我来上传</van-button>
+      <van-button bind:click="goUploadeTeacher" wx:if="{{isAdmin==3||isAdmin==4}}" round type="danger" class="bottom-button">我是老师，我来上传</van-button>
     </van-empty>
 
   <view class="quesbox" wx:for="{{AllAimg}}" wx:key="index">

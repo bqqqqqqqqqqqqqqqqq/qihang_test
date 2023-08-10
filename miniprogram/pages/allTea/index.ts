@@ -28,7 +28,6 @@ Page({
       if(res.code===200){
         let nameList = this.data.nameList;
         if(res.data!=null){
-          console.log(res.data.name)
           nameList.push(...res.data)
           this.setData({
             nameList: nameList,

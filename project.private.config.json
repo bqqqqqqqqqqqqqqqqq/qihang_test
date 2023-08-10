@@ -159,7 +159,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/addKc/index",
+          "pathName": "pages/addStudent/index",
           "query": "",
           "launchMode": "default",
           "scene": null

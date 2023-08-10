@@ -12,8 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phone:null,
-    password:null,
+    phone:"",
+    password:"",
     isPassword:true,
     eye:"closed-eye",
   },
@@ -51,7 +51,7 @@ Page({
       return false;
     };
     //通过
-    return true
+
     
   },
 
@@ -119,58 +119,15 @@ Page({
     })
   },
 
-  // getUserinfo(phone:string,password:string){
-  //   userApi.getUserInfo({password:password},{needToken:true}).then((res)=>{
-  //     console.log(res)
-  //     if(res.code===200){
-        
-  //     }
-  //   })
-  // },
-
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  goToSignUp(){
+    wx.navigateTo({
+      url:'../signup/index'
+    })
   }
+
+  //帐号密码登录 
+
+
+
+
 })
