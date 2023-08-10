@@ -24,7 +24,7 @@ Page({
    */
   data: {
     fileList:<any> [],
-    searchList: [
+    searchList:<SearchItem[]>[
       {
         type: 'radio',
         screenKey: '请选择科目',
@@ -119,7 +119,6 @@ Page({
 
   onChange(e: { detail: { parentIndex: any; item: any; index: any; }; }) {
     const { parentIndex, item, index } = e.detail;
-
     if (item.screenValue[index].checked) {
       item.screenValue[index].checked = true;
     } else {
@@ -148,7 +147,6 @@ Page({
   },
   doSubmit(e:any) {
       let selected:any = []
-
       // 获取所有选中
       this.data.searchList.map(n => {
         n.screenValue.map((m:any) => {
@@ -160,7 +158,6 @@ Page({
           }
         })
       })
-      console.log(selected)
       if (this.data.fileList.length===0){
         wx.showToast({
           title:"请上传题目",
@@ -170,10 +167,15 @@ Page({
       }
       // 判断是否全选
      let checkedexit = false
-      for (let i = 0;i<this.data.searchList.length;i++){
+     let searchList = this.data.searchList
+     console.log(searchList)
+     console.log(searchList[0].screenValue)
+     console.log(searchList[0].screenValue.length)
+      for (let i = 0;i<searchList.length;i++){
+  
         checkedexit = false
-        for (let j = 0;j<this.data.searchList[j].screenValue.length;j++){
-          if (this.data.searchList[i].screenValue[j].checked==true){
+        for (let j = 0;j<searchList[i].screenValue.length;j++){
+          if (searchList[i].screenValue[j].checked==true){
             checkedexit = true
             break
           }
