@@ -9,6 +9,10 @@ Page({
    */
   data: {
     phone: '',
+    name: '',
+    columns: ['初一','初二','初三','高一','高二','高三'],
+    show: false,
+    grade:''
   },
   goSignAndBind(){
     wx.navigateTo({
@@ -20,7 +24,8 @@ Page({
   submit(){
     let phone = this.data.phone;
     const parentsID = app.globalData.UserInfo.id
-    
+    const name = this.data.name
+    const grade = this.data.grade
     if(phone==''){
       Dialog.alert({
         title: '提示',
@@ -32,7 +37,7 @@ Page({
       userApi.BindMyKID({needToken:true,
         header:{
        Authorization: app.globalData.token
-     }},phone,parentsID).then((res:any)=>{
+     }},phone,name,grade,parentsID).then((res:any)=>{
        if (res.code == 200){
       wx.showToast({
         title:"绑定成功,请重新登录",
@@ -58,5 +63,17 @@ Page({
       wx.navigateBack()
     }
   
-  }
+  },
+  showPopup(){      //点击选择性别，打开弹出层（选择器）
+    this.setData({show:true})
+  },
+onClose() {     //点击空白处开闭弹出层（选择器）及选择器左上角的取消
+  this.setData({ show: false });
+},
+onConfirm(e:any){    //选择器右上角的确定，点击确定获取值
+ this.setData({
+   gender:e.detail.value,
+   show:false
+ })
+},
 })

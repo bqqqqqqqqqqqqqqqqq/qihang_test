@@ -77,7 +77,7 @@ gokcChild(e:any){
       }
     },id).then((res:any)=>{
       if(res.code==200){
-        console.log(res.data)
+    
         const list :kcInfo[]=res.data
         const listAll = this.data.list
         if (list!=null){

@@ -49,7 +49,7 @@ Page({
       {
         type: 'radio',
         screenKey: '年级',
-        screenValue: ["高一","高二","高三"].map((m) => ({
+        screenValue: ['初一','初二','初三','高一', '高二', '高三'].map((m) => ({
           checked: false,
           value: m,
           remark:"grade"

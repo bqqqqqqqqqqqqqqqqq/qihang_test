@@ -9,17 +9,25 @@ const envVersion = accountInfo.miniProgram.envVersion || 'develop'
    * 国地服务器
   */
 const GDEnvs = {
+  // develop: {
+  //   host: 'https://deyiwxxiaochengxu.asia/deyiapi',
+  //   imgHost: 'https://deyiwxxiaochengxu.asia/deyiapi'
+  // },
+  //   develop: {
+  //   host: 'http://localhost:6785',
+  //   imgHost: 'http://localhost:6785'
+  // },
   develop: {
-    host: 'http://localhost:8888',
-    imgHost: 'http://localhost:8888'
+    host: 'https://deyiwxxiaochengxu.asia:6786',
+    imgHost: 'https://deyiwxxiaochengxu.asia:6786',
   },
   trial: {
-    host: 'http://localhost:8888',
-    imgHost: 'http://localhost:8888'
+    host: 'https://deyiwxxiaochengxu.asia:6786',
+    imgHost: 'https://deyiwxxiaochengxu.asia:6786',
   },
   release: {
-    host: 'http://localhost:8888',
-    imgHost: 'http://localhost:8888'
+    host: 'https://deyiwxxiaochengxu.asia:6786',
+    imgHost: 'https://deyiwxxiaochengxu.asia:6786',
   },
 }
 

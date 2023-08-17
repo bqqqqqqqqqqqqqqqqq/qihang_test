@@ -1,5 +1,6 @@
 
 import publicAPI from "../../api/system/publicAPI";
+import userApi from "../../api/system/userAPI";
 
 // pages/uplode/index.ts
 let baseUrl = require('../../api/base').allBaseUrl.GDEnvs.host
@@ -28,7 +29,7 @@ Page({
       {
         type: 'radio',
         screenKey: '请选择科目',
-        screenValue: ['化学', '数学', '语文', '英语'].map((m) => ({
+        screenValue: ["语文","数学","英语","物理","历史","化学","生物","地理","思政","其他"].map((m) => ({
           checked: false,
           value: m,
           need:true
@@ -168,9 +169,7 @@ Page({
       // 判断是否全选
      let checkedexit = false
      let searchList = this.data.searchList
-     console.log(searchList)
-     console.log(searchList[0].screenValue)
-     console.log(searchList[0].screenValue.length)
+
       for (let i = 0;i<searchList.length;i++){
   
         checkedexit = false
@@ -188,49 +187,70 @@ Page({
         })
         return
       }
-  
-      // 提交表单token上传图片
-    for (let i = 0;i<this.data.fileList.length;i++){
-        wx.uploadFile({
-          url: baseUrl+"/user/UpPicture", //baseUrl+'', 仅为示例，非真实的接口地址
-          filePath: this.data.fileList[i].url,
-          method:'post',
-          name: 'file',
-          formData: {
-            // token:app.globalData.token
-            subjects:selected[0],
-            grade:selected[1],
-            teacherID:selected[2]
-          },
-          header: {
-            Authorization: app.globalData.token
-          },
-          //待测试
-          success(res: any){
-              wx.showLoading({
-                  title:"上传中",
-                  mask:"true"
-              })
-            if (res.statusCode===200){
-            wx.showToast({
-              title:"已成功上传问题",
-              icon:"none"
-            })
-            wx.hideLoading()
-            setTimeout(()=>{
-              wx.redirectTo({
-                url: '../index/index'
-             })
-            },1000)
-          }else {
-            wx.showToast({
-              title:"网络异常，请稍后重试试",
-              icon:"none"
-            })
-          }
-          },
-        })
+      var id = app.globalData.UserInfo.id
+      let problemID: number=0
+      userApi.creatProblem({
+        needToken:true,
+        header:{
+      Authorization: app.globalData.token
     }
+  },selected[1],selected[0],selected[2],id).then((res:any)=>{
+    
+    if (res.code  == 200){
+    problemID = res.data
+    }
+    if (problemID ==0){
+      console.log("创建失败")
+        return
+    }
+    for (let i = 0;i<this.data.fileList.length;i++){
+
+      wx.uploadFile({
+        url: baseUrl+"/user/UpPicture?problemID="+problemID, //baseUrl+'', 仅为示例，非真实的接口地址
+        filePath: this.data.fileList[i].url,
+        method:'post',
+        name: 'file',
+        formData: {
+          // token:app.globalData.token
+          subjects:selected[0],
+          grade:selected[1],
+          teacherID:selected[2]
+        },
+        header: {
+          Authorization: app.globalData.token
+        },
+        //待测试
+        success(res: any){
+            wx.showLoading({
+                title:"上传中",
+                mask:"true"
+            })
+          if (res.statusCode===200){
+          wx.showToast({
+            title:"已成功上传问题",
+            icon:"none"
+          })
+          wx.hideLoading()
+          setTimeout(()=>{
+            wx.redirectTo({
+              url: '../index/index'
+           })
+          },1000)
+        }else {
+          wx.showToast({
+            title:"网络异常，请稍后重试试",
+            icon:"none"
+          })
+        }
+        },
+      })
+  }
+  })
+      
+
+
+      // 提交表单token上传图片
+    
   },
   
   reset(){

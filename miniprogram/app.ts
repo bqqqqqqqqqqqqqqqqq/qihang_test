@@ -2,6 +2,7 @@
 interface UserInfo{
   name:string
   isAdmin:string
+  id:string
 }
 interface Paging{
     size:number,
@@ -16,6 +17,7 @@ App({
     UserInfo:{
       name:"请先登录",
       isAdmin:"0",
+      id:""
     },
 
   },
@@ -26,28 +28,6 @@ App({
     this.globalData.UserInfo=wx.getStorageSync('UserInfo') || {name:"请先登录",isAdmin:"0",};
     }
 
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-
-    // 登录
-    // wx.login({
-    //   success: res => {
-    //     console.log(res.code)
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //    wx.request({
-    //      url:'http://localhost:8888/WXLogin',
-    //      data:{code:res.code},
-    //      method:'POST',
-    //     header:{
-    //       "Content-type":"application/x-www-form-urlencoded"
-    //     },
-    //     success(res){
-    //       console.log(res)
-    //     }
-    //     })
-    //   },  
-    // })
-  // },
 
 
 })
