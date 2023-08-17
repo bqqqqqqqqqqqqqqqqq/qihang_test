@@ -150,6 +150,8 @@ export default class userApi {
        RequestConfig
      );
       // @管理员
+      // 管理员查看所有游客
+
       //管理员查看所有学生
       static GetAllStudent = (RequestConfig:{needToken:boolean,header:object}) =>
       httpRequest.get(
@@ -172,6 +174,8 @@ export default class userApi {
     {},
       RequestConfig
    )
+
+   // 管理员查询所有游客
    static GetAllVis = (RequestConfig:{needToken:boolean,header:object}) =>
    httpRequest.get(
     baseUrl + '/tea/GetAllVis',
