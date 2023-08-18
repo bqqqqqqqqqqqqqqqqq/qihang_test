@@ -53,6 +53,7 @@ this.setData({
   },
 
   WXLogin(code:string,){
+    console.log(code)
     userApi.UserwxPhoneLogin({code},{needToken:true}).then((res)=>{
       if (res.msg==="未注册"){
         //路由去注册页面

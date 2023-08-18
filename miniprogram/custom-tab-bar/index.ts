@@ -23,13 +23,7 @@ Page({
     ]
   },
   onChange(e: any) {
-    // event.detail 的值为当前选中项的索引
-    // const detail = event.detail;
-    
-    //     this.setData({ active: detail });
-    //     const url = this.data.list[detail].pagePath;
-    //     wx.switchTab({url});
-    // console.log(e,'e');
+
     wx.switchTab({
       url: this.data.list[e.detail].url
     });

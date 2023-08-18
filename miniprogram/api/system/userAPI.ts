@@ -47,10 +47,14 @@ interface BaseInfo{
   name:string,
   isAdmin:string,
 }
+interface loginInfo{
+  phone:string,
+  password:string
+}
 export default class userApi {
-  static getUserInfo = (data: UserInfo,RequestConfig:{needToken:boolean}) =>
-    httpRequest.get<ReturnUserInfo>(
-      baseUrl + '/login',
+  static getUserInfo = (data: loginInfo,RequestConfig:{needToken:boolean}) =>
+    httpRequest.post<WXPhoneLogUserInfo>(
+      baseUrl + '/Login',
       data,
       RequestConfig
     )
@@ -61,6 +65,7 @@ export default class userApi {
       data,
       RequestConfig
     )
+
     static UserwxPhoneRegister = (data: RegUserInfo,RequestConfig:{needToken:boolean}) =>
     httpRequest.post(
       baseUrl + '/WXRegister',
@@ -75,6 +80,17 @@ export default class userApi {
     )
 
     // 学生-------------------------------------
+
+
+      static creatProblem = (RequestConfig:{needToken:boolean,header:object},grade:string,subject:string,teacherID:string,id:string) =>
+      httpRequest.post(
+        baseUrl +userUrl+'/CreatProblem?grade='+grade+'&subject='+subject+'&teacherID='+teacherID+'&id='+id,
+        {},
+        RequestConfig
+      )
+
+
+
     // 学生查询课程
     static StuDetailClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>
     httpRequest.get<kcInfo>(
@@ -90,9 +106,9 @@ export default class userApi {
       RequestConfig
     )
     // 学生--绑定孩子后----成为家长
-    static BindMyKID = (RequestConfig:{needToken:boolean,header:object},childPhone:string, parentsID:string)=>
+    static BindMyKID = (RequestConfig:{needToken:boolean,header:object},childPhone:string, parentsID:string,name:string,grade:string)=>
     httpRequest.post(
-      baseUrl+ userUrl+'/AddChild?'+'childPhone='+childPhone+'&parentsID='+parentsID,
+      baseUrl+ userUrl+'/AddChild?'+'childPhone='+childPhone+'&parentsID='+parentsID+"&name="+name+"&grade="+grade,
       {},
       RequestConfig
     )
@@ -134,6 +150,8 @@ export default class userApi {
        RequestConfig
      );
       // @管理员
+      // 管理员查看所有游客
+
       //管理员查看所有学生
       static GetAllStudent = (RequestConfig:{needToken:boolean,header:object}) =>
       httpRequest.get(
@@ -156,6 +174,8 @@ export default class userApi {
     {},
       RequestConfig
    )
+
+   // 管理员查询所有游客
    static GetAllVis = (RequestConfig:{needToken:boolean,header:object}) =>
    httpRequest.get(
     baseUrl + '/tea/GetAllVis',

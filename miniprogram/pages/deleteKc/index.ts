@@ -55,7 +55,7 @@ Page({
         }
       },"").then((res:any)=>{
         if(res.code==200&&res.data!=null){
-          console.log(res.data)
+      
           const list :kcInfo[]=res.data
           const listAll = this.data.list
           listAll.push(...list)

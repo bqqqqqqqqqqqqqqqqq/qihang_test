@@ -155,14 +155,18 @@ Page({
       wx.hideLoading()
         if(res.code===200){
             wx.showToast({
-              title:"注册成功",
+              title:"注册成功重新登录",
               icon:"success",
             })
             setTimeout(() => {
                 wx.navigateTo({
                   url:'../user/index'
                 })
+                wx.navigateBack({
+                  delta:2
+                })
             }, 1000);
+            
         }else if(res.code===0){
           wx.showToast({
             title:"已注册",
@@ -170,6 +174,9 @@ Page({
             duration:"2000"
           })
           wx.navigateBack()
+          wx.navigateTo({
+            url:'../user/index'
+          })
         }else if(res.code===-1  ){
           wx.showToast({
             title:"服务器繁忙",

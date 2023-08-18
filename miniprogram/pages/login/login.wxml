@@ -7,7 +7,7 @@
   </view>
   
   <view class="welcome"></view>
-  <!-- <van-cell-group inset>
+  <van-cell-group inset>
     <van-field
       label="手机"
       maxlength="11"
@@ -26,9 +26,9 @@
     
       bind:click-input="confirmPsw"
     />
-  </van-cell-group> -->
+  </van-cell-group>
   <view class="btn">
-    <!-- <van-button type="primary" bind:click="clickBtn" block>登录</van-button> -->
+    <van-button type="primary" bind:click="clickLogin" block>登录</van-button>
     <button class="PhoneLogin" open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber">微信账号一键登录</button>
     <button class="PhoneLogin" bindtap="goToSignUp">注册</button>
   </view>

@@ -31,7 +31,7 @@ Page({
       })
     };
   },
-  clickBtn(){
+  clickLogin(){
     let phone = this.data.phone;
     let psw = this.data.password;
     if(phone===null){
@@ -40,7 +40,7 @@ Page({
       }).then(() => {
         // on close
       });
-      return false;
+      return 
     };
     if(psw === null){
       Dialog.alert({
@@ -48,10 +48,35 @@ Page({
       }).then(() => {
         // on close
       });
-      return false;
+      return 
     };
     //通过
-    
+    userApi.getUserInfo({phone:phone,password:psw},{needToken:false}).then((res)=>{
+      if (res.code ==200&&res.msg=="未注册"){
+        wx.showToast({
+          title:"帐号不存在,请先注册",
+          icon:"none"
+        })
+        return
+      }else if(res.code===200){
+        wx.showToast({
+          title:"登录成功",
+          icon:"none"
+        })
+        app.globalData.token = res.data.token
+        app.globalData.UserInfo.code = "1"
+        app.globalData.UserInfo = res.data.userInfo
+        wx.setStorageSync('UserInfo',res.data.userInfo)
+        wx.setStorageSync('token',res.data.token)
+        wx.navigateBack()
+      }else{
+        wx.showToast({
+          title:"登录失败,请重试",
+          icon:"none"
+        })
+      }
+    })
+
 
     
   },
@@ -78,21 +103,26 @@ Page({
   },
 
   WXLogin(code:string,){
+
     userApi.UserwxPhoneLogin({code},{needToken:true}).then((res)=>{
-      if(res.code===200){
-        wx.showToast({
-          title:"登录成功",
-          icon:"none"
-        })
-        app.globalData.token = res.data.token
-        app.globalData.UserInfo = res.data.userInfo
-        wx.setStorageSync('UserInfo',res.data.userInfo)
-        wx.setStorageSync('token',res.data.token)
-        setTimeout(()=>{
-          wx.navigateBack({
-          },1000)
-        })
-      }else if (res.code===20000){
+      // if(res.code===200){
+      //   wx.showToast({
+      //     title:"登录成功",
+      //     icon:"none"
+      //   })
+      //   app.globalData.token = res.data.token
+      //   app.globalData.UserInfo = res.data.userInfo
+      //   wx.setStorageSync('UserInfo',res.data.userInfo)
+      //   wx.setStorageSync('token',res.data.token)
+      //   setTimeout(()=>{
+      //     wx.navigateBack({
+      //     },1000)
+      //   })
+      // }
+
+      
+      if (res.msg=="未注册"){
+   
         //路由去注册页面
         wx.showToast({
           title:"未注册请先注册",

@@ -59,7 +59,7 @@ Page({
       });
   },
   onLoad() {
-    userAPI.GetAllStudent({
+    userAPI.GetAllVis({
       needToken:true,
       header:{
     Authorization: app.globalData.token
