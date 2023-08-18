@@ -2,11 +2,10 @@
 
 <van-divider />
 <van-card
-  num="1"
+  num="{{count}}"
   price="{{price}}"
-  desc="描述信息"
-  title="商品标题"
-  thumb="{{ imageURL }}"
+  desc="{{goodDesc}}"
+  title="{{goodTtile}}"
 />
 <van-divider />
 
@@ -14,11 +13,11 @@
   value="{{ value }}"
   is-link
   readonly
-  label="姓名"
+  label="选择孩子"
   placeholder="请选择孩子姓名"
   bind:tap="onClick0"
 />
-<van-divider />
+<!-- <van-divider />
 <van-field
   value="{{ fieldValue }}"
   is-link
@@ -27,13 +26,13 @@
   placeholder="请选择规格"
   bind:tap="onClick"
 />
-<van-divider />
+<van-divider /> -->
 <van-cell title="课程数量（节）">
   <van-stepper model:value="{{ count }}"  bind:change="getCount"/>
 </van-cell>
 
 
-<van-popup show="{{ show }}" round position="bottom">
+<!-- <van-popup show="{{ show }}" round position="bottom">
   <van-cascader
     wx:if="{{ show }}"
     value="{{ cascaderValue }}"
@@ -43,7 +42,7 @@
     bind:finish="onFinish"
   />
 
-</van-popup>
+</van-popup> -->
 <view class="submit">
 
   <van-submit-bar
@@ -71,7 +70,7 @@
   <van-cell title="数量" value="{{count}}" />
 </van-cell-group>
 <view class="btn">
-  <van-button type="primary" block round>去支付</van-button>
+  <van-button type="primary" bind:tap="GoPay" block round>去支付</van-button>
 </view>
 </van-popup>
 

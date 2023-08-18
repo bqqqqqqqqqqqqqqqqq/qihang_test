@@ -1,33 +1,18 @@
 // pages/order/index.ts
-import Dialog from '@vant/weapp/dialog/dialog';
-const options = [
-  {
-    text: '高老师',
-    value: '330000',
-    children: [{ text: '杭州市', value: '330100' ,children:[{ text: '市', value: '330110'}]}],
-  },
-  {
-    text: '江苏省',
-    value: '320000',
-    children: [{ text: '南京市', value: '320100' }],
-  },
-];
-const stuList = ["哈哈哈"];
+const stuList = [];
 
 Page({
   data: {
-    imageURL:"https://zhimg.oss-cn-guangzhou.aliyuncs.com/img1pa2o2w225fb.jpeg",
-    price:0,
-    total:999999999,
+    goodTitle:"",
+    goodDesc:"",
+    price:20,
+    total:0,
     value:'',
-    show: false,
-    show2:false,
-    options,
     fieldValue: '',
-    cascaderValue: '',
-    stuList,
+    stuList:[],
     show0:false,
-    
+    show2:false,
+    count:1,
   },
   //输入框
   onChange(e:any){
@@ -59,7 +44,7 @@ Page({
     })
     
   },
-  
+ 
   onClick() {
     this.setData({
       show: true,
@@ -85,66 +70,27 @@ Page({
       show2: false,
     });
   },
-  
+  onSubmit(){
+    this.setData({
+      show2: true,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-  onSubmit(){
-    let oid = this.data.cascaderValue;
+    const problemID = (this.options.id) as string
+   
     this.setData({
-      show2: true,
-    });
-    
-  },
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+      total:this.data.count*this.data.price
+    })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
+//----------------------------------------
+// 微信支付
 
-  },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
 
-  },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
 
-  }
 })

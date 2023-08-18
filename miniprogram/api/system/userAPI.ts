@@ -80,6 +80,14 @@ export default class userApi {
     )
 
     // 学生-------------------------------------
+      //下单买课
+
+      static wechatPAY = (RequestConfig:{needToken:boolean,header:object},data:any) =>
+      httpRequest.post(
+        baseUrl +userUrl+'/JSAPI',
+        data,
+        RequestConfig
+      )
 
 
       static creatProblem = (RequestConfig:{needToken:boolean,header:object},grade:string,subject:string,teacherID:string,id:string) =>
