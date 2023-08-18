@@ -34,7 +34,8 @@
     "pages/deleteKc/index",
     "pages/myAns/index",    
     "pages/addStudent/index",
-    "pages/addKc/index"
+    "pages/addKc/index",
+    "pages/bind-Phone/index"
   ],
     "tabBar": {
       "color": "#000",

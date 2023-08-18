@@ -1,0 +1,22 @@
+<view class="container">
+<view class="box">
+  <view class="text">
+    请填写孩子已经注册的手机号
+  </view>
+    <van-cell-group inset>
+      <van-field
+        model:value="{{ phone }}"
+        label="手机号码"
+        maxlength="11"
+        type="number"
+        placeholder="请输入孩子的手机号码"
+        required
+        input-align="right"
+      />
+    </van-cell-group>
+    <van-dialog id="van-dialog" />
+    <view class="submit">
+      <van-button type="primary" round bind:click="submit" size="large">绑定</van-button>
+    </view>
+  </view>
+</view>
