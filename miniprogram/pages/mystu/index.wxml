@@ -15,7 +15,7 @@
 <van-cell-group title="班级">
   <van-swipe-cell class="vsc" wx:for="{{bList}}" wx:key="id" right-width="{{ 65 }}" async-close bind:close="onClose">
     <van-cell-group>
-      <van-cell size="large" title="{{item.className}}||{{item.teacherName}}" is-link  bindtap="gotoSetClass" data-bname="{{item.className}}" data-bid="{{item.id}}"/>
+      <van-cell size="large" title="{{item.className}}" value="{{item.teacherName}}" is-link  bindtap="gotoSetClass" data-bname="{{item.className}}" data-bid="{{item.id}}"/>
     </van-cell-group>
     <view slot="right" >删除</view>
   </van-swipe-cell>
