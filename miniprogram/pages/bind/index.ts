@@ -60,7 +60,9 @@ Page({
  
 
      )
-      wx.navigateBack()
+     wx.switchTab({
+      url: 'pages/user/index'
+    })
     }
   
   },
