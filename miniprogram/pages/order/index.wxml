@@ -70,7 +70,7 @@
   <van-cell title="数量" value="{{count}}" />
 </van-cell-group>
 <view class="btn">
-  <van-button type="primary" bind:tap="GoPay" block round>去支付</van-button>
+  <van-button type="primary" bind:tap="DoWXPay" block round>去支付</van-button>
 </view>
 </van-popup>
 

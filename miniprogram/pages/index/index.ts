@@ -1,8 +1,9 @@
 import publicAPI from "../../api/system/publicAPI";
-import { requestAnimationFrame } from "../../miniprogram_npm/@vant/weapp/common/utils";
+
 import { TimeData } from "../../miniprogram_npm/@vant/weapp/count-down/utils";
-import { chooseFile } from "../../miniprogram_npm/@vant/weapp/uploader/utils";
+
 const dayjs = require('../../utils/day.min.js');
+
 interface oneProblem{
   pid:number,
   title:string,
