@@ -15,7 +15,7 @@
   readonly
   label="选择孩子"
   placeholder="请选择孩子姓名"
-  bind:tap="onClick0"
+  bind:tap="clickCell"
 />
 <!-- <van-divider />
 <van-field
@@ -74,7 +74,7 @@
 </view>
 </van-popup>
 
-<van-popup round position="bottom"  custom-style="height: 50%" show="{{ show0 }}" bind:close="onClose0" closeable>
+<van-popup round position="bottom"  custom-style="height: 50%" show="{{ showKid }}" bind:close="closePop" closeable>
 <view style="margin-top: 40px;">
   <van-cell-group>
   <view class="added-items" wx:for="{{stuList}}" wx:key="index">

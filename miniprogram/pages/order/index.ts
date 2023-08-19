@@ -14,8 +14,8 @@ Page({
     value:'',
     fieldValue: '',
     stuList:[],
-    show0:false,
-    show2:false,
+    showKid:false,
+    detailShow:false,
     count:1,
   },
   //输入框
@@ -30,53 +30,56 @@ Page({
       count: event.detail
     })
   },
-  onClose0() {
+  //选择孩子
+  clickCell() {
     this.setData({
-      show0: false,
+      showKid: true,
     });
   },
-  onClick0() {
+  closePop() {
     this.setData({
-      show0: true,
+      showKid: false,
     });
   },
   chose(e:any){
     console.log(e.currentTarget.dataset.name);
     this.setData({
       value: e.currentTarget.dataset.name,
-      show0: false
+      showKid: false
     })
     
   },
  
-  onClick() {
-    this.setData({
-      show: true,
-    });
-  },
-  onClose() {
-    this.setData({
-      show: false,
-    });
-  },
-  onFinish(e:any) {
-    const { selectedOptions, value } = e.detail;
-    const fieldValue = selectedOptions
-        .map((option:any) => option.text || option.name)
-        .join('/');
-    this.setData({
-      fieldValue,
-      cascaderValue: value,
-    })
-  },
-  onClose2() {
-    this.setData({
-      show2: false,
-    });
-  },
+  // onClick() {
+  //   this.setData({
+  //     show: true,
+  //   });
+  // },
+  // onClose() {
+  //   this.setData({
+  //     show: false,
+  //   });
+  // },
+  // onFinish(e:any) {
+  //   const { selectedOptions, value } = e.detail;
+  //   const fieldValue = selectedOptions
+  //       .map((option:any) => option.text || option.name)
+  //       .join('/');
+  //   this.setData({
+  //     fieldValue,
+  //     cascaderValue: value,
+  //   })
+  // },
+  //
+//提交订单
   onSubmit(){
     this.setData({
-      show2: true,
+      detailShow: true,
+    });
+  },
+  closeDetail() {
+    this.setData({
+      detailShow: false,
     });
   },
 
