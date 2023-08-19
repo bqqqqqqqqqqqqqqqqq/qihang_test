@@ -32,9 +32,10 @@ Page({
     });
   },
   gotobuy(e:any){
-    let p = e.currentTarget.dataset.kid;
-    this.go('order','kid='+p);
-    
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url:"../order/index?id="+id
+    })
   },
 
   AllKC(){
@@ -56,7 +57,7 @@ Page({
         }
       },"").then((res:any)=>{
         if(res.code==200&&res.data!=null){
-     
+    
           const list :kcInfo[]=res.data
           const listAll = this.data.list
           listAll.push(...list)

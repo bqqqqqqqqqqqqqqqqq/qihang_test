@@ -163,13 +163,6 @@
           "query": "",
           "launchMode": "default",
           "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/bind-Phone/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
         }
       ]
     }
