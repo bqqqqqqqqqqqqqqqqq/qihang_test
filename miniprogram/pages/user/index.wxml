@@ -50,6 +50,7 @@
   </van-cell-group>
   <van-cell-group title="管理课程">
     <van-cell title="添加课程(尚未完成)" icon="plus" is-link link-type="navigateTo" url="../addKc/index" size="large"/>
+    <van-cell title="管理课程" icon="edit" is-link link-type="navigateTo" url="../manageKc/index" size="large"/>
   </van-cell-group>
   <van-cell-group title="管理班级">
     <van-cell title="查看所有班级" icon="cluster-o" is-link link-type="navigateTo" url="../mystu/index?type=admin" size="large"/>
