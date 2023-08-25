@@ -163,6 +163,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/manageKc/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

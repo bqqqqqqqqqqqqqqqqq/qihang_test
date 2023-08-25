@@ -1,0 +1,52 @@
+<van-tabs >
+  <van-tab title="全部">  
+      <view class="card" wx:for="{{list}}" wx:key="kid"   >
+      <van-cell-group inset>
+      <van-card
+        desc="{{item.teacherName}}老师"
+        title="{{item.className}}课"
+        thumb="{{item.cover_img}}"
+        price="{{item.price}}/节"
+      >
+        <view slot="footer">
+          <van-button round type="danger" size="mini" plain="{{item.buy==0}}" bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}">{{item.buy==0?"上架":"下架"}}</van-button>
+        </view>
+      </van-card>
+    </van-cell-group>
+    </view>
+  </van-tab>
+  <van-tab title="已上架">
+    <view class="card" wx:for="{{list}}" wx:key="kid" wx:if="{{item.buy==1}}"  >
+      <van-cell-group inset>
+      <van-card
+        desc="{{item.teacherName}}老师"
+        title="{{item.className}}课"
+        thumb="{{item.cover_img}}"
+        price="{{item.price}}/节"
+      >
+        <view slot="footer">
+          <van-button round size="mini" type="danger" bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}">下架</van-button>
+        </view>
+      </van-card>
+    </van-cell-group>
+    </view>
+  </van-tab>
+  <van-tab title="未上架">
+        
+    <view class="card" wx:for="{{list}}" wx:key="kid" wx:if="{{item.buy==0}}" >
+      <van-cell-group inset>
+      <van-card
+        desc="{{item.teacherName}}老师"
+        title="{{item.className}}课"
+        thumb="{{item.cover_img}}"
+        price="{{item.price}}/节"
+      >
+        <view slot="footer">
+          <van-button round size="mini" type="danger" plain bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}">上架</van-button>
+        </view>
+      </van-card>
+    </van-cell-group>
+    </view>
+  </van-tab>
+</van-tabs>
+
