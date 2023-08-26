@@ -89,7 +89,12 @@ export default class userApi {
         data,
         RequestConfig
       )
-
+      static AddBuyClassStu = (RequestConfig:{needToken:boolean,header:object},data:any) =>
+      httpRequest.post(
+       baseUrl + userUrl+'/AddBuyClassStu',
+        data,
+        RequestConfig
+     )
 
       static creatProblem = (RequestConfig:{needToken:boolean,header:object},grade:string,subject:string,teacherID:string,id:string) =>
       httpRequest.post(
