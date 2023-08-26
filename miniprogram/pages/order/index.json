@@ -11,7 +11,7 @@
     "van-button": "@vant/weapp/button/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
-    "van-stepper": "@vant/weapp/stepper/index"
-  
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   }
 }

@@ -42,6 +42,7 @@ interface kcInfo {
   type:string
   complete:string
   completeTotal:string
+  teacherid:string
 }
 interface BaseInfo{
   name:string,
@@ -108,8 +109,20 @@ export default class userApi {
     )
     // 学生家长查询能购买的课程
     static AllClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>
-    httpRequest.get<kcInfo>(
-      baseUrl + userUrl+'/AllClass',
+    httpRequest.get<kcInfo>(  
+      baseUrl + "/tea"+'/AllClass',
+      {},
+      RequestConfig
+    )
+    static AllClassBuy = (RequestConfig:{needToken:boolean,header:object},data:string) =>
+    httpRequest.get<kcInfo>(  
+      baseUrl + userUrl+'/AllClassBuy',
+      {},
+      RequestConfig
+    )
+    static BuyClassDetail = (RequestConfig:{needToken:boolean,header:object},id:string) =>
+    httpRequest.get<kcInfo>(  
+      baseUrl + userUrl+'/BuyClassDetail?id='+id,
       {},
       RequestConfig
     )
@@ -128,8 +141,12 @@ export default class userApi {
       RequestConfig
     )
 
-
-
+    // 家长查询孩子
+    static GetChild = (RequestConfig:{needToken:boolean,header:object},data:string) =>httpRequest.get(
+      baseUrl + userUrl+'/GetChild?id='+data,
+      {},
+      RequestConfig
+    )
     // 家长查询孩子课程 
     static ParStuDetailClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>httpRequest.get<kcInfo>(
       baseUrl + userUrl+'/GetChildClass?id='+data,
@@ -213,4 +230,42 @@ export default class userApi {
      {},
        RequestConfig
     )
+    //管理员添加班级学生
+    static AddClassStudent = (RequestConfig:{needToken:boolean,header:object},data:any) =>
+    httpRequest.post(
+     baseUrl + '/tea/AddStuToClass',
+      data,
+      RequestConfig
+   )
+   static DeleteClassStudent = (RequestConfig:{needToken:boolean,header:object},data:any) =>
+   httpRequest.post(
+    baseUrl + '/tea/DeteleStuToClass',
+     data,
+     RequestConfig
+  )
+  // 管理员添加班级课程
+  static AddClass = (RequestConfig:{needToken:boolean,header:object},data:any) =>
+  httpRequest.post(
+   baseUrl + '/tea/AddClass',
+    data,
+    RequestConfig
+ )
+ static DeleteClass = (RequestConfig:{needToken:boolean,header:object},data:any) =>
+ httpRequest.post(
+  baseUrl + '/tea/AddClass',
+   data,
+   RequestConfig
+)
+static PutClass = (RequestConfig:{needToken:boolean,header:object},data:any) =>
+httpRequest.post(
+ baseUrl + '/tea/PutClass?id='+data,
+  data,
+  RequestConfig
+)
+static DownClass = (RequestConfig:{needToken:boolean,header:object},data:any) =>
+httpRequest.post(
+ baseUrl + '/tea/DownClass?id='+data,
+  data,
+  RequestConfig
+)
 }

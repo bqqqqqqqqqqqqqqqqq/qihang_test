@@ -6,11 +6,25 @@
         input-align="left"
       />
       <van-field
-        model:value="{{ teacher }}"
+        value="{{teacher.name}}"
         label="老师"
         input-align="left"
         bind:click-input="showPopup"
       />
+      <van-field
+        model:value="{{ maxPersion }}"
+        label="最多人数"
+        input-align="left"
+        placeholder="请输入最大人数数字"
+        type="number"
+      />
+      <van-field
+        model:value="{{ content }}"
+        label="课程描述"
+        input-align="left"
+        placeholder="请输入课程描述文字"
+      />
+
       <van-field
         model:value="{{ price }}"
         label="定价"
@@ -27,5 +41,5 @@
       <van-button type="primary" round bind:click="submit" size="large">添加</van-button>
     </view>
     <van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 60%;" round>
-  <van-picker columns="{{ columns }}" show-toolbar="true" confirm-button-text="确认" cancel-button-text="取消"  bind:cancel="onClose" bind:confirm="onConfirm"/>
+  <van-picker columns="{{ columns }}" show-toolbar="true" confirm-button-text="确认" cancel-button-text="取消"  bind:cancel="onClose" bind:confirm="onConfirm" value-key="name" />
 </van-popup>

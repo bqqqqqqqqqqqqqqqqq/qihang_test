@@ -2,20 +2,20 @@
 
 <van-divider />
 <van-card
-  num="{{count}}"
-  price="{{price}}"
-  desc="{{goodDesc}}"
-  title="{{goodTtile}}"
+  num="{{ count }}"
+  price="{{ price}}"
+  desc="{{ goodDesc }}"
+  title="{{ goodTitle }}"
 />
 <van-divider />
 
 <van-field
-  value="{{ value }}"
+  value="{{ value.name }}"
   is-link
   readonly
-  label="选择孩子"
-  placeholder="请选择孩子姓名"
-  bind:tap="clickCell"
+  label="选择孩子或自己"
+  placeholder="请选择孩子姓名或自己"
+  bind:tap="clickKid"
 />
 <!-- <van-divider />
 <van-field
@@ -46,17 +46,17 @@
 <view class="submit">
 
   <van-submit-bar
-  price="{{total}}"
+  price="{{ total }}"
   button-text="提交订单"
   bind:submit="onSubmit"
 />
 </view>
 <van-popup
-  show="{{ show2 }}"
+  show="{{ detailShow }}"
   closeable
   position="bottom"
   custom-style="height: 40%"
-  bind:close="onClose2"
+  bind:close="closeDetail"
 >
 <van-cell-group>
   <van-divider
@@ -65,9 +65,10 @@
 >
   请确认信息
 </van-divider>
-  <van-cell title="姓名" value="{{ value }}" />
-  <van-cell title="规格" value="{{fieldValue}}" />
-  <van-cell title="数量" value="{{count}}" />
+  <van-cell title="姓名" value="{{ value.name }}" />
+  <!-- <van-cell title="规格" value="{{fieldValue}}" /> -->
+  <van-cell title="课程数量" value="{{count}}" />
+  <van-cell title="课程总价" value="{{total/100}}" />
 </van-cell-group>
 <view class="btn">
   <van-button type="primary" bind:tap="DoWXPay" block round>去支付</van-button>
@@ -82,7 +83,7 @@
     readonly
     center
     clearable
-    label="{{item}}"
+    label="{{item.name}}"
     border="true"
     use-button-slot
   >
