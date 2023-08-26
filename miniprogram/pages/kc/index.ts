@@ -48,11 +48,12 @@ gokcChild(e:any){
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    
     this.detailKC()
   },
   detailKC(){
     var that = this
-    const id = that.options.id||""
+    const id =app.globalData.UserInfo.id
     const isAdmin = app.globalData.UserInfo.isAdmin
     let identify =""
     if (isAdmin ==1){
@@ -69,7 +70,7 @@ gokcChild(e:any){
       }, 500);
       return
     }
-    if(identify=="stud"){
+    if(identify=="stu"){
         userApi.StuDetailClass({
           needToken:true,
           header:{
@@ -77,7 +78,6 @@ gokcChild(e:any){
       }
     },id).then((res:any)=>{
       if(res.code==200){
-
         const list :kcInfo[]=res.data
         const listAll = this.data.list
         if (list!=null){

@@ -1,13 +1,13 @@
 <van-collapse value="{{activeNames}}" bind:change="onChange">
   <van-collapse-item title="{{item.studentName}}" name="{{index}}" wx:for="{{list}}" wx:key="index">
-    <view class="card" wx:for="{{item.classes}}" wx:key="index" wx:for-item="classIte">
+    <view class="card"  wx:for-item="classIte">
       <van-card
-        desc="{{classIte.teacherName}}老师"
-        title="{{classIte.className}}课"
-        thumb="{{classIte.cover_img}}"
+        desc="{{item.teacherName}}老师"
+        title="{{item.className}}课"
+ 
       >
       <view slot="footer">
-        <van-button round size="small">已上{{classIte.complete}}/{{classIte.completeTotal}}</van-button>
+        <van-button round size="small">已购买{{item.completeTotal}}节课</van-button>
         <!-- <van-button round size="mini">按钮</van-button> -->
       </view>
       </van-card>     

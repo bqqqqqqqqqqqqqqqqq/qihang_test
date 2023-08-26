@@ -93,7 +93,6 @@ Page({
     e = parseInt(e.currentTarget.dataset.id);
     let myAdd:MyObject[]= this.data.added;
     let myUnAdd:MyObject[]= this.data.unadd;
-
     userApi.DeleteClassStudent({
       needToken:true,
       header:{

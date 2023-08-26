@@ -33,8 +33,9 @@ Page({
   },
   gotobuy(e:any){
     const id = e.currentTarget.dataset.id
+    const teacherid = e.currentTarget.dataset.teacherid
     wx.navigateTo({
-      url:"../order/index?id="+id
+      url:"../order/index?id="+id+"&teacherID="+teacherid
     })
   },
 

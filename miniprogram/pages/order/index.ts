@@ -11,6 +11,8 @@ Page({
     goodDesc:<any>"",
     price:<number>0,
     total:0,
+    classID:<any>0,
+    teacherID:<any>0,
     value:<any>"",
     fieldValue: '',
     stuList:<any>[],
@@ -88,13 +90,14 @@ Page({
   },
 
   onLoad() {
-    const problemID = (this.options.id) as string
+    const classID = (this.options.id) as string
+    const teacherID = this.options.teacherID 
     userApi.BuyClassDetail({
       needToken:true,
       header:{
     Authorization: app.globalData.token
   }
-  },problemID).then((res:any)=>{
+  },classID).then((res:any)=>{
     if (res.code !=200){
       wx.showToast({
         "icon":"error",
@@ -104,6 +107,8 @@ Page({
     }else if (res.code == 200){
 
       this.setData({
+        classID:classID,
+        teacherID:teacherID,
         goodDesc:res.data.content,
         goodTitle:res.data.className,
         price:Number(res.data.price)
@@ -114,9 +119,28 @@ Page({
       })
     }
   })
-
   },
-
+  AddStudent(){
+    
+    userApi.AddBuyClassStu({
+      needToken:true,
+      header:{
+    Authorization: app.globalData.token
+    }
+    },{"classID":this.data.classID as number,"studentID":this.data.value.id as number,"teacherID":this.data.teacherID as number,"completeTotal":this.data.count}).then((res:any)=>{
+        if (res.code==-1){
+          wx.showToast({
+            "icon":"error",
+            "msg":"失败,请重试"
+          })
+          return
+          }else if(res.code==200) {
+            wx.showToast({
+              "msg":"成功"
+            })
+        }
+    })
+  },
 //----------------------------------------
 // 微信支付
 DoWXPay(){
@@ -153,7 +177,7 @@ DoWXPay(){
     var signType = res.data.applet.signType
     var paySign = res.data.applet.paySign
     //下订单之后锁库存,成功支付后确认库存,否则添加库存
-    
+    // 不锁了
     
 
 
@@ -163,17 +187,18 @@ DoWXPay(){
       "package": WXpackage,
       "signType": signType,
       "paySign": paySign,
-      "success":function(){
-        wx.showToast({
-          "title":"支付成功",
-        })
-        setTimeout(()=>{
-          wx.switchTab({
-            url: '../index/index'
-          })
-        },2000)
+      "success":()=>{
+          wx.showToast({
+            "title":"支付成功",
+          }),
+          // setTimeout(()=>{
+          //   wx.switchTab({
+          //     url: '../index/index'
+          //   })
+          // },2000)
+          this.AddStudent()
       },
-      "fail":function(){
+      "fail":()=>{
         wx.showToast({
           "icon":"error",
           "title":"已取消"
@@ -188,10 +213,7 @@ DoWXPay(){
   // 设置32位数的订单号
 
 
-}
-
-
-
+},
 
 
 })
