@@ -23,7 +23,7 @@
 <!-- 2 为家长 3为教师 -->
   <van-cell wx:if="{{UserInfo.isAdmin==1}}" title="我的课程" icon="orders-o" is-link link-type="navigateTo" url="../kc/index?id={{id}}" size="large"/>
   <van-cell wx:if="{{UserInfo.isAdmin==2}}" title="我的课程" icon="orders-o" is-link link-type="navigateTo" url="../kc/index?id={{id}}" size="large"/>
-  <van-cell wx:if="{{UserInfo.isAdmin==2||UserInfo.isAdmin==4||UserInfo.isAdmin==5}}" title="购买课程" icon="cart-o" is-link link-type="navigateTo" url="../buykc/index" size="large"/>
+  <van-cell wx:if="{{UserInfo.isAdmin==1||UserInfo.isAdmin==2||UserInfo.isAdmin==3||UserInfo.isAdmin==4||UserInfo.isAdmin==5}}" title="购买课程" icon="cart-o" is-link link-type="navigateTo" url="../buykc/index" size="large"/>
   <van-cell wx:if="{{UserInfo.isAdmin==1}}" title="我是家长，绑定我的孩子" icon="aim" is-link link-type="navigateTo" url="../bind-Phone/index" size="large"/>
   <van-cell wx:if="{{UserInfo.isAdmin==2}}" title="绑定孩子" icon="aim" is-link link-type="navigateTo" url="../bind-Phone/index" size="large"/>
 </van-cell-group>
@@ -44,13 +44,13 @@
   <van-cell-group title="管理学生">
     <van-cell title="添加学生" icon="add-o" is-link link-type="navigateTo" url="../addStudent/index" size="large"/>
     <van-cell title="查看所有学生" icon="friends-o" is-link link-type="navigateTo" url="../allstu/index" size="large"/>
-    <van-cell title="查看所有订单" icon="friends-o" is-link link-type="navigateTo" url="../checkOrder/index" 
-    size="large"/>
+    <!-- <van-cell title="查看所有订单" icon="friends-o" is-link link-type="navigateTo" url="../checkOrder/index" 
+    size="large"/> -->
  
   </van-cell-group>
   <van-cell-group title="管理课程">
-    <van-cell title="添加课程(尚未完成)" icon="plus" is-link link-type="navigateTo" url="../addKc/index" size="large"/>
-    <van-cell title="管理课程" icon="edit" is-link link-type="navigateTo" url="../manageKc/index" size="large"/>
+    <van-cell title="添加课程" icon="plus" is-link link-type="navigateTo" url="../addKc/index" size="large"/>
+    <van-cell title="管理课程商店" icon="edit" is-link link-type="navigateTo" url="../manageKc/index" size="large"/>
   </van-cell-group>
   <van-cell-group title="管理班级">
     <van-cell title="查看所有班级" icon="cluster-o" is-link link-type="navigateTo" url="../mystu/index?type=admin" size="large"/>

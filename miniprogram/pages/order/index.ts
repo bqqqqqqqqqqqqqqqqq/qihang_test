@@ -7,16 +7,16 @@ const dayjs = require('../../utils/day.min.js');
 var app = getApp()
 Page({
   data: {
-    goodTitle:"测试商品",
-    goodDesc:"",
-    price:20,
+    goodTitle:<any>"",
+    goodDesc:<any>"",
+    price:<number>0,
     total:0,
-    value:'',
+    value:<any>"",
     fieldValue: '',
-    stuList:[],
+    stuList:<any>[],
     showKid:false,
     detailShow:false,
-    count:1,
+    count:<number>1,
   },
   //输入框
   onChange(e:any){
@@ -29,9 +29,34 @@ Page({
     this.setData({
       count: event.detail
     })
+    const total = this.data.count*this.data.price
+    this.setData({
+      total:total*100
+    })
   },
   //选择孩子
-  clickCell() {
+  clickKid() {
+    // 调用接口查询孩子信息,并添加上自己.
+    const id = app.globalData.UserInfo.id
+    userApi.GetChild({
+      needToken:true,
+      header:{
+    Authorization: app.globalData.token
+  }
+  },id).then((res:any)=>{
+    if (res.code==200){
+      res.data.push(app.globalData.UserInfo)
+      this.setData({
+        stuList:res.data
+      })
+    }else  {
+      wx.showToast({
+        "msg":"发生错误",
+        "icon":"error"
+      })
+    }
+  })
+
     this.setData({
       showKid: true,
     });
@@ -42,7 +67,6 @@ Page({
     });
   },
   chose(e:any){
-    console.log(e.currentTarget.dataset.name);
     this.setData({
       value: e.currentTarget.dataset.name,
       showKid: false
@@ -50,27 +74,7 @@ Page({
     
   },
  
-  // onClick() {
-  //   this.setData({
-  //     show: true,
-  //   });
-  // },
-  // onClose() {
-  //   this.setData({
-  //     show: false,
-  //   });
-  // },
-  // onFinish(e:any) {
-  //   const { selectedOptions, value } = e.detail;
-  //   const fieldValue = selectedOptions
-  //       .map((option:any) => option.text || option.name)
-  //       .join('/');
-  //   this.setData({
-  //     fieldValue,
-  //     cascaderValue: value,
-  //   })
-  // },
-  //
+
 //提交订单
   onSubmit(){
     this.setData({
@@ -85,24 +89,57 @@ Page({
 
   onLoad() {
     const problemID = (this.options.id) as string
-  
+    userApi.BuyClassDetail({
+      needToken:true,
+      header:{
+    Authorization: app.globalData.token
+  }
+  },problemID).then((res:any)=>{
+    if (res.code !=200){
+      wx.showToast({
+        "icon":"error",
+        "msg":"出现错误请重试"
+      })
+      return
+    }else if (res.code == 200){
 
-    this.setData({
-      total:this.data.count*this.data.price
-    })
+      this.setData({
+        goodDesc:res.data.content,
+        goodTitle:res.data.className,
+        price:Number(res.data.price)
+      })
+      const total = this.data.count*this.data.price
+      this.setData({
+        total:total*100
+      })
+    }
+  })
+
   },
 
 //----------------------------------------
 // 微信支付
 DoWXPay(){
-  const id = app.globalData.UserInfo.id
+  const name = this.data.value.name
 
+  if (name== ""||name==undefined){
+    wx.showToast({
+      "title":"请选择购买对象",
+      "icon":"error",
+ 
+    })
+    return
+  }
+
+  const id = app.globalData.UserInfo.id
+  const Description = this.data.goodTitle
+  const Number = this.data.count
   userApi.wechatPAY({
     needToken:true,
     header:{
   Authorization: app.globalData.token
 }
-},{"Description":this.data.goodTitle,"Number":this.data.count},id).then((res:any)=>{
+},{"Description":Description,"Number":Number},id).then((res:any)=>{
   if (res.code!=200){
     wx.showToast({
       "msg":"发生错误请重试",
@@ -115,16 +152,35 @@ DoWXPay(){
     var WXpackage = res.data.applet.package
     var signType = res.data.applet.signType
     var paySign = res.data.applet.paySign
+    //下订单之后锁库存,成功支付后确认库存,否则添加库存
+    
+    
+
+
     wx.requestPayment({
       "timeStamp": timeStamp,
       "nonceStr": nonceStr,
       "package": WXpackage,
       "signType": signType,
       "paySign": paySign,
-      "fail":function(){
-        Dialog.alert({
-          message:"已取消支付"
+      "success":function(){
+        wx.showToast({
+          "title":"支付成功",
         })
+        setTimeout(()=>{
+          wx.switchTab({
+            url: '../index/index'
+          })
+        },2000)
+      },
+      "fail":function(){
+        wx.showToast({
+          "icon":"error",
+          "title":"已取消"
+        })
+          setTimeout(()=>{
+              wx.navigateBack()
+          },2000)
       },
     })
   }

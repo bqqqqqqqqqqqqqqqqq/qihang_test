@@ -34,9 +34,11 @@ Page({
   gotoSetClass(e:any){
     let className = e.currentTarget.dataset.bname;
     let classID = e.currentTarget.dataset.bid;
+    let classTeacherID = e.currentTarget.dataset.btid
 
+    
     wx.navigateTo({
-      url:"../setClass/index?className="+className+"&classID="+classID
+      url:"../setClass/index?className="+className+"&classID="+classID+"&classTeacherID="+classTeacherID
   });
   },
   onClose(event:any) {
@@ -85,12 +87,12 @@ Page({
 
   AllKC(){
     var that = this
-     userApi.AllClass({
-           needToken:true,
-           header:{
-          Authorization: app.globalData.token
-        }
-      },"").then((res:any)=>{
+      userApi.AllClass({
+            needToken:true,
+            header:{
+            Authorization: app.globalData.token
+          }
+        },"").then((res:any)=>{
         if(res.code==200&&res.data!=null){
           const list :kcInfo[]=res.data
           const listAll = this.data.bList
@@ -128,53 +130,4 @@ Page({
       type: t
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

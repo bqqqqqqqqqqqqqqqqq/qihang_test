@@ -50,7 +50,7 @@ Page({
     //   }, 500);
     //   return
     // }
-     userApi.AllClass({
+     userApi.AllClassBuy({
            needToken:true,
            header:{
           Authorization: app.globalData.token

@@ -14,6 +14,7 @@ Page({
     class:{
       className:<any>"",
       classID:<any>"",
+      classTeacherID:<any>""
     },
     err:'',
     fieldDisabled:false,
@@ -92,7 +93,32 @@ Page({
     e = parseInt(e.currentTarget.dataset.id);
     let myAdd:MyObject[]= this.data.added;
     let myUnAdd:MyObject[]= this.data.unadd;
-    this.removeItemById(e,myAdd,myUnAdd);
+
+    userApi.DeleteClassStudent({
+      needToken:true,
+      header:{
+    Authorization: app.globalData.token
+  }
+},{"classID":this.data.class.classID as number,"teacherID":this.data.class.classTeacherID as number,"studentID":e as string}).then((res:any)=>{
+  if (res.code==-1){
+    wx.showToast({
+      "icon":"error",
+      "msg":"失败,请重试"
+    })
+    return
+  }else if(res.code==200) {
+      wx.showToast({
+        "msg":"成功"
+      })
+      this.removeItemById(e,myAdd,myUnAdd);
+      this.setData({
+        added : myAdd,
+        unadd : myUnAdd
+      });
+      Toast('删除成功')
+  }
+})
+
     this.setData({
       added : myAdd,
       unadd : myUnAdd
@@ -105,22 +131,43 @@ Page({
     e = parseInt(e.currentTarget.dataset.id);
     let myAdd:MyObject[]= this.data.added;
     let myUnAdd:MyObject[]= this.data.unadd;
-    
-    this.removeItemById(e,myUnAdd,myAdd);
-    this.setData({
-      added : myAdd,
-      unadd : myUnAdd
-    });
-    Toast('添加成功！')
+
+    userApi.AddClassStudent({
+      needToken:true,
+      header:{
+    Authorization: app.globalData.token
+  }
+},{"classID":this.data.class.classID as number,"teacherID":this.data.class.classTeacherID as number,"studentID":e as string}).then((res:any)=>{
+  if (res.code==-1){
+    wx.showToast({
+      "icon":"error",
+      "msg":"失败,请重试"
+    })
+    return
+  }else if(res.code==200) {
+      wx.showToast({
+        "msg":"成功"
+      })
+      this.removeItemById(e,myUnAdd,myAdd);
+      this.setData({
+        added : myAdd,
+        unadd : myUnAdd
+      });
+      Toast('添加成功')
+  }
+})
+
   },
  
   onLoad(options) {
     let className = options.className;
     let classID =options.classID;
+    let classTeacherID = options.classTeacherID
     this.setData({
       class:{
         className:className,
         classID:classID,
+        classTeacherID:classTeacherID
       }
     })
     userApi.AllClassStudent({

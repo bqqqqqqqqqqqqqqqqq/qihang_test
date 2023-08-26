@@ -1,6 +1,6 @@
 <van-tabs >
   <van-tab title="全部">  
-      <view class="card" wx:for="{{list}}" wx:key="kid"   >
+      <view class="card" wx:for="{{list}}" wx:for-id="">
       <van-cell-group inset>
       <van-card
         desc="{{item.teacherName}}老师"
@@ -8,9 +8,19 @@
         thumb="{{item.cover_img}}"
         price="{{item.price}}/节"
       >
+
         <view slot="footer">
-          <van-button round type="danger" size="mini" plain="{{item.buy==0}}" bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}">{{item.buy==0?"上架":"下架"}}</van-button>
+          <van-button round type="danger" size="mini" plain="{{item.buy==0}}" bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}" data-index="{{index}}">{{item.buy==0?"上架":"下架"}}</van-button>
         </view>
+
+
+      <!-- <wx wx:if="{{item.maxPersion <= item.nowPersion}}">
+        <view slot="footer">
+          <van-button round type="danger" size="mini" plain="{{item.buy==0}}"  data-id="{{item.id}}" data-isbuy="{{item.buy}}" data-index="{{index}}">已报名满人</van-button>
+        </view>
+      </wx> -->
+
+
       </van-card>
     </van-cell-group>
     </view>
