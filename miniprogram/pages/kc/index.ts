@@ -20,7 +20,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:<any>[],
+    list:<any>[
+      { teacherName: '张三', className: '语文' ,completeTotal:16},
+      { teacherName: '李四', className: '数学'  ,completeTotal:16},
+      { teacherName: '王五', className: '英语'  ,completeTotal:16},
+    ],
     activeNames: [0,1,2],
   },
   onChange(event:any) {

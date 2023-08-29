@@ -5,8 +5,21 @@
  
       >
       <view slot="footer">
-        <van-button round size="small">已购买{{item.completeTotal}}节课</van-button>
-        <!-- <van-button round size="mini">按钮</van-button> -->
+        <van-button round size="small" type="primary" plain>已购买{{item.completeTotal}}节课</van-button>
+        <van-button round size="small" type="info" plain>已完成{{item.complete}}节课</van-button>
+      </view>
+      </van-card>     
+    </view>
+
+    <view class="card refund" wx:for="{{list}}" wx:key="index">
+      <van-card
+        desc="{{item.teacherName}}老师"
+        title="{{item.className}}课"
+        tag="退款"
+ 
+      >
+      <view slot="footer">
+        <van-button round size="small"  plain>已退款{{item.completeTotal}}节课</van-button>
       </view>
       </van-card>     
     </view>
