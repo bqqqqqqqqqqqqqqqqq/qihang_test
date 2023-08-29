@@ -7,8 +7,8 @@ Page({
   data: {
     name: '',
     teacher:<any>"",
-    price:'',
-    maxPersion:"",
+    price:<any>"",
+    maxPersion:<any>"",
     content:"",
     show: false,
     columns:<any>[]
@@ -31,6 +31,7 @@ Page({
     let name = this.data.name;
     let teacher = this.data.teacher;
     let price = this.data.price;
+
     if(name===''){
       Dialog.alert({
         message: '请输入课程名称',
