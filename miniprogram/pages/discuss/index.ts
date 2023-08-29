@@ -64,15 +64,6 @@ Page({
           remark:"teacher"
         })),
       },
-      {
-        type: 'radio',
-        screenKey: '知识点',
-        screenValue: ["基础课程","共享课程"].map((m) => ({
-          checked: false,
-          value: m,
-           remark:"subject"
-        })),
-      },
     ],
     activeNames: ['1'],
     search:0
@@ -111,9 +102,9 @@ onChange(e:any) {
     wx.setStorageSync('query', selected);
   });
 },
-getAllProblem(grade:string,teacher:string,subject:string){
+getAllProblem(grade:string,teacher:string){
   const Page: Paging = this.data.Paging 
-  publicAPI.searchProblemList(Page,grade,teacher,subject).then((res:any)=>{
+  publicAPI.searchProblemList(Page,grade,teacher).then((res:any)=>{
     if(res.code===200){
         const listAll = this.data.listAll
         if (res.data  != null)  {
@@ -154,17 +145,14 @@ getAllProblem(grade:string,teacher:string,subject:string){
     })
     var grade = ""
     var teacher = ""
-    var subject = ""
     selected.forEach((ele: { remark: string; value: string; remkae: string; }) => {
       if (ele.remark=="grade"){
         grade = ele.value
       }else if (ele.remark=="teacher"){
         teacher = ele.value
-      }else if (ele.remark=="subject"){
-        subject = ele.value
       }
     });
-    this.getAllProblem(grade,teacher,subject)
+    this.getAllProblem(grade,teacher)
     this.setData({
       activeNames: [],
       search:1,

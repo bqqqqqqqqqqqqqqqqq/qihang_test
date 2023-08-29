@@ -57,7 +57,7 @@ Page({
     })
     if (this.data.fileList.length===0){
       wx.showToast({
-        title:"请上传题目",
+        title:"请上传图片",
         icon:"error"
       })
       return
@@ -84,7 +84,7 @@ Page({
         })
        if (res.statusCode===200){
           wx.showToast({
-            title:"已成功上传问题",
+            title:"已成功上传答案",
             icon:"none"
           })
           wx.hideLoading()
@@ -92,6 +92,9 @@ Page({
           setTimeout(()=>{
             let pages=getCurrentPages();
             let beforePage=pages[pages.length-2];
+            beforePage.setData({
+              AllQimg: []//清空上一页数据
+            })
             beforePage.getProblemDetail(problemID)
             wx.navigateBack({
               delta: 1,
