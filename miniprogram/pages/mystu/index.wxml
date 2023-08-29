@@ -17,7 +17,7 @@
     <van-cell-group>
       <van-cell size="large" title="{{item.className}}" value="{{item.teacherName}}" is-link  bindtap="gotoSetClass" data-bname="{{item.className}}" data-bid="{{item.id}}" data-btid="{{item.teacher_id}}"/>
     </van-cell-group>
-    <view slot="right" >删除</view>
+    <view slot="right" bindtap="deleteClass" data-bclassid="{{item.id}}">删除</view>
   </van-swipe-cell>
 </van-cell-group>
 <van-dialog id="van-dialog" />

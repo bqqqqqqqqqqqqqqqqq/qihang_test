@@ -67,5 +67,5 @@
 
 <!-- <van-button bind:click="getUserinfo">这1是2一个测试按钮</van-button> -->
 <block wx:if="{{token.length==0}}">
-<button class="login" open-type="getPhoneNumber" type="primary" bindgetphonenumber="getPhoneNumber">微信账号一键登录</button>
+<button class="login" open-type="getPhoneNumber" type="primary" bindgetphonenumber="getPhoneNumber">账号一键登录</button>
 </block>

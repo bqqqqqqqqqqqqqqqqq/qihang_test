@@ -45,6 +45,7 @@ Page({
         })),
       },
     ],
+    once:0
   },
   // 上传图片、上传文件校验格式-----好像这个不用写
   beforeRead(event:any){
@@ -138,6 +139,15 @@ Page({
     wx.navigateBack();
   },
   doSubmit(e:any) {
+    if (this.data.once==1){
+      wx.showToast({
+        "title":"上传中请稍等"
+      })
+      return
+    }
+    this.setData({
+      once:1
+    })
       let selected:any = []
       // 获取所有选中
       this.data.searchList.map(n => {
@@ -180,13 +190,14 @@ Page({
       }
       var id = app.globalData.UserInfo.id
       let problemID: number=0
+    
       userApi.creatProblem({
         needToken:true,
         header:{
       Authorization: app.globalData.token
     }
   },selected[1],selected[0],selected[2],id).then((res:any)=>{
-    
+
     if (res.code  == 200){
     problemID = res.data
     }
@@ -233,6 +244,7 @@ Page({
         },
       })
   }
+
   })
       
 

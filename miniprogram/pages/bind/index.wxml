@@ -1,7 +1,7 @@
 <view class="container">
   <view class="box">
   <view class="text">
-    请填写孩子微信绑定的手机号码或自定义帐号
+    请填写孩子绑定的手机号码或自定义帐号
   </view>
   <view class="text">
     最多11位数
@@ -50,9 +50,9 @@
 
     <van-dialog id="van-dialog" />
     <view class="submit">
-      <van-button type="primary" round bind:click="submit" size="large" style="margin-bottom:20px">绑定</van-button>
+      <!-- <van-button type="primary" round bind:click="submit" size="large" style="margin-bottom:20px">绑定</van-button> -->
       <view style="margin-top:20px">
-      <van-button type="primary" round  size="large" bind:click="goSignAndBind" >帮孩子注册并绑定</van-button>
+      <van-button type="primary" round  size="large" bind:click="submit" >帮孩子注册并绑定</van-button>
     </view>
     </view>
 

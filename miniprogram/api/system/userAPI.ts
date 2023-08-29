@@ -67,9 +67,9 @@ export default class userApi {
       RequestConfig
     )
 
-    static UserwxPhoneRegister = (data: RegUserInfo,RequestConfig:{needToken:boolean}) =>
+    static UserwxPhoneRegister = (data: RegUserInfo,RequestConfig:{needToken:boolean},wxcode:string) =>
     httpRequest.post(
-      baseUrl + '/WXRegister',
+      baseUrl + '/WXRegister?IDcode='+wxcode,
       data,
       RequestConfig
     )
@@ -91,7 +91,7 @@ export default class userApi {
       )
       static AddBuyClassStu = (RequestConfig:{needToken:boolean,header:object},data:any) =>
       httpRequest.post(
-       baseUrl + userUrl+'/AddBuyClassStu',
+       baseUrl + 'tea'+'/AddBuyClassStu',
         data,
         RequestConfig
      )
@@ -112,10 +112,10 @@ export default class userApi {
       {},
       RequestConfig
     )
-    // 学生家长查询能购买的课程
-    static AllClass = (RequestConfig:{needToken:boolean,header:object},data:string) =>
-    httpRequest.get<kcInfo>(  
-      baseUrl + "/tea"+'/AllClass',
+    // 管理员管理所有班级
+    static AllClass = (RequestConfig:{needToken:boolean,header:object}) =>
+    httpRequest.get(  
+      baseUrl+'/tea'+'/AllClass',
       {},
       RequestConfig
     )
@@ -132,9 +132,9 @@ export default class userApi {
       RequestConfig
     )
     // 学生--绑定孩子后----成为家长
-    static BindMyKID = (RequestConfig:{needToken:boolean,header:object},childPhone:string, parentsID:string,name:string,grade:string)=>
+    static BindMyKID = (RequestConfig:{needToken:boolean,header:object},childPhone:string, parentsID:string)=>
     httpRequest.post(
-      baseUrl+ userUrl+'/AddChild?'+'childPhone='+childPhone+'&parentsID='+parentsID+"&name="+name+"&grade="+grade,
+      baseUrl+ userUrl+'/AddChild?'+'childPhone='+childPhone+"&parentsID="+parentsID,
       {},
       RequestConfig
     )

@@ -17,7 +17,7 @@
     </view>
 
     <!-- 灰色 -->
-    <view class="card gray" wx:for="{{list}}" wx:for-id="" wx:if="{{item.maxPersion <= item.nowPersion}}">
+    <view class="card gray" wx:for="{{list}}"  wx:if="{{item.maxPersion <= item.nowPersion}}">
       <van-cell-group inset>
         <van-card
         desc="{{item.teacherName}}老师"

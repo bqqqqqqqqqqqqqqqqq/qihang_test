@@ -74,7 +74,7 @@ gokcChild(e:any){
       }, 500);
       return
     }
-    if(identify=="stu"){
+    if(identify=="stu" || identify==""){
         userApi.StuDetailClass({
           needToken:true,
           header:{

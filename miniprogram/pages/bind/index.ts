@@ -34,14 +34,20 @@ Page({
         // on close
       });
     }else{
-      userApi.BindMyKID({needToken:true,
+      userApi.AddAndRegisterChild({needToken:true,
         header:{
        Authorization: app.globalData.token
-     }},phone,name,grade,parentsID).then((res:any)=>{
+     }},name,grade,parentsID).then((res:any)=>{
        if (res.code == 200){
       wx.showToast({
         title:"绑定成功,请重新登录",
       })
+      setTimeout(()=>{
+        wx.switchTab({
+          url:"../user/index"
+      })
+      },2000)
+    
       wx.removeStorageSync('token')
       wx.removeStorageSync('UserInfo')
      }else if(res.msg=="已绑定过该用户"){
@@ -74,7 +80,7 @@ onClose() {     //点击空白处开闭弹出层（选择器）及选择器左�
 },
 onConfirm(e:any){    //选择器右上角的确定，点击确定获取值
  this.setData({
-   gender:e.detail.value,
+   grade:e.detail.value,
    show:false
  })
 },

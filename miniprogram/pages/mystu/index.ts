@@ -35,8 +35,6 @@ Page({
     let className = e.currentTarget.dataset.bname;
     let classID = e.currentTarget.dataset.bid;
     let classTeacherID = e.currentTarget.dataset.btid
-
-    
     wx.navigateTo({
       url:"../setClass/index?className="+className+"&classID="+classID+"&classTeacherID="+classTeacherID
   });
@@ -92,7 +90,7 @@ Page({
             header:{
             Authorization: app.globalData.token
           }
-        },"").then((res:any)=>{
+        }).then((res:any)=>{
         if(res.code==200&&res.data!=null){
           const list :kcInfo[]=res.data
           const listAll = this.data.bList
@@ -116,6 +114,25 @@ Page({
         return
       }
     })},
+
+    deleteClass(e:any){
+      let classID = e.currentTarget.dataset.bclassid
+      userApi.DeleteClass({ needToken:true,
+        header:{
+        Authorization: app.globalData.token
+      }},classID).then((res:any)=>{
+        if (res==200){
+          wx.showToast({
+            "title":"删除成功"
+          })
+        }else{
+          wx.showToast({
+            "title":"删除失败",
+            "icon":"error",
+          })
+        }
+      })
+    },
 
   /**
    * 生命周期函数--监听页面加载
