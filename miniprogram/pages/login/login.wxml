@@ -29,7 +29,7 @@
   </van-cell-group>
   <view class="btn">
     <van-button type="primary" bind:click="clickLogin" block>登录</van-button>
-    <button class="PhoneLogin" open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber">微信账号一键登录</button>
+    <button class="PhoneLogin" open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber">手机号快速登录</button>
     <button class="PhoneLogin" bindtap="goToSignUp">注册</button>
   </view>
 </view>

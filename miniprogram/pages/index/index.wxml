@@ -21,7 +21,7 @@
 <van-button bind:click="formatTime">这1是2一个测试按钮</van-button> -->
 <view class="bottom"></view>
 <van-submit-bar
-  button-text="上传题目"
+  button-text="免费解题"
   bind:submit="gotoUplode"
 />
 

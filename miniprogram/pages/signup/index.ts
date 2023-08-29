@@ -20,7 +20,8 @@ Page({
     username:'',
     password:'',
     password2:'',
-    show:true
+    show:true,
+    wxcode:""
     
   },
   onClickEye(){
@@ -133,15 +134,41 @@ Page({
       })
       return
     } 
-    
+   
+    // wx.login((res:{code:string})=>{
+    //     this.setData({
+    //       wxcode:res.code
+    //     })
+    // })
+
+    wx.login({
+      success:(res: any) =>{
+        
+        const code =res.code
+        this.setData({
+          wxcode:code
+        })
+          console.log(e.detail.code)
+        this.Register(e.detail.code,this.data.wxcode)
+  },
+  fail(){
+          wx.showToast({
+            "icon":"error",
+            "title":"网络错误"
+          })
+          setTimeout(()=>{
+            wx.navigateBack()
+          },2000)
+  }
+    })
 
      // 允许授权
-    this.Register(e.detail.code)
+
     return true
    
   },
 
-  Register(code:string){
+  Register(code:string,wxcode:string){
     const userInfo:UserInfo={
         name:this.data.username,
         password:this.data.password,
@@ -151,7 +178,7 @@ Page({
       title:"加载中",
       mask:"true"
     })
-    userApi.UserwxPhoneRegister(userInfo,{needToken:false}).then((res:any)=>{
+    userApi.UserwxPhoneRegister(userInfo,{needToken:false},wxcode).then((res:any)=>{
       wx.hideLoading()
         if(res.code===200){
             wx.showToast({

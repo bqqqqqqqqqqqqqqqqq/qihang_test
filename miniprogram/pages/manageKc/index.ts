@@ -103,7 +103,7 @@ Page({
            header:{
           Authorization: app.globalData.token
         }
-      },"").then((res:any)=>{
+      }).then((res:any)=>{
         if(res.code==200&&res.data!=null){
     
           const list:kcInfo[]=res.data

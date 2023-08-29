@@ -14,6 +14,7 @@ Page({
     AllQimg:<string[]>[],
     fileList:<any>[],
     problemID:"",
+    once:0
   },
   beforeRead(event:any){
     //before-read 事件可以在上传前进行校验，调用 callback 方法传入 true 表示校验通过，传入 false 表示校验失败。
@@ -45,6 +46,15 @@ Page({
   }, 
 
   doSubmit(e:any) {
+    if (this.data.once==1){
+      wx.showToast({
+        "title":"上传中请稍等"
+      })
+      return
+    }
+    this.setData({
+      once:1
+    })
     if (this.data.fileList.length===0){
       wx.showToast({
         title:"请上传题目",

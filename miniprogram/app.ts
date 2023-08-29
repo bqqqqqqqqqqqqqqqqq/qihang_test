@@ -27,8 +27,9 @@ App({
     this.globalData.token=wx.getStorageSync('token') || ""
     this.globalData.UserInfo=wx.getStorageSync('UserInfo') || {name:"请先登录",isAdmin:"0",};
 
-    },
-    
+
+
+  },
 
 
 

@@ -39,7 +39,7 @@
       密码请包括字母，数字，8位以上
     </van-cell-group>
     <view class="btn">
-      <van-button type="primary" open-type="getPhoneNumber"   bindgetphonenumber="getPhoneNumber" round block>微信手机号一键注册</van-button>
+      <van-button type="primary" open-type="getPhoneNumber"   bindgetphonenumber="getPhoneNumber" round block>手机号一键注册</van-button>
       <!-- <button class="PhoneLogin" open-type="getPhoneNumber" type="primary"  bindgetphonenumber="getPhoneNumber" round>微信账号一键登录</button> -->
     </view>
   </view>

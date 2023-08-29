@@ -67,7 +67,7 @@ Page({
       {
         type: 'radio',
         screenKey: '知识点',
-        screenValue: ["语文","数学","英语","物理","历史","化学","生物","地理","思政","其他"].map((m) => ({
+        screenValue: ["基础课程","共享课程"].map((m) => ({
           checked: false,
           value: m,
            remark:"subject"
