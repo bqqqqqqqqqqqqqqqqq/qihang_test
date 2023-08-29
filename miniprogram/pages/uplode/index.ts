@@ -232,9 +232,7 @@ Page({
           })
           wx.hideLoading()
           setTimeout(()=>{
-            wx.redirectTo({
-              url: '../index/index'
-           })
+            wx.navigateBack();
           },1000)
         }else {
           wx.showToast({
