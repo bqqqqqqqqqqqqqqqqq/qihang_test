@@ -28,15 +28,6 @@ Page({
     searchList:<SearchItem[]>[
       {
         type: 'radio',
-        screenKey: '请选择科目',
-        screenValue: ["语文","数学","英语","物理","历史","化学","生物","地理","思政","其他"].map((m) => ({
-          checked: false,
-          value: m,
-          need:true
-        })),
-      },
-      {
-        type: 'radio',
         screenKey: '请选择年级',
         screenValue: ['初一','初二','初三','高一', '高二', '高三'].map((m) => ({
           checked: false,
@@ -88,7 +79,7 @@ Page({
          });
         if (res.data!=null){
           const searchItem = this.data.searchList;
-          searchItem[2].screenValue=tea.map((m: { name: string;id:string }) => ({
+          searchItem[1].screenValue=tea.map((m: { name: string;id:string }) => ({
             checked: false,
             value: m.name,
             teacherID:m.id,
@@ -212,7 +203,6 @@ Page({
         name: 'file',
         formData: {
           // token:app.globalData.token
-          subjects:selected[0],
           grade:selected[1],
           teacherID:selected[2]
         },
