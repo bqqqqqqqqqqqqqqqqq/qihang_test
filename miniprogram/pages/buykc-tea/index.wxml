@@ -1,0 +1,16 @@
+<view class="card" wx:for="{{list}}" wx:key="kid" >
+  <van-cell-group inset>
+  <van-card
+    desc="{{item.teacherName}}老师"
+    title="{{item.className}}课"
+    thumb="{{item.cover_img}}"
+    price="{{item.price}}/节"
+
+  >
+    <view slot="footer">
+      <van-button round size="mini" type="danger" bind:click="gotobuy" data-id="{{item.id}}" data-teacherid="{{item.teacher_id}}">购买</van-button>
+      <!-- <van-button round size="mini">按钮</van-button> -->
+    </view>
+  </van-card>
+</van-cell-group>
+</view>
