@@ -23,7 +23,6 @@ Page({
    */
   data: {
     list:<any>[],
-    classType:""
   },
 
   gotobuy(e:any){
@@ -53,8 +52,7 @@ Page({
         }
       },id).then((res:any)=>{
         if(res.code==200&&res.data!=null){
-          const mytype = this.data.classType;
-          const list :kcInfo[]=res.data.filter((obj: { type: string; }) => obj.type === mytype)
+          const list :kcInfo[]=res.data
           const listAll = this.data.list
           listAll.push(...list)
           that.setData({
@@ -77,12 +75,7 @@ Page({
       }
     })},
 onLoad(option){
-  const tid = option.tid
-  const type = option.type
-  this.setData({
-    classType:type
-  })
-  
+  const tid = option.id
   this.AllKC(tid)
   
 }

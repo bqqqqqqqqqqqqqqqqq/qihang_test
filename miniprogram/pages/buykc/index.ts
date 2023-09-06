@@ -31,11 +31,12 @@ Page({
     }
     )
   },
-  gotobuy(e:any){
-    const id = e.currentTarget.dataset.id
-    const teacherid = e.currentTarget.dataset.teacherid
+  goBuyTeaKc(e:any){
+    const id = e.currentTarget.dataset.tid
+    console.log(id,33);
+    
     wx.navigateTo({
-      url:"../order/index?id="+id+"&teacherID="+teacherid
+      url:"../buykc-tea/index?id="+id
     })
   },
 

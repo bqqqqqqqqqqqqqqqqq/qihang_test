@@ -1,5 +1,5 @@
 <!--pages/buykc/index.wxml-->
 
 <van-cell-group>
-  <van-cell wx:for="{{list}}" wx:key="id" data-tid="{{item.id}}" title="{{item.name}}" is-link size="large" bind:click="goBuyTeaKc" data-type="basic"/>
+  <van-cell wx:for="{{list}}" wx:key="id" data-tid="{{item.id}}" title="{{item.name}}" is-link size="large" bind:click="goBuyTeaKc" />
 </van-cell-group>
