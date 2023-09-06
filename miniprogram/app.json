@@ -38,7 +38,8 @@
     "pages/bind-Phone/index",
     "pages/manageKc/index",
     "pages/buykc-tea/index",
-    "pages/stuClassDetail/index"
+    "pages/stuClassDetail/index",
+    "pages/webview/webview"
   ],
     "tabBar": {
       "color": "#000",

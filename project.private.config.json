@@ -12,6 +12,13 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/webview/webview",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/stuClassDetail/index",
           "query": "",
           "launchMode": "default",
