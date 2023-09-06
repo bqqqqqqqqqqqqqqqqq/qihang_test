@@ -1,8 +1,5 @@
 <van-cell title="学生总数" value="{{total}}" size="large"  />
-<van-index-bar index-list="{{ indexList }}" wx:for="{{ sList }}"  wx:key="index">
-  <view>
-    <van-index-anchor index="{{ item.grade }}">标题1</van-index-anchor>
-    <van-cell title="{{ item.name }}" size="large" value="{{item.grade}}" wx:for="{{ item.AllStu}}" wx:key="index" />
-  </view>
 
-</van-index-bar>
+<van-cell-group title="学生列表">
+  <van-cell  wx:for="{{ AllStu }}" wx:key="index" title="{{ item.name }}" is-link value="{{ item.grade }}" data-id="{{item.id}}" bind:click="goClassDetail"/>
+</van-cell-group>

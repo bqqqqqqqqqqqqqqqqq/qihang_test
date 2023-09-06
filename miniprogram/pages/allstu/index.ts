@@ -25,7 +25,14 @@ Page({
     ],
     AllStu
   },
+  //跳转
+  goClassDetail(e:any){
 
+    const id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url:"../stuClassDetail/index?id="+id
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -49,7 +56,8 @@ Page({
               AllStu
           },
         ],
-        total:AllStu.length
+        total:AllStu.length,
+        AllStu: AllStu
       })
     }
   }else{
