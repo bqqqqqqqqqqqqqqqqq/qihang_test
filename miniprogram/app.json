@@ -36,7 +36,9 @@
     "pages/addStudent/index",
     "pages/addKc/index",
     "pages/bind-Phone/index",
-    "pages/manageKc/index"
+    "pages/manageKc/index",
+    "pages/buykc-tea/index",
+    "pages/stuClassDetail/index"
   ],
     "tabBar": {
       "color": "#000",

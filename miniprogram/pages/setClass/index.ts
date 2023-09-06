@@ -1,5 +1,6 @@
 // pages/setClass/index.ts
 import userApi from "../../api/system/userAPI";
+import Dialog from "../../miniprogram_npm/@vant/weapp/dialog/dialog";
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 interface MyObject {
   id: number;
@@ -22,7 +23,7 @@ Page({
     show: false,
     added:<any>[],
     unadd:<any>[//存储未添加
-    ]
+    ],
     
 
   },
@@ -88,6 +89,58 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
+  //签到
+  checkIn(e:any){
+    let sid = e.currentTarget.dataset.id;
+    const cid = this.data.class.classID;
+    userApi.LastCheck({
+      needToken:true,
+      header:{
+        Authorization: app.globalData.token
+      }
+    },sid,cid).then((res:any)=>{
+      if (res.code==-1){
+        wx.showToast({
+          "icon":"error",
+          "msg":"失败,请重试"
+        })
+        return
+      }else if((res.code==200)){
+        if(res.data.check==true){
+          userApi.Checkin({
+            needToken:true,
+            header:{
+              Authorization: app.globalData.token
+            }
+          },sid,cid).then((res:any)=>{
+            if (res.code==-1){
+              wx.showToast({
+                "icon":"error",
+                "msg":"失败,请重试"
+              })
+              return
+            }else if((res.code==200)){
+              wx.showToast({
+                "msg":"签到成功"
+              })
+            }
+          })
+        }else if(res.data.check==false){
+         Dialog.confirm({
+          message: '5分钟内只能签到一次！',
+        })
+          .then(() => {
+            // on confirm
+          })
+          .catch(() => {
+            // on cancel
+          });
+
+        }
+      }
+    })
+  },
+ 
   //删除
   deleteStu(e:any){
     e = parseInt(e.currentTarget.dataset.id);

@@ -5,21 +5,21 @@ import userApi from "../../api/system/userAPI";
 var app = getApp()
 Page({
   data: {
-    teaList:<any>[],
+    list:<any>[],
   },
-  getAllTeacher(){
+  Alltea(){
     userApi.GetAllTeacher({
         needToken:true,
         header:{
       Authorization: app.globalData.token
     }
-  }).then((res:any)=>{
+  },).then((res:any)=>{
       if(res.code===200){
-        let nameList = this.data.teaList;
+        let dataList = this.data.list;
         if(res.data!=null){
-          nameList.push(...res.data)
+          dataList.push(...res.data)
           this.setData({
-            teaList: nameList,
+            list: dataList,
           })
         }
 
@@ -31,18 +31,17 @@ Page({
     }
     )
   },
-  goBuyTeaKc(e:any){
-    const id = e.currentTarget.dataset.tid;
-    const type = e.currentTarget.dataset.type;
-    
+  gotobuy(e:any){
+    const id = e.currentTarget.dataset.id
+    const teacherid = e.currentTarget.dataset.teacherid
     wx.navigateTo({
-      url:"../buykc-tea/index?tid="+id+"&type="+type
+      url:"../order/index?id="+id+"&teacherID="+teacherid
     })
   },
 
 
 onLoad(){
-  this.getAllTeacher()
+  this.Alltea()
 }
 
 })

@@ -1,13 +1,5 @@
 <!--pages/buykc/index.wxml-->
-<van-tabs  animated>
-  <van-tab title="基础课程">
-    <van-cell-group>
-      <van-cell wx:for="{{teaList}}" wx:key="id" data-tid="{{item.id}}" title="{{item.name}}" is-link size="large" bind:click="goBuyTeaKc" data-type="basic"/>
-    </van-cell-group>
-  </van-tab>
-  <van-tab title="共享课程">
-    <van-cell-group>
-      <van-cell wx:for="{{teaList}}" wx:key="id" data-tid="{{item.id}}" title="{{item.name}}"  is-link size="large"bind:click="goBuyTeaKc" data-type="share"/>
-    </van-cell-group>
-  </van-tab>
-</van-tabs>
+
+<van-cell-group>
+  <van-cell wx:for="{{list}}" wx:key="id" data-tid="{{item.id}}" title="{{item.name}}" is-link size="large" bind:click="goBuyTeaKc" data-type="basic"/>
+</van-cell-group>

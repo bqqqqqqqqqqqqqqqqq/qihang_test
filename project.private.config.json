@@ -6,10 +6,38 @@
     "autoAudits": false,
     "urlCheck": false
   },
-  "libVersion": "2.25.2",
+  "libVersion": "3.0.1",
   "condition": {
     "miniprogram": {
       "list": [
+        {
+          "name": "",
+          "pathName": "pages/stuClassDetail/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/clockIn/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/buykc-tea/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/setClass/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
         {
           "name": "",
           "pathName": "pages/question/index",

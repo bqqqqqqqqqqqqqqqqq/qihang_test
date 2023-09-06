@@ -273,4 +273,38 @@ httpRequest.post(
   data,
   RequestConfig
 )
+//签到
+static Checkin = (RequestConfig:{needToken:boolean,header:object},sid:any,cid:any) =>
+httpRequest.post(
+  baseUrl + '/tea/Checkin?stuID='+sid+'&claID='+cid,
+   {},
+   RequestConfig
+)
+static LastCheck = (RequestConfig:{needToken:boolean,header:object},sid:any,cid:any)=>
+httpRequest.post(
+  baseUrl + '/tea/LastCheck?stuID='+sid+'&claID='+cid,
+  {},
+  RequestConfig
+  )
+  //根据老师ID选择课程
+  static SelectClassByTeacher = (RequestConfig:{needToken:boolean,header:object},id:string) =>
+  httpRequest.get(
+    baseUrl + '/user/SelectClassByTeacher?id='+id,
+    {},
+    RequestConfig
+    )
+  //更改课程数量
+  static UpdateClass = (RequestConfig:{needToken:boolean,header:object},data:any)=>
+  httpRequest.post(
+    baseUrl + '/tea/UpdateClass',
+    data,
+    RequestConfig
+    )
+	//查询一个学生的所有课程方法
+	static SelcetStudentClass = (RequestConfig:{needToken:boolean,header:object},id:any)=>
+	httpRequest.get(
+	  baseUrl + '/tea/SelcetStudentClass?id='+id,
+	  {},
+	  RequestConfig
+	  )
 }

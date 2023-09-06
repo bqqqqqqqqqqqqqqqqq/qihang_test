@@ -17,16 +17,27 @@
   </van-field>
 </van-cell-group>
 
+<van-dialog id="van-dialog" />
 
 <van-cell-group title="已添加">
   <view class="added-items" wx:for="{{added}}" wx:key="index">
     <van-field
-
+    readonly
     center
     clearable
     label="{{item.name}}({{item.grade}})"
     use-button-slot
   >
+  <van-button class="checkin" slot="button" size="small" type="info" 
+    data-id="{{item.id}}"
+    bind:click="checkIn" disabled="{{item.done}}">
+      签到
+    </van-button>
+    <van-checkbox
+        catch:tap="noop"
+        class="checkboxes-{{ index }}"
+        name="{{ item }}"
+      />
     <van-button slot="button" size="small" type="danger" 
     data-id="{{item.id}}"
     bind:click="deleteStu">
@@ -35,7 +46,12 @@
   </van-field>
   </view>
 </van-cell-group>
-<van-button icon="plus" type="primary" block bind:click="addstu">添加学生</van-button>
+<!-- <view class="bigBtn">
+  <van-button icon="back-top" type="info" block bind:click="">提交签到</van-button>
+</view> -->
+<view class="bigBtn">
+  <van-button icon="plus" type="primary" block bind:click="addstu">添加学生</van-button>
+</view>
 
   <van-toast id="van-toast" />
 <!-- 弹出层 -->

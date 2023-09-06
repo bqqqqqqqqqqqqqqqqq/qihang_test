@@ -5,3 +5,9 @@
 .text{
   text-align: center;
 }
+.checkin{
+  margin-right: 20px;
+}
+.bigBtn{
+  margin-top: 15px;
+}
