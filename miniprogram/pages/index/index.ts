@@ -143,17 +143,17 @@ onRefresh:function(){
 
 onLoad(){
   // this.getAllProblem
-  if (app.globalData.token==""){
-    wx.showToast({
-      title:'请先登录',
-      icon:'none'
-    })
-    setTimeout(() => {
-      wx.navigateTo({
-        url:'../login/login'
-      })
-    }, 2000);
-  }
+  // if (app.globalData.token==""){
+  //   wx.showToast({
+  //     title:'请先登录',
+  //     icon:'none'
+  //   })
+  //   setTimeout(() => {
+  //     wx.navigateTo({
+  //       url:'../login/login'
+  //     })
+  //   }, 2000);
+  // }
 },
 
 onShow(){
