@@ -294,9 +294,9 @@ httpRequest.post(
     RequestConfig
     )
   //更改课程数量
-  static UpdateClass = (RequestConfig:{needToken:boolean,header:object},data:any)=>
+  static UpdateClassNumber = (RequestConfig:{needToken:boolean,header:object},data:any)=>
   httpRequest.post(
-    baseUrl + '/tea/UpdateClass',
+    baseUrl + '/tea/UpdateClassNumber',
     data,
     RequestConfig
     )
