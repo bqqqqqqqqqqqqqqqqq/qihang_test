@@ -11,9 +11,9 @@ interface kcInfo {
   completeTotal:string
 }
 interface updateData{
-  teacherID:string
+  teacherID:number
   studentID:number
-  classID:string
+  classID:number
   number:number
 }
  
@@ -21,9 +21,9 @@ var app = getApp()
 var kcInfo:any[]
 var myCount:number
 var upData:updateData = {
-  teacherID: "",
+  teacherID: 0,
   studentID: 0,
-  classID: "",
+  classID: 0,
   number: 0,
 }
 Page({
@@ -127,7 +127,7 @@ Page({
     
     // this.setData({ count: c});//
     this.setData({ show: true });
-    upData.classID = cid
+    // upData.classID = cid
     console.log(upData);
     
   },

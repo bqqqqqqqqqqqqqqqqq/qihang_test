@@ -33,7 +33,7 @@ Page({
   },
   goBuyTeaKc(e:any){
     const id = e.currentTarget.dataset.tid
-    console.log(id,33);
+    
     
     wx.navigateTo({
       url:"../buykc-tea/index?id="+id
