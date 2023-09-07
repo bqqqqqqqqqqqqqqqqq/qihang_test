@@ -6,7 +6,7 @@
       >
       <view slot="footer">
         <van-button class="btn" size="small" hairline disabled>{{item.complete}}/{{item.completeTotal}}</van-button>
-        <van-button class="btn" type="info" size="small" bind:click="checkIn" data-id="{{item.id}}">签到</van-button>
+        <van-button class="btn" type="info" size="small" bind:click="checkIn" data-id="{{item.id}}" data-idx="{{index}}" disabled="{{item.done}}">签到</van-button>
         <van-button class="btn" type="primary" size="small" data-classcount="{{item.completeTotal}}" data-id="{{item.id}}" bind:click="edit">修改</van-button>
       </view>
       </van-card>     

@@ -92,6 +92,8 @@ Page({
   //签到
   checkIn(e:any){
     let sid = e.currentTarget.dataset.id;
+    const index = e.currentTarget.dataset.idx;
+    let myadded = this.data.added;
     const cid = this.data.class.classID;
     userApi.LastCheck({
       needToken:true,
@@ -123,6 +125,11 @@ Page({
               wx.showToast({
                 "msg":"签到成功"
               })
+              myadded[index].done = true
+              myadded[index].complete = myadded[index].complete + 1
+              this.setData({
+                added:myadded
+              })
             }
           })
         }else if(res.data.check==false){
@@ -131,6 +138,10 @@ Page({
         })
           .then(() => {
             // on confirm
+            myadded[index].done = true
+              this.setData({
+                added:myadded
+              })
           })
           .catch(() => {
             // on cancel

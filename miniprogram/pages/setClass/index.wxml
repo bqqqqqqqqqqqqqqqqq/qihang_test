@@ -32,8 +32,7 @@
       {{item.complete}}/{{item.completeTotal}}
     </van-button>
   <van-button class="checkin" slot="button" size="small" type="info" 
-    data-id="{{item.id}}"
-    bind:click="checkIn" disabled="{{item.done}}">
+    data-id="{{item.id}}" data-idx="{{index}}" bind:click="checkIn" disabled="{{item.done}}">
       签到
     </van-button>
     <van-button slot="button" size="small" type="danger" 
