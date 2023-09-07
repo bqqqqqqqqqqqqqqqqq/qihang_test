@@ -20,7 +20,12 @@ interface updateData{
 var app = getApp()
 var kcInfo:any[]
 var myCount:number
-var upData:updateData
+var upData:updateData = {
+  teacherID: "",
+  studentID: 0,
+  classID: "",
+  number: 0,
+}
 Page({
 
   /**
@@ -32,6 +37,7 @@ Page({
     show: false,
     list:<any>[
     ],
+    value:""
   },
   //签到
   checkIn(e:any){
@@ -84,27 +90,6 @@ Page({
       }
     })
   },
-  onChange(event:any) {
-    this.setData({
-      activeNames: event.detail,
-    });
-  },
-  //跳转
-  go(url:string,params?:string){
-    let gourl = '';
-    if (params) {
-      gourl = '/pages/'+url+'/index?' + params;
-    }else{
-      gourl = '/pages/'+url+'/index';
-    }
-    wx.navigateTo({
-      url:gourl
-  });
-},
-gokcChild(e:any){
-  let p = e.currentTarget.dataset.kid;
-  this.go('kcChild','kid='+p);
-},
   /**
    * 生命周期函数--监听页面加载
    */
@@ -122,8 +107,6 @@ gokcChild(e:any){
       header:{
     Authorization: app.globalData.token
   }},sid).then((res:any)=>{
-    let data = res.data;
-    console.log(data);
     if(res.code==200){
       const list :kcInfo[]=res.data
         const listAll = this.data.list
@@ -139,28 +122,49 @@ gokcChild(e:any){
   },
   //修改
   edit(e:any){
-    const c =  e.currentTarget.dataset.classcount
-    let cid = e.currentTarget.dataset.id;
-    this.setData({ count: c});//
+    const c =  e.currentTarget.dataset.id as number;
+    const cid = c + "";
+    
+    // this.setData({ count: c});//
     this.setData({ show: true });
+    upData.classID = cid
+    console.log(upData);
+    
   },
   numChange(event:any) {
     myCount = event.detail
+    
   },
   //确定按钮，提交数据
   confirm(){
     upData.studentID = parseInt(this.data.sid)
-    console.log(myCount);
+    upData.number = myCount
+    console.log(upData);
     //updata的api
+    userApi.UpdateClassNumber({
+      needToken:true,
+      header:{
+        Authorization: app.globalData.token
+      }
+    },upData).then((res:any)=>{
+      if (res.code==-1){
+        wx.showToast({
+          "icon":"error",
+          "msg":"失败,请重试"
+        })
+        return
+      }else if((res.code==200)){
+        wx.showToast({
+          "msg":"添加成功"
+        })
+      }
     
+    })
+    this.setData({count: 0})
   },
   onClose() {
     this.setData({ show: false });
   },
 
-   //下拉刷新
-   onPullDownRefresh: function () {
-    
-  },
 
 })

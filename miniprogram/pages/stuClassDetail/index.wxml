@@ -5,6 +5,7 @@
  
       >
       <view slot="footer">
+        <van-button class="btn" size="small" hairline disabled>{{item.complete}}/{{item.completeTotal}}</van-button>
         <van-button class="btn" type="info" size="small" bind:click="checkIn" data-id="{{item.id}}">签到</van-button>
         <van-button class="btn" type="primary" size="small" data-classcount="{{item.completeTotal}}" data-id="{{item.id}}" bind:click="edit">修改</van-button>
       </view>
@@ -13,7 +14,7 @@
 
 <van-dialog
   use-slot
-  title="修改课程数量"
+  title="添加课程数"
   show="{{ show }}"
   show-cancel-button
   bind:confirm="confirm"
@@ -21,21 +22,7 @@
 >
   <view class="stepper">
     <view class="stepperMain">
-      <van-stepper integer  model:value="{{ count }}"  bind:change="numChange"/>
+      <van-stepper integer  value="{{ count }}"  bind:change="numChange"/>
     </view>
   </view>
 </van-dialog>
-
-<!-- 
-    <view class="card refund" wx:for="{{list}}" wx:key="index">
-      <van-card
-        desc="{{item.teacherName}}老师"
-        title="{{item.className}}课"
-        tag="退款"
- 
-      >
-      <view slot="footer">
-        <van-button round size="small"  plain>已退款{{item.completeTotal}}节课</van-button>
-      </view>
-      </van-card>     
-    </view> -->
