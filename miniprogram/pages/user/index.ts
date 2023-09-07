@@ -110,6 +110,10 @@ goWebview(){
     url:'../webview/webview.wxml'
 })
 },
+Donwload(){
+
+
+}
 
 
 
