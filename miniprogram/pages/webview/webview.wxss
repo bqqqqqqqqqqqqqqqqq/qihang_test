@@ -1,1 +1,9 @@
 /* pages/webview/webview.wxss */
+text{
+  font-size: 20px;
+  color: #323233;
+  
+}
+.box{
+  text-align: center;
+}

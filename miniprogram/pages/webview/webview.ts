@@ -7,7 +7,23 @@ Page({
   data: {
     url:"https://app.fenzhidao.com/#/download"
   },
-
+  copyText() {
+    wx.setClipboardData({
+      data: this.data.url,
+      success: function () {
+        wx.getClipboardData({
+          success: function (res:any) {
+            console.log(res.data) // 打印剪贴板中的内容
+            wx.showToast({
+              title: '复制成功',
+              icon: 'success',
+              duration: 2000
+            })
+          }
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

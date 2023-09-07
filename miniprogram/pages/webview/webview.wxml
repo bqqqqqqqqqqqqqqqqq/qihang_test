@@ -1,2 +1,18 @@
 <!--pages/webview/webview.wxml-->
-<web-view src="{{url}}"></web-view>
+<view class="box">
+<text>请复制到浏览器打开</text>
+<van-cell-group>
+  <van-field
+    value="{{ url }}"
+    center
+    placeholder="请输入短信验证码"
+    border="{{ false }}"
+    use-button-slot
+    readonly
+  >
+    <van-button slot="button" size="small" type="primary" bind:tap="copyText">
+      复制
+    </van-button>
+  </van-field>
+</van-cell-group>
+</view>
