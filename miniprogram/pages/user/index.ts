@@ -105,6 +105,11 @@ navigateToKC(){
       url:'../kc/index/?id'+this.data.UserInfo.isAdmin
   })
 },
+goWebview(){
+  wx.navigateTo({
+    url:'../webview/webview.wxml'
+})
+},
 
 
 

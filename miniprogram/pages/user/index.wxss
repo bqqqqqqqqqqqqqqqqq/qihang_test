@@ -39,3 +39,16 @@
   color: #f8f8f8;
   
 }
+.img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EEBA5E;
+  margin-bottom:10px;
+  color: #323233;
+}
+.img image{
+  width: 70px;
+  height: 70px;
+  margin: 4px 4px 6px 4px 
+}
