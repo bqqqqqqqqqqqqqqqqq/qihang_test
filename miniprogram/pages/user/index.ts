@@ -107,7 +107,7 @@ navigateToKC(){
 },
 goWebview(){
   wx.navigateTo({
-    url:'../webview/webview.wxml'
+    url:'../webview/webview'
 })
 },
 Donwload(){
