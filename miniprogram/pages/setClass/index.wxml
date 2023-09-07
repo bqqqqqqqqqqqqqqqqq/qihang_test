@@ -28,16 +28,14 @@
     label="{{item.name}}({{item.grade}})"
     use-button-slot
   >
+  <van-button class="checkin" slot="button" size="small" disabled hairline>
+      {{item.complete}}/{{item.completeTotal}}
+    </van-button>
   <van-button class="checkin" slot="button" size="small" type="info" 
     data-id="{{item.id}}"
     bind:click="checkIn" disabled="{{item.done}}">
       签到
     </van-button>
-    <van-checkbox
-        catch:tap="noop"
-        class="checkboxes-{{ index }}"
-        name="{{ item }}"
-      />
     <van-button slot="button" size="small" type="danger" 
     data-id="{{item.id}}"
     bind:click="deleteStu">
