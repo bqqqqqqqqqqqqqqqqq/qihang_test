@@ -32,8 +32,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    radio: '1',
     sid:"",
-    count:0,
+    count: 1,
     show: false,
     list:<any>[
     ],
@@ -134,30 +135,51 @@ Page({
   //修改
   edit(e:any){
     const c =  e.currentTarget.dataset.id as number;
-    const cid = c + "";
-    
+    const tid =parseInt(e.currentTarget.dataset.tid as string);
+    upData.teacherID = tid;
+    upData.classID = c;
     // this.setData({ count: c});//
     this.setData({ show: true });
-    // upData.classID = cid
-    console.log(upData);
     
   },
   numChange(event:any) {
     myCount = event.detail
+    if(myCount){
+      this.setData({
+        count: myCount
+      })
+    }
+  
     
+  },
+  //单选
+  radioChange(event:any){
+    this.setData({
+      radio: event.detail,
+    });
+  },
+  onClick(event:any) {
+    const { name } = event.currentTarget.dataset;
+    this.setData({
+      radio: name,
+    });
   },
   //确定按钮，提交数据
   confirm(){
     upData.studentID = parseInt(this.data.sid)
-    upData.number = myCount
-    console.log(upData);
+    let isadd = this.data.radio;
+    if(isadd=='1'){
+      upData.number = this.data.count
+    }else if(isadd=='2'){
+      upData.number = -this.data.count
+    };
     //updata的api
     userApi.UpdateClassNumber({
       needToken:true,
       header:{
         Authorization: app.globalData.token
       }
-    },upData).then((res:any)=>{
+    },upData as updateData).then((res:any)=>{
       if (res.code==-1){
         wx.showToast({
           "icon":"error",
@@ -176,6 +198,11 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
-
+  goaddClass(){
+    const sid = this.data.sid
+    wx.navigateTo({
+      url:'../addStuClass/index?studentID='+sid
+  })
+  }
 
 })
