@@ -39,7 +39,8 @@
     "pages/manageKc/index",
     "pages/buykc-tea/index",
     "pages/stuClassDetail/index",
-    "pages/webview/webview"
+    "pages/webview/webview",
+    "pages/addStuClass/index"
   ],
     "tabBar": {
       "color": "#000",

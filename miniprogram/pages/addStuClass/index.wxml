@@ -1,0 +1,24 @@
+<van-cell-group title="添加购买">
+      <van-field
+        value="{{className}}"
+        label="课程"
+        readonly
+        input-align="left"
+        placeholder="请选择课程"
+        bind:click-input="showPopup"
+      />
+      <van-field
+        model:value="{{ count }}"
+        label="数量"
+        input-align="left"
+        placeholder="请输入添加的数量"
+        type="number"
+      />
+    </van-cell-group>
+    <view class="submit">
+      <van-button type="primary" round bind:click="submit" size="large">添加</van-button>
+    </view>
+    <van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 60%;" round>
+  <van-picker columns="{{ columns }}" show-toolbar="true" confirm-button-text="确认" cancel-button-text="取消"  bind:cancel="onClose" bind:confirm="onConfirm" value-key="name" />
+</van-popup>
+<van-dialog id="van-dialog" />
