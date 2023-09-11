@@ -103,8 +103,8 @@ Page({
     },sid,cid).then((res:any)=>{
       if (res.code==-1){
         wx.showToast({
-          "icon":"error",
-          "msg":"失败,请重试"
+          icon:"error",
+          title:"失败,请重试"
         })
         return
       }else if((res.code==200)){
@@ -117,13 +117,13 @@ Page({
           },sid,cid).then((res:any)=>{
             if (res.code==-1){
               wx.showToast({
-                "icon":"error",
-                "msg":"失败,请重试"
+                icon:"error",
+                title:"失败,请重试"
               })
               return
             }else if((res.code==200)){
               wx.showToast({
-                "msg":"签到成功"
+                title:"签到成功"
               })
               myadded[index].done = true
               myadded[index].complete = myadded[index].complete + 1
@@ -165,13 +165,13 @@ Page({
 },{"classID":this.data.class.classID as number,"teacherID":this.data.class.classTeacherID as number,"studentID":e as string}).then((res:any)=>{
   if (res.code==-1){
     wx.showToast({
-      "icon":"error",
-      "msg":"失败,请重试"
+      icon:"error",
+      title:"失败,请重试"
     })
     return
   }else if(res.code==200) {
       wx.showToast({
-        "msg":"成功"
+        title:"成功"
       })
       this.removeItemById(e,myAdd,myUnAdd);
       this.setData({
@@ -203,13 +203,13 @@ Page({
 },{"classID":this.data.class.classID as number,"teacherID":this.data.class.classTeacherID as number,"studentID":e as string}).then((res:any)=>{
   if (res.code==-1){
     wx.showToast({
-      "icon":"error",
-      "msg":"失败,请重试"
+      icon:"error",
+      title:"失败,请重试"
     })
     return
   }else if(res.code==200) {
       wx.showToast({
-        "msg":"成功"
+        title:"成功"
       })
       this.removeItemById(e,myUnAdd,myAdd);
       this.setData({

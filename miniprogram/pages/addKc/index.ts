@@ -56,12 +56,12 @@ Page({
  }},{"name":this.data.name,"teacher_id":this.data.teacher.id,"maxPersion":this.data.maxPersion,"content":this.data.content,"price":price}).then((res)=>{
     if (res.code!=200){
       wx.showToast({
-        "icon":"error",
-        "title":"发生错误请重试"
+        icon:"error",
+        title:"发生错误请重试"
       })
     }else{
       wx.showToast({
-        "title":"创建成功"
+        title:"创建成功"
       })
       setTimeout(() => {
         wx.navigateBack()
