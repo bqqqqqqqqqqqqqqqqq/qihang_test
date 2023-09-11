@@ -68,13 +68,13 @@ Page({
           },sid,cid).then((res:any)=>{
             if (res.code==-1){
               wx.showToast({
-                "icon":"error",
-                "msg":"失败,请重试"
+                icon:"error",
+                title:"失败,请重试"
               })
               return
             }else if((res.code==200)){
               wx.showToast({
-                "msg":"签到成功"
+                title:"签到成功"
               })
               myList[index].done = true;
               myList[index].complete = myList[index].complete + 1;
@@ -179,21 +179,21 @@ Page({
       header:{
         Authorization: app.globalData.token
       }
-    },upData as updateData).then((res:any)=>{
+    },upData).then((res:any)=>{
       if (res.code==-1){
         wx.showToast({
-          "icon":"error",
-          "msg":"失败,请重试"
+          icon:"error",
+          title:"失败,请重试"
         })
         return
       }else if((res.code==200)){
         wx.showToast({
-          "msg":"添加成功"
+          title:"修改成功"
         })
       }
     
     })
-    this.setData({count: 0})
+    this.setData({count: 1})
   },
   onClose() {
     this.setData({ show: false });
