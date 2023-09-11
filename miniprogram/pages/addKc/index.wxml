@@ -18,6 +18,16 @@
         placeholder="请输入最大人数数字"
         type="number"
       />
+      <van-radio-group value="{{ radio }}" bind:change="onChange">
+        <van-cell-group>
+          <van-cell title="独立课程" clickable data-name="1" bind:click="onClick">
+            <van-radio slot="right-icon" name="1" />
+          </van-cell>
+          <van-cell title="共享课程" clickable data-name="2" bind:click="onClick">
+            <van-radio slot="right-icon" name="2" />
+          </van-cell>
+        </van-cell-group>
+      </van-radio-group>
       <van-field
         model:value="{{ content }}"
         label="课程描述"
@@ -43,3 +53,4 @@
     <van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 60%;" round>
   <van-picker columns="{{ columns }}" show-toolbar="true" confirm-button-text="确认" cancel-button-text="取消"  bind:cancel="onClose" bind:confirm="onConfirm" value-key="name" />
 </van-popup>
+<van-dialog id="van-dialog" />
