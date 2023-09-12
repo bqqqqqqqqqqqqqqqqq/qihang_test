@@ -38,7 +38,8 @@ Page({
     show: false,
     list:<any>[
     ],
-    value:""
+    value:"",
+    editindex:0,
   },
   //签到
   checkIn(e:any){
@@ -139,10 +140,14 @@ Page({
   edit(e:any){
     const c =  e.currentTarget.dataset.id as number;
     const tid =parseInt(e.currentTarget.dataset.tid as string);
+    const index = e.currentTarget.dataset.bindex 
     upData.teacherID = tid;
     upData.classID = c;
     // this.setData({ count: c});//
-    this.setData({ show: true });
+    this.setData({ 
+      show: true,
+      editindex:index,
+     });
     
   },
   numChange(event:any) {
@@ -190,6 +195,12 @@ Page({
         })
         return
       }else if((res.code==200)){
+        var listAll = this.data.list
+        listAll[this.data.editindex].completeTotal = listAll[this.data.editindex].completeTotal+upData.number
+        this.setData({
+          list:listAll
+        })
+
         wx.showToast({
           title:"修改成功"
         })
