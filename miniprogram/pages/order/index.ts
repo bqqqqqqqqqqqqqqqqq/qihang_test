@@ -127,7 +127,7 @@ Page({
       header:{
     Authorization: app.globalData.token
     }
-    },{"classID":this.data.classID as number,"studentID":this.data.value.id as number,"teacherID":this.data.teacherID as number,"completeTotal":this.data.count}).then((res:any)=>{
+    },{"classID":Number(this.data.classID),"studentID":Number(this.data.value.id),"teacherID":Number(this.data.teacherID),"completeTotal":Number(this.data.count)}).then((res:any)=>{
         if (res.code==-1){
           wx.showToast({
             icon:"error",
@@ -156,8 +156,8 @@ DoWXPay(){
   }
 
   const id = app.globalData.UserInfo.id
-  const Description = this.data.goodTitle
-  const Number = this.data.count
+  const Description = this.data.goodTitle as number
+  const Number = this.data.count as number
   userApi.wechatPAY({
     needToken:true,
     header:{
