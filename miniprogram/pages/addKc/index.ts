@@ -7,11 +7,12 @@ Page({
   data: {
     name: '',
     teacher:<any>"",
-    price:<any>"",
-    maxPersion:<any>"",
+    price:"",
+    maxPersion:"",
     content:"",
     show: false,
-    columns:<any>[]
+    columns:<any>[],
+    radio: '1',
   },
   showPopup() {
     this.setData({ show: true });
@@ -27,10 +28,28 @@ Page({
     })
     this.onClose()
   },
+  //单选
+  onChange(event:any) {
+    this.setData({
+      radio: event.detail,
+    });
+  },
+
+  onClick(event:any) {
+    const { name } = event.currentTarget.dataset;
+    this.setData({
+      radio: name,
+    });
+    console.log(this.data.teacher);
+    
+  },
   submit():any{
     let name = this.data.name;
     let teacher = this.data.teacher;
     let price = this.data.price;
+    const radio  = this.data.radio;
+    const type = radio === "1" ? "basic" : "shared";
+    let maxPersion = this.data.maxPersion;
 
     if(name===''){
       Dialog.alert({
@@ -44,24 +63,33 @@ Page({
       })
       return false
     };
+    if(maxPersion===""){
+      Dialog.alert({
+        message: '请输入最多人数',
+      })
+      return false;
+    }
     if(price === ''){
       Dialog.alert({
         message: '请输入价格',
       })
     return false;
   }
+  //类型转换
+  const maxP =parseInt(this.data.maxPersion);
+
   userApi.AddClass({needToken:true,
     header:{
    Authorization: app.globalData.token
- }},{"name":this.data.name,"teacher_id":this.data.teacher.id,"maxPersion":this.data.maxPersion,"content":this.data.content,"price":price}).then((res)=>{
+ }},{"name":this.data.name as string,"teacher_id":this.data.teacher.id as number,"maxPersion":maxP as number ,"content":this.data.content as string,"price":price as string,"type":type as string}).then((res)=>{
     if (res.code!=200){
       wx.showToast({
-        "icon":"error",
-        "title":"发生错误请重试"
+        icon:"error",
+        title:"发生错误请重试"
       })
     }else{
       wx.showToast({
-        "title":"创建成功"
+        title:"创建成功"
       })
       setTimeout(() => {
         wx.navigateBack()

@@ -17,7 +17,7 @@
     </view>
   </van-tab>
   <van-tab title="共享课程">
-    <view class="card" wx:for="{{list}}" wx:key="index" wx:if="{{item.type=='share'}}" >
+    <view class="card" wx:for="{{list}}" wx:key="index" wx:if="{{item.type=='shared'}}" >
     <van-cell-group inset>
       <van-card
       desc="{{item.teacherName}}老师"

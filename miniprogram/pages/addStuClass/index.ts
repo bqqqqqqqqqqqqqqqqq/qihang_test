@@ -77,17 +77,15 @@ Page({
   userApi.AddBuyClassStu({needToken:true,
     header:{
    Authorization: app.globalData.token
- }},{
-  "classID":submitData.classID as number,"studentID":submitData.studentID as number,"teacherID":submitData.teacherID as number,"completeTotal":submitData.completeTotal as number
- }).then((res:any)=>{
+ }},submitData).then((res:any)=>{
   if (res.code!=200){
     wx.showToast({
-      "icon":"error",
-      "title":"发生错误请重试"
+      icon:"error",
+      title:"发生错误请重试"
     })
   }else{
     wx.showToast({
-      "title":"成功"
+      title:"成功"
     })
     setTimeout(() => {
       wx.navigateBack()

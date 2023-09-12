@@ -48,7 +48,7 @@ Page({
   doSubmit(e:any) {
     if (this.data.once==1){
       wx.showToast({
-        "title":"上传中请稍等"
+        title:"上传中请稍等"
       })
       return
     }

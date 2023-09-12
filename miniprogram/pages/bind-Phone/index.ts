@@ -23,8 +23,8 @@ Page({
    }},phone,parentsID).then((res:any)=>{
      if (res.msg=="该手机号未注册用户"){
        wx.showToast({
-         "title":"号码错误请重新输入",
-         "icon":"none"
+         title:"号码错误请重新输入",
+         icon:"none"
        })
        return
      }

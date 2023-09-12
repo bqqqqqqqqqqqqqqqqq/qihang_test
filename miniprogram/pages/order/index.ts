@@ -53,8 +53,8 @@ Page({
       })
     }else  {
       wx.showToast({
-        "msg":"发生错误",
-        "icon":"error"
+        title:"发生错误",
+        icon:"error"
       })
     }
   })
@@ -100,8 +100,8 @@ Page({
   },classID).then((res:any)=>{
     if (res.code !=200){
       wx.showToast({
-        "icon":"error",
-        "msg":"出现错误请重试"
+        icon:"error",
+        title:"出现错误请重试"
       })
       return
     }else if (res.code == 200){
@@ -130,13 +130,13 @@ Page({
     },{"classID":this.data.classID as number,"studentID":this.data.value.id as number,"teacherID":this.data.teacherID as number,"completeTotal":this.data.count}).then((res:any)=>{
         if (res.code==-1){
           wx.showToast({
-            "icon":"error",
-            "msg":"失败,请重试"
+            icon:"error",
+            title:"失败,请重试"
           })
           return
           }else if(res.code==200) {
             wx.showToast({
-              "msg":"成功"
+              title:"成功"
             })
         }
     })
@@ -166,8 +166,8 @@ DoWXPay(){
 },{"Description":Description,"Number":Number},id).then((res:any)=>{
   if (res.code!=200){
     wx.showToast({
-      "msg":"发生错误请重试",
-      "icon":"error"
+      title:"发生错误请重试",
+      icon:"error"
     })
     return
   }else{
@@ -189,7 +189,7 @@ DoWXPay(){
       "paySign": paySign,
       "success":()=>{
           wx.showToast({
-            "title":"支付成功",
+            title:"支付成功",
           }),
           // setTimeout(()=>{
           //   wx.switchTab({
@@ -200,8 +200,8 @@ DoWXPay(){
       },
       "fail":()=>{
         wx.showToast({
-          "icon":"error",
-          "title":"已取消"
+          icon:"error",
+          title:"已取消"
         })
           setTimeout(()=>{
               wx.navigateBack()
