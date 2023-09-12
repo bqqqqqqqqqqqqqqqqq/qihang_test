@@ -48,8 +48,8 @@ Page({
     searchList:[
       {
         type: 'radio',
-        screenKey: '年级',
-        screenValue: ['初一','初二','初三','高一', '高二', '高三'].map((m) => ({
+        screenKey: '课程',
+        screenValue: ['独立课程','共享课程'].map((m) => ({
           checked: false,
           value: m,
           remark:"grade"
@@ -58,7 +58,7 @@ Page({
       {
         type: 'radio',
         screenKey: '教师',
-        screenValue: [].map((m) => ({
+        screenValue: ["叶诗霖", "林建坤", "李姗谚", "石广宇", "钟国劲", "赖正杰", "李灵玲"].map((m) => ({
           checked: false,
           value: m,
           remark:"teacher"
@@ -102,9 +102,9 @@ onChange(e:any) {
     wx.setStorageSync('query', selected);
   });
 },
-getAllProblem(grade:string,teacher:string){
+getAllProblem(type:string,teacher:string){
   const Page: Paging = this.data.Paging 
-  publicAPI.searchProblemList(Page,grade,teacher).then((res:any)=>{
+  publicAPI.searchProblemList(Page,type,teacher).then((res:any)=>{
     if(res.code===200){
         const listAll = this.data.listAll
         if (res.data  != null)  {
@@ -143,16 +143,16 @@ getAllProblem(grade:string,teacher:string){
         }
       })
     })
-    var grade = ""
+    var type = ""
     var teacher = ""
     selected.forEach((ele: { remark: string; value: string; remkae: string; }) => {
       if (ele.remark=="grade"){
-        grade = ele.value
+        type = ele.value
       }else if (ele.remark=="teacher"){
         teacher = ele.value
       }
     });
-    this.getAllProblem(grade,teacher)
+    this.getAllProblem(type,teacher)
     this.setData({
       activeNames: [],
       search:1,
@@ -191,25 +191,25 @@ getAllProblem(grade:string,teacher:string){
   onClick() {
   },
   onLoad(){
-    publicAPI.getTeacher().then((res:any)=>{
-      if (res.code==200){
-         var tea:string[] = []
-         res.data.forEach((ele: { name: string; }) => {
-           tea.push(ele.name)
-         });
-        if (res.data!=null){
-          const searchItem = this.data.searchList;
-          searchItem[1].screenValue=tea.map((m) => ({
-            checked: false,
-            value: m,
-            remark:"teacher"
-          }))
-          this.setData({
-            searchList: searchItem
-          })
-        }
-      }
-    })
+    // publicAPI.getTeacher().then((res:any)=>{
+    //   if (res.code==200){
+    //      var tea:string[] = []
+    //      res.data.forEach((ele: { name: string; }) => {
+    //        tea.push(ele.name)
+    //      });
+    //     if (res.data!=null){
+    //       const searchItem = this.data.searchList;
+    //       searchItem[1].screenValue=tea.map((m) => ({
+    //         checked: false,
+    //         value: m,
+    //         remark:"teacher"
+    //       }))
+    //       this.setData({
+    //         // searchList: searchItem
+    //       })
+    //     }
+    //   }
+    // })
   
   },
   formatTime(arr:oneProblem[] ){
