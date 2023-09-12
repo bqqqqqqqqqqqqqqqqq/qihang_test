@@ -105,14 +105,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(option) {
-    const sid = option.id as string;
-    this.setData({
-      sid:sid
-    })
-    this.stuClass(sid)//获取页面数据
-  },
   stuClass(sid:string){
+
     var that = this
     userApi.SelcetStudentClass({
       needToken:true,
@@ -132,6 +126,15 @@ Page({
     
   })
   },
+
+  onLoad(option) {
+    const sid = option.id as string;
+    this.setData({
+      sid:sid
+    })
+    this.stuClass(sid)//获取页面数据
+  },
+
   //修改
   edit(e:any){
     const c =  e.currentTarget.dataset.id as number;
