@@ -2,18 +2,10 @@
 <van-cell-group title="班级名称">
   <van-field
     class="input"
+    readonly
     value="{{ class.className }}"
-    placeholder="请输入班级名"
     border="{{ false }}"
-    bind:change="fieldChange"
-    use-button-slot
-    clearable
-    disabled="{{fieldDisabled}}"
-    error-message="{{err}}"
   >
-  <van-button slot="button" size="small" type="primary" bind:click="confirm">
-      {{btn}}
-    </van-button>
   </van-field>
 </van-cell-group>
 

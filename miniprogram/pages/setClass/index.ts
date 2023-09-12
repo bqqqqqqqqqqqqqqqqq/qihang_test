@@ -35,28 +35,7 @@ Page({
       target.push(item);
     }
   },
-  //输入框
-  confirm(){
-    let fboo = this.data.fieldDisabled;
-    if(fboo==false){
-      this.setData({
-        fieldDisabled:true,
-        btn:"编辑",
-        err:''
-      });
-    }else{
-      this.setData({
-        fieldDisabled:false,
-        btn:"确认"
-      });
-      
-    }
-  },
-  fieldChange(event:any){
-    this.setData({
-      err:'请确认' 
-    })
-  },
+  
   //添加按钮
   addstu(){
     userApi.GetAllStudent({
