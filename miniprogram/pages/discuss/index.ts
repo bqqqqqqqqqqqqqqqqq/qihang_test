@@ -191,25 +191,25 @@ getAllProblem(type:string,teacher:string){
   onClick() {
   },
   onLoad(){
-    // publicAPI.getTeacher().then((res:any)=>{
-    //   if (res.code==200){
-    //      var tea:string[] = []
-    //      res.data.forEach((ele: { name: string; }) => {
-    //        tea.push(ele.name)
-    //      });
-    //     if (res.data!=null){
-    //       const searchItem = this.data.searchList;
-    //       searchItem[1].screenValue=tea.map((m) => ({
-    //         checked: false,
-    //         value: m,
-    //         remark:"teacher"
-    //       }))
-    //       this.setData({
-    //         // searchList: searchItem
-    //       })
-    //     }
-    //   }
-    // })
+    publicAPI.getTeacher().then((res:any)=>{
+      if (res.code==200){
+         var tea:string[] = []
+         res.data.forEach((ele: { name: string; }) => {
+           tea.push(ele.name)
+         });
+        if (res.data!=null){
+          const searchItem = this.data.searchList;
+          searchItem[1].screenValue=tea.map((m) => ({
+            checked: false,
+            value: m,
+            remark:"teacher"
+          }))
+          this.setData({
+            searchList: searchItem
+          })
+        }
+      }
+    })
   
   },
   formatTime(arr:oneProblem[] ){

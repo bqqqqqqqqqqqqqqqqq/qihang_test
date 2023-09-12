@@ -72,27 +72,27 @@ Page({
   },
 
   onLoad(_options) {
-    // publicAPI.getTeacher().then((res:any)=>{
-    //   if (res.code==200){
-    //      var tea:any = []
-    //      res.data.forEach((ele:any) => {
-    //        tea.push(ele)
-    //      });
-    //     if (res.data!=null){
-    //       const searchItem = this.data.searchList;
-    //       searchItem[1].screenValue=tea.map((m: { name: string;id:string }) => ({
-    //         checked: false,
-    //         value: m.name,
-    //         teacherID:m.id,
-    //         need:true,
-    //         remark:"teacher"
-    //       }))
-    //       this.setData({
-    //         // searchList: searchItem
-    //       })
-    //     }
-    //   }
-    // })
+    publicAPI.getTeacher().then((res:any)=>{
+      if (res.code==200){
+         var tea:any = []
+         res.data.forEach((ele:any) => {
+           tea.push(ele)
+         });
+        if (res.data!=null){
+          const searchItem = this.data.searchList;
+          searchItem[1].screenValue=tea.map((m: { name: string;id:string }) => ({
+            checked: false,
+            value: m.name,
+            teacherID:m.id,
+            need:true,
+            remark:"teacher"
+          }))
+          this.setData({
+            searchList: searchItem
+          })
+        }
+      }
+    })
   
   },
     
