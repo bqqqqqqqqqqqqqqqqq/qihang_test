@@ -303,8 +303,9 @@ httpRequest.post(
 	//查询一个学生的所有课程方法
 	static SelcetStudentClass = (RequestConfig:{needToken:boolean,header:object},id:any)=>
 	httpRequest.get(
-	  baseUrl + '/tea/SelectStudentClass?id='+id,
+	  baseUrl + '/tea'+'/SelectStudentClass?id='+id,
 	  {},
 	  RequestConfig
-	  )
+    )
+    
 }

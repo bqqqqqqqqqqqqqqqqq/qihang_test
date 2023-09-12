@@ -10,16 +10,12 @@
       <text class="type" wx:if="{{UserInfo.isAdmin==3}}">老师</text>
       <text class="type" wx:if="{{UserInfo.isAdmin==4}}">管理员</text>
     </view>
-
-    
     <van-button wx:if="{{!token}}" class="gotologin"  round plain size="mini" bind:click="goLogin">去登录</van-button>
     <van-button wx:if="{{token}}" class="gotologin"  round plain size="mini" bind:click="loginOut">退出登录</van-button>
-    
-
   </view>
   
 </view>
-<view class="img" bind:tap="goWebview">
+<view class="img" bind:tap="goWebview" bindtap="DownLoad">
   下载分之道
   <image src="../../static//fenzhidao.png" />
 </view>
