@@ -38,7 +38,7 @@ Page({
       {
         type: 'radio',
         screenKey: '请选择教师',
-        screenValue: ["叶诗霖", "林建坤", "李姗谚", "石广宇", "钟国劲", "赖正杰", "李灵玲"].map((m) => ({
+        screenValue: [].map((m) => ({
           checked: false,
           value: m,
           need:true
