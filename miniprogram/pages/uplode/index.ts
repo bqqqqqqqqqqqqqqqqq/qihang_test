@@ -196,7 +196,7 @@ Page({
         header:{
       Authorization: app.globalData.token
     }
-  },selected[1],selected[0],selected[2],id).then((res:any)=>{
+  },"",selected[0],selected[1],id).then((res:any)=>{
 
     if (res.code  == 200){
     problemID = res.data

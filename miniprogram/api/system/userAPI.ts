@@ -98,7 +98,7 @@ export default class userApi {
 
       static creatProblem = (RequestConfig:{needToken:boolean,header:object},grade:string,subject:string,teacherID:string,id:string) =>
       httpRequest.post(
-        baseUrl +userUrl+'/CreatProblem?grade='+grade+'&subject='+subject+'&teacherID='+teacherID+'&id='+id,
+        baseUrl +userUrl+'/CreatProblem?'+'&subject='+subject+'&teacherID='+teacherID+'&id='+id,
         {},
         RequestConfig
       )
