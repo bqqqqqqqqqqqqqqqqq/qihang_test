@@ -13,11 +13,11 @@
 </van-cell-group>
 
 <van-cell-group title="班级">
-  <van-swipe-cell class="vsc" wx:for="{{bList}}" wx:key="id" right-width="{{ 65 }}" async-close bind:close="onClose">
+  <van-swipe-cell class="vsc" wx:for="{{bList}}" wx:key="id" wx:for-index="idx" right-width="{{ 65 }}" async-close bind:close="onClose" data-bclassid="{{item.id}}" data-bindex="{{idx}}">
     <van-cell-group>
       <van-cell size="large" title="{{item.className}}" value="{{item.teacherName}}" is-link  bindtap="gotoSetClass" data-bname="{{item.className}}" data-bid="{{item.id}}" data-btid="{{item.teacher_id}}"/>
     </van-cell-group>
-    <view slot="right" bindtap="deleteClass" data-bclassid="{{item.id}}">删除</view>
+    <view slot="right"  data-bclassid="{{item.id}}">删除</view>
   </van-swipe-cell>
 </van-cell-group>
 <van-dialog id="van-dialog" />

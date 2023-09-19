@@ -13,14 +13,14 @@ const GDEnvs = {
   //   host: 'https://deyiwxxiaochengxu.asia/deyiapi',
   //   imgHost: 'https://deyiwxxiaochengxu.asia/deyiapi'
   // },
-    develop: {
-    host: 'http://localhost:6785',
-    imgHost: 'http://localhost:6785'
-  },
-  // develop: {
-  //   host: 'https://deyiwxxiaochengxu.asia:6786',
-  //   imgHost: 'https://deyiwxxiaochengxu.asia:6786',
+  //   develop: {
+  //   host: 'http://localhost:6785',
+  //   imgHost: 'http://localhost:6785'
   // },
+  develop: {
+    host: 'https://deyiwxxiaochengxu.asia:6786',
+    imgHost: 'https://deyiwxxiaochengxu.asia:6786',
+  },
   trial: {
     host: 'https://deyiwxxiaochengxu.asia:6786',
     imgHost: 'https://deyiwxxiaochengxu.asia:6786',

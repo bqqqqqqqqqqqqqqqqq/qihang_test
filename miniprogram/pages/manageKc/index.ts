@@ -22,7 +22,7 @@ interface kcInfo{
 var app = getApp()
 var kcInfo:any[]
 Page({
-
+  thumb:"",
   /**
    * 页面的初始数据
    */
@@ -33,7 +33,6 @@ Page({
     const id = e.currentTarget.dataset.id
     const isbuy = e.currentTarget.dataset.isbuy
     const index = e.currentTarget.dataset.index
-
     if(isbuy==1){
       userApi.DownClass({
         needToken:true,

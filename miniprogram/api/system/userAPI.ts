@@ -255,10 +255,10 @@ export default class userApi {
     data,
     RequestConfig
  )
- static DeleteClass = (RequestConfig:{needToken:boolean,header:object},data:any) =>
+ static DeleteClass = (RequestConfig:{needToken:boolean,header:object},id:any) =>
  httpRequest.post(
-  baseUrl + '/tea/AddClass',
-   data,
+  baseUrl + '/tea/DeleteClass?id='+id,
+   {},
    RequestConfig
 )
 static PutClass = (RequestConfig:{needToken:boolean,header:object},data:any) =>
