@@ -40,6 +40,10 @@ Page({
   });
   },
   onClose(event:any) {
+
+    let classID = event.currentTarget.dataset.bclassid
+    let index = event.currentTarget.dataset.bindex
+
     const { position, instance } = event.detail;
     switch (position) {
       case 'left':
@@ -50,9 +54,8 @@ Page({
         Dialog.confirm({
           message: '确定删除吗？',
         }).then(() => {
+          this.deleteClass(classID,index)
           instance.close();
-          // ...
-          
         });
         break;
     }
@@ -115,15 +118,19 @@ Page({
       }
     })},
 
-    deleteClass(e:any){
-      let classID = e.currentTarget.dataset.bclassid
+    deleteClass(id:string,index:any){
       userApi.DeleteClass({ needToken:true,
         header:{
         Authorization: app.globalData.token
-      }},classID).then((res:any)=>{
-        if (res==200){
+      }},id).then((res:any)=>{
+        if (res.code==200){
           wx.showToast({
             "title":"删除成功"
+          })
+          var bList = this.data.bList
+          bList.splice(index,1)
+          this.setData({
+            bList:bList
           })
         }else{
           wx.showToast({

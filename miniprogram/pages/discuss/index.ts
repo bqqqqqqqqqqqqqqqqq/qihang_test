@@ -41,9 +41,7 @@ Page({
       size:10,
       page:1
     },
-    list:[
-      listAll
-    ],
+
     listAll,
     searchList:[
       {
@@ -103,8 +101,8 @@ onChange(e:any) {
   });
 },
 getAllProblem(type:string,teacher:string){
-  const Page: Paging = this.data.Paging 
-  publicAPI.searchProblemList(Page,type,teacher).then((res:any)=>{
+  // const Page: Paging = this.data.Paging 
+  publicAPI.searchProblemList(type,teacher).then((res:any)=>{
     if(res.code===200){
         const listAll = this.data.listAll
         if (res.data  != null)  {
@@ -115,13 +113,11 @@ getAllProblem(type:string,teacher:string){
         }else{
           return
         }
-        let page = this.data.Paging.page
-        page++
         this.setData({
           listAll:listAll,
           Paging:{
             size:10,
-            page:page
+            page:1
           }
         })
     }else if (res.data==null){
@@ -134,6 +130,9 @@ getAllProblem(type:string,teacher:string){
   })
   },
   doSubmit() {
+    this.setData({
+      listAll:[]
+    })
     let selected:any = []
     // 获取所有选中
     this.data.searchList.map(n => {
@@ -148,6 +147,11 @@ getAllProblem(type:string,teacher:string){
     selected.forEach((ele: { remark: string; value: string; remkae: string; }) => {
       if (ele.remark=="grade"){
         type = ele.value
+        // if(type=="独立课程"){
+        //   type = "basic"
+        // }else if (type == "共享课程"){
+        //   type = "shared"
+        // }
       }else if (ele.remark=="teacher"){
         teacher = ele.value
       }

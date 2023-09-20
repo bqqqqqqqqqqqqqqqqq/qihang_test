@@ -2,10 +2,15 @@
   <van-tab title="全部">  
     <view class="card" wx:for="{{list}}" wx:for-id="" wx:if="{{item.maxPersion >item.nowPersion}}">
       <van-cell-group inset>
-        <van-card
+        <!-- <van-card
         desc="{{item.teacherName}}老师"
         title="{{item.className}}课"
         thumb="{{item.cover_img}}"
+        price="{{item.price}}/节"
+        > -->
+        <van-card
+        desc="{{item.teacherName}}老师"
+        title="{{item.className}}课"
         price="{{item.price}}/节"
         >
 
@@ -19,10 +24,15 @@
     <!-- 灰色 -->
     <view class="card gray" wx:for="{{list}}"  wx:if="{{item.maxPersion <= item.nowPersion}}">
       <van-cell-group inset>
-        <van-card
+        <!-- <van-card
         desc="{{item.teacherName}}老师"
         title="{{item.className}}课"
         thumb="{{item.cover_img}}"
+        price="{{item.price}}/节"
+        > -->
+        <van-card
+        desc="{{item.teacherName}}老师"
+        title="{{item.className}}课"
         price="{{item.price}}/节"
         >
 
@@ -39,14 +49,19 @@
   <van-tab title="已上架">
     <view class="card" wx:for="{{list}}" wx:key="kid" wx:if="{{item.buy==1}}"  >
       <van-cell-group inset>
-      <van-card
+        <!-- <van-card
         desc="{{item.teacherName}}老师"
         title="{{item.className}}课"
         thumb="{{item.cover_img}}"
         price="{{item.price}}/节"
-      >
+        > -->
+        <van-card
+        desc="{{item.teacherName}}老师"
+        title="{{item.className}}课"
+        price="{{item.price}}/节"
+        >
         <view slot="footer">
-          <van-button round size="mini" type="danger" bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}" data-index="{{index}}">下架</van-button>
+          <van-button round size="mini" type="danger" bind:click="manage" data-index="{{index}}" data-id="{{item.id}}" data-isbuy="{{item.buy}}">下架</van-button>
         </view>
       </van-card>
     </van-cell-group>
@@ -56,14 +71,19 @@
         
     <view class="card" wx:for="{{list}}" wx:key="kid" wx:if="{{item.buy==0}}" >
       <van-cell-group inset>
-      <van-card
+        <!-- <van-card
         desc="{{item.teacherName}}老师"
         title="{{item.className}}课"
         thumb="{{item.cover_img}}"
         price="{{item.price}}/节"
-      >
+        > -->
+        <van-card
+        desc="{{item.teacherName}}老师"
+        title="{{item.className}}课"
+        price="{{item.price}}/节"
+        >
         <view slot="footer">
-          <van-button round size="mini" type="danger" plain bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}" data-index="{{index}}">上架</van-button>
+          <van-button round size="mini" type="danger" plain bind:click="manage" data-index="{{index}}" data-id="{{item.id}}" data-isbuy="{{item.buy}}">上架</van-button>
         </view>
       </van-card>
     </van-cell-group>

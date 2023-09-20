@@ -34,9 +34,9 @@ static getProblemList = (page:Paging) =>
       baseUrl + '/AllProblem'+"/?page="+page.page+"&"+"size="+page.size,
       page
     );
-    static searchProblemList = (page:Paging,type:string,teacher:string) =>
+    static searchProblemList = (type:string,teacher:string) =>
    httpRequest.get<oneProblem>(
-      baseUrl + '/SearchProblem'+"/?page="+page.page+"&"+"size="+page.size+"&type="+type+"&teacher="+teacher,
+      baseUrl + '/SearchProblem'+"/?"+"&type="+type+"&teacher="+teacher,
     );
     static getAnswerDetail = (problemid:string) =>
    httpRequest.get<answer>(

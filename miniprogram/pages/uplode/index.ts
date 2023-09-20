@@ -165,6 +165,9 @@ Page({
           title:"请上传题目",
           icon:"error"
         })
+        this.setData({
+          once:0
+        })
         return
       }
       // 判断是否全选
@@ -186,6 +189,9 @@ Page({
           title:'请上传选项',
           icon:'error'
         })
+        this.setData({
+          once:0
+        })
         return
       }
       var id = app.globalData.UserInfo.id
@@ -196,13 +202,16 @@ Page({
         header:{
       Authorization: app.globalData.token
     }
-  },selected[1],selected[0],selected[2],id).then((res:any)=>{
+  },"",selected[0],selected[1],id).then((res:any)=>{
 
     if (res.code  == 200){
     problemID = res.data
     }
     if (problemID ==0){
       console.log("创建失败")
+      this.setData({
+        once:0
+      })
         return
     }
     for (let i = 0;i<this.data.fileList.length;i++){
@@ -239,6 +248,9 @@ Page({
           wx.showToast({
             title:"网络异常，请稍后重试试",
             icon:"none"
+          })
+          this.setData({
+            once:0
           })
         }
         },
