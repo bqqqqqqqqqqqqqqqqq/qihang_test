@@ -46,7 +46,7 @@
         price="{{item.price}}/节"
       >
         <view slot="footer">
-          <van-button round size="mini" type="danger" bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}">下架</van-button>
+          <van-button round size="mini" type="danger" bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}" data-index="{{index}}">下架</van-button>
         </view>
       </van-card>
     </van-cell-group>
@@ -63,7 +63,7 @@
         price="{{item.price}}/节"
       >
         <view slot="footer">
-          <van-button round size="mini" type="danger" plain bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}">上架</van-button>
+          <van-button round size="mini" type="danger" plain bind:click="manage" data-id="{{item.id}}" data-isbuy="{{item.buy}}" data-index="{{index}}">上架</van-button>
         </view>
       </van-card>
     </van-cell-group>
