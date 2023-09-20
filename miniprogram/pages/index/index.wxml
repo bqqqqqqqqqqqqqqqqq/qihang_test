@@ -11,8 +11,8 @@
   <view class="quesbox" wx:for="{{item}}" wx:key="key2" wx:for-item="item2" bindtap="goProblemDetail" data-id="{{item2.id}}" data-url="{{item2.picture}}" >
       <view class="quesion">
         <view class="q_pic"   style="background-image: url({{item2.picture}});"></view>
-        <van-tag  class="q_tag" size="large" color="#F8F8F8" text-color="#5D717D" round primary>{{item2.subjects}}</van-tag>
-        <van-tag  class="q_tag" size="large" color="#F8F8F8" text-color="#5D717D" round primary>{{item2.grade}}</van-tag>
+        <van-tag  class="q_tag" size="large" color="#F8F8F8" text-color="#5D717D" round primary>答疑专区</van-tag>
+        <van-tag  class="q_tag" size="large" color="#F8F8F8" text-color="#5D717D" round primary>{{item2.teacher_name}}</van-tag>
         <text class="time">{{item2.updated_at}}</text>
       </view>
   </view>
