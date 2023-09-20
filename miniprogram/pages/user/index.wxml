@@ -17,7 +17,7 @@
 </view>
 <view class="img" bind:tap="goWebview" bindtap="goWebview">
   下载分之道
-  <image src="../../static//fenzhidao.png" />
+  <image src="../../static/fenzhidao.png" />
 </view>
 <van-cell-group>
 <!-- 2 为家长 3为教师 -->
