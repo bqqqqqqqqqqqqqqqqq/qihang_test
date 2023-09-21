@@ -25,16 +25,16 @@ Page({
    */
   data: {
     fileList:<any> [],
-    searchList:<SearchItem[]>[
-      {
-        type: 'radio',
-        screenKey: '请选择课程',
-        screenValue: ['独立课程','共享课程'].map((m) => ({
-          checked: false,
-          value: m,
-          need:true
-        })),
-      },
+    searchList:[
+      // {
+      //   type: 'radio',
+      //   screenKey: '请选择课程',
+      //   screenValue: ['独立课程','共享课程'].map((m) => ({
+      //     checked: false,
+      //     value: m,
+      //     need:true
+      //   })),
+      // },
       {
         type: 'radio',
         screenKey: '请选择教师',
@@ -80,7 +80,7 @@ Page({
          });
         if (res.data!=null){
           const searchItem = this.data.searchList;
-          searchItem[1].screenValue=tea.map((m: { name: string;id:string }) => ({
+          searchItem[0].screenValue=tea.map((m: { name: string;id:string }) => ({
             checked: false,
             value: m.name,
             teacherID:m.id,
@@ -202,7 +202,7 @@ Page({
         header:{
       Authorization: app.globalData.token
     }
-  },"",selected[0],selected[1],id).then((res:any)=>{
+  },"","",selected[0],id).then((res:any)=>{
 
     if (res.code  == 200){
     problemID = res.data

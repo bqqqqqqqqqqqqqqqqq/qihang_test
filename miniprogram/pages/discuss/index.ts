@@ -44,19 +44,19 @@ Page({
 
     listAll,
     searchList:[
-      {
-        type: 'radio',
-        screenKey: '课程',
-        screenValue: ['独立课程','共享课程'].map((m) => ({
-          checked: false,
-          value: m,
-          remark:"grade"
-        })),
-      },
+      // {
+      //   type: 'radio',
+      //   screenKey: '课程',
+      //   screenValue: ['独立课程','共享课程'].map((m) => ({
+      //     checked: false,
+      //     value: m,
+      //     remark:"grade"
+      //   })),
+      // },
       {
         type: 'radio',
         screenKey: '教师',
-        screenValue: [].map((m) => ({
+        screenValue: [].map((m:string) => ({
           checked: false,
           value: m,
           remark:"teacher"
@@ -100,9 +100,9 @@ onChange(e:any) {
     wx.setStorageSync('query', selected);
   });
 },
-getAllProblem(type:string,teacher:string){
+getAllProblem(teacher:string){
   // const Page: Paging = this.data.Paging 
-  publicAPI.searchProblemList(type,teacher).then((res:any)=>{
+  publicAPI.searchProblemList(teacher).then((res:any)=>{
     if(res.code===200){
         const listAll = this.data.listAll
         if (res.data  != null)  {
@@ -156,7 +156,7 @@ getAllProblem(type:string,teacher:string){
         teacher = ele.value
       }
     });
-    this.getAllProblem(type,teacher)
+    this.getAllProblem(teacher)
     this.setData({
       activeNames: [],
       search:1,
@@ -203,7 +203,7 @@ getAllProblem(type:string,teacher:string){
          });
         if (res.data!=null){
           const searchItem = this.data.searchList;
-          searchItem[1].screenValue=tea.map((m) => ({
+          searchItem[0].screenValue=tea.map((m) => ({
             checked: false,
             value: m,
             remark:"teacher"
