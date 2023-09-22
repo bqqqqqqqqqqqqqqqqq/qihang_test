@@ -1,4 +1,4 @@
- <view class="card" wx:for="{{list}}" wx:key="index">
+<view class="card" wx:for="{{list}}" wx:key="index" wx:if="{{item.type == 1}}" >
       <van-card
         desc="{{item.teacherName}}老师"
         title="{{item.className}}课"
@@ -9,9 +9,9 @@
         <van-button round size="small" type="info" plain>已完成{{item.complete}}节课</van-button>
       </view>
       </van-card>     
-    </view>
+</view>
 
-    <view class="card refund" wx:for="{{list}}" wx:key="index">
+<view class="card refund" wx:for="{{list}}" wx:key="index" wx:if="{{item.type == 0}}">
       <van-card
         desc="{{item.teacherName}}老师"
         title="{{item.className}}课"
@@ -22,6 +22,6 @@
         <van-button round size="small"  plain>已退款{{item.completeTotal}}节课</van-button>
       </view>
       </van-card>     
-    </view>
+</view>
 
 <van-empty wx:if="{{list.length<1}}" description="未报名课程" />
