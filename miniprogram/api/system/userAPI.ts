@@ -193,7 +193,7 @@ export default class userApi {
      // 管理员查看所有老师
      static GetAllTeacher = (RequestConfig:{needToken:boolean,header:object}) =>
      httpRequest.get(
-      baseUrl + '/tea/GetAllTeacher',
+      baseUrl + '/user/GetAllTeacher',
      {},
        RequestConfig
     )
