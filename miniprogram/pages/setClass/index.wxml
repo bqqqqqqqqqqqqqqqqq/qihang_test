@@ -28,11 +28,14 @@
       签到
     </van-button>
     <van-button slot="button" size="small" type="danger" 
-    data-id="{{item.id}}"
+    data-id="{{item.id}}" data-name="{{item.name}}"
     bind:click="deleteStu">
       删除
     </van-button>
   </van-field>
+  <view class="lastTime">
+最近签到：10-23 10:00
+  </view>
   </view>
 </van-cell-group>
 <!-- <view class="bigBtn">

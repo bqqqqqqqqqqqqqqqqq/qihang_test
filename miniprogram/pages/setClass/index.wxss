@@ -11,3 +11,7 @@
 .bigBtn{
   margin-top: 15px;
 }
+.lastTime{
+  margin-bottom: 8px;
+  color: #a7a7af;
+}
