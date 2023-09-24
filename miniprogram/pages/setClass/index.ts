@@ -133,39 +133,50 @@ Page({
  
   //删除
   deleteStu(e:any){
-    e = parseInt(e.currentTarget.dataset.id);
-    let myAdd:MyObject[]= this.data.added;
-    let myUnAdd:MyObject[]= this.data.unadd;
-    userApi.DeleteClassStudent({
-      needToken:true,
-      header:{
-    Authorization: app.globalData.token
-  }
-},{"classID":this.data.class.classID as number,"teacherID":this.data.class.classTeacherID as number,"studentID":e as string}).then((res:any)=>{
-  if (res.code==-1){
-    wx.showToast({
-      icon:"error",
-      title:"失败,请重试"
+    const name = e.currentTarget.dataset.name;
+    const sid = parseInt(e.currentTarget.dataset.id);
+    Dialog.confirm({
+      message: '是否删除'+name+"!!!",
     })
-    return
-  }else if(res.code==200) {
-      wx.showToast({
-        title:"成功"
+      .then(() => {
+        // on confirm
+        let myAdd:MyObject[]= this.data.added;
+        let myUnAdd:MyObject[]= this.data.unadd;
+        userApi.DeleteClassStudent({
+          needToken:true,
+          header:{
+        Authorization: app.globalData.token
+      }
+    },{"classID":this.data.class.classID as number,"teacherID":this.data.class.classTeacherID as number,"studentID":sid}).then((res:any)=>{
+      if (res.code==-1){
+        wx.showToast({
+          icon:"error",
+          title:"失败,请重试"
+        })
+        return
+      }else if(res.code==200) {
+          wx.showToast({
+            title:"成功"
+          })
+          this.removeItemById(sid,myAdd,myUnAdd);
+          this.setData({
+            added : myAdd,
+            unadd : myUnAdd
+          });
+          Toast('删除成功')
+      }
+    })
+    
+        this.setData({
+          added : myAdd,
+          unadd : myUnAdd
+        });//删除并更新added
+        Toast('删除成功！')
       })
-      this.removeItemById(e,myAdd,myUnAdd);
-      this.setData({
-        added : myAdd,
-        unadd : myUnAdd
-      });
-      Toast('删除成功')
-  }
-})
-
-    this.setData({
-      added : myAdd,
-      unadd : myUnAdd
-    });//删除并更新added
-    Toast('删除成功！')
+      .catch(() => {
+        // on cancel
+      })
+   
     
   },
   //添加
