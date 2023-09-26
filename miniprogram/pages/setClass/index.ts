@@ -1,11 +1,14 @@
 // pages/setClass/index.ts
 import userApi from "../../api/system/userAPI";
 import Dialog from "../../miniprogram_npm/@vant/weapp/dialog/dialog";
+import dayjs from '../../utils/day.min.js';
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
+import { TimeData } from "../../miniprogram_npm/@vant/weapp/count-down/utils";
 interface MyObject {
   id: number;
   name: string;
   grade: string;
+  check_time: TimeData | null
 };
 
 
@@ -211,7 +214,15 @@ Page({
 })
 
   },
+ //格式化时间
+ formatTime(arr:MyObject[]){
  
+  for (var i=0;i<arr.length;i++){
+      arr[i].check_time = dayjs(arr[i].check_time).format('YYYY-MM-DD HH:mm')
+    }
+    console.log(arr);
+    
+  },
   onLoad(options) {
     let className = options.className;
     let classID =options.classID;
@@ -230,7 +241,8 @@ Page({
    }
  },String(classID)).then((res:any)=>{
    if(res.code==200&&res.data!=null){
-     const list =res.data
+     let list =res.data
+     this.formatTime(list)
      const listAll = this.data.added
      listAll.push(...list)
      this.setData({

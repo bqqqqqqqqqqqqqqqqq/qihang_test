@@ -34,7 +34,7 @@
     </van-button>
   </van-field>
   <view class="lastTime">
-最近签到：10-23 10:00
+最近签到：{{item.check_time}}
   </view>
   </view>
 </van-cell-group>
