@@ -1,0 +1,3 @@
+<van-cell-group>
+  <van-cell wx:for="{{bList}}" wx:key="index" title="{{item.teacherName}}"  is-link size="large" data-tid="{{item.teacher_id}}" bind:tap="gomystu" />
+</van-cell-group>

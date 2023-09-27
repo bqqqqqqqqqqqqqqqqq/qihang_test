@@ -12,6 +12,20 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/mystu-pre/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/webview/webview",
           "query": "",
           "launchMode": "default",

@@ -87,6 +87,12 @@ this.setData({
       url:"../login/login"
     })
   },
+  gomystupre(){
+    const id = this.data.id;
+    wx.navigateTo({
+      url:"../mystu-pre/index?id="+id
+    })
+  },
   
   loginOut(){
     wx.removeStorageSync('token')
