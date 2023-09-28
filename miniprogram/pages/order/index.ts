@@ -120,27 +120,9 @@ Page({
     }
   })
   },
-  AddStudent(){
-    
-    userApi.AddBuyClassStu({
-      needToken:true,
-      header:{
-    Authorization: app.globalData.token
-    }
-    },{"classID":Number(this.data.classID),"studentID":Number(this.data.value.id),"teacherID":Number(this.data.teacherID),"completeTotal":Number(this.data.count)}).then((res:any)=>{
-        if (res.code==-1){
-          wx.showToast({
-            icon:"error",
-            title:"失败,请重试"
-          })
-          return
-          }else if(res.code==200) {
-            wx.showToast({
-              title:"成功"
-            })
-        }
-    })
-  },
+
+
+ 
 //----------------------------------------
 // 微信支付
 DoWXPay(){
@@ -157,13 +139,15 @@ DoWXPay(){
 
   const id = app.globalData.UserInfo.id
   const Description = this.data.goodTitle as number
-  const Number = this.data.count as number
+  // const Number = this.data.count as number
+
+  const total = this.data.total
   userApi.wechatPAY({
     needToken:true,
     header:{
   Authorization: app.globalData.token
 }
-},{"Description":Description,"Number":Number},id).then((res:any)=>{
+},{"Description":Description,"Number":total},id).then((res:any)=>{
   if (res.code!=200){
     wx.showToast({
       title:"发生错误请重试",
@@ -196,7 +180,34 @@ DoWXPay(){
           //     url: '../index/index'
           //   })
           // },2000)
-          this.AddStudent()
+         //-----------------------------
+         userApi.AddBuyClassStu({
+          needToken:true,
+          header:{
+        Authorization: app.globalData.token
+        }
+        },{"classID":Number(this.data.classID),"studentID":Number(this.data.value.id),"teacherID":Number(this.data.teacherID),"completeTotal":Number(this.data.count)}).then((res:any)=>{
+            if (res.code==-1){
+              wx.showToast({
+                icon:"error",
+                title:"失败,请重试"
+              })
+              return
+              }else if(res.code==200) {
+                wx.showToast({
+                  title:"成功"
+                })
+            }
+        })
+        // -------------------------
+          wx.redirectTo({
+            url:'../index/index'
+          })  
+          // setTimeout(()=>{
+          //     wx.navigateBack({
+          //       delta:"5"
+          //     })
+          // },3000)
       },
       "fail":()=>{
         wx.showToast({

@@ -91,7 +91,7 @@ export default class userApi {
       )
       static AddBuyClassStu = (RequestConfig:{needToken:boolean,header:object},data:any) =>
       httpRequest.post(
-       baseUrl + '/tea'+'/AddBuyClassStu',
+       baseUrl + '/user'+'/AddBuyClassStu',
         data,
         RequestConfig
      )
