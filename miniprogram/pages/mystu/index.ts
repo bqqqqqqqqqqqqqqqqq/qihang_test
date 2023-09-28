@@ -11,7 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    type:'w',
+    teacherId:'',
     unadd:'',
     notice:'',
     bList:<any>[],
@@ -96,8 +96,10 @@ Page({
         }).then((res:any)=>{
         if(res.code==200&&res.data!=null){
           const list :kcInfo[]=res.data
-          const listAll = this.data.bList
+          let listAll = this.data.bList;
+          const teaid = this.data.teacherId;
           listAll.push(...list)
+          listAll = listAll.filter((obj:any)=>obj.teacher_id == teaid)
           that.setData({
             bList:listAll
           })
@@ -140,7 +142,17 @@ Page({
         }
       })
     },
-
+    handleArr(array:any,property:string){
+      const map = new Map();
+      const result = [];
+      for (const item of array) {
+        if (!map.has(item[property])) {
+          map.set(item[property], true);
+          result.push(item);
+        }
+      }
+      return result;
+    },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -148,10 +160,12 @@ Page({
     this.AllKC()
     //通知
     this.ifUnadd()
-    //接受type=admin
-    let t = options.type;
+    //接受
+    let tid = options.p;
+    console.log(options.p,99);
+    
     this.setData({
-      type: t
+      teacherId: tid
     })
   },
 })

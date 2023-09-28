@@ -21,13 +21,13 @@
   </van-swipe-cell>
 </van-cell-group>
 <van-dialog id="van-dialog" />
-<van-button icon="plus" type="primary" block bind:click="click" wx:if="{{!type}}">添加班级</van-button>
+<!-- <van-button icon="plus" type="primary" block bind:click="click" >添加班级</van-button>
 
-<view class="vnb" wx:if="{{!type}}" >
+<view class="vnb" >
   <van-notice-bar
   color="#1989fa"
   background="#ecf9ff"
   left-icon="info-o"
   text="{{notice}}"
 />
-</view>
+</view> -->

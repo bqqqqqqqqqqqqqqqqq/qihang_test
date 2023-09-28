@@ -43,7 +43,7 @@
   </van-cell-group>
   <van-cell-group title="管理学生">
     <van-cell title="添加学生" icon="add-o" is-link link-type="navigateTo" url="../addStudent/index" size="large"/>
-    <van-cell title="查看所有学生" icon="friends-o" is-link link-type="navigateTo" url="../allstu/index" size="large"/>
+    <van-cell title="查看所有学生" icon="friends-o" is-link link-type="navigateTo" bind:tap="gomystupre" size="large"/>
     <!-- <van-cell title="查看所有订单" icon="friends-o" is-link link-type="navigateTo" url="../checkOrder/index" 
     size="large"/> -->
  
@@ -53,7 +53,7 @@
     <van-cell title="管理课程商店" icon="edit" is-link link-type="navigateTo" url="../manageKc/index" size="large"/>
   </van-cell-group>
   <van-cell-group title="管理班级">
-    <van-cell title="查看所有班级" icon="cluster-o" is-link link-type="navigateTo" url="../mystu/index?type=admin" size="large"/>
+    <van-cell title="查看所有班级" icon="cluster-o" is-link link-type="navigateTo" url="../mystu-pre/index" size="large"/>
   </van-cell-group>
   <!-- <van-cell-group title="高级">
     <van-cell title="添加管理员" icon="gem-o" is-link link-type="navigateTo" url="../addTea/index?type=管理员" size="large"/>

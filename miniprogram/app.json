@@ -40,7 +40,8 @@
     "pages/buykc-tea/index",
     "pages/stuClassDetail/index",
     "pages/webview/webview",
-    "pages/addStuClass/index"
+    "pages/addStuClass/index",
+    "pages/mystu-pre/index"
   ],
     "tabBar": {
       "color": "#000",
