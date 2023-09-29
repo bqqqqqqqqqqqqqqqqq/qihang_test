@@ -28,7 +28,7 @@
   <van-cell wx:if="{{UserInfo.isAdmin==2}}" title="绑定孩子" icon="aim" is-link link-type="navigateTo" url="../bind-Phone/index" size="large"/>
 </van-cell-group>
 <van-cell-group title="班级管理" wx:if="{{UserInfo.isAdmin==5||UserInfo.isAdmin==3}}">
-  <van-cell title="查看所有学生" icon="friends-o" is-link link-type="navigateTo" url="../mystu/index" size="large"/>
+  <van-cell title="查看所有学生" icon="friends-o" is-link  bind:tap="gomystu" size="large"/>
   <!-- <van-cell title="班级签到" icon="location-o" is-link link-type="navigateTo" url="../clockIn/index" size="large"/> -->
   <van-cell title="待我回答" icon="chat-o" is-link link-type="navigateTo" url="../questionToMe/index" size="large"/>
   <van-cell title="我的回答" icon="sign" is-link link-type="navigateTo" url="../myAns/index"  size="large"/> 
@@ -43,7 +43,7 @@
   </van-cell-group>
   <van-cell-group title="管理学生">
     <van-cell title="添加学生" icon="add-o" is-link link-type="navigateTo" url="../addStudent/index" size="large"/>
-    <van-cell title="查看所有学生" icon="friends-o" is-link link-type="navigateTo" bind:tap="gomystupre" size="large"/>
+    <van-cell title="查看所有学生" icon="friends-o" is-link bind:tap="gomystupre" size="large"/>
     <!-- <van-cell title="查看所有订单" icon="friends-o" is-link link-type="navigateTo" url="../checkOrder/index" 
     size="large"/> -->
  
