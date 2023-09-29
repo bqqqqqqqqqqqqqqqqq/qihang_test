@@ -8,7 +8,7 @@ interface MyObject {
   id: number;
   name: string;
   grade: string;
-  check_time: TimeData | null
+  check_time: string
 };
 
 
@@ -109,6 +109,7 @@ Page({
               })
               myadded[index].done = true
               myadded[index].complete = myadded[index].complete + 1
+              myadded[index].check_time = "刚刚"
               this.setData({
                 added:myadded
               })
