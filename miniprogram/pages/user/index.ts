@@ -95,8 +95,9 @@ this.setData({
   },
   gomystu(){
     const id = this.data.id;
+    const t = this.data.UserInfo.isAdmin
     wx.navigateTo({
-      url:"/pages/mystu/index?p="+id
+      url:"/pages/mystu/index?p=" + id + "&type=" + t
     })
   },
   
