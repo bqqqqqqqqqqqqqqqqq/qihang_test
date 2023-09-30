@@ -8,6 +8,7 @@
         <van-button class="btn" size="small" hairline disabled>{{item.complete}}/{{item.completeTotal}}</van-button>
         <van-button class="btn" type="info" size="small" bind:click="checkIn" data-id="{{item.id}}" data-idx="{{index}}" disabled="{{item.done}}">签到</van-button>
         <van-button class="btn" type="primary" size="small" data-classcount="{{item.completeTotal}}" data-id="{{item.id}}" data-tid="{{item.teacher_id}}" bind:click="edit" data-bindex="{{index}}">修改</van-button>
+        <van-button class="btn" type="danger" size="small" bind:click="deleteThisClass" data-id="{{item.id}}" data-idx="{{index}}" disabled="{{item.done}}">删除</van-button>
       </view>
       </van-card>     
     </view>
