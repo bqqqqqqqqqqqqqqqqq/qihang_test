@@ -97,12 +97,30 @@ Page({
         if(res.code==200&&res.data!=null){
           const list :kcInfo[]=res.data
           let listAll = this.data.bList;
-          const teaid = this.data.teacherId;
+          const teaid = app.globalData.UserInfo.id;
+          const  testList:kcInfo[] = []
           listAll.push(...list)
-          listAll = listAll.filter((obj:any)=>obj.teacher_id == teaid)
-          that.setData({
-            bList:listAll
+          listAll.forEach((element:any) => {
+            if (element.teacher_id== teaid){
+              testList.push(element)
+            }
+          });
+          // listAll = listAll.filter((obj: { teacher_id: any; })=>{
+          //   obj.teacher_id === teaid})
+          if (app.globalData.UserInfo.id=="5" || app.globalData.UserInfo.id=="4"){
+            this.setData({
+              bList:listAll
+            })
+          }
+          if (app.globalData.UserInfo.id=="3"){
+            this.setData({
+              bList:testList
+            })
+          }
+          this.setData({
+            bList:this.data.bList
           })
+
       }else if (res.data==null){
         wx.showToast({
           title:"已无更多数据",
@@ -162,8 +180,6 @@ Page({
     this.ifUnadd()
     //接受
     let tid = options.p;
-    console.log(options.p,99);
-    
     this.setData({
       teacherId: tid
     })

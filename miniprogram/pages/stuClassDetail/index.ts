@@ -111,10 +111,11 @@ Page({
     this.setData({
       sid:sid
     })
-    this.stuClass(sid)//获取页面数据
+    // this.stuClass(sid)//获取页面数据
+    this.stuClass(this.data.sid)//获取页面数据
   },
   onShow() {
-    this.stuClass(this.data.sid)//获取页面数据
+
   },
   stuClass(sid:string){
     var that = this
