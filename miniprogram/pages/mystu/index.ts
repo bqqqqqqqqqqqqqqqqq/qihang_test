@@ -178,10 +178,12 @@ Page({
     this.AllKC()
     //通知
     this.ifUnadd()
-    //接受
+    //接受type=admin
+    let t = options.type;
     let tid = options.p;
     this.setData({
-      teacherId: tid
+      teacherId: tid,
+      type:t
     })
   },
 })
