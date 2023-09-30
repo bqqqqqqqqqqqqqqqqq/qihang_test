@@ -6,7 +6,7 @@
   bind:click-right="manage"
 />
 
-<van-cell-group wx:if="{{!type}}">
+<van-cell-group wx:if="{{type>3}}">
   <van-cell title="查看学生" value="" size="large" label=" " 
   bindtap="gotoallstu"
   is-link />
