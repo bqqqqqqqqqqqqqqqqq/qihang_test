@@ -97,30 +97,12 @@ Page({
         if(res.code==200&&res.data!=null){
           const list :kcInfo[]=res.data
           let listAll = this.data.bList;
-          const teaid = app.globalData.UserInfo.id;
-          const  testList:kcInfo[] = []
+          const teaid = this.data.teacherId;
           listAll.push(...list)
-          listAll.forEach((element:any) => {
-            if (element.teacher_id== teaid){
-              testList.push(element)
-            }
-          });
-          // listAll = listAll.filter((obj: { teacher_id: any; })=>{
-          //   obj.teacher_id === teaid})
-          if (app.globalData.UserInfo.id=="5" || app.globalData.UserInfo.id=="4"){
-            this.setData({
-              bList:listAll
-            })
-          }
-          if (app.globalData.UserInfo.id=="3"){
-            this.setData({
-              bList:testList
-            })
-          }
+          listAll = listAll.filter((obj:any)=>obj.teacher_id == teaid)
           this.setData({
-            bList:this.data.bList
+              bList:listAll
           })
-
       }else if (res.data==null){
         wx.showToast({
           title:"已无更多数据",
@@ -159,17 +141,6 @@ Page({
           })
         }
       })
-    },
-    handleArr(array:any,property:string){
-      const map = new Map();
-      const result = [];
-      for (const item of array) {
-        if (!map.has(item[property])) {
-          map.set(item[property], true);
-          result.push(item);
-        }
-      }
-      return result;
     },
   /**
    * 生命周期函数--监听页面加载
